@@ -1,4 +1,4 @@
-﻿// Game State
+// Game State
 const gameState = {
     started: false,
     currentLevel: 0,
@@ -14,6 +14,10 @@ const gameState = {
     xp: 0,
     maxXP: 2850,
     soundEnabled: true,
+    scale: 1,
+    baseHeight: 800, // Higher base height for sharpness
+    viewWidth: 1000,
+    viewHeight: 800,
     keys: { left: false, right: false, up: false, down: false }
 };
 
@@ -64,39 +68,39 @@ function playSound(type) {
 
 // Level Data
 const levels = [
-    { name: "Introduction", subtitle: "Welcome! Let's explore my journey →", width: 100, bgClass: "level-0" },
-    { name: "Americold", subtitle: "Supply Chain Systems Specialist", width: 100, bgClass: "level-1" },
-    { name: "ID Logistics", subtitle: "Engineering & Process Manager", width: 100, bgClass: "level-2" },
-    { name: "Forvia (Faurecia)", subtitle: "Supply Chain & Systems Lead", width: 100, bgClass: "level-3" },
-    { name: "GSDI", subtitle: "Branch Manager Assistant", width: 100, bgClass: "level-gsdi" },
-    { name: "Wuhan University", subtitle: "Deep Dive on Logistics", width: 100, bgClass: "level-wuhan" },
-    { name: "Orange", subtitle: "Telecommunications Technician", width: 100, bgClass: "level-orange" },
-    { name: "Education", subtitle: "Academic Journey", width: 100, bgClass: "level-4" },
-    { name: "Hobbies", subtitle: "Passions & Interests", width: 100, bgClass: "level-2" },
-    { name: "Contact & Finale", subtitle: "Let's Connect!", width: 100, bgClass: "level-5" }
+    { name: "Introduction", subtitle: "Welcome! Let's explore my journey ?", width: 1255, bgClass: "level-0" },
+    { name: "Americold", subtitle: "Supply Chain Systems Specialist", width: 1255, bgClass: "level-1" },
+    { name: "ID Logistics", subtitle: "Engineering & Process Manager", width: 1255, bgClass: "level-2" },
+    { name: "Forvia (Faurecia)", subtitle: "Supply Chain & Systems Lead", width: 1255, bgClass: "level-3" },
+    { name: "GSDI", subtitle: "Branch Manager Assistant", width: 1255, bgClass: "level-gsdi" },
+    { name: "Wuhan University", subtitle: "Deep Dive on Logistics", width: 1255, bgClass: "level-wuhan" },
+    { name: "Orange", subtitle: "Telecommunications Technician", width: 1255, bgClass: "level-orange" },
+    { name: "Education", subtitle: "Academic Journey", width: 1255, bgClass: "level-4" },
+    { name: "Hobbies", subtitle: "Passions & Interests", width: 1255, bgClass: "level-2" },
+    { name: "Contact & Finale", subtitle: "Let's Connect!", width: 2000, bgClass: "level-5" }
 ];
 
 // Badges - positioned at reachable heights
 const badges = [
-    { level: 0, x: 250, y: 140, icon: "📊", label: "Power BI" },
-    { level: 0, x: 450, y: 140, icon: "🐍", label: "Python" },
-    { level: 1, x: 200, y: 140, icon: "📦", label: "WMS" },
-    { level: 1, x: 400, y: 140, icon: "❄️", label: "Cold Chain" },
-    { level: 2, x: 200, y: 140, icon: "📈", label: "Analytics" },
-    { level: 2, x: 400, y: 140, icon: "💰", label: "Savings" },
-    { level: 3, x: 200, y: 140, icon: "🏭", label: "29 Plants" },
-    { level: 3, x: 400, y: 140, icon: "🔧", label: "SAP" },
-    { level: 4, x: 200, y: 140, icon: "🇿🇦", label: "S. Africa" },
-    { level: 4, x: 400, y: 140, icon: "🚂", label: "Railway" },
-    { level: 5, x: 200, y: 140, icon: "🇨🇳", label: "China" },
-    { level: 5, x: 400, y: 140, icon: "🚚", label: "Logistics" },
-    { level: 6, x: 200, y: 140, icon: "🔌", label: "Telecom" },
-    { level: 6, x: 400, y: 140, icon: "🛠️", label: "Tech" },
-    { level: 7, x: 200, y: 140, icon: "🎓", label: "M.Sc." },
-    { level: 7, x: 400, y: 140, icon: "⚡", label: "B.Sc." },
-    { level: 8, x: 200, y: 140, icon: "🏃", label: "Sports" },
-    { level: 8, x: 400, y: 140, icon: "✈️", label: "Travel" },
-    { level: 9, x: 200, y: 140, icon: "🏆", label: "Leader" }
+    { level: 0, x: 250, y: 140, icon: "📊", label: "Power BI", cat: "Analytics" },
+    { level: 0, x: 450, y: 140, icon: "🐍", label: "Python", cat: "Analytics" },
+    { level: 1, x: 200, y: 140, icon: "📦", label: "WMS", cat: "SCM" },
+    { level: 1, x: 400, y: 140, icon: "❄️", label: "Cold Chain", cat: "Global" },
+    { level: 2, x: 200, y: 140, icon: "📈", label: "Analytics", cat: "Analytics" },
+    { level: 2, x: 400, y: 140, icon: "💰", label: "Savings", cat: "SCM" },
+    { level: 3, x: 200, y: 140, icon: "🏭", label: "Manufacturing", cat: "Global" },
+    { level: 3, x: 350, y: 140, icon: "🚗", label: "Automotive", cat: "Global" },
+    { level: 3, x: 500, y: 140, icon: "💾", label: "SAP", cat: "SCM" },
+    { level: 4, x: 300, y: 140, icon: "🚂", label: "Railway", cat: "Global" },
+    { level: 5, x: 350, y: 140, icon: "🛍️", label: "Retail", cat: "Global" },
+    { level: 5, x: 550, y: 140, icon: "🚚", label: "Logistics", cat: "SCM" },
+    { level: 6, x: 200, y: 140, icon: "📶", label: "Telecom", cat: "Analytics" },
+    { level: 6, x: 400, y: 140, icon: "🔧", label: "Tech", cat: "Analytics" },
+    { level: 7, x: 200, y: 140, icon: "🎓", label: "M.Sc.", cat: "Lead" },
+    { level: 7, x: 400, y: 140, icon: "🏅", label: "Management", cat: "Lead" },
+    { level: 8, x: 200, y: 140, icon: "🏀", label: "Sports", cat: "Perso" },
+    { level: 8, x: 400, y: 140, icon: "🌎", label: "Travel", cat: "Perso" },
+    { level: 9, x: 875, y: 140, icon: "👑", label: "Leader", cat: "Lead" }
 ];
 
 // Vehicle zones
@@ -116,22 +120,20 @@ function generateLevelHTML(levelIndex) {
     let levelOffset = 0;
     for (let i = 0; i < levelIndex; i++) levelOffset += levels[i].width;
 
-    let html = `<div class="level ${level.bgClass}" style="left: ${levelOffset}vw; width: ${level.width}vw;">`;
+    let html = `<div class="level ${level.bgClass}" style="left: ${levelOffset}px; width: ${level.width}px;">`;
     html += `<div class="ground"></div>`;
 
     // Road markings
-    const markCount = Math.floor(level.width * window.innerWidth / 100 / 100) + 5;
+    const markCount = Math.floor(level.width / 100) + 5;
     for (let i = 0; i < 30; i++) {
         html += `<div class="road-marking" style="left: ${i * 100 + 30}px;"></div>`;
     }
 
     // Stars
-    if (levelIndex !== 6) { // Final level index is now 6
-        for (let i = 0; i < 60; i++) {
-            const size = Math.random() * 2 + 1;
-            const opacity = Math.random() * 0.5 + 0.5;
-            html += `<div class="star" style="left: ${Math.random() * (level.width - 10)}vw; top: ${Math.random() * 50}%; width: ${size}px; height: ${size}px; opacity: ${opacity}; animation-delay: ${Math.random() * 3}s;"></div>`;
-        }
+    for (let i = 0; i < 60; i++) {
+        const size = Math.random() * 2 + 1;
+        const opacity = Math.random() * 0.5 + 0.5;
+        html += `<div class="star" style="left: ${Math.random() * (level.width - 50)}px; top: ${Math.random() * 50}%; width: ${size}px; height: ${size}px; opacity: ${opacity}; animation-delay: ${Math.random() * 3}s;"></div>`;
     }
 
     // Level content
@@ -152,7 +154,7 @@ function generateLevelHTML(levelIndex) {
     });
 
     // Vehicle zones
-    vehicleZones.filter(v => v.level === levelIndex).forEach(v => {
+    vehicleZones.filter(v => v.level === levelIndex && !v.taken).forEach(v => {
         if (v.vehicle === 'forklift') {
             html += `
                         <div class="vehicle-zone" id="zone-${levelIndex}-${v.x}" style="left: ${v.x}px;" data-vehicle="forklift">
@@ -340,40 +342,36 @@ function generateLevelContent(levelIndex) {
 
         case 2: // ID Logistics
             html += `
-                        <div class="warehouse" style="left: 80px;">
-                            <div class="warehouse-structure" style="width: 230px; height: 220px; background: linear-gradient(180deg, #6a7a8a 0%, #4a5a6a 100%); box-shadow: 0 12px 35px rgba(0,0,0,0.4); border: 4px solid #3a4a5a;">
+                        <div class="warehouse" style="left: 60px;">
+                            <!-- Main Office/Warehouse Section -->
+                            <div class="warehouse-structure" style="width: 380px; height: 200px; background: linear-gradient(180deg, #5a7a9a 0%, #3a5a7a 100%); box-shadow: 0 15px 45px rgba(0,0,0,0.5); border: 5px solid #2a3a4a;">
                                 <div class="warehouse-roof"></div>
-                                <div class="warehouse-sign" style="font-size: 16px; padding: 10px 22px;">ID LOGISTICS</div>
-                                <!-- Window grid with improved lighting -->
-                                <div style="position: absolute; top: 70px; left: 15px; display: grid; grid-template-columns: repeat(4, 45px); grid-gap: 12px;">
-                                    <div style="width: 45px; height: 40px; background: linear-gradient(180deg, #ffdd88 0%, #ffcc44 100%); border: 3px solid #3a4a5a; box-shadow: 0 0 12px rgba(255,215,0,0.4), inset 0 0 8px rgba(255,255,255,0.3);"></div>
-                                    <div style="width: 45px; height: 40px; background: linear-gradient(180deg, #ffdd88 0%, #ffcc44 100%); border: 3px solid #3a4a5a; box-shadow: 0 0 12px rgba(255,215,0,0.4), inset 0 0 8px rgba(255,255,255,0.3);"></div>
-                                    <div style="width: 45px; height: 40px; background: linear-gradient(180deg, #4a90c2 30%, #3a7ab2 100%); border: 3px solid #3a4a5a; box-shadow: inset 0 0 8px rgba(255,255,255,0.2);"></div>
-                                    <div style="width: 45px; height: 40px; background: linear-gradient(180deg, #ffdd88 0%, #ffcc44 100%); border: 3px solid #3a4a5a; box-shadow: 0 0 12px rgba(255,215,0,0.4), inset 0 0 8px rgba(255,255,255,0.3);"></div>
-                                    <div style="width: 45px; height: 40px; background: linear-gradient(180deg, #ffdd88 0%, #ffcc44 100%); border: 3px solid #3a4a5a; box-shadow: 0 0 12px rgba(255,215,0,0.4), inset 0 0 8px rgba(255,255,255,0.3);"></div>
-                                    <div style="width: 45px; height: 40px; background: linear-gradient(180deg, #4a90c2 30%, #3a7ab2 100%); border: 3px solid #3a4a5a; box-shadow: inset 0 0 8px rgba(255,255,255,0.2);"></div>
-                                    <div style="width: 45px; height: 40px; background: linear-gradient(180deg, #ffdd88 0%, #ffcc44 100%); border: 3px solid #3a4a5a; box-shadow: 0 0 12px rgba(255,215,0,0.4), inset 0 0 8px rgba(255,255,255,0.3);"></div>
-                                    <div style="width: 45px; height: 40px; background: linear-gradient(180deg, #4a90c2 30%, #3a7ab2 100%); border: 3px solid #3a4a5a; box-shadow: inset 0 0 8px rgba(255,255,255,0.2);"></div>
+                                <div class="warehouse-sign" style="font-size: 18px; padding: 12px 30px; background: linear-gradient(180deg, #1a3a5a 0%, #0a2a4a 100%); color: white; border: 3px solid #64B5F6;">ID LOGISTICS</div>
+                                
+                                <!-- Loading Docks -->
+                                <div class="loading-dock" style="left: 30px; bottom: 0;">
+                                    <div class="dock-door open"></div>
                                 </div>
+                                <div class="loading-dock" style="left: 110px; bottom: 0;">
+                                    <div class="dock-door"></div>
+                                </div>
+                                <div class="loading-dock" style="left: 190px; bottom: 0;">
+                                    <div class="dock-door"></div>
+                                </div>
+                                
+                                <!-- (Office Windows removed) -->
                             </div>
-                        </div>
-                        <div class="factory" style="left: 350px;">
-                            <div class="factory-building" style="width: 170px; height: 180px; background: linear-gradient(180deg, #5a6a7a 0%, #3a4a5a 100%); box-shadow: 0 12px 35px rgba(0,0,0,0.4); border: 4px solid #2a3a4a;">
-                                <div class="chimney" style="left: 30px; top: -55px; width: 35px; height: 55px;">
-                                    <div class="chimney-top"></div>
-                                    <div class="smoke" style="top: -22px; left: 6px;"></div>
-                                    <div class="smoke" style="top: -22px; left: 18px; animation-delay: 1.5s;"></div>
+                            
+                            <!-- Side Warehouse Section -->
+                            <div class="warehouse-structure" style="position: absolute; left: 380px; bottom: 0; width: 220px; height: 160px; background: linear-gradient(180deg, #4a6a8a 0%, #2a4a6a 100%); border: 5px solid #1a2a3a; z-index: -1;">
+                                <div class="warehouse-roof"></div>
+                                <div class="loading-dock" style="left: 40px; bottom: 0;">
+                                    <div class="dock-door"></div>
                                 </div>
-                                <div class="warehouse-sign" style="top: 25px; font-size: 14px; padding: 8px 18px;">TARRAGONA</div>
-                                <!-- Modern industrial windows -->
-                                <div style="position: absolute; top: 80px; left: 18px; display: grid; grid-template-columns: repeat(3, 42px); grid-gap: 10px;">
-                                    <div style="width: 42px; height: 35px; background: linear-gradient(180deg, #ffdd88 0%, #ffcc44 100%); border: 3px solid #2a3a4a; box-shadow: 0 0 12px rgba(255,215,0,0.4), inset 0 0 8px rgba(255,255,255,0.3);"></div>
-                                    <div style="width: 42px; height: 35px; background: linear-gradient(180deg, #4a90c2 30%, #3a7ab2 100%); border: 3px solid #2a3a4a; box-shadow: inset 0 0 8px rgba(255,255,255,0.2);"></div>
-                                    <div style="width: 42px; height: 35px; background: linear-gradient(180deg, #ffdd88 0%, #ffcc44 100%); border: 3px solid #2a3a4a; box-shadow: 0 0 12px rgba(255,215,0,0.4), inset 0 0 8px rgba(255,255,255,0.3);"></div>
-                                    <div style="width: 42px; height: 35px; background: linear-gradient(180deg, #ffdd88 0%, #ffcc44 100%); border: 3px solid #2a3a4a; box-shadow: 0 0 12px rgba(255,215,0,0.4), inset 0 0 8px rgba(255,255,255,0.3);"></div>
-                                    <div style="width: 42px; height: 35px; background: linear-gradient(180deg, #ffdd88 0%, #ffcc44 100%); border: 3px solid #2a3a4a; box-shadow: 0 0 12px rgba(255,215,0,0.4), inset 0 0 8px rgba(255,255,255,0.3);"></div>
-                                    <div style="width: 42px; height: 35px; background: linear-gradient(180deg, #4a90c2 30%, #3a7ab2 100%); border: 3px solid #2a3a4a; box-shadow: inset 0 0 8px rgba(255,255,255,0.2);"></div>
+                                <div class="loading-dock" style="left: 120px; bottom: 0;">
+                                    <div class="dock-door open"></div>
                                 </div>
+                                <!-- (Industrial windows removed) -->
                             </div>
                         </div>
                     `;
@@ -390,27 +388,27 @@ function generateLevelContent(levelIndex) {
             // Factory 1 - Large main factory
             html += `
                         <div class="factory" style="left: 80px;">
-                            <div class="factory-building" style="width: 240px; height: 210px; background: linear-gradient(180deg, #5a6a7a 0%, #3a4a5a 100%); box-shadow: 0 15px 40px rgba(0,0,0,0.5); border: 4px solid #2a3a4a;">
-                                <div class="chimney" style="left: 45px; top: -60px; width: 38px; height: 60px; background: linear-gradient(90deg, #666 0%, #888 30%, #777 70%, #666 100%); border: 3px solid #444;">
-                                    <div class="chimney-top"></div>
-                                    <div class="smoke" style="top: -25px; left: 7px;"></div>
-                                    <div class="smoke" style="top: -25px; left: 20px; animation-delay: 2s;"></div>
-                                </div>
-                                <div class="chimney" style="left: 165px; top: -60px; width: 38px; height: 60px; background: linear-gradient(90deg, #666 0%, #888 30%, #777 70%, #666 100%); border: 3px solid #444;">
-                                    <div class="chimney-top"></div>
-                                    <div class="smoke" style="top: -25px; left: 10px; animation-delay: 1s;"></div>
-                                </div>
-                                <div class="warehouse-sign" style="top: 25px; font-size: 18px; padding: 10px 26px; background: linear-gradient(180deg, #3E0097 0%, #2a0066 100%); border: 3px solid #FFD700; box-shadow: 0 4px 12px rgba(255,215,0,0.3);">FORVIA</div>
-                                <div style="position: absolute; top: 55px; left: 50%; transform: translateX(-50%); color: #ddd; font-size: 11px; background: rgba(0,0,0,0.3); padding: 2px 8px; border-radius: 3px;">(FAURECIA)</div>
-                                <!-- Improved industrial windows -->
-                                <div style="position: absolute; top: 95px; left: 15px; display: grid; grid-template-columns: repeat(3, 65px); grid-gap: 12px;">
-                                    <div style="width: 65px; height: 42px; background: linear-gradient(180deg, #ffdd88 0%, #ffcc44 100%); border: 3px solid #2a3a4a; box-shadow: 0 0 15px rgba(255,215,0,0.4), inset 0 0 10px rgba(255,255,255,0.3);"></div>
-                                    <div style="width: 65px; height: 42px; background: linear-gradient(180deg, #ffdd88 0%, #ffcc44 100%); border: 3px solid #2a3a4a; box-shadow: 0 0 15px rgba(255,215,0,0.4), inset 0 0 10px rgba(255,255,255,0.3);"></div>
-                                    <div style="width: 65px; height: 42px; background: linear-gradient(180deg, #4a90c2 30%, #3a7ab2 100%); border: 3px solid #2a3a4a; box-shadow: inset 0 0 8px rgba(255,255,255,0.2);"></div>
-                                    <div style="width: 65px; height: 42px; background: linear-gradient(180deg, #ffdd88 0%, #ffcc44 100%); border: 3px solid #2a3a4a; box-shadow: 0 0 15px rgba(255,215,0,0.4), inset 0 0 10px rgba(255,255,255,0.3);"></div>
-                                    <div style="width: 65px; height: 42px; background: linear-gradient(180deg, #4a90c2 30%, #3a7ab2 100%); border: 3px solid #2a3a4a; box-shadow: inset 0 0 8px rgba(255,255,255,0.2);"></div>
-                                    <div style="width: 65px; height: 42px; background: linear-gradient(180deg, #ffdd88 0%, #ffcc44 100%); border: 3px solid #2a3a4a; box-shadow: 0 0 15px rgba(255,215,0,0.4), inset 0 0 10px rgba(255,255,255,0.3);"></div>
-                                </div>
+                    <div class="factory-building" style="width: 240px; height: 210px; background: linear-gradient(180deg, #5a6a7a 0%, #3a4a5a 100%); box-shadow: 0 15px 40px rgba(0,0,0,0.5); border: 4px solid #2a3a4a;">
+                        <div class="chimney" style="left: 45px; top: -60px; width: 38px; height: 60px; background: linear-gradient(90deg, #666 0%, #888 30%, #777 70%, #666 100%); border: 3px solid #444;">
+                            <div class="chimney-top"></div>
+                            <div class="smoke" style="top: -25px; left: 7px;"></div>
+                            <div class="smoke" style="top: -25px; left: 20px; animation-delay: 2s;"></div>
+                        </div>
+                        <div class="chimney" style="left: 165px; top: -60px; width: 38px; height: 60px; background: linear-gradient(90deg, #666 0%, #888 30%, #777 70%, #666 100%); border: 3px solid #444;">
+                            <div class="chimney-top"></div>
+                            <div class="smoke" style="top: -25px; left: 10px; animation-delay: 1s;"></div>
+                        </div>
+                        <div class="warehouse-sign" style="top: 25px; font-size: 18px; padding: 10px 26px; background: linear-gradient(180deg, #3E0097 0%, #2a0066 100%); border: 3px solid #FFD700; box-shadow: 0 4px 12px rgba(255,215,0,0.3);">FORVIA</div>
+                        <div style="position: absolute; top: 55px; left: 50%; transform: translateX(-50%); color: #ddd; font-size: 11px; background: rgba(0,0,0,0.3); padding: 2px 8px; border-radius: 3px;">(FAURECIA)</div>
+                        <!-- Improved industrial windows -->
+                        <div style="position: absolute; top: 95px; left: 15px; display: grid; grid-template-columns: repeat(3, 65px); grid-gap: 12px;">
+                            <div style="width: 65px; height: 42px; background: linear-gradient(180deg, #ffdd88 0%, #ffcc44 100%); border: 3px solid #2a3a4a; box-shadow: 0 0 15px rgba(255,215,0,0.4), inset 0 0 10px rgba(255,255,255,0.3);"></div>
+                            <div style="width: 65px; height: 42px; background: linear-gradient(180deg, #ffdd88 0%, #ffcc44 100%); border: 3px solid #2a3a4a; box-shadow: 0 0 15px rgba(255,215,0,0.4), inset 0 0 10px rgba(255,255,255,0.3);"></div>
+                            <div style="width: 65px; height: 42px; background: linear-gradient(180deg, #4a90c2 30%, #3a7ab2 100%); border: 3px solid #2a3a4a; box-shadow: inset 0 0 8px rgba(255,255,255,0.2);"></div>
+                            <div style="width: 65px; height: 42px; background: linear-gradient(180deg, #ffdd88 0%, #ffcc44 100%); border: 3px solid #2a3a4a; box-shadow: 0 0 15px rgba(255,215,0,0.4), inset 0 0 10px rgba(255,255,255,0.3);"></div>
+                            <div style="width: 65px; height: 42px; background: linear-gradient(180deg, #4a90c2 30%, #3a7ab2 100%); border: 3px solid #2a3a4a; box-shadow: inset 0 0 8px rgba(255,255,255,0.2);"></div>
+                            <div style="width: 65px; height: 42px; background: linear-gradient(180deg, #ffdd88 0%, #ffcc44 100%); border: 3px solid #2a3a4a; box-shadow: 0 0 15px rgba(255,215,0,0.4), inset 0 0 10px rgba(255,255,255,0.3);"></div>
+                        </div>
                             </div>
                         </div>
                     `;
@@ -432,7 +430,7 @@ function generateLevelContent(levelIndex) {
                                 </div>
                             </div>
                         </div>
-                    `;
+                `;
             // Truck
             html += `
                         <div class="parked-truck" id="forvia-truck" style="left: 450px;">
@@ -445,7 +443,7 @@ function generateLevelContent(levelIndex) {
                             <div class="truck-wheel" style="left: 100px;"></div>
                             <div class="truck-wheel" style="left: 130px;"></div>
                         </div>
-                    `;
+                `;
             // Pallets
             html += generatePalletStack(600, 2);
             // Workers
@@ -455,177 +453,203 @@ function generateLevelContent(levelIndex) {
             html += generateWorkingForklift(700, 2);
             break;
 
-        case 4: // GSDI - Railway (South Africa)
-            // Train station (GSDI)
+        case 4: // GSDI - Train Vinyl Workshop
+            // Modern Industrial Workshop Building
             html += `
-                        <div style="position: absolute; left: 50px; bottom: 0;">
-                            <div style="position: relative; width: 250px; height: 180px; background: linear-gradient(180deg, #8B4513 0%, #654321 100%); border-radius: 5px;">
-                                <!-- Station roof -->
-                                <div style="position: absolute; top: -20px; left: -10px; width: 270px; height: 25px; background: linear-gradient(180deg, #A0522D 0%, #8B4513 100%); clip-path: polygon(10% 100%, 0% 0%, 100% 0%, 90% 100%);"></div>
-                                <div class="warehouse-sign" style="color: #FFD700;">GSDI STATION</div>
-                                <!-- Platform canopy -->
-                                <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 40px; background: rgba(139,69,19,0.6); border-top: 3px solid #FFD700;"></div>
-                                <!-- Windows -->
-                                <div style="position: absolute; top: 50px; left: 15px; display: grid; grid-template-columns: repeat(3, 65px); grid-gap: 12px;">
-                                    <div style="width: 65px; height: 45px; background: rgba(255,215,0,0.1); border: 2px solid #FFD700; box-shadow: inset 0 0 10px rgba(255,215,0,0.2);"></div>
-                                    <div style="width: 65px; height: 45px; background: rgba(255,215,0,0.1); border: 2px solid #FFD700; box-shadow: inset 0 0 10px rgba(255,215,0,0.2);"></div>
-                                    <div style="width: 65px; height: 45px; background: rgba(255,215,0,0.1); border: 2px solid #FFD700; box-shadow: inset 0 0 10px rgba(255,215,0,0.2);"></div>
-                                </div>
+                <div style="position: absolute; left: 60px; bottom: 100px;">
+                    <div style="position: relative; width: 320px; height: 220px; background: linear-gradient(180deg, #444 0%, #222 100%); border: 5px solid #1a1a1a; box-shadow: 0 20px 50px rgba(0,0,0,0.6); border-radius: 4px;">
+                        <!-- Roof features -->
+                        <div style="position: absolute; top: -15px; left: 20px; width: 60px; height: 15px; background: #333; border: 2px solid #111;"></div>
+                        <div style="position: absolute; top: -15px; left: 100px; width: 60px; height: 15px; background: #333; border: 2px solid #111;"></div>
+                        
+                        <!-- Workshop Name -->
+                        <div class="warehouse-sign" style="background: linear-gradient(180deg, #333, #111); border: 2px solid #555; color: #fff; font-size: 16px; width: 220px; top: 20px; text-align: center;">GSDI</div>
+                        
+                        <!-- Large Workshop Bay Door (Open) -->
+                        <div style="position: absolute; bottom: 0; left: 40px; width: 240px; height: 140px; background: #000; border: 4px solid #333; border-bottom: none; overflow: hidden;">
+                            <!-- Train Silhouette inside with Vinyl stripes -->
+                            <div style="position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 180px; height: 110px; background: #111; border-radius: 40px 40px 5px 5px; border: 2px solid #222;">
+                                <!-- Train Windshield -->
+                                <div style="position: absolute; top: 15px; left: 25px; width: 130px; height: 35px; background: rgba(0,255,255,0.05); border: 1px solid #333; border-radius: 10px 10px 2px 2px;"></div>
+                                <!-- Vivid Vinyl Stripes -->
+                                <div style="position: absolute; bottom: 20px; left: 0; width: 100%; height: 12px; background: #FF3D00; box-shadow: 0 0 10px rgba(255,61,0,0.4);"></div>
+                                <div style="position: absolute; bottom: 35px; left: 0; width: 100%; height: 8px; background: #2979FF; box-shadow: 0 0 10px rgba(41,121,255,0.4);"></div>
+                                <div style="position: absolute; bottom: 46px; left: 0; width: 100%; height: 5px; background: #00E676; box-shadow: 0 0 10px rgba(0,230,118,0.4);"></div>
+                                <!-- Train Headlights -->
+                                <div style="position: absolute; bottom: 10px; left: 30px; width: 15px; height: 15px; background: #444; border-radius: 50%;"></div>
+                                <div style="position: absolute; bottom: 10px; right: 30px; width: 15px; height: 15px; background: #444; border-radius: 50%;"></div>
                             </div>
+                            
+                            <!-- Industrial Lighting inside -->
+                            <div style="position: absolute; top: 10px; left: 50px; width: 40px; height: 4px; background: #555; box-shadow: 0 0 15px #fff;"></div>
+                            <div style="position: absolute; top: 10px; right: 50px; width: 40px; height: 4px; background: #555; box-shadow: 0 0 15px #fff;"></div>
                         </div>
-                    `;
-            // Railway tracks
+                    </div>
+                </div>
+            `;
+            // Workers with vinyl tools
             html += `
-                        <div style="position: absolute; left: 350px; bottom: 20px; width: 400px; height: 8px;">
-                            <div style="position: absolute; bottom: 0; width: 100%; height: 3px; background: #666;"></div>
-                            <div style="position: absolute; bottom: 5px; width: 100%; height: 3px; background: #666;"></div>
-                            ${Array.from({ length: 20 }, (_, i) => `<div style="position: absolute; left: ${i * 20}px; bottom: -2px; width: 12px; height: 12px; background: #444;"></div>`).join('')}
-                        </div>
-                    `;
-            // South African flag
+                <!-- Worker 1: Squuegee work -->
+                <div style="position: absolute; left: 160px; bottom: 100px;">
+                    <div class="worker-figure">
+                        <div class="worker-head"></div>
+                        <div class="worker-body" style="background:#222; border: 1px solid #444;"></div>
+                        <!-- Holding a squeegee -->
+                        <div style="position:absolute; width: 15px; height: 25px; background: #333; left: 18px; top: 10px; border: 1px solid #FFD700; border-radius: 2px; transform: rotate(10deg);"></div>
+                    </div>
+                </div>
+                <!-- Worker 2: Holding Vinyl Roll -->
+                <div style="position: absolute; left: 320px; bottom: 100px;">
+                    <div class="worker-figure">
+                        <div class="worker-head"></div>
+                        <div class="worker-body" style="background:#222; border: 1px solid #444;"></div>
+                        <!-- Large Vinyl Roll -->
+                        <div style="position:absolute; width: 12px; height: 60px; background: linear-gradient(90deg, #2979FF, #1565C0); left: 15px; bottom: 0; border-radius: 2px; transform: rotate(-5deg); border: 1px solid #000;"></div>
+                    </div>
+                </div>
+            `;
+            // Industrial background details
             html += `
-                        <div class="flag-display" style="left: 600px;">
-                            <div class="flag-pole"></div>
-                            <div style="position: absolute; top: 5px; left: 2px; width: 50px; height: 30px; background: linear-gradient(to bottom, #E03C31 0%, #E03C31 16.67%, #FFFFFF 16.67%, #FFFFFF 33.33%, #007749 33.33%, #007749 50%, #FFB612 50%, #FFB612 66.67%, #FFFFFF 66.67%, #FFFFFF 83.33%, #001489 83.33%, #001489 100%);"></div>
-                        </div>
-                    `;
+                <div style="position: absolute; left: 450px; bottom: 100px; width: 120px; height: 40px; background: rgba(0,0,0,0.1); border-left: 2px solid #333;">
+                    <div style="padding: 10px; color: #555; font-size: 9px; font-family: monospace;">WORKSHOP BAY 04<br>VINYL WRAP SEC.</div>
+                </div>
+            `;
             break;
 
         case 5: // Wuhan - University/City
             // Research lab (Wuhan)
             html += `
-                        <div style="position: absolute; left: 50px; bottom: 0;">
-                            <div style="position: relative; width: 220px; height: 170px; background: linear-gradient(180deg, #f0f0f0 0%, #d0d0d0 100%); border-radius: 3px;">
-                                <div class="university-pediment"></div>
-                                <div class="university-name" style="font-size: 10px; color: #3E0097;">WUHAN UNIV. TECH.</div>
-                                <div style="position: absolute; top: 35px; left: 50%; transform: translateX(-50%); color: #3E0097; font-size: 9px;">Research Lab</div>
-                                <!-- Lab equipment silhouettes -->
-                                <div style="position: absolute; bottom: 20px; left: 20px; width: 30px; height: 60px; background: rgba(62,0,151,0.2); border: 2px solid #3E0097; border-radius: 3px;"></div>
-                                <div style="position: absolute; bottom: 20px; left: 60px; width: 25px; height: 50px; background: rgba(62,0,151,0.2); border: 2px solid #3E0097; border-radius: 3px;"></div>
-                                <div style="position: absolute; bottom: 20px; left: 95px; width: 35px; height: 70px; background: rgba(62,0,151,0.2); border: 2px solid #3E0097; border-radius: 3px;"></div>
-                                <!-- Windows -->
-                                <div style="position: absolute; top: 60px; left: 140px; display: grid; grid-template-rows: repeat(2, 35px); grid-gap: 8px;">
-                                    <div style="width: 60px; height: 35px; background: rgba(62,0,151,0.1); border: 2px solid #3E0097; box-shadow: inset 0 0 8px rgba(62,0,151,0.2);"></div>
-                                    <div style="width: 60px; height: 35px; background: rgba(62,0,151,0.1); border: 2px solid #3E0097; box-shadow: inset 0 0 8px rgba(62,0,151,0.2);"></div>
-                                </div>
-                            </div>
+                <div style="position: absolute; left: 80px; bottom: 100px;">
+                    <div style="position: relative; width: 220px; height: 170px; background: linear-gradient(180deg, #f0f0f0 0%, #d0d0d0 100%); border-radius: 3px;">
+                        <div class="university-pediment"></div>
+                        <div class="university-name" style="font-size: 10px; color: #3E0097;">WUHAN UNIV. TECH.</div>
+                        <div style="position: absolute; top: 35px; left: 50%; transform: translateX(-50%); color: #3E0097; font-size: 9px;">Research Lab</div>
+                        <!-- Lab equipment silhouettes -->
+                        <div style="position: absolute; bottom: 20px; left: 20px; width: 30px; height: 60px; background: rgba(62,0,151,0.2); border: 2px solid #3E0097; border-radius: 3px;"></div>
+                        <div style="position: absolute; bottom: 20px; left: 60px; width: 25px; height: 50px; background: rgba(62,0,151,0.2); border: 2px solid #3E0097; border-radius: 3px;"></div>
+                        <div style="position: absolute; bottom: 20px; left: 95px; width: 35px; height: 70px; background: rgba(62,0,151,0.2); border: 2px solid #3E0097; border-radius: 3px;"></div>
+                        <!-- Windows (constrained within building) -->
+                        <div style="position: absolute; top: 60px; left: 140px; display: grid; grid-template-rows: repeat(2, 35px); grid-gap: 8px; width: 60px; overflow: hidden;">
+                            <div style="width: 60px; height: 35px; background: rgba(62,0,151,0.1); border: 2px solid #3E0097; box-shadow: inset 0 0 8px rgba(62,0,151,0.2);"></div>
+                            <div style="width: 60px; height: 35px; background: rgba(62,0,151,0.1); border: 2px solid #3E0097; box-shadow: inset 0 0 8px rgba(62,0,151,0.2);"></div>
                         </div>
-                    `;
+                    </div>
+                        </div>
+                `;
             // Chinese flag removed
             html += ``;
             // City buildings
             html += `
-                        <div class="factory" style="left: 400px;">
-                            <div class="factory-building" style="width: 120px; height: 140px; background: #555;">
-                                ${generateIndustrialWindows(3, 3, 10, 50)}
-                            </div>
+                <div class="factory" style="left: 400px;">
+                    <div class="factory-building" style="width: 120px; height: 140px; background: #555; overflow: hidden;">
+                        ${generateIndustrialWindows(3, 3, 10, 50)}
+                    </div>
                         </div>
-                        <div class="factory" style="left: 550px;">
-                            <div class="factory-building" style="width: 100px; height: 160px; background: #666;">
-                                ${generateIndustrialWindows(2, 3, 10, 60)}
-                            </div>
-                        </div>
-                    `;
+                <div class="factory" style="left: 550px;">
+                    <div class="factory-building" style="width: 100px; height: 160px; background: #666; overflow: hidden;">
+                        ${generateIndustrialWindows(2, 3, 10, 60)}
+                    </div>
+                </div>
+            `;
             break;
 
         case 6: // Orange - Telecommunications
             // Telecom tower with worker
             html += `
-                        <div style="position: absolute; left: 100px; bottom: 0;">
+                <div style="position: absolute; left: 100px; bottom: 100px;">
                             <div style="position: absolute; bottom: 0; left: 45px; width: 10px; height: 250px; background: linear-gradient(to top, #999 0%, #ccc 100%);"></div>
                             <div style="position: absolute; bottom: 200px; left: 35px; width: 30px; height: 3px; background: #666;"></div>
                             <div style="position: absolute; bottom: 170px; left: 30px; width: 40px; height: 3px; background: #666;"></div>
                             <div style="position: absolute; bottom: 140px; left: 25px; width: 50px; height: 3px; background: #666;"></div>
                             <div style="position: absolute; bottom: 250px; left: 42px; width: 16px; height: 20px; background: #E03C31; border-radius: 2px;"></div>
-                            <!-- Worker on pole -->
+                            <!--Worker on pole-->
                             <div style="position: absolute; bottom: 180px; left: 60px; width: 12px; height: 12px; background: #ffccaa; border-radius: 50%;"></div>
                             <div style="position: absolute; bottom: 165px; left: 58px; width: 16px; height: 20px; background: #FF6600; border-radius: 2px;"></div>
                         </div>
-                    `;
-            // Phone pole with worker
+                `;
+            // Phone pole with worker (elevated)
             html += `
-                        <div style="position: absolute; left: 550px; bottom: 0;">
+                <div style="position: absolute; left: 550px; bottom: 100px;">
                             <div style="position: absolute; bottom: 0; left: 15px; width: 8px; height: 180px; background: #8B4513;"></div>
                             <div style="position: absolute; bottom: 150px; left: 5px; width: 28px; height: 4px; background: #666;"></div>
-                            <!-- Landline phone -->
+                            <!--Landline phone-->
                             <div style="position: absolute; bottom: 145px; left: 0; width: 12px; height: 15px; background: #333; border-radius: 2px;"></div>
-                            <!-- Worker on pole -->
+                            <!--Worker on pole-->
                             <div style="position: absolute; bottom: 160px; left: 30px; width: 12px; height: 12px; background: #ffccaa; border-radius: 50%;"></div>
                             <div style="position: absolute; bottom: 145px; left: 28px; width: 16px; height: 20px; background: #FF6600; border-radius: 2px;"></div>
                         </div>
-                    `;
-            // Data center (Orange)
+                `;
+            // Orange building (grounded)
             html += `
-                        <div style="position: absolute; left: 300px; bottom: 0;">
-                            <div style="position: relative; width: 180px; height: 150px; background: linear-gradient(180deg, #FF6600 0%, #E05500 100%); border-radius: 3px;">
-                                <div class="warehouse-sign" style="color: white; top: 15px;">ORANGE</div>
-                                <div style="position: absolute; top: 40px; left: 50%; transform: translateX(-50%); color: white; font-size: 9px;">Data Center</div>
-                                <!-- Server rack indicators -->
-                                <div style="position: absolute; top: 60px; left: 10px; display: grid; grid-template-columns: repeat(3, 50px); grid-gap: 5px;">
-                                    <div style="width: 50px; height: 70px; background: rgba(0,0,0,0.3); border: 2px solid white; display: flex; flex-direction: column; gap: 3px; padding: 3px;">
-                                        <div style="width: 100%; height: 8px; background: rgba(0,255,0,0.3); border: 1px solid #0F0;"></div>
-                                        <div style="width: 100%; height: 8px; background: rgba(0,255,0,0.3); border: 1px solid #0F0;"></div>
-                                        <div style="width: 100%; height: 8px; background: rgba(0,255,0,0.3); border: 1px solid #0F0;"></div>
-                                        <div style="width: 100%; height: 8px; background: rgba(0,255,0,0.3); border: 1px solid #0F0;"></div>
-                                    </div>
-                                    <div style="width: 50px; height: 70px; background: rgba(0,0,0,0.3); border: 2px solid white; display: flex; flex-direction: column; gap: 3px; padding: 3px;">
-                                        <div style="width: 100%; height: 8px; background: rgba(0,255,0,0.3); border: 1px solid #0F0;"></div>
-                                        <div style="width: 100%; height: 8px; background: rgba(0,255,0,0.3); border: 1px solid #0F0;"></div>
-                                        <div style="width: 100%; height: 8px; background: rgba(0,255,0,0.3); border: 1px solid #0F0;"></div>
-                                        <div style="width: 100%; height: 8px; background: rgba(0,255,0,0.3); border: 1px solid #0F0;"></div>
-                                    </div>
-                                    <div style="width: 50px; height: 70px; background: rgba(0,0,0,0.3); border: 2px solid white; display: flex; flex-direction: column; gap: 3px; padding: 3px;">
-                                        <div style="width: 100%; height: 8px; background: rgba(0,255,0,0.3); border: 1px solid #0F0;"></div>
-                                        <div style="width: 100%; height: 8px; background: rgba(0,255,0,0.3); border: 1px solid #0F0;"></div>
-                                        <div style="width: 100%; height: 8px; background: rgba(0,255,0,0.3); border: 1px solid #0F0;"></div>
-                                        <div style="width: 100%; height: 8px; background: rgba(0,255,0,0.3); border: 1px solid #0F0;"></div>
-                                    </div>
-                                </div>
+                <div style="position: absolute; left: 300px; bottom: 100px;">
+                    <div style="position: relative; width: 180px; height: 150px; background: linear-gradient(180deg, #FF6600 0%, #E05500 100%); border-radius: 3px;">
+                        <div class="warehouse-sign" style="color: white; top: 15px; font-size: 18px; padding: 10px 24px;">ORANGE</div>
+                        <!-- Server rack indicators -->
+                        <div style="position: absolute; top: 60px; left: 10px; display: grid; grid-template-columns: repeat(3, 50px); grid-gap: 5px;">
+                            <div style="width: 50px; height: 70px; background: rgba(0,0,0,0.3); border: 2px solid white; display: flex; flex-direction: column; gap: 3px; padding: 3px;">
+                                <div style="width: 100%; height: 8px; background: rgba(0,255,0,0.3); border: 1px solid #0F0;"></div>
+                                <div style="width: 100%; height: 8px; background: rgba(0,255,0,0.3); border: 1px solid #0F0;"></div>
+                                <div style="width: 100%; height: 8px; background: rgba(0,255,0,0.3); border: 1px solid #0F0;"></div>
+                                <div style="width: 100%; height: 8px; background: rgba(0,255,0,0.3); border: 1px solid #0F0;"></div>
+                            </div>
+                            <div style="width: 50px; height: 70px; background: rgba(0,0,0,0.3); border: 2px solid white; display: flex; flex-direction: column; gap: 3px; padding: 3px;">
+                                <div style="width: 100%; height: 8px; background: rgba(0,255,0,0.3); border: 1px solid #0F0;"></div>
+                                <div style="width: 100%; height: 8px; background: rgba(0,255,0,0.3); border: 1px solid #0F0;"></div>
+                                <div style="width: 100%; height: 8px; background: rgba(0,255,0,0.3); border: 1px solid #0F0;"></div>
+                                <div style="width: 100%; height: 8px; background: rgba(0,255,0,0.3); border: 1px solid #0F0;"></div>
+                            </div>
+                            <div style="width: 50px; height: 70px; background: rgba(0,0,0,0.3); border: 2px solid white; display: flex; flex-direction: column; gap: 3px; padding: 3px;">
+                                <div style="width: 100%; height: 8px; background: rgba(0,255,0,0.3); border: 1px solid #0F0;"></div>
+                                <div style="width: 100%; height: 8px; background: rgba(0,255,0,0.3); border: 1px solid #0F0;"></div>
+                                <div style="width: 100%; height: 8px; background: rgba(0,255,0,0.3); border: 1px solid #0F0;"></div>
+                                <div style="width: 100%; height: 8px; background: rgba(0,255,0,0.3); border: 1px solid #0F0;"></div>
                             </div>
                         </div>
-                    `;
+                    </div>
+                        </div>
+                `;
             break;
 
         case 7: // Education
             // UTBM
             html += `
-                        <div class="university" style="left: 50px;">
-                            <div class="university-building" style="width: 200px; height: 160px;">
-                                <div class="university-pediment"></div>
-                                <div class="university-name">UTBM</div>
-                                <div class="university-date">2016 - 2020</div>
-                                <!-- Window grid -->
-                                <div style="position: absolute; top: 60px; left: 15px; display: grid; grid-template-columns: repeat(3, 50px); grid-gap: 10px;">
-                                    <div style="width: 50px; height: 35px; background: rgba(62,0,151,0.1); border: 2px solid #3E0097; box-shadow: inset 0 0 8px rgba(62,0,151,0.2);"></div>
-                                    <div style="width: 50px; height: 35px; background: rgba(62,0,151,0.1); border: 2px solid #3E0097; box-shadow: inset 0 0 8px rgba(62,0,151,0.2);"></div>
-                                    <div style="width: 50px; height: 35px; background: rgba(62,0,151,0.1); border: 2px solid #3E0097; box-shadow: inset 0 0 8px rgba(62,0,151,0.2);"></div>
-                                    <div style="width: 50px; height: 35px; background: rgba(62,0,151,0.1); border: 2px solid #3E0097; box-shadow: inset 0 0 8px rgba(62,0,151,0.2);"></div>
-                                    <div style="width: 50px; height: 35px; background: rgba(62,0,151,0.1); border: 2px solid #3E0097; box-shadow: inset 0 0 8px rgba(62,0,151,0.2);"></div>
-                                    <div style="width: 50px; height: 35px; background: rgba(62,0,151,0.1); border: 2px solid #3E0097; box-shadow: inset 0 0 8px rgba(62,0,151,0.2);"></div>
-                                </div>
-                            </div>
+                <div class="university" style="left: 50px;">
+                    <div class="university-building" style="width: 200px; height: 160px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); border: 4px solid #8a8570;">
+                        <div class="university-pediment"></div>
+                        <div class="university-name" style="font-size: 16px; font-weight: bold;">UTBM</div>
+                        <div class="university-date">2016 - 2020</div>
+                        <!-- Window grid -->
+                        <div style="position: absolute; top: 60px; left: 15px; display: grid; grid-template-columns: repeat(3, 50px); grid-gap: 10px;">
+                            <div style="width: 50px; height: 35px; background: rgba(62,0,151,0.1); border: 2px solid #3E0097; box-shadow: inset 0 0 8px rgba(62,0,151,0.2);"></div>
+                            <div style="width: 50px; height: 35px; background: rgba(62,0,151,0.1); border: 2px solid #3E0097; box-shadow: inset 0 0 8px rgba(62,0,151,0.2);"></div>
+                            <div style="width: 50px; height: 35px; background: rgba(62,0,151,0.1); border: 2px solid #3E0097; box-shadow: inset 0 0 8px rgba(62,0,151,0.2);"></div>
+                            <div style="width: 50px; height: 35px; background: rgba(62,0,151,0.1); border: 2px solid #3E0097; box-shadow: inset 0 0 8px rgba(62,0,151,0.2);"></div>
+                            <div style="width: 50px; height: 35px; background: rgba(62,0,151,0.1); border: 2px solid #3E0097; box-shadow: inset 0 0 8px rgba(62,0,151,0.2);"></div>
+                            <div style="width: 50px; height: 35px; background: rgba(62,0,151,0.1); border: 2px solid #3E0097; box-shadow: inset 0 0 8px rgba(62,0,151,0.2);"></div>
                         </div>
-                    `;
+                    </div>
+                        </div>
+                `;
             // IUT Nice
             html += `
-                        <div class="university" style="left: 300px;">
-                            <div class="university-building" style="width: 150px; height: 140px;">
-                                <div class="university-pediment"></div>
-                                <div class="university-name">IUT Nice</div>
-                                <div class="university-date">2013 - 2015</div>
-                                <!-- Window grid -->
-                                <div style="position: absolute; top: 55px; left: 10px; display: grid; grid-template-columns: repeat(2, 60px); grid-gap: 10px;">
-                                    <div style="width: 60px; height: 30px; background: rgba(62,0,151,0.1); border: 2px solid #3E0097; box-shadow: inset 0 0 8px rgba(62,0,151,0.2);"></div>
-                                    <div style="width: 60px; height: 30px; background: rgba(62,0,151,0.1); border: 2px solid #3E0097; box-shadow: inset 0 0 8px rgba(62,0,151,0.2);"></div>
-                                    <div style="width: 60px; height: 30px; background: rgba(62,0,151,0.1); border: 2px solid #3E0097; box-shadow: inset 0 0 8px rgba(62,0,151,0.2);"></div>
-                                    <div style="width: 60px; height: 30px; background: rgba(62,0,151,0.1); border: 2px solid #3E0097; box-shadow: inset 0 0 8px rgba(62,0,151,0.2);"></div>
-                                </div>
-                            </div>
+                <div class="university" style="left: 300px;">
+                    <div class="university-building" style="width: 150px; height: 140px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); border: 4px solid #8a8570;">
+                        <div class="university-pediment"></div>
+                        <div class="university-name" style="font-size: 14px; font-weight: bold;">IUT Nice</div>
+                        <div class="university-date">2013 - 2015</div>
+                        <!-- Window grid -->
+                        <div style="position: absolute; top: 55px; left: 10px; display: grid; grid-template-columns: repeat(2, 60px); grid-gap: 10px;">
+                            <div style="width: 60px; height: 30px; background: rgba(62,0,151,0.1); border: 2px solid #3E0097; box-shadow: inset 0 0 8px rgba(62,0,151,0.2);"></div>
+                            <div style="width: 60px; height: 30px; background: rgba(62,0,151,0.1); border: 2px solid #3E0097; box-shadow: inset 0 0 8px rgba(62,0,151,0.2);"></div>
+                            <div style="width: 60px; height: 30px; background: rgba(62,0,151,0.1); border: 2px solid #3E0097; box-shadow: inset 0 0 8px rgba(62,0,151,0.2);"></div>
+                            <div style="width: 60px; height: 30px; background: rgba(62,0,151,0.1); border: 2px solid #3E0097; box-shadow: inset 0 0 8px rgba(62,0,151,0.2);"></div>
                         </div>
-                    `;
+                    </div>
+                        </div>
+                `;
             // Flags - Positioned correctly on poles
             html += `
-                        <div class="flag-display" style="left: 500px;">
+                <div class="flag-display" style="left: 500px;">
                             <div class="flag-pole"></div>
                             <div class="flag-cloth flag-fr" style="top:5px; left:2px;"></div>
                         </div>
@@ -637,95 +661,95 @@ function generateLevelContent(levelIndex) {
                             <div class="flag-pole"></div>
                             <div class="flag-cloth flag-es" style="top:5px; left:2px;"></div>
                         </div>
-                    `;
+            `;
             break;
 
         case 8: // Hobbies
             // Running NPC (Orange body for contrast)
             html += `
-                        <div class="animated-worker" style="left: 100px; animation: runBackForth 4s linear infinite;">
-                           <div class="worker-figure">
-                                <div class="worker-head" style="background:#ffccaa;"></div>
-                                <div class="worker-body" style="background:#ff6600;"></div>
-                                <div class="walk-leg left"></div>
-                                <div class="walk-leg right"></div>
-                            </div> 
+                <div class="animated-worker" style="left: 100px; animation: runBackForth 4s linear infinite;">
+                    <div class="worker-figure">
+                        <div class="worker-head" style="background:#ffccaa;"></div>
+                        <div class="worker-body" style="background:#ff6600;"></div>
+                        <div class="walk-leg left"></div>
+                        <div class="walk-leg right"></div>
+                    </div> 
                         </div>
-                        <div style="position: absolute; left: 80px; bottom: 200px; color: #3E0097; font-size: 14px; font-weight:bold; background: rgba(255,255,255,0.8); padding: 4px 8px; border-radius: 4px; border: 2px solid #3E0097;">Running & Hiking</div>
-                    `;
+                <div style="position: absolute; left: 80px; bottom: 200px; color: #3E0097; font-size: 14px; font-weight:bold; background: rgba(255,255,255,0.8); padding: 4px 8px; border-radius: 4px; border: 2px solid #3E0097;">Running & Hiking</div>
+            `;
 
             // Reading NPC (Orange body)
             html += `
-                        <div class="animated-worker" style="left: 300px; bottom: 100px;">
-                            <div class="worker-figure">
-                                <div class="worker-head"></div>
-                                <div class="worker-body" style="background:#ff6600;"></div>
-                                <div style="position:absolute; width: 14px; height: 18px; background: #fff; border: 1px solid #333; left: 20px; top: 15px; transform: rotate(-10deg);"></div>
-                            </div>
+                <div class="animated-worker" style="left: 300px; bottom: 100px;">
+                    <div class="worker-figure">
+                        <div class="worker-head"></div>
+                        <div class="worker-body" style="background:#ff6600;"></div>
+                        <div style="position:absolute; width: 14px; height: 18px; background: #fff; border: 1px solid #333; left: 20px; top: 15px; transform: rotate(-10deg);"></div>
+                    </div>
                         </div>
-                        <div style="position: absolute; left: 280px; bottom: 200px; color: #3E0097; font-size: 14px; font-weight:bold; background: rgba(255,255,255,0.8); padding: 4px 8px; border-radius: 4px; border: 2px solid #3E0097;">Reading</div>
-                    `;
+                <div style="position: absolute; left: 280px; bottom: 200px; color: #3E0097; font-size: 14px; font-weight:bold; background: rgba(255,255,255,0.8); padding: 4px 8px; border-radius: 4px; border: 2px solid #3E0097;">Reading</div>
+            `;
 
             // Coding NPC
             html += `
-                        <div style="position: absolute; left: 500px; bottom: 100px;">
-                            <!-- Desk -->
+                <div style="position: absolute; left: 500px; bottom: 100px;">
+                            <!--Desk -->
                             <div style="position: absolute; bottom: 0; width: 60px; height: 35px; background: #666; border-top: 5px solid #444;"></div>
-                            <!-- Laptop -->
+                            <!--Laptop -->
                             <div style="position: absolute; bottom: 35px; left: 15px; width: 25px; height: 2px; background: #333;"></div>
                             <div style="position: absolute; bottom: 37px; left: 15px; width: 25px; height: 18px; background: #111; border: 1px solid #555;"></div>
                             
                             <div class="code-float" style="left: 10px; top: -50px;">While(True) { Code; }</div>
                         </div>
-                        <div style="position: absolute; left: 480px; bottom: 200px; color: #3E0097; font-size: 14px; font-weight:bold; background: rgba(255,255,255,0.8); padding: 4px 8px; border-radius: 4px; border: 2px solid #3E0097;">Coding</div>
-                    `;
+                <div style="position: absolute; left: 480px; bottom: 200px; color: #3E0097; font-size: 14px; font-weight:bold; background: rgba(255,255,255,0.8); padding: 4px 8px; border-radius: 4px; border: 2px solid #3E0097;">Coding</div>
+            `;
 
             // Cooking NPC
             html += `
-                        <div style="position: absolute; left: 700px; bottom: 100px;">
-                            <!-- Stove -->
+                <div style="position: absolute; left: 700px; bottom: 100px;">
+                            <!--Stove -->
                             <div style="position: absolute; bottom: 0; width: 50px; height: 40px; background: #ccc; border: 1px solid #999;"></div>
-                            <!-- Pot -->
+                            <!--Pot -->
                             <div style="position: absolute; bottom: 40px; left: 10px; width: 30px; height: 15px; background: #555; border-radius: 0 0 5px 5px;"></div>
                             <div style="position: absolute; bottom: 55px; left: 15px; width: 20px; height: 10px; background: rgba(255,255,255,0.5); border-radius: 50% 50% 0 0; animation: steam 2s infinite;"></div>
                         </div>
-                         <div style="position: absolute; left: 680px; bottom: 200px; color: #3E0097; font-size: 14px; font-weight:bold; background: rgba(255,255,255,0.8); padding: 4px 8px; border-radius: 4px; border: 2px solid #3E0097;">Cooking</div>
-                    `;
+                <div style="position: absolute; left: 680px; bottom: 200px; color: #3E0097; font-size: 14px; font-weight:bold; background: rgba(255,255,255,0.8); padding: 4px 8px; border-radius: 4px; border: 2px solid #3E0097;">Cooking</div>
+            `;
 
             // Travel animation - Rotating globe with orbiting plane
             html += `
-                        <div style="position: absolute; left: 900px; bottom: 100px;">
-                            <!-- Globe -->
-                            <div style="position: relative; width: 60px; height: 60px;">
-                                <div style="position: absolute; width: 60px; height: 60px; background: linear-gradient(135deg, #4A90E2 0%, #357ABD 50%, #2E5C8A 100%); border-radius: 50%; box-shadow: inset -5px -5px 10px rgba(0,0,0,0.3), 0 0 15px rgba(74,144,226,0.4); animation: rotateGlobe 8s linear infinite;">
-                                    <!-- Continents (simplified) -->
-                                    <div style="position: absolute; top: 15px; left: 10px; width: 15px; height: 12px; background: #2ECC71; border-radius: 50% 30% 40% 20%; opacity: 0.8;"></div>
-                                    <div style="position: absolute; top: 30px; left: 25px; width: 20px; height: 15px; background: #27AE60; border-radius: 40% 50% 30% 60%; opacity: 0.8;"></div>
-                                    <div style="position: absolute; top: 10px; right: 8px; width: 12px; height: 10px; background: #229954; border-radius: 60% 40% 50% 30%; opacity: 0.8;"></div>
-                                </div>
-                                <!-- Orbiting plane -->
-                                <div style="position: absolute; width: 100%; height: 100%; animation: orbitPlane 4s linear infinite;">
-                                    <div style="position: absolute; top: -8px; left: 50%; transform: translateX(-50%); font-size: 16px;">✈️</div>
-                                </div>
-                            </div>
+                <div style="position: absolute; left: 900px; bottom: 100px; z-index: 100;">
+                            <!--Globe -->
+                <div style="position: relative; width: 60px; height: 60px;">
+                    <div style="position: absolute; width: 60px; height: 60px; background: linear-gradient(135deg, #4A90E2 0%, #357ABD 50%, #2E5C8A 100%); border-radius: 50%; box-shadow: inset -5px -5px 10px rgba(0,0,0,0.3), 0 0 15px rgba(74,144,226,0.4); animation: rotateGlobe 8s linear infinite;">
+                        <!-- Continents (simplified) -->
+                        <div style="position: absolute; top: 15px; left: 10px; width: 15px; height: 12px; background: #2ECC71; border-radius: 50% 30% 40% 20%; opacity: 0.8;"></div>
+                        <div style="position: absolute; top: 30px; left: 25px; width: 20px; height: 15px; background: #27AE60; border-radius: 40% 50% 30% 60%; opacity: 0.8;"></div>
+                        <div style="position: absolute; top: 10px; right: 8px; width: 12px; height: 10px; background: #229954; border-radius: 60% 40% 50% 30%; opacity: 0.8;"></div>
+                    </div>
+                    <!-- Orbiting plane -->
+                    <div style="position: absolute; width: 100%; height: 100%; animation: orbitPlane 4s linear infinite;">
+                        <div style="position: absolute; top: -8px; left: 50%; transform: translateX(-50%); font-size: 16px;">🚩</div>
+                    </div>
+                </div>
                         </div>
-                        <div style="position: absolute; left: 880px; bottom: 200px; color: #3E0097; font-size: 14px; font-weight:bold; background: rgba(255,255,255,0.8); padding: 4px 8px; border-radius: 4px; border: 2px solid #3E0097;">Travelling</div>
-                    `;
+                <div style="position: absolute; left: 880px; bottom: 200px; color: #3E0097; font-size: 14px; font-weight:bold; background: rgba(255,255,255,0.8); padding: 4px 8px; border-radius: 4px; border: 2px solid #3E0097; z-index: 100;">Travelling</div>
+            `;
 
             break;
 
         case 9: // Finale
             // Celebration building
             html += `
-                        <div class="warehouse" style="left: 100px;">
-                            <div class="warehouse-structure" style="width: 300px; height: 200px; background: linear-gradient(180deg, #3E0097 0%, #2a0066 100%); border-color: #FFD700;">
-                                <div style="position: absolute; top: 60px; left: 50%; transform: translateX(-50%); color: #FFD700; font-size: 32px; font-weight: bold;">THANK YOU!</div>
-                            </div>
+                <div class="warehouse" style="left: 100px;">
+                    <div class="warehouse-structure" style="width: 300px; height: 200px; background: linear-gradient(180deg, #3E0097 0%, #2a0066 100%); border-color: #FFD700;">
+                        <div style="position: absolute; top: 60px; left: 50%; transform: translateX(-50%); color: #FFD700; font-size: 32px; font-weight: bold;">THANK YOU!</div>
+                    </div>
                         </div>
-                    `;
+                `;
             // Golden stars
             for (let i = 0; i < 30; i++) {
-                html += `<div class="star" style="left: ${Math.random() * 130 + 10}vw; top: ${Math.random() * 50 + 10}%; width: 4px; height: 4px; background: #FFD700; animation-delay: ${Math.random() * 3}s;"></div>`;
+                html += `<div class="star" style="left: ${Math.random() * 130 + 10}vw; top: ${Math.random() * 50 + 10}%; width: 4px; height: 4px; background: #FFD700; animation-delay: ${Math.random() * 3}s;"></div> `;
             }
             // Pallet stacks
             html += generatePalletStack(450, 2);
@@ -737,53 +761,52 @@ function generateLevelContent(levelIndex) {
 }
 
 function generateInfoPanel(levelIndex) {
-    // Panels are now raised (bottom ~350px) to simulate billboards with legs
-    // And pushed slightly right to avoid overlapping buildings
+    // Panels are now raised (bottom ~300px) and pushed further right (left: 850px) 
+    // to avoid building collisions and clear the entry zone.
+    // Panels are now raised (bottom ~280px) and pushed to 800px
+    // to provide room after buildings and avoid overlapping level boundaries.
     const panels = [
-        `<div class="info-panel" style="left: 260px; bottom: 350px;">
+        `<div class="info-panel" style="left: 800px; bottom: 280px;">
                     <h2>Welcome! 👋</h2>
                     <p><span class="highlight">I'm Roman Baron</span></p>
                     <p>Global Supply Chain Transformation Leader</p>
                     <p>📧 rbaronpro@gmail.com | 📱 +34 644 00 23 69</p>
                     <br>
-                    <h3>🎮 Use arrow keys to explore my journey →</h3>
+                    <h3>✨ Use arrow keys to explore my journey ✨</h3>
                     <p>Collect badges and discover my career path!</p>
                 </div>`,
-        `<div class="info-panel" style="left: 320px; bottom: 350px;">
+        `<div class="info-panel" style="left: 800px; bottom: 280px;">
                     <h2>Americold</h2>
                     <p><span class="highlight">IT & Logistics Transformation Lead - Europe</span></p>
                     <p>Apr 2025 - Present | Barcelona, ES</p>
                     <ul>
                         <li>Lead multi-site supply chain system transformations across 27 European sites.</li>
-                        <li>Deploy WMS solutions for new site launches, customer onboarding, and warehouse conversions.</li>
+                        <li>Deploy WMS solutions for new site launches and customer onboarding.</li>
                         <li>Implement end to end EDI flows for major customers.</li>
-                        <li>Align IT, operations, customers, and vendors to ensure smooth system delivery.</li>
                         <li>Build operational dashboards and KPIs to enhance leadership visibility.</li>
                     </ul>
-                </div>`,
-        `<div class="info-panel" style="left: 580px; bottom: 360px;">
+                </div> `,
+        `<div class="info-panel" style="left: 800px; bottom: 280px;">
                     <h2>ID Logistics</h2>
                     <p><span class="highlight">Engineering, Systems & Process Improvement Manager</span></p>
                     <p>May 2023 - Apr 2025 | Tarragona, ES</p>
                     <ul>
                         <li>Built and led a multidisciplinary team supporting engineering, analytics and operational excellence.</li>
-                        <li>Created planning department and redesigned planning and execution processes.</li>
                         <li>Led transition to bonded warehouse, standardizing workflows to optimize export costs.</li>
-                        <li>Delivered <span class="highlight">€3M total savings</span> via process redesign, automation, and capacity optimization.</li>
+                        <li>Delivered <span class="highlight">€3M total savings</span> via process redesign and automation.</li>
                     </ul>
-                </div>`,
-        `<div class="info-panel" style="left: 480px; bottom: 350px;">
+                </div> `,
+        `<div class="info-panel" style="left: 800px; bottom: 280px;">
                     <h2>Forvia (Faurecia)</h2>
                     <p><span class="highlight">Supply Chain & Systems Improvement Lead – Europe</span></p>
                     <p>Jan 2021 - May 2023 | Prague, CZ / Valencia, ES</p>
                     <ul>
                         <li>Spearheaded logistics transformation across 29 European plants; <span class="highlight">€2M annual savings</span></li>
-                        <li>Standardized processes, optimized planning and delivery frequency, implemented consignment programs.</li>
-                        <li>Executed global SAP enhancements, supervised bonded warehouses and EDI onboarding.</li>
+                        <li>Standardized processes, optimized planning, and executed global SAP enhancements.</li>
                         <li>Industry 4.0 Champion trained by Porsche Consulting.</li>
                     </ul>
-                </div>`,
-        `<div class="info-panel" style="left: 600px; bottom: 350px;">
+                </div> `,
+        `<div class="info-panel" style="left: 800px; bottom: 280px;">
                     <h2>GSDI</h2>
                     <p><span class="highlight">Branch Manager Assistant</span></p>
                     <p>Mar 2020 - Dec 2020 | Johannesburg, S. Africa</p>
@@ -792,8 +815,8 @@ function generateInfoPanel(levelIndex) {
                         <li>Supported supply chain systems (Railway Industry).</li>
                         <li>Stack: React, Python, Django, AWS.</li>
                     </ul>
-                </div>`,
-        `<div class="info-panel" style="left: 300px; bottom: 350px;">
+                </div> `,
+        `<div class="info-panel" style="left: 800px; bottom: 280px;">
                     <h2>Wuhan University</h2>
                     <p><span class="highlight">Engineer Intern</span></p>
                     <p>Sep 2017 - Feb 2018 | Wuhan, China</p>
@@ -801,8 +824,8 @@ function generateInfoPanel(levelIndex) {
                         <li>Deep dive on City Logistics & Freight Carriage.</li>
                         <li>CO2 emission improvement concept definition.</li>
                     </ul>
-                </div>`,
-        `<div class="info-panel" style="left: 600px; bottom: 350px;">
+                </div> `,
+        `<div class="info-panel" style="left: 800px; bottom: 280px;">
                     <h2>Orange</h2>
                     <p><span class="highlight">Telecommunications Technician</span></p>
                     <p>Aug 2013 - Aug 2015 | Saint Tropez, France</p>
@@ -810,25 +833,23 @@ function generateInfoPanel(levelIndex) {
                         <li>Technical maintenance on ADSL/VDSL/Fiber.</li>
                         <li>Customer support for private & business clients.</li>
                     </ul>
-                </div>`,
-        `<div class="info-panel" style="left: 600px; bottom: 380px; width: 450px;">
+                </div> `,
+        `<div class="info-panel" style="left: 800px; bottom: 280px; width: 450px;">
                     <h2>Education</h2>
                     <p><strong>M.Sc. Ind. Systems</strong> | UTBM | 2016-2020</p>
-                    <p><strong>M.Sc. Management</strong> | MATE (Hungary) | 2019-20</p>
+                    <p><strong>M.Sc. Management</strong> | MATE | 2019-20</p>
                     <p><strong>Chinese Lang.</strong> | CCNU (China) | 2018-19</p>
-                    <p><strong>Adv. High School</strong> | Lycée Jean Moulin | 2015-16</p>
-                    <p><strong>B.Sc. Elec. Eng.</strong> | IUT Nice | 2013-15</p>
-                    <p style="margin-top: 10px;"><strong>Languages:</strong> English, French, Spanish (Native), Chinese (Limited)</p>
-                </div>`,
-        `<div class="info-panel" style="left: 720px; bottom: 330px;">
+                    <p style="margin-top: 10px;"><strong>Languages:</strong> English (Fluent), Spanish (Fluent), French (Native), Chinese (Limited)</p>
+                </div> `,
+        `<div class="info-panel" style="left: 800px; bottom: 280px;">
                     <h2>Hobbies & Interests</h2>
                     <p>🏃 <strong>Sports:</strong> Running, Hiking, Padel</p>
                     <p>✈️ <strong>Travel:</strong> Exploring Cultures</p>
                     <p>📚 <strong>Reading:</strong> Continuous learning</p>
                     <p>💻 <strong>Coding:</strong> Python, Web Dev</p>
                     <p>🍳 <strong>Cooking:</strong> Culinary arts</p>
-                </div>`,
-        `<div class="info-panel contact-billboard" style="left: 50%; transform: translateX(-50%); bottom: 380px; width: 350px;">
+                </div> `,
+        `<div class="info-panel contact-billboard" style="left: 700px; bottom: 240px; width: 350px;">
                     <h2 style="font-size: 28px; margin-bottom: 20px;">Let's Connect!</h2>
                     <p style="font-size: 18px; margin-bottom: 5px;"><span class="highlight">€7M+ Total Savings</span></p>
                     <p style="font-size: 18px; margin-bottom: 5px;"><span class="highlight">60+ Sites Transformed</span></p>
@@ -836,7 +857,7 @@ function generateInfoPanel(levelIndex) {
                     <br>
                     <p style="font-size: 16px;">📧 <a href="mailto:rbaronpro@gmail.com" style="color:#3E0097">rbaronpro@gmail.com</a></p>
                     <p style="font-size: 16px;">📱 +34 644 00 23 69</p>
-                    <p style="font-size: 16px;">💼 <a href="https://www.linkedin.com/in/roman-baron-7912b2a9" target="_blank" style="color:#3E0097">LinkedIn</a></p>
+                    <p style="font-size: 16px;">💼 <a href="https://www.linkedin.com/in/roman-baron-7912b2a9/" target="_blank" style="color:#3E0097">LinkedIn</a></p>
                     <p style="font-size: 16px;">💻 <a href="https://github.com/Rom946" target="_blank" style="color:#3E0097">GitHub: Rom946</a></p>
                 </div>`
     ];
@@ -844,14 +865,14 @@ function generateInfoPanel(levelIndex) {
 }
 
 function generatePalletStack(x, layers) {
-    let html = `<div class="pallet-stack" style="left: ${x}px; width: 80px;">`;
-    html += `<div class="pallet-base"></div>`;
+    let html = `<div class="pallet-stack" style="left: ${x}px; width: 80px;"> `;
+    html += `<div class="pallet-base"></div> `;
     for (let i = 0; i < layers; i++) {
         const w = 70 - i * 5;
         const l = (80 - w) / 2;
-        html += `<div class="stacked-box" style="bottom: ${12 + i * 28}px; left: ${l}px; width: ${w}px; height: 26px;"></div>`;
+        html += `<div class="stacked-box" style="bottom: ${12 + i * 28}px; left: ${l}px; width: ${w}px; height: 26px;"></div> `;
     }
-    html += `</div>`;
+    html += `</div> `;
     return html;
 }
 
@@ -866,7 +887,7 @@ function generateAnimatedWorker(x, delay) {
                         <div class="worker-box"></div>
                     </div>
                 </div>
-            `;
+                `;
 }
 
 function generateWorkingForklift(x, delay) {
@@ -879,14 +900,14 @@ function generateWorkingForklift(x, delay) {
                     <div class="working-forklift-wheel front"></div>
                     <div class="working-forklift-wheel back"></div>
                 </div>
-            `;
+                `;
 }
 
 function generateIcicles(count) {
     let html = '';
     for (let i = 0; i < count; i++) {
         const h = Math.random() * 12 + 8;
-        html += `<div class="icicle" style="left: ${8 + i * 22}px; height: ${h}px;"></div>`;
+        html += `<div class="icicle" style="left: ${8 + i * 22}px; height: ${h}px;"></div> `;
     }
     return html;
 }
@@ -896,28 +917,32 @@ function generateIndustrialWindows(cols, rows, startX, startY) {
     for (let r = 0; r < rows; r++) {
         for (let c = 0; c < cols; c++) {
             const lit = Math.random() > 0.6 ? 'lit' : '';
-            html += `<div class="industrial-window ${lit}" style="left: ${startX + c * 45}px; top: ${startY + r * 40}px; width: 35px; height: 30px;"></div>`;
+            html += `<div class="industrial-window ${lit}" style="left: ${startX + c * 45}px; top: ${startY + r * 40}px; width: 35px; height: 30px;"></div> `;
         }
     }
     return html;
 }
-
 function getLevelStartX(levelIndex) {
     let offset = 0;
     for (let i = 0; i < levelIndex; i++) {
         offset += levels[i].width;
     }
-    return offset * window.innerWidth / 100;
+    return offset;
 }
 
 function initGameWorld() {
     const gameWorld = document.getElementById('gameWorld');
     gameWorld.innerHTML = '';
+    const shelf = document.getElementById('unifiedHud');
+    if (shelf) {
+        shelf.style.display = 'flex';
+        renderSkillShelf();
+    }
 
     let totalWidth = 0;
     levels.forEach(l => totalWidth += l.width);
 
-    gameWorld.style.width = totalWidth + 'vw';
+    gameWorld.style.width = totalWidth + 'px';
     levels.forEach((_, i) => gameWorld.innerHTML += generateLevelHTML(i));
     updateCharacterDisplay();
 }
@@ -929,7 +954,7 @@ function updateCharacterDisplay() {
     switch (gameState.vehicle) {
         case 'walk':
             html = `
-                        <div class="character-walk ${gameState.isMoving ? 'walking' : ''}">
+                <div class="character-walk ${gameState.isMoving ? 'walking' : ''}">
                             <div class="walk-helmet"></div>
                             <div class="walk-head"></div>
                             <div class="walk-body"></div>
@@ -938,11 +963,11 @@ function updateCharacterDisplay() {
                             <div class="walk-leg left"></div>
                             <div class="walk-leg right"></div>
                         </div>
-                    `;
+                `;
             break;
         case 'forklift':
             html = `
-                        <div class="character-forklift ${gameState.isMoving ? 'driving' : ''}">
+                <div class="character-forklift ${gameState.isMoving ? 'driving' : ''}">
                             <div class="forklift-mast"></div>
                             <div class="forklift-forks"></div>
                             <div class="forklift-cabin"><div class="forklift-window"></div></div>
@@ -951,11 +976,11 @@ function updateCharacterDisplay() {
                             <div class="forklift-wheel front"></div>
                             <div class="forklift-wheel back"></div>
                         </div>
-                    `;
+                `;
             break;
         case 'car':
             html = `
-                        <div class="character-car ${gameState.isMoving ? 'driving' : ''}">
+                <div class="character-car ${gameState.isMoving ? 'driving' : ''}">
                             <div class="car-body"></div>
                             <div class="car-top"></div>
                             <div class="car-window front"></div>
@@ -966,29 +991,29 @@ function updateCharacterDisplay() {
                             <div class="car-wheel front"></div>
                             <div class="car-wheel back"></div>
                         </div>
-                    `;
+                `;
             break;
         case 'snowmobile':
             html = `
-                        <div class="character-snowmobile ${gameState.isMoving ? 'driving' : ''}">
-                            <!-- Body -->
+                <div class="character-snowmobile ${gameState.isMoving ? 'driving' : ''}">
+                            <!--Body -->
                             <div style="position:absolute;bottom:20px;left:0;width:100px;height:35px;background:linear-gradient(180deg,#FFD700,#FFA500);border-radius:8px 25px 5px 5px;border:2px solid #CC8800;"></div>
-                            <!-- Windshield -->
+                            <!--Windshield -->
                             <div style="position:absolute;bottom:48px;left:15px;width:50px;height:25px;background:linear-gradient(180deg,rgba(135,206,250,0.4),rgba(100,150,200,0.3));border-radius:10px 10px 0 0;border:2px solid #CC8800;"></div>
-                            <!-- Driver -->
+                            <!--Driver -->
                             <div style="position:absolute;bottom:35px;left:35px;width:15px;height:15px;background:#ffccaa;border-radius:50%;"></div>
                             <div style="position:absolute;bottom:22px;left:33px;width:18px;height:15px;background:#3E0097;border-radius:2px;"></div>
-                            <!-- Front ski -->
+                            <!--Front ski-->
                             <div style="position:absolute;bottom:5px;left:0;width:45px;height:8px;background:#222;border-radius:50% 20% 0 0;transform:skewX(-10deg);"></div>
-                            <!-- Rear track -->
+                            <!--Rear track-->
                             <div style="position:absolute;bottom:5px;left:60px;width:45px;height:18px;background:#111;border-radius:3px;"></div>
                             <div style="position:absolute;bottom:8px;left:63px;width:39px;height:12px;background:repeating-linear-gradient(90deg,#333 0px,#333 3px,#111 3px,#111 6px);"></div>
                         </div>
-                    `;
+                `;
             break;
         case 'train':
             html = `
-                        <div class="character-train ${gameState.isMoving ? 'driving' : ''}">
+                <div class="character-train ${gameState.isMoving ? 'driving' : ''}">
                             <div style="position:absolute;bottom:25px;left:0;width:120px;height:40px;background:linear-gradient(180deg,#8B4513,#654321);border-radius:5px;border:2px solid #3E2723;"></div>
                             <div style="position:absolute;bottom:55px;left:10px;width:30px;height:30px;background:#654321;border-radius:3px;"></div>
                             <div style="position:absolute;bottom:40px;left:50px;width:15px;height:15px;background:#ffccaa;border-radius:50%;"></div>
@@ -997,32 +1022,32 @@ function updateCharacterDisplay() {
                             <div style="position:absolute;bottom:5px;left:70px;width:20px;height:20px;background:#333;border-radius:50%;border:3px solid #666;"></div>
                             <div style="position:absolute;bottom:5px;left:100px;width:20px;height:20px;background:#333;border-radius:50%;border:3px solid #666;"></div>
                         </div>
-                    `;
+                `;
             break;
         case 'tuktuk':
             html = `
-                        <div class="character-tuktuk ${gameState.isMoving ? 'driving' : ''}">
-                            <!-- Front motorcycle section -->
+                <div class="character-tuktuk ${gameState.isMoving ? 'driving' : ''}">
+                            <!--Front motorcycle section-->
                             <div style="position:absolute;bottom:15px;left:0;width:35px;height:30px;background:linear-gradient(180deg,#FFD700,#FFA500);border-radius:5px;border:2px solid #CC8800;"></div>
-                            <!-- Handlebars -->
+                            <!--Handlebars -->
                             <div style="position:absolute;bottom:40px;left:5px;width:25px;height:8px;background:#333;border-radius:2px;"></div>
-                            <!-- Front wheel -->
+                            <!--Front wheel-->
                             <div style="position:absolute;bottom:5px;left:8px;width:18px;height:18px;background:#333;border-radius:50%;"></div>
-                            <!-- Driver on front -->
+                            <!--Driver on front-->
                             <div style="position:absolute;bottom:38px;left:12px;width:12px;height:12px;background:#ffccaa;border-radius:50%;"></div>
                             <div style="position:absolute;bottom:25px;left:10px;width:16px;height:15px;background:#3E0097;border-radius:2px;"></div>
-                            <!-- Passenger cabin (back) -->
+                            <!--Passenger cabin(back)-->
                             <div style="position:absolute;bottom:15px;left:40px;width:50px;height:35px;background:linear-gradient(180deg,#FFD700,#FFA500);border-radius:5px 5px 3px 3px;border:2px solid #CC8800;"></div>
                             <div style="position:absolute;bottom:45px;left:45px;width:40px;height:25px;background:#FFD700;border-radius:15px 15px 0 0;border:2px solid #CC8800;"></div>
-                            <!-- Rear wheels -->
+                            <!--Rear wheels-->
                             <div style="position:absolute;bottom:5px;left:48px;width:16px;height:16px;background:#333;border-radius:50%;"></div>
                             <div style="position:absolute;bottom:5px;left:72px;width:16px;height:16px;background:#333;border-radius:50%;"></div>
                         </div>
-                    `;
+                `;
             break;
         case 'service':
             html = `
-                        <div class="character-service ${gameState.isMoving ? 'driving' : ''}">
+                <div class="character-service ${gameState.isMoving ? 'driving' : ''}">
                             <div style="position:absolute;bottom:15px;left:0;width:100px;height:40px;background:linear-gradient(180deg,#FF6600,#E05500);border-radius:5px 5px 3px 3px;border:2px solid #CC4400;"></div>
                             <div style="position:absolute;bottom:50px;left:10px;width:70px;height:25px;background:#FF6600;border-radius:5px 5px 0 0;border:2px solid #CC4400;"></div>
                             <div style="position:absolute;bottom:70px;left:40px;width:12px;height:12px;background:#FF0000;border-radius:50%;animation:blink 1s infinite;"></div>
@@ -1030,24 +1055,24 @@ function updateCharacterDisplay() {
                             <div style="position:absolute;bottom:5px;left:8px;width:22px;height:22px;background:#333;border-radius:50%;"></div>
                             <div style="position:absolute;bottom:5px;left:70px;width:22px;height:22px;background:#333;border-radius:50%;"></div>
                         </div>
-                    `;
+                `;
             break;
         case 'plane':
             html = `
-                        <div class="character-plane" style="width: 120px; height: 60px;">
+                <div class="character-plane" style="width: 120px; height: 60px;">
                             <div class="plane-body" style="position:absolute; bottom:0; width:100px; height:30px; background:#ccc; border-top-right-radius: 10px; border-bottom-right-radius: 5px;"></div>
                             <div class="plane-wing" style="position:absolute; bottom:15px; left:40px; width:40px; height:10px; background:#999; transform:skewX(-20deg);"></div>
                             <div class="plane-tail" style="position:absolute; bottom:20px; left:5px; width:20px; height:25px; background:#ccc; border-radius:5px 0 0 0;"></div>
                             
                             <div class="plane-pilot" style="position:absolute; bottom:15px; right:30px; width:15px; height:15px; background:#ffccaa; border-radius:50%;"></div>
                         </div>
-                    `;
+                `;
             break;
     }
 
     character.innerHTML = html;
 
-    const icons = { walk: '🚶', snowmobile: '🛷', forklift: '🚜', car: '🚗', train: '🚂', tuktuk: '🛺', service: '🚚', plane: '✈️' };
+    const icons = { walk: '🚶', snowmobile: '🛵', forklift: '🚜', car: '🚗', train: '🚂', tuktuk: '🛺', service: '🚛', plane: '✈️' };
     const names = { walk: 'On Foot', snowmobile: 'Snowmobile', forklift: 'Forklift', car: 'Car', train: 'Train', tuktuk: 'Tuktuk', service: 'Service Van', plane: 'Plane' };
     document.getElementById('vehicleIcon').textContent = icons[gameState.vehicle];
     document.getElementById('vehicleName').textContent = names[gameState.vehicle];
@@ -1086,25 +1111,32 @@ function update() {
 
     let totalWidth = 0;
     levels.forEach(l => totalWidth += l.width);
-    const maxX = (totalWidth * window.innerWidth / 100) - window.innerWidth / 2; // Allow scrolling past end
-    gameState.worldX = Math.max(0, Math.min(gameState.worldX, maxX));
+    const worldPixelWidth = totalWidth;
+    let maxScroll = worldPixelWidth - gameState.viewWidth;
+
+    // Center Level 9 (Finale) when camera reaches it
+    const level9Start = getLevelStartX(9);
+    const billboardCenterInWorld = level9Start + 875; // The center of 'Let's Connect'
+    const targetMaxScroll = billboardCenterInWorld - (gameState.viewWidth / 2);
+
+    // Smoothly cap maxScroll to the centered focus point
+    maxScroll = Math.min(maxScroll, targetMaxScroll);
+
+    // charLimit allows character to reach the visual right edge of the screen
+    const charLimit = maxScroll + (gameState.viewWidth * 0.85) - getCharacterWidth();
+    gameState.worldX = Math.max(0, Math.min(gameState.worldX, charLimit));
 
     // Gravity (only if not plane)
     if (gameState.vehicle === 'plane') {
         gameState.isGrounded = false;
-        // Plane flight controls
         if (gameState.keys.up) gameState.characterY += 5;
         if (gameState.keys.down) gameState.characterY -= 5;
-
-        // Cap height
-        gameState.characterY = Math.max(GROUND_Y + 50, Math.min(gameState.characterY, window.innerHeight - 100));
+        gameState.characterY = Math.max(GROUND_Y + 50, Math.min(gameState.characterY, gameState.viewHeight - 100));
     } else {
         if (!gameState.isGrounded) {
             gameState.velocityY -= GRAVITY;
             gameState.characterY += gameState.velocityY;
         }
-
-        // Ground
         if (gameState.characterY <= GROUND_Y) {
             gameState.characterY = GROUND_Y;
             gameState.velocityY = 0;
@@ -1118,8 +1150,13 @@ function update() {
         updateCharacterDisplay();
     }
 
-    document.getElementById('gameWorld').style.transform = `translateX(${-gameState.worldX}px)`;
+    // Camera is clamped, but character can continue
+    const cameraX = Math.min(gameState.worldX, maxScroll);
+    document.getElementById('gameWorld').style.transform = `translateX(${- cameraX}px)`;
+
+    const charXMid = (gameState.viewWidth * 0.15) + (gameState.worldX - cameraX) + getCharacterWidth() / 2;
     const character = document.getElementById('character');
+    character.style.left = ((gameState.viewWidth * 0.15) + (gameState.worldX - cameraX)) + 'px';
     character.style.bottom = gameState.characterY + 'px';
     character.style.transform = `scaleX(${gameState.direction})`;
 
@@ -1127,12 +1164,18 @@ function update() {
     checkBadgeCollisions();
     checkVehicleZones();
 
+    // Debug logs as requested
+    if (gameState.worldX % 100 < 5) {
+        console.log(`[GAME] worldX: ${Math.round(gameState.worldX)}, Level: ${gameState.currentLevel}, XP: ${gameState.xp}`);
+    }
+
     requestAnimationFrame(update);
 }
 
 function checkBadgeCollisions() {
-    const charX = window.innerWidth * 0.15 + gameState.worldX;
     const charW = getCharacterWidth();
+    // Character center in world coordinates
+    const charWorldXMid = gameState.worldX + (gameState.viewWidth * 0.15) + charW / 2;
     const charY = gameState.characterY;
     const charH = getCharacterHeight();
 
@@ -1141,9 +1184,8 @@ function checkBadgeCollisions() {
 
         const badgeX = getLevelStartX(badge.level) + badge.x;
         const badgeY = badge.y;
-
-        if (charX + charW > badgeX && charX < badgeX + 45 &&
-            charY + charH > badgeY && charY < badgeY + 45) {
+        // Check collision based on centers
+        if (Math.abs(charWorldXMid - badgeX) < 40 && charY < badge.y + 40 && charY + charH > badge.y) {
             collectBadge(index);
         }
     });
@@ -1161,6 +1203,12 @@ function collectBadge(index) {
     if (badgeEl) {
         createParticles(badgeEl);
         badgeEl.classList.add('collected');
+
+        // Light up in skill shelf
+        const shelfIcon = document.getElementById(`shelf-icon-${index}`);
+        if (shelfIcon) {
+            shelfIcon.classList.add('lit');
+        }
     }
 
     document.getElementById('badgeNum').textContent = gameState.collectedBadges.length;
@@ -1185,15 +1233,17 @@ function createParticles(el) {
 }
 
 function checkVehicleZones() {
-    const charX = window.innerWidth * 0.15 + gameState.worldX;
+    const charW = getCharacterWidth();
+    const charWorldXMid = gameState.worldX + (gameState.viewWidth * 0.15) + charW / 2;
 
     vehicleZones.forEach(zone => {
         const zoneX = getLevelStartX(zone.level) + zone.x;
 
-        if (Math.abs(charX - zoneX) < 80 && gameState.vehicle !== zone.vehicle) {
+        if (Math.abs(charWorldXMid - zoneX) < 60 && gameState.vehicle !== zone.vehicle) {
             gameState.vehicle = zone.vehicle;
 
             // Mark zone as taken to hide vehicle
+            zone.taken = true;
             const zoneEl = document.getElementById(`zone-${zone.level}-${zone.x}`);
             if (zoneEl) zoneEl.classList.add('taken');
 
@@ -1207,13 +1257,14 @@ function checkVehicleZones() {
 }
 
 function checkCurrentLevel() {
-    const charX = gameState.worldX + window.innerWidth * 0.15;
+    // Check level based on a slight forward offset for proactive switching
+    const triggerX = gameState.worldX + gameState.viewWidth * 0.4;
     let currentX = 0;
     let newLevel = 0;
 
     for (let i = 0; i < levels.length; i++) {
-        const levelPixelWidth = levels[i].width * window.innerWidth / 100;
-        if (charX >= currentX && charX < currentX + levelPixelWidth) {
+        const levelPixelWidth = levels[i].width;
+        if (triggerX >= currentX && triggerX < currentX + levelPixelWidth) {
             newLevel = i;
             break;
         }
@@ -1293,8 +1344,15 @@ window.addEventListener('wheel', (e) => {
 // Click/Tap to move
 const handleInputStart = (x) => {
     if (!gameState.started) return;
-    const halfWidth = window.innerWidth / 2;
-    if (x < halfWidth) {
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+    const scale = gameState.scale;
+
+    // Convert physical screen X to logical X
+    const rect = document.getElementById('gameContainer').getBoundingClientRect();
+    const logicalX = (x - rect.left) / scale;
+
+    if (logicalX < gameState.viewWidth / 2) {
         gameState.keys.left = true;
         gameState.keys.right = false;
     } else {
@@ -1336,11 +1394,143 @@ document.getElementById('soundToggle').addEventListener('click', () => {
 // Start
 document.getElementById('startButton').addEventListener('click', () => {
     initAudio();
-    document.getElementById('startScreen').style.display = 'none';
-    gameState.started = true;
     initGameWorld();
-    update();
+    handleResize(); // Initial scale
+    document.getElementById('character').style.display = 'none';
+    const startScreen = document.getElementById('startScreen');
+    startScreen.style.opacity = '0';
+
+    setTimeout(() => {
+        startScreen.style.display = 'none';
+        document.getElementById('contactHeader').style.display = 'flex';
+        startAmbientAnimations();
+        startRocketSequence();
+    }, 500);
 });
+
+function handleResize() {
+    const container = document.getElementById('gameContainer');
+    const hud = document.getElementById('unifiedHud');
+    const controls = document.getElementById('controls');
+
+    // Core metrics
+    const vh = window.innerHeight;
+    const vw = window.innerWidth;
+
+    // Calculate scale to fit 800px high world into viewport height
+    const scale = vh / gameState.baseHeight;
+    gameState.scale = scale;
+    gameState.viewHeight = gameState.baseHeight;
+    gameState.viewWidth = vw / scale; // The logical width needed to fill physical width
+
+
+    if (container) {
+        // We scale the contents so they occupy the full screen
+        // Anchored to bottom left (the container is at top:0, left:0)
+        container.style.transform = `scale(${scale})`;
+        container.style.transformOrigin = 'bottom left';
+
+        // Setting the logical width/height such that when scaled, it matches vw/vh
+        container.style.width = `${gameState.viewWidth}px`;
+        container.style.height = `${gameState.viewHeight}px`;
+
+        // Enforce the full-screen container state
+        container.style.position = 'fixed';
+        container.style.bottom = '0';
+        container.style.top = 'auto';
+        container.style.left = '0';
+    }
+
+    if (hud) {
+        // Hud stays centered at the top
+        const hudScale = Math.max(scale, 0.6);
+        hud.style.transform = `translateX(-50%) scale(${hudScale})`;
+        hud.style.top = (vw < 1024) ? '55px' : '65px';
+    }
+
+    if (controls) {
+        controls.style.display = (vw < 1024 || vh < 500) ? 'none' : 'block';
+    }
+
+    // Orientation warning
+    const warning = document.getElementById('rotate-warning');
+    if (vh > vw && vw < 600) {
+        if (warning) warning.style.display = 'flex';
+    } else {
+        if (warning) warning.style.display = 'none';
+    }
+
+    console.log(`[RESIZE] Full-Screen Scale: ${scale.toFixed(2)}, LogicalWidth: ${Math.round(gameState.viewWidth)}`);
+}
+
+window.addEventListener('resize', handleResize);
+window.addEventListener('orientationchange', () => setTimeout(handleResize, 200));
+
+function startRocketSequence() {
+    // Create rocket
+    const rocketCont = document.createElement('div');
+    rocketCont.id = 'rocket-landing-container';
+    rocketCont.innerHTML = `
+        <div class="rocket-body">
+            <div class="rocket-window"></div>
+            <div class="rocket-fin-l"></div>
+            <div class="rocket-fin-r"></div>
+            <div class="rocket-fire"></div>
+        </div>
+    `;
+    document.body.appendChild(rocketCont);
+
+    // Initial state: hide character
+    const char = document.getElementById('character');
+    char.style.display = 'none';
+
+    const groundTop = window.innerHeight - 200;
+    rocketCont.animate([
+        { top: '-300px' },
+        { top: `${groundTop}px` }
+    ], {
+        duration: 2000,
+        easing: 'cubic-bezier(0.1, 0, 0.3, 1)'
+    }).onfinish = () => {
+        // Rocket landed
+        setTimeout(() => {
+            // Door opens effect
+            rocketCont.querySelector('.rocket-fire').style.display = 'none';
+
+            // Character jump out
+            char.style.display = 'block';
+            char.style.left = '165px';
+            char.style.bottom = '250px'; // High starting point for jump
+            char.style.transition = 'all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+
+            setTimeout(() => {
+                char.style.bottom = '100px'; // Land on ground
+
+                // Finalize start
+                setTimeout(() => {
+                    char.style.transition = 'all 0.05s linear'; // Reset character transition
+                    gameState.started = true;
+                    update();
+
+                    // Rocket blast off
+                    setTimeout(() => {
+                        const fire = rocketCont.querySelector('.rocket-fire');
+                        fire.style.display = 'block';
+                        fire.style.height = '100px'; // Bigger fire for takeoff
+
+                        rocketCont.animate([
+                            { top: `${groundTop}px` },
+                            { top: '-600px' }
+                        ], {
+                            duration: 1500,
+                            easing: 'ease-in'
+                        }).onfinish = () => rocketCont.remove();
+                    }, 500);
+                }, 800);
+            }, 100);
+        }, 800);
+    };
+}
 
 // Ambient Animations
 function startAmbientAnimations() {
@@ -1357,7 +1547,7 @@ function startAmbientAnimations() {
     }, 15000 + Math.random() * 10000);
 }
 
-document.getElementById('startButton').addEventListener('click', startAmbientAnimations);
+
 
 function spawnTraffic() {
     const gameWorld = document.getElementById('gameWorld');
@@ -1412,7 +1602,7 @@ function spawnPlane() {
     const randomY = 10 + Math.random() * 15; // 10-25% from top
     el.style.top = randomY + '%';
 
-    const viewWidth = window.innerWidth;
+    const viewWidth = gameState.viewWidth;
     const offset = 200;
     const startX = gameState.worldX - offset;
     const endX = gameState.worldX + viewWidth + offset;
@@ -1431,3 +1621,31 @@ function spawnPlane() {
     setTimeout(() => el.remove(), duration * 1000);
 }
 
+function renderSkillShelf() {
+    const shelf = document.getElementById('skillShelf');
+    if (!shelf) return;
+
+    const categories = {
+        "Analytics": "Data & Analysis",
+        "SCM": "Supply Chain",
+        "Global": "Industry",
+        "Lead": "Lead & Edu",
+        "Perso": "Personal"
+    };
+
+    let html = '';
+    Object.keys(categories).forEach(key => {
+        const catBadges = badges.map((b, i) => ({ ...b, originalIndex: i })).filter(b => b.cat === key);
+        html += `
+            <div class="skill-category">
+                <div class="category-label">${categories[key]}</div>
+                <div class="shelf-icons">
+                    ${catBadges.map(b => `
+                        <div class="shelf-icon" id="shelf-icon-${b.originalIndex}" title="${b.label}">${b.icon}</div>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+    });
+    shelf.innerHTML = html;
+}
