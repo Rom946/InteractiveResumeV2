@@ -816,8 +816,8 @@ function generateInfoPanel(levelIndex) {
                     <p><strong>M.Sc. Ind. Systems</strong> | UTBM | 2016-2020</p>
                     <p><strong>M.Sc. Management</strong> | MATE (Hungary) | 2019-20</p>
                     <p><strong>Chinese Lang.</strong> | CCNU (China) | 2018-19</p>
-                    <p><strong>B.Sc. Elec. Eng.</strong> | IUT Nice | 2013-15</p>
                     <p><strong>Adv. High School</strong> | Lycée Jean Moulin | 2015-16</p>
+                    <p><strong>B.Sc. Elec. Eng.</strong> | IUT Nice | 2013-15</p>
                     <p style="margin-top: 10px;"><strong>Languages:</strong> English, French, Spanish (Native), Chinese (Limited)</p>
                 </div>`,
         `<div class="info-panel" style="left: 720px; bottom: 330px;">
@@ -1430,3 +1430,4 @@ function spawnPlane() {
 
     setTimeout(() => el.remove(), duration * 1000);
 }
+
