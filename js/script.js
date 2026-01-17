@@ -1,4 +1,4 @@
-﻿// Game State
+// Game State
 const gameState = {
     started: false,
     currentLevel: 0,
@@ -64,13 +64,16 @@ function playSound(type) {
 
 // Level Data
 const levels = [
-    { name: "Introduction", subtitle: "Barcelona, Spain", width: 140, bgClass: "level-0" },
-    { name: "Americold", subtitle: "Supply Chain Systems Specialist", width: 140, bgClass: "level-1" },
-    { name: "ID Logistics", subtitle: "Engineering & Process Manager", width: 140, bgClass: "level-2" },
-    { name: "Forvia (Faurecia)", subtitle: "Supply Chain & Systems Lead", width: 140, bgClass: "level-3" },
-    { name: "Education", subtitle: "UTBM & IUT Nice", width: 140, bgClass: "level-4" },
-    { name: "Hobbies", subtitle: "Personal Interests", width: 140, bgClass: "level-2" },
-    { name: "Contact & Finale", subtitle: "Let's Connect!", width: 140, bgClass: "level-5" }
+    { name: "Introduction", subtitle: "Barcelona, Spain", width: 100, bgClass: "level-0" },
+    { name: "Americold", subtitle: "Supply Chain Systems Specialist", width: 100, bgClass: "level-1" },
+    { name: "ID Logistics", subtitle: "Engineering & Process Manager", width: 100, bgClass: "level-2" },
+    { name: "Forvia (Faurecia)", subtitle: "Supply Chain & Systems Lead", width: 100, bgClass: "level-3" },
+    { name: "GSDI", subtitle: "Branch Manager Assistant", width: 100, bgClass: "level-gsdi" },
+    { name: "Wuhan University", subtitle: "Deep Dive on Logistics", width: 100, bgClass: "level-wuhan" },
+    { name: "Orange", subtitle: "Telecommunications Technician", width: 100, bgClass: "level-orange" },
+    { name: "Education", subtitle: "Academic Journey", width: 100, bgClass: "level-4" },
+    { name: "Hobbies", subtitle: "Passions & Interests", width: 100, bgClass: "level-2" },
+    { name: "Contact & Finale", subtitle: "Let's Connect!", width: 100, bgClass: "level-5" }
 ];
 
 // Badges - positioned at reachable heights
@@ -78,29 +81,33 @@ const badges = [
     { level: 0, x: 250, y: 140, icon: "📊", label: "Power BI" },
     { level: 0, x: 450, y: 140, icon: "🐍", label: "Python" },
     { level: 1, x: 200, y: 140, icon: "📦", label: "WMS" },
-    { level: 1, x: 350, y: 140, icon: "🔗", label: "EDI" },
-    { level: 1, x: 500, y: 140, icon: "❄️", label: "Cold Chain" },
+    { level: 1, x: 400, y: 140, icon: "❄️", label: "Cold Chain" },
     { level: 2, x: 200, y: 140, icon: "📈", label: "Analytics" },
-    { level: 2, x: 350, y: 140, icon: "⚙️", label: "Process" },
-    { level: 2, x: 500, y: 140, icon: "💰", label: "Savings" },
+    { level: 2, x: 400, y: 140, icon: "💰", label: "Savings" },
     { level: 3, x: 200, y: 140, icon: "🏭", label: "29 Plants" },
-    { level: 3, x: 350, y: 140, icon: "🔧", label: "SAP" },
-    { level: 3, x: 500, y: 140, icon: "🚗", label: "Automotive" },
-    { level: 4, x: 250, y: 140, icon: "🎓", label: "M.Sc." },
-    { level: 4, x: 450, y: 140, icon: "⚡", label: "B.Sc." },
-    { level: 5, x: 200, y: 140, icon: "🏃", label: "Sports" },
-    { level: 5, x: 350, y: 140, icon: "📚", label: "Reading" },
-    { level: 5, x: 500, y: 140, icon: "💻", label: "Coding" },
-    { level: 5, x: 650, y: 140, icon: "�", label: "Cooking" },
-    { level: 6, x: 250, y: 140, icon: "�🌍", label: "Impact" },
-    { level: 6, x: 450, y: 140, icon: "🏆", label: "Leader" }
+    { level: 3, x: 400, y: 140, icon: "🔧", label: "SAP" },
+    { level: 4, x: 200, y: 140, icon: "🇿🇦", label: "S. Africa" },
+    { level: 4, x: 400, y: 140, icon: "🚂", label: "Railway" },
+    { level: 5, x: 200, y: 140, icon: "🇨🇳", label: "China" },
+    { level: 5, x: 400, y: 140, icon: "🚚", label: "Logistics" },
+    { level: 6, x: 200, y: 140, icon: "🔌", label: "Telecom" },
+    { level: 6, x: 400, y: 140, icon: "🛠️", label: "Tech" },
+    { level: 7, x: 200, y: 140, icon: "🎓", label: "M.Sc." },
+    { level: 7, x: 400, y: 140, icon: "⚡", label: "B.Sc." },
+    { level: 8, x: 200, y: 140, icon: "🏃", label: "Sports" },
+    { level: 8, x: 400, y: 140, icon: "✈️", label: "Travel" },
+    { level: 9, x: 200, y: 140, icon: "🏆", label: "Leader" }
 ];
 
 // Vehicle zones
 const vehicleZones = [
-    { level: 0, x: 600, vehicle: 'forklift' },
-    { level: 3, x: 650, vehicle: 'car' },
-    { level: 4, x: 1000, vehicle: 'plane' }
+    { level: 1, x: 150, vehicle: 'snowmobile' }, // Americold (L1)
+    { level: 2, x: 150, vehicle: 'forklift' },   // ID Logistics (L2)
+    { level: 3, x: 150, vehicle: 'car' },        // Forvia (L3)
+    { level: 4, x: 150, vehicle: 'train' },      // GSDI (L4)
+    { level: 5, x: 150, vehicle: 'tuktuk' },     // Wuhan (L5)
+    { level: 6, x: 150, vehicle: 'service' },    // Orange (L6)
+    { level: 7, x: 200, vehicle: 'plane' }       // Education (L7 onwards)
 ];
 
 function generateLevelHTML(levelIndex) {
@@ -169,6 +176,71 @@ function generateLevelHTML(levelIndex) {
                             </div>
                         </div>
                     `;
+        } else if (v.vehicle === 'snowmobile') {
+            html += `
+                        <div class="vehicle-zone" id="zone-${levelIndex}-${v.x}" style="left: ${v.x}px;" data-vehicle="snowmobile">
+                            <div class="parked-snowmobile" style="position: relative; width: 100%; height: 100%;">
+                                <!-- Body -->
+                                <div style="position:absolute;bottom:20px;left:10px;width:100px;height:35px;background:linear-gradient(180deg,#FFD700,#FFA500);border-radius:8px 25px 5px 5px;border:2px solid #CC8800;"></div>
+                                <!-- Windshield -->
+                                <div style="position:absolute;bottom:48px;left:25px;width:50px;height:25px;background:linear-gradient(180deg,rgba(135,206,250,0.4),rgba(100,150,200,0.3));border-radius:10px 10px 0 0;border:2px solid #CC8800;"></div>
+                                <!-- Seat -->
+                                <div style="position:absolute;bottom:42px;left:55px;width:30px;height:15px;background:#333;border-radius:5px;"></div>
+                                <!-- Front ski -->
+                                <div style="position:absolute;bottom:5px;left:5px;width:45px;height:8px;background:#222;border-radius:50% 20% 0 0;transform:skewX(-10deg);"></div>
+                                <!-- Rear track -->
+                                <div style="position:absolute;bottom:5px;left:65px;width:45px;height:18px;background:#111;border-radius:3px;"></div>
+                                <div style="position:absolute;bottom:8px;left:68px;width:39px;height:12px;background:repeating-linear-gradient(90deg,#333 0px,#333 3px,#111 3px,#111 6px);"></div>
+                            </div>
+                        </div>
+                    `;
+        } else if (v.vehicle === 'train') {
+            html += `
+                        <div class="vehicle-zone" id="zone-${levelIndex}-${v.x}" style="left: ${v.x}px;" data-vehicle="train">
+                            <div class="parked-train" style="position: relative; width: 100%; height: 100%;">
+                                <div style="position:absolute;bottom:25px;left:10px;width:120px;height:40px;background:linear-gradient(180deg,#8B4513,#654321);border-radius:5px;border:2px solid #3E2723;"></div>
+                                <div style="position:absolute;bottom:55px;left:20px;width:30px;height:30px;background:#654321;border-radius:3px;"></div>
+                                <div style="position:absolute;bottom:5px;left:20px;width:20px;height:20px;background:#333;border-radius:50%;border:3px solid #666;"></div>
+                                <div style="position:absolute;bottom:5px;left:50px;width:20px;height:20px;background:#333;border-radius:50%;border:3px solid #666;"></div>
+                                <div style="position:absolute;bottom:5px;left:80px;width:20px;height:20px;background:#333;border-radius:50%;border:3px solid #666;"></div>
+                                <div style="position:absolute;bottom:5px;left:110px;width:20px;height:20px;background:#333;border-radius:50%;border:3px solid #666;"></div>
+                            </div>
+                        </div>
+                    `;
+        } else if (v.vehicle === 'tuktuk') {
+            html += `
+                        <div class="vehicle-zone" id="zone-${levelIndex}-${v.x}" style="left: ${v.x}px;" data-vehicle="tuktuk">
+                            <div class="parked-tuktuk" style="position: relative; width: 100%; height: 100%;">
+                                <!-- Front motorcycle section -->
+                                <div style="position:absolute;bottom:15px;left:10px;width:35px;height:30px;background:linear-gradient(180deg,#FFD700,#FFA500);border-radius:5px;border:2px solid #CC8800;"></div>
+                                <!-- Handlebars -->
+                                <div style="position:absolute;bottom:40px;left:15px;width:25px;height:8px;background:#333;border-radius:2px;"></div>
+                                <!-- Front wheel -->
+                                <div style="position:absolute;bottom:5px;left:18px;width:18px;height:18px;background:#333;border-radius:50%;"></div>
+                                <!-- Driver on front -->
+                                <div style="position:absolute;bottom:38px;left:22px;width:12px;height:12px;background:#ffccaa;border-radius:50%;"></div>
+                                <div style="position:absolute;bottom:25px;left:20px;width:16px;height:15px;background:#3E0097;border-radius:2px;"></div>
+                                <!-- Passenger cabin (back) -->
+                                <div style="position:absolute;bottom:15px;left:50px;width:50px;height:35px;background:linear-gradient(180deg,#FFD700,#FFA500);border-radius:5px 5px 3px 3px;border:2px solid #CC8800;"></div>
+                                <div style="position:absolute;bottom:45px;left:55px;width:40px;height:25px;background:#FFD700;border-radius:15px 15px 0 0;border:2px solid #CC8800;"></div>
+                                <!-- Rear wheels -->
+                                <div style="position:absolute;bottom:5px;left:58px;width:16px;height:16px;background:#333;border-radius:50%;"></div>
+                                <div style="position:absolute;bottom:5px;left:82px;width:16px;height:16px;background:#333;border-radius:50%;"></div>
+                            </div>
+                        </div>
+                    `;
+        } else if (v.vehicle === 'service') {
+            html += `
+                        <div class="vehicle-zone" id="zone-${levelIndex}-${v.x}" style="left: ${v.x}px;" data-vehicle="service">
+                            <div class="parked-service" style="position: relative; width: 100%; height: 100%;">
+                                <div style="position:absolute;bottom:15px;left:10px;width:100px;height:40px;background:linear-gradient(180deg,#FF6600,#E05500);border-radius:5px 5px 3px 3px;border:2px solid #CC4400;"></div>
+                                <div style="position:absolute;bottom:50px;left:20px;width:70px;height:25px;background:#FF6600;border-radius:5px 5px 0 0;border:2px solid #CC4400;"></div>
+                                <div style="position:absolute;bottom:70px;left:50px;width:12px;height:12px;background:#FF0000;border-radius:50%;animation:blink 1s infinite;"></div>
+                                <div style="position:absolute;bottom:5px;left:18px;width:22px;height:22px;background:#333;border-radius:50%;"></div>
+                                <div style="position:absolute;bottom:5px;left:80px;width:22px;height:22px;background:#333;border-radius:50%;"></div>
+                            </div>
+                        </div>
+                    `;
         } else if (v.vehicle === 'plane') {
             html += `
                         <div class="vehicle-zone" id="zone-${levelIndex}-${v.x}" style="left: ${v.x}px;" data-vehicle="plane">
@@ -176,7 +248,7 @@ function generateLevelHTML(levelIndex) {
                                 <div style="position:absolute;bottom:15px;left:10px;width:80px;height:25px;background:#ddd;border-radius:50% 10px 10px 50%;border:2px solid #999;"></div>
                                 <div style="position:absolute;bottom:35px;left:40px;width:10px;height:30px;background:#ccc;transform:skewX(-20deg);"></div>
                                 <div style="position:absolute;bottom:8px;left:20px;width:15px;height:15px;background:#333;border-radius:50%;"></div>
-                                <div style="position:absolute;bottom:5px;right:0px;width:40px;height:4px;background:#999;"></div>
+                                
                             </div>
                         </div>
                     `;
@@ -191,20 +263,20 @@ function generateLevelContent(levelIndex) {
     let html = '';
 
     switch (levelIndex) {
-        case 0: // Intro - Barcelona
-            // Main warehouse
+        case 0: // Introduction - Americold warehouse
             html += `
-                        <div class="warehouse" style="left: 50px;">
-                            <div class="warehouse-structure" style="width: 200px; height: 180px;">
+                        <div class="warehouse" style="left: 100px;">
+                            <div class="warehouse-structure" style="width: 220px; height: 200px; background: linear-gradient(180deg, #87CEEB 0%, #5F9EA0 100%);">
                                 <div class="warehouse-roof"></div>
-                                <div class="warehouse-sign">BARCELONA HQ</div>
-                                <div class="loading-dock" style="left: 20px;">
-                                    <div class="dock-door open"></div>
-                                    <div class="dock-platform"></div>
-                                </div>
-                                <div class="loading-dock" style="left: 110px;">
-                                    <div class="dock-door open"></div>
-                                    <div class="dock-platform"></div>
+                                <div class="warehouse-sign">AMERICOLD</div>
+                                <!-- Window grid -->
+                                <div style="position: absolute; top: 60px; left: 15px; display: grid; grid-template-columns: repeat(3, 50px); grid-gap: 12px;">
+                                    <div style="width: 50px; height: 40px; background: rgba(135,206,250,0.3); border: 2px solid #87CEEB; box-shadow: inset 0 0 10px rgba(255,255,255,0.2);"></div>
+                                    <div style="width: 50px; height: 40px; background: rgba(135,206,250,0.3); border: 2px solid #87CEEB; box-shadow: inset 0 0 10px rgba(255,255,255,0.2);"></div>
+                                    <div style="width: 50px; height: 40px; background: rgba(135,206,250,0.3); border: 2px solid #87CEEB; box-shadow: inset 0 0 10px rgba(255,255,255,0.2);"></div>
+                                    <div style="width: 50px; height: 40px; background: rgba(135,206,250,0.3); border: 2px solid #87CEEB; box-shadow: inset 0 0 10px rgba(255,255,255,0.2);"></div>
+                                    <div style="width: 50px; height: 40px; background: rgba(135,206,250,0.3); border: 2px solid #87CEEB; box-shadow: inset 0 0 10px rgba(255,255,255,0.2);"></div>
+                                    <div style="width: 50px; height: 40px; background: rgba(135,206,250,0.3); border: 2px solid #87CEEB; box-shadow: inset 0 0 10px rgba(255,255,255,0.2);"></div>
                                 </div>
                             </div>
                         </div>
@@ -268,13 +340,16 @@ function generateLevelContent(levelIndex) {
                             <div class="warehouse-structure" style="width: 200px; height: 200px;">
                                 <div class="warehouse-roof"></div>
                                 <div class="warehouse-sign">ID LOGISTICS</div>
-                                <div class="loading-dock" style="left: 30px;">
-                                    <div class="dock-door open"></div>
-                                    <div class="dock-platform"></div>
-                                </div>
-                                <div class="loading-dock" style="left: 110px;">
-                                    <div class="dock-door open"></div>
-                                    <div class="dock-platform"></div>
+                                <!-- Window grid -->
+                                <div style="position: absolute; top: 60px; left: 10px; display: grid; grid-template-columns: repeat(4, 40px); grid-gap: 10px;">
+                                    <div style="width: 40px; height: 35px; background: rgba(255,255,255,0.1); border: 2px solid #666; box-shadow: inset 0 0 8px rgba(255,255,255,0.1);"></div>
+                                    <div style="width: 40px; height: 35px; background: rgba(255,255,255,0.1); border: 2px solid #666; box-shadow: inset 0 0 8px rgba(255,255,255,0.1);"></div>
+                                    <div style="width: 40px; height: 35px; background: rgba(255,255,255,0.1); border: 2px solid #666; box-shadow: inset 0 0 8px rgba(255,255,255,0.1);"></div>
+                                    <div style="width: 40px; height: 35px; background: rgba(255,255,255,0.1); border: 2px solid #666; box-shadow: inset 0 0 8px rgba(255,255,255,0.1);"></div>
+                                    <div style="width: 40px; height: 35px; background: rgba(255,255,255,0.1); border: 2px solid #666; box-shadow: inset 0 0 8px rgba(255,255,255,0.1);"></div>
+                                    <div style="width: 40px; height: 35px; background: rgba(255,255,255,0.1); border: 2px solid #666; box-shadow: inset 0 0 8px rgba(255,255,255,0.1);"></div>
+                                    <div style="width: 40px; height: 35px; background: rgba(255,255,255,0.1); border: 2px solid #666; box-shadow: inset 0 0 8px rgba(255,255,255,0.1);"></div>
+                                    <div style="width: 40px; height: 35px; background: rgba(255,255,255,0.1); border: 2px solid #666; box-shadow: inset 0 0 8px rgba(255,255,255,0.1);"></div>
                                 </div>
                             </div>
                         </div>
@@ -285,8 +360,15 @@ function generateLevelContent(levelIndex) {
                                     <div class="smoke" style="top: -20px; left: 5px;"></div>
                                 </div>
                                 <div class="warehouse-sign" style="top: 20px; font-size: 12px;">TARRAGONA</div>
-                                <div class="factory-door" style="left: 45px; width: 60px; height: 80px;"></div>
-                                ${generateIndustrialWindows(3, 2, 10, 80)}
+                                <!-- Window grid -->
+                                <div style="position: absolute; top: 70px; left: 15px; display: grid; grid-template-columns: repeat(3, 35px); grid-gap: 8px;">
+                                    <div style="width: 35px; height: 30px; background: rgba(255,255,255,0.1); border: 2px solid #666; box-shadow: inset 0 0 8px rgba(255,255,255,0.1);"></div>
+                                    <div style="width: 35px; height: 30px; background: rgba(255,255,255,0.1); border: 2px solid #666; box-shadow: inset 0 0 8px rgba(255,255,255,0.1);"></div>
+                                    <div style="width: 35px; height: 30px; background: rgba(255,255,255,0.1); border: 2px solid #666; box-shadow: inset 0 0 8px rgba(255,255,255,0.1);"></div>
+                                    <div style="width: 35px; height: 30px; background: rgba(255,255,255,0.1); border: 2px solid #666; box-shadow: inset 0 0 8px rgba(255,255,255,0.1);"></div>
+                                    <div style="width: 35px; height: 30px; background: rgba(255,255,255,0.1); border: 2px solid #666; box-shadow: inset 0 0 8px rgba(255,255,255,0.1);"></div>
+                                    <div style="width: 35px; height: 30px; background: rgba(255,255,255,0.1); border: 2px solid #666; box-shadow: inset 0 0 8px rgba(255,255,255,0.1);"></div>
+                                </div>
                             </div>
                         </div>
                     `;
@@ -310,8 +392,15 @@ function generateLevelContent(levelIndex) {
                                 </div>
                                 <div class="warehouse-sign" style="top: 20px; font-size: 14px;">FORVIA</div>
                                 <div style="position: absolute; top: 45px; left: 50%; transform: translateX(-50%); color: #ccc; font-size: 10px;">(FAURECIA)</div>
-                                <div class="factory-door" style="left: 70px; width: 60px; height: 80px;"></div>
-                                ${generateIndustrialWindows(3, 2, 10, 80)}
+                                <!-- Window grid -->
+                                <div style="position: absolute; top: 80px; left: 10px; display: grid; grid-template-columns: repeat(3, 55px); grid-gap: 10px;">
+                                    <div style="width: 55px; height: 35px; background: rgba(255,255,255,0.1); border: 2px solid #666; box-shadow: inset 0 0 8px rgba(255,255,255,0.1);"></div>
+                                    <div style="width: 55px; height: 35px; background: rgba(255,255,255,0.1); border: 2px solid #666; box-shadow: inset 0 0 8px rgba(255,255,255,0.1);"></div>
+                                    <div style="width: 55px; height: 35px; background: rgba(255,255,255,0.1); border: 2px solid #666; box-shadow: inset 0 0 8px rgba(255,255,255,0.1);"></div>
+                                    <div style="width: 55px; height: 35px; background: rgba(255,255,255,0.1); border: 2px solid #666; box-shadow: inset 0 0 8px rgba(255,255,255,0.1);"></div>
+                                    <div style="width: 55px; height: 35px; background: rgba(255,255,255,0.1); border: 2px solid #666; box-shadow: inset 0 0 8px rgba(255,255,255,0.1);"></div>
+                                    <div style="width: 55px; height: 35px; background: rgba(255,255,255,0.1); border: 2px solid #666; box-shadow: inset 0 0 8px rgba(255,255,255,0.1);"></div>
+                                </div>
                             </div>
                         </div>
                     `;
@@ -324,19 +413,26 @@ function generateLevelContent(levelIndex) {
                                     <div class="smoke" style="top: -15px; left: 5px;"></div>
                                 </div>
                                 <div class="warehouse-sign" style="top: 20px; font-size: 10px;">29 PLANTS</div>
-                                ${generateIndustrialWindows(2, 2, 10, 60)}
+                                <!-- Window grid -->
+                                <div style="position: absolute; top: 60px; left: 10px; display: grid; grid-template-columns: repeat(2, 60px); grid-gap: 10px;">
+                                    <div style="width: 60px; height: 30px; background: rgba(255,255,255,0.1); border: 2px solid #666; box-shadow: inset 0 0 8px rgba(255,255,255,0.1);"></div>
+                                    <div style="width: 60px; height: 30px; background: rgba(255,255,255,0.1); border: 2px solid #666; box-shadow: inset 0 0 8px rgba(255,255,255,0.1);"></div>
+                                    <div style="width: 60px; height: 30px; background: rgba(255,255,255,0.1); border: 2px solid #666; box-shadow: inset 0 0 8px rgba(255,255,255,0.1);"></div>
+                                    <div style="width: 60px; height: 30px; background: rgba(255,255,255,0.1); border: 2px solid #666; box-shadow: inset 0 0 8px rgba(255,255,255,0.1);"></div>
+                                </div>
                             </div>
                         </div>
                     `;
             // Truck
             html += `
-                        <div class="parked-truck" style="left: 450px;">
+                        <div class="parked-truck" id="forvia-truck" style="left: 450px;">
                             <div class="truck-trailer"></div>
                             <div class="truck-cab">
                                 <div class="truck-window"></div>
                             </div>
-                            <div class="truck-wheel" style="left: 15px;"></div>
-                            <div class="truck-wheel" style="left: 80px;"></div>
+                            <div class="truck-wheel" style="left: 10px;"></div>
+                            <div class="truck-wheel" style="left: 40px;"></div>
+                            <div class="truck-wheel" style="left: 100px;"></div>
                             <div class="truck-wheel" style="left: 130px;"></div>
                         </div>
                     `;
@@ -349,7 +445,138 @@ function generateLevelContent(levelIndex) {
             html += generateWorkingForklift(700, 2);
             break;
 
-        case 4: // Education
+        case 4: // GSDI - Railway (South Africa)
+            // Train station (GSDI)
+            html += `
+                        <div style="position: absolute; left: 50px; bottom: 0;">
+                            <div style="position: relative; width: 250px; height: 180px; background: linear-gradient(180deg, #8B4513 0%, #654321 100%); border-radius: 5px;">
+                                <!-- Station roof -->
+                                <div style="position: absolute; top: -20px; left: -10px; width: 270px; height: 25px; background: linear-gradient(180deg, #A0522D 0%, #8B4513 100%); clip-path: polygon(10% 100%, 0% 0%, 100% 0%, 90% 100%);"></div>
+                                <div class="warehouse-sign" style="color: #FFD700;">GSDI STATION</div>
+                                <!-- Platform canopy -->
+                                <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 40px; background: rgba(139,69,19,0.6); border-top: 3px solid #FFD700;"></div>
+                                <!-- Windows -->
+                                <div style="position: absolute; top: 50px; left: 15px; display: grid; grid-template-columns: repeat(3, 65px); grid-gap: 12px;">
+                                    <div style="width: 65px; height: 45px; background: rgba(255,215,0,0.1); border: 2px solid #FFD700; box-shadow: inset 0 0 10px rgba(255,215,0,0.2);"></div>
+                                    <div style="width: 65px; height: 45px; background: rgba(255,215,0,0.1); border: 2px solid #FFD700; box-shadow: inset 0 0 10px rgba(255,215,0,0.2);"></div>
+                                    <div style="width: 65px; height: 45px; background: rgba(255,215,0,0.1); border: 2px solid #FFD700; box-shadow: inset 0 0 10px rgba(255,215,0,0.2);"></div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+            // Railway tracks
+            html += `
+                        <div style="position: absolute; left: 350px; bottom: 20px; width: 400px; height: 8px;">
+                            <div style="position: absolute; bottom: 0; width: 100%; height: 3px; background: #666;"></div>
+                            <div style="position: absolute; bottom: 5px; width: 100%; height: 3px; background: #666;"></div>
+                            ${Array.from({ length: 20 }, (_, i) => `<div style="position: absolute; left: ${i * 20}px; bottom: -2px; width: 12px; height: 12px; background: #444;"></div>`).join('')}
+                        </div>
+                    `;
+            // South African flag
+            html += `
+                        <div class="flag-display" style="left: 600px;">
+                            <div class="flag-pole"></div>
+                            <div style="position: absolute; top: 5px; left: 2px; width: 50px; height: 30px; background: linear-gradient(to bottom, #E03C31 0%, #E03C31 16.67%, #FFFFFF 16.67%, #FFFFFF 33.33%, #007749 33.33%, #007749 50%, #FFB612 50%, #FFB612 66.67%, #FFFFFF 66.67%, #FFFFFF 83.33%, #001489 83.33%, #001489 100%);"></div>
+                        </div>
+                    `;
+            break;
+
+        case 5: // Wuhan - University/City
+            // Research lab (Wuhan)
+            html += `
+                        <div style="position: absolute; left: 50px; bottom: 0;">
+                            <div style="position: relative; width: 220px; height: 170px; background: linear-gradient(180deg, #f0f0f0 0%, #d0d0d0 100%); border-radius: 3px;">
+                                <div class="university-pediment"></div>
+                                <div class="university-name" style="font-size: 10px; color: #3E0097;">WUHAN UNIV. TECH.</div>
+                                <div style="position: absolute; top: 35px; left: 50%; transform: translateX(-50%); color: #3E0097; font-size: 9px;">Research Lab</div>
+                                <!-- Lab equipment silhouettes -->
+                                <div style="position: absolute; bottom: 20px; left: 20px; width: 30px; height: 60px; background: rgba(62,0,151,0.2); border: 2px solid #3E0097; border-radius: 3px;"></div>
+                                <div style="position: absolute; bottom: 20px; left: 60px; width: 25px; height: 50px; background: rgba(62,0,151,0.2); border: 2px solid #3E0097; border-radius: 3px;"></div>
+                                <div style="position: absolute; bottom: 20px; left: 95px; width: 35px; height: 70px; background: rgba(62,0,151,0.2); border: 2px solid #3E0097; border-radius: 3px;"></div>
+                                <!-- Windows -->
+                                <div style="position: absolute; top: 60px; left: 140px; display: grid; grid-template-rows: repeat(2, 35px); grid-gap: 8px;">
+                                    <div style="width: 60px; height: 35px; background: rgba(62,0,151,0.1); border: 2px solid #3E0097; box-shadow: inset 0 0 8px rgba(62,0,151,0.2);"></div>
+                                    <div style="width: 60px; height: 35px; background: rgba(62,0,151,0.1); border: 2px solid #3E0097; box-shadow: inset 0 0 8px rgba(62,0,151,0.2);"></div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+            // Chinese flag removed
+            html += ``;
+            // City buildings
+            html += `
+                        <div class="factory" style="left: 400px;">
+                            <div class="factory-building" style="width: 120px; height: 140px; background: #555;">
+                                ${generateIndustrialWindows(3, 3, 10, 50)}
+                            </div>
+                        </div>
+                        <div class="factory" style="left: 550px;">
+                            <div class="factory-building" style="width: 100px; height: 160px; background: #666;">
+                                ${generateIndustrialWindows(2, 3, 10, 60)}
+                            </div>
+                        </div>
+                    `;
+            break;
+
+        case 6: // Orange - Telecommunications
+            // Telecom tower with worker
+            html += `
+                        <div style="position: absolute; left: 100px; bottom: 0;">
+                            <div style="position: absolute; bottom: 0; left: 45px; width: 10px; height: 250px; background: linear-gradient(to top, #999 0%, #ccc 100%);"></div>
+                            <div style="position: absolute; bottom: 200px; left: 35px; width: 30px; height: 3px; background: #666;"></div>
+                            <div style="position: absolute; bottom: 170px; left: 30px; width: 40px; height: 3px; background: #666;"></div>
+                            <div style="position: absolute; bottom: 140px; left: 25px; width: 50px; height: 3px; background: #666;"></div>
+                            <div style="position: absolute; bottom: 250px; left: 42px; width: 16px; height: 20px; background: #E03C31; border-radius: 2px;"></div>
+                            <!-- Worker on pole -->
+                            <div style="position: absolute; bottom: 180px; left: 60px; width: 12px; height: 12px; background: #ffccaa; border-radius: 50%;"></div>
+                            <div style="position: absolute; bottom: 165px; left: 58px; width: 16px; height: 20px; background: #FF6600; border-radius: 2px;"></div>
+                        </div>
+                    `;
+            // Phone pole with worker
+            html += `
+                        <div style="position: absolute; left: 550px; bottom: 0;">
+                            <div style="position: absolute; bottom: 0; left: 15px; width: 8px; height: 180px; background: #8B4513;"></div>
+                            <div style="position: absolute; bottom: 150px; left: 5px; width: 28px; height: 4px; background: #666;"></div>
+                            <!-- Landline phone -->
+                            <div style="position: absolute; bottom: 145px; left: 0; width: 12px; height: 15px; background: #333; border-radius: 2px;"></div>
+                            <!-- Worker on pole -->
+                            <div style="position: absolute; bottom: 160px; left: 30px; width: 12px; height: 12px; background: #ffccaa; border-radius: 50%;"></div>
+                            <div style="position: absolute; bottom: 145px; left: 28px; width: 16px; height: 20px; background: #FF6600; border-radius: 2px;"></div>
+                        </div>
+                    `;
+            // Data center (Orange)
+            html += `
+                        <div style="position: absolute; left: 300px; bottom: 0;">
+                            <div style="position: relative; width: 180px; height: 150px; background: linear-gradient(180deg, #FF6600 0%, #E05500 100%); border-radius: 3px;">
+                                <div class="warehouse-sign" style="color: white; top: 15px;">ORANGE</div>
+                                <div style="position: absolute; top: 40px; left: 50%; transform: translateX(-50%); color: white; font-size: 9px;">Data Center</div>
+                                <!-- Server rack indicators -->
+                                <div style="position: absolute; top: 60px; left: 10px; display: grid; grid-template-columns: repeat(3, 50px); grid-gap: 5px;">
+                                    <div style="width: 50px; height: 70px; background: rgba(0,0,0,0.3); border: 2px solid white; display: flex; flex-direction: column; gap: 3px; padding: 3px;">
+                                        <div style="width: 100%; height: 8px; background: rgba(0,255,0,0.3); border: 1px solid #0F0;"></div>
+                                        <div style="width: 100%; height: 8px; background: rgba(0,255,0,0.3); border: 1px solid #0F0;"></div>
+                                        <div style="width: 100%; height: 8px; background: rgba(0,255,0,0.3); border: 1px solid #0F0;"></div>
+                                        <div style="width: 100%; height: 8px; background: rgba(0,255,0,0.3); border: 1px solid #0F0;"></div>
+                                    </div>
+                                    <div style="width: 50px; height: 70px; background: rgba(0,0,0,0.3); border: 2px solid white; display: flex; flex-direction: column; gap: 3px; padding: 3px;">
+                                        <div style="width: 100%; height: 8px; background: rgba(0,255,0,0.3); border: 1px solid #0F0;"></div>
+                                        <div style="width: 100%; height: 8px; background: rgba(0,255,0,0.3); border: 1px solid #0F0;"></div>
+                                        <div style="width: 100%; height: 8px; background: rgba(0,255,0,0.3); border: 1px solid #0F0;"></div>
+                                        <div style="width: 100%; height: 8px; background: rgba(0,255,0,0.3); border: 1px solid #0F0;"></div>
+                                    </div>
+                                    <div style="width: 50px; height: 70px; background: rgba(0,0,0,0.3); border: 2px solid white; display: flex; flex-direction: column; gap: 3px; padding: 3px;">
+                                        <div style="width: 100%; height: 8px; background: rgba(0,255,0,0.3); border: 1px solid #0F0;"></div>
+                                        <div style="width: 100%; height: 8px; background: rgba(0,255,0,0.3); border: 1px solid #0F0;"></div>
+                                        <div style="width: 100%; height: 8px; background: rgba(0,255,0,0.3); border: 1px solid #0F0;"></div>
+                                        <div style="width: 100%; height: 8px; background: rgba(0,255,0,0.3); border: 1px solid #0F0;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+            break;
+
+        case 7: // Education
             // UTBM
             html += `
                         <div class="university" style="left: 50px;">
@@ -357,11 +584,15 @@ function generateLevelContent(levelIndex) {
                                 <div class="university-pediment"></div>
                                 <div class="university-name">UTBM</div>
                                 <div class="university-date">2016 - 2020</div>
-                                <div class="university-column" style="left: 20px; height: 80px; bottom: 0;"></div>
-                                <div class="university-column" style="left: 50px; height: 80px; bottom: 0;"></div>
-                                <div class="university-column" style="left: 130px; height: 80px; bottom: 0;"></div>
-                                <div class="university-column" style="left: 160px; height: 80px; bottom: 0;"></div>
-                                <div class="university-door"></div>
+                                <!-- Window grid -->
+                                <div style="position: absolute; top: 60px; left: 15px; display: grid; grid-template-columns: repeat(3, 50px); grid-gap: 10px;">
+                                    <div style="width: 50px; height: 35px; background: rgba(62,0,151,0.1); border: 2px solid #3E0097; box-shadow: inset 0 0 8px rgba(62,0,151,0.2);"></div>
+                                    <div style="width: 50px; height: 35px; background: rgba(62,0,151,0.1); border: 2px solid #3E0097; box-shadow: inset 0 0 8px rgba(62,0,151,0.2);"></div>
+                                    <div style="width: 50px; height: 35px; background: rgba(62,0,151,0.1); border: 2px solid #3E0097; box-shadow: inset 0 0 8px rgba(62,0,151,0.2);"></div>
+                                    <div style="width: 50px; height: 35px; background: rgba(62,0,151,0.1); border: 2px solid #3E0097; box-shadow: inset 0 0 8px rgba(62,0,151,0.2);"></div>
+                                    <div style="width: 50px; height: 35px; background: rgba(62,0,151,0.1); border: 2px solid #3E0097; box-shadow: inset 0 0 8px rgba(62,0,151,0.2);"></div>
+                                    <div style="width: 50px; height: 35px; background: rgba(62,0,151,0.1); border: 2px solid #3E0097; box-shadow: inset 0 0 8px rgba(62,0,151,0.2);"></div>
+                                </div>
                             </div>
                         </div>
                     `;
@@ -372,9 +603,13 @@ function generateLevelContent(levelIndex) {
                                 <div class="university-pediment"></div>
                                 <div class="university-name">IUT Nice</div>
                                 <div class="university-date">2013 - 2015</div>
-                                <div class="university-column" style="left: 15px; height: 70px; bottom: 0;"></div>
-                                <div class="university-column" style="left: 115px; height: 70px; bottom: 0;"></div>
-                                <div class="university-door" style="width: 40px;"></div>
+                                <!-- Window grid -->
+                                <div style="position: absolute; top: 55px; left: 10px; display: grid; grid-template-columns: repeat(2, 60px); grid-gap: 10px;">
+                                    <div style="width: 60px; height: 30px; background: rgba(62,0,151,0.1); border: 2px solid #3E0097; box-shadow: inset 0 0 8px rgba(62,0,151,0.2);"></div>
+                                    <div style="width: 60px; height: 30px; background: rgba(62,0,151,0.1); border: 2px solid #3E0097; box-shadow: inset 0 0 8px rgba(62,0,151,0.2);"></div>
+                                    <div style="width: 60px; height: 30px; background: rgba(62,0,151,0.1); border: 2px solid #3E0097; box-shadow: inset 0 0 8px rgba(62,0,151,0.2);"></div>
+                                    <div style="width: 60px; height: 30px; background: rgba(62,0,151,0.1); border: 2px solid #3E0097; box-shadow: inset 0 0 8px rgba(62,0,151,0.2);"></div>
+                                </div>
                             </div>
                         </div>
                     `;
@@ -388,18 +623,14 @@ function generateLevelContent(levelIndex) {
                             <div class="flag-pole"></div>
                             <div class="flag-cloth flag-uk" style="top:5px; left:2px;"></div>
                         </div>
-                        <div class="flag-display" style="left: 620px;">
+                         <div class="flag-display" style="left: 620px;">
                             <div class="flag-pole"></div>
                             <div class="flag-cloth flag-es" style="top:5px; left:2px;"></div>
-                        </div>
-                        <div class="flag-display" style="left: 680px;">
-                            <div class="flag-pole"></div>
-                            <div class="flag-cloth flag-cn" style="top:5px; left:2px;"></div>
                         </div>
                     `;
             break;
 
-        case 5: // Hobbies
+        case 8: // Hobbies
             // Running NPC (Orange body for contrast)
             html += `
                         <div class="animated-worker" style="left: 100px; animation: runBackForth 4s linear infinite;">
@@ -451,10 +682,29 @@ function generateLevelContent(levelIndex) {
                          <div style="position: absolute; left: 680px; bottom: 200px; color: #3E0097; font-size: 14px; font-weight:bold; background: rgba(255,255,255,0.8); padding: 4px 8px; border-radius: 4px; border: 2px solid #3E0097;">Cooking</div>
                     `;
 
-            html += generatePalletStack(850, 2);
+            // Travel animation - Rotating globe with orbiting plane
+            html += `
+                        <div style="position: absolute; left: 900px; bottom: 100px;">
+                            <!-- Globe -->
+                            <div style="position: relative; width: 60px; height: 60px;">
+                                <div style="position: absolute; width: 60px; height: 60px; background: linear-gradient(135deg, #4A90E2 0%, #357ABD 50%, #2E5C8A 100%); border-radius: 50%; box-shadow: inset -5px -5px 10px rgba(0,0,0,0.3), 0 0 15px rgba(74,144,226,0.4); animation: rotateGlobe 8s linear infinite;">
+                                    <!-- Continents (simplified) -->
+                                    <div style="position: absolute; top: 15px; left: 10px; width: 15px; height: 12px; background: #2ECC71; border-radius: 50% 30% 40% 20%; opacity: 0.8;"></div>
+                                    <div style="position: absolute; top: 30px; left: 25px; width: 20px; height: 15px; background: #27AE60; border-radius: 40% 50% 30% 60%; opacity: 0.8;"></div>
+                                    <div style="position: absolute; top: 10px; right: 8px; width: 12px; height: 10px; background: #229954; border-radius: 60% 40% 50% 30%; opacity: 0.8;"></div>
+                                </div>
+                                <!-- Orbiting plane -->
+                                <div style="position: absolute; width: 100%; height: 100%; animation: orbitPlane 4s linear infinite;">
+                                    <div style="position: absolute; top: -8px; left: 50%; transform: translateX(-50%); font-size: 16px;">✈️</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="position: absolute; left: 880px; bottom: 200px; color: #3E0097; font-size: 14px; font-weight:bold; background: rgba(255,255,255,0.8); padding: 4px 8px; border-radius: 4px; border: 2px solid #3E0097;">Travelling</div>
+                    `;
+
             break;
 
-        case 6: // Finale
+        case 9: // Finale
             // Celebration building
             html += `
                         <div class="warehouse" style="left: 100px;">
@@ -522,19 +772,47 @@ function generateInfoPanel(levelIndex) {
                         <li>Industry 4.0 Champion trained by Porsche Consulting.</li>
                     </ul>
                 </div>`,
-        `<div class="info-panel" style="left: 770px; bottom: 380px;">
-                    <h2>Education & Certifications</h2>
-                    <h3>🎓 M.Sc. Industrial Systems</h3>
-                    <p>UTBM | 2016-2020</p>
-                    <h3>⚡ B.Sc. Electrical Engineering & IT</h3>
-                    <p>IUT Nice | 2013-2015</p>
-                    <br>
-                    <p><strong>Awards:</strong> Innovation Crunch Time UTBM 2017</p>
-                    <p><strong>Languages:</strong> English, French, Spanish (Native/Bilingual), Chinese (Limited)</p>
+        `<div class="info-panel" style="left: 600px; bottom: 350px;">
+                    <h2>GSDI</h2>
+                    <p><span class="highlight">Branch Manager Assistant</span></p>
+                    <p>Mar 2020 - Dec 2020 | Johannesburg, S. Africa</p>
+                    <ul>
+                        <li>Led digital transformation of SA branch (ERP).</li>
+                        <li>Supported supply chain systems (Railway Industry).</li>
+                        <li>Stack: React, Python, Django, AWS.</li>
+                    </ul>
+                </div>`,
+        `<div class="info-panel" style="left: 300px; bottom: 350px;">
+                    <h2>Wuhan University</h2>
+                    <p><span class="highlight">Engineer Intern</span></p>
+                    <p>Sep 2017 - Feb 2018 | Wuhan, China</p>
+                    <ul>
+                        <li>Deep dive on City Logistics & Freight Carriage.</li>
+                        <li>CO2 emission improvement concept definition.</li>
+                    </ul>
+                </div>`,
+        `<div class="info-panel" style="left: 600px; bottom: 350px;">
+                    <h2>Orange</h2>
+                    <p><span class="highlight">Telecommunications Technician</span></p>
+                    <p>Aug 2013 - Aug 2015 | Saint Tropez, France</p>
+                    <ul>
+                        <li>Technical maintenance on ADSL/VDSL/Fiber.</li>
+                        <li>Customer support for private & business clients.</li>
+                    </ul>
+                </div>`,
+        `<div class="info-panel" style="left: 600px; bottom: 380px; width: 450px;">
+                    <h2>Education</h2>
+                    <p><strong>M.Sc. Ind. Systems</strong> | UTBM | 2016-2020</p>
+                    <p><strong>M.Sc. Management</strong> | MATE (Hungary) | 2019-20</p>
+                    <p><strong>Chinese Lang.</strong> | CCNU (China) | 2018-19</p>
+                    <p><strong>B.Sc. Elec. Eng.</strong> | IUT Nice | 2013-15</p>
+                    <p><strong>Adv. High School</strong> | Lycée Jean Moulin | 2015-16</p>
+                    <p style="margin-top: 10px;"><strong>Languages:</strong> English, French, Spanish (Native), Chinese (Limited)</p>
                 </div>`,
         `<div class="info-panel" style="left: 720px; bottom: 330px;">
                     <h2>Hobbies & Interests</h2>
                     <p>🏃 <strong>Sports:</strong> Running, Hiking, Padel</p>
+                    <p>✈️ <strong>Travel:</strong> Exploring Cultures</p>
                     <p>📚 <strong>Reading:</strong> Continuous learning</p>
                     <p>💻 <strong>Coding:</strong> Python, Web Dev</p>
                     <p>🍳 <strong>Cooking:</strong> Culinary arts</p>
@@ -679,13 +957,77 @@ function updateCharacterDisplay() {
                         </div>
                     `;
             break;
+        case 'snowmobile':
+            html = `
+                        <div class="character-snowmobile ${gameState.isMoving ? 'driving' : ''}">
+                            <!-- Body -->
+                            <div style="position:absolute;bottom:20px;left:0;width:100px;height:35px;background:linear-gradient(180deg,#FFD700,#FFA500);border-radius:8px 25px 5px 5px;border:2px solid #CC8800;"></div>
+                            <!-- Windshield -->
+                            <div style="position:absolute;bottom:48px;left:15px;width:50px;height:25px;background:linear-gradient(180deg,rgba(135,206,250,0.4),rgba(100,150,200,0.3));border-radius:10px 10px 0 0;border:2px solid #CC8800;"></div>
+                            <!-- Driver -->
+                            <div style="position:absolute;bottom:35px;left:35px;width:15px;height:15px;background:#ffccaa;border-radius:50%;"></div>
+                            <div style="position:absolute;bottom:22px;left:33px;width:18px;height:15px;background:#3E0097;border-radius:2px;"></div>
+                            <!-- Front ski -->
+                            <div style="position:absolute;bottom:5px;left:0;width:45px;height:8px;background:#222;border-radius:50% 20% 0 0;transform:skewX(-10deg);"></div>
+                            <!-- Rear track -->
+                            <div style="position:absolute;bottom:5px;left:60px;width:45px;height:18px;background:#111;border-radius:3px;"></div>
+                            <div style="position:absolute;bottom:8px;left:63px;width:39px;height:12px;background:repeating-linear-gradient(90deg,#333 0px,#333 3px,#111 3px,#111 6px);"></div>
+                        </div>
+                    `;
+            break;
+        case 'train':
+            html = `
+                        <div class="character-train ${gameState.isMoving ? 'driving' : ''}">
+                            <div style="position:absolute;bottom:25px;left:0;width:120px;height:40px;background:linear-gradient(180deg,#8B4513,#654321);border-radius:5px;border:2px solid #3E2723;"></div>
+                            <div style="position:absolute;bottom:55px;left:10px;width:30px;height:30px;background:#654321;border-radius:3px;"></div>
+                            <div style="position:absolute;bottom:40px;left:50px;width:15px;height:15px;background:#ffccaa;border-radius:50%;"></div>
+                            <div style="position:absolute;bottom:5px;left:10px;width:20px;height:20px;background:#333;border-radius:50%;border:3px solid #666;"></div>
+                            <div style="position:absolute;bottom:5px;left:40px;width:20px;height:20px;background:#333;border-radius:50%;border:3px solid #666;"></div>
+                            <div style="position:absolute;bottom:5px;left:70px;width:20px;height:20px;background:#333;border-radius:50%;border:3px solid #666;"></div>
+                            <div style="position:absolute;bottom:5px;left:100px;width:20px;height:20px;background:#333;border-radius:50%;border:3px solid #666;"></div>
+                        </div>
+                    `;
+            break;
+        case 'tuktuk':
+            html = `
+                        <div class="character-tuktuk ${gameState.isMoving ? 'driving' : ''}">
+                            <!-- Front motorcycle section -->
+                            <div style="position:absolute;bottom:15px;left:0;width:35px;height:30px;background:linear-gradient(180deg,#FFD700,#FFA500);border-radius:5px;border:2px solid #CC8800;"></div>
+                            <!-- Handlebars -->
+                            <div style="position:absolute;bottom:40px;left:5px;width:25px;height:8px;background:#333;border-radius:2px;"></div>
+                            <!-- Front wheel -->
+                            <div style="position:absolute;bottom:5px;left:8px;width:18px;height:18px;background:#333;border-radius:50%;"></div>
+                            <!-- Driver on front -->
+                            <div style="position:absolute;bottom:38px;left:12px;width:12px;height:12px;background:#ffccaa;border-radius:50%;"></div>
+                            <div style="position:absolute;bottom:25px;left:10px;width:16px;height:15px;background:#3E0097;border-radius:2px;"></div>
+                            <!-- Passenger cabin (back) -->
+                            <div style="position:absolute;bottom:15px;left:40px;width:50px;height:35px;background:linear-gradient(180deg,#FFD700,#FFA500);border-radius:5px 5px 3px 3px;border:2px solid #CC8800;"></div>
+                            <div style="position:absolute;bottom:45px;left:45px;width:40px;height:25px;background:#FFD700;border-radius:15px 15px 0 0;border:2px solid #CC8800;"></div>
+                            <!-- Rear wheels -->
+                            <div style="position:absolute;bottom:5px;left:48px;width:16px;height:16px;background:#333;border-radius:50%;"></div>
+                            <div style="position:absolute;bottom:5px;left:72px;width:16px;height:16px;background:#333;border-radius:50%;"></div>
+                        </div>
+                    `;
+            break;
+        case 'service':
+            html = `
+                        <div class="character-service ${gameState.isMoving ? 'driving' : ''}">
+                            <div style="position:absolute;bottom:15px;left:0;width:100px;height:40px;background:linear-gradient(180deg,#FF6600,#E05500);border-radius:5px 5px 3px 3px;border:2px solid #CC4400;"></div>
+                            <div style="position:absolute;bottom:50px;left:10px;width:70px;height:25px;background:#FF6600;border-radius:5px 5px 0 0;border:2px solid #CC4400;"></div>
+                            <div style="position:absolute;bottom:70px;left:40px;width:12px;height:12px;background:#FF0000;border-radius:50%;animation:blink 1s infinite;"></div>
+                            <div style="position:absolute;bottom:40px;left:30px;width:15px;height:15px;background:#ffccaa;border-radius:50%;"></div>
+                            <div style="position:absolute;bottom:5px;left:8px;width:22px;height:22px;background:#333;border-radius:50%;"></div>
+                            <div style="position:absolute;bottom:5px;left:70px;width:22px;height:22px;background:#333;border-radius:50%;"></div>
+                        </div>
+                    `;
+            break;
         case 'plane':
             html = `
                         <div class="character-plane" style="width: 120px; height: 60px;">
                             <div class="plane-body" style="position:absolute; bottom:0; width:100px; height:30px; background:#ccc; border-top-right-radius: 10px; border-bottom-right-radius: 5px;"></div>
                             <div class="plane-wing" style="position:absolute; bottom:15px; left:40px; width:40px; height:10px; background:#999; transform:skewX(-20deg);"></div>
                             <div class="plane-tail" style="position:absolute; bottom:20px; left:5px; width:20px; height:25px; background:#ccc; border-radius:5px 0 0 0;"></div>
-                            <div class="plane-prop" style="position:absolute; bottom:5px; right:-5px; width:5px; height:40px; background:#333; animation: spin 0.1s infinite;"></div>
+                            
                             <div class="plane-pilot" style="position:absolute; bottom:15px; right:30px; width:15px; height:15px; background:#ffccaa; border-radius:50%;"></div>
                         </div>
                     `;
@@ -694,8 +1036,8 @@ function updateCharacterDisplay() {
 
     character.innerHTML = html;
 
-    const icons = { walk: '🚶', forklift: '🚜', car: '🚗', plane: '✈️' };
-    const names = { walk: 'On Foot', forklift: 'Forklift', car: 'Car', plane: 'Plane' };
+    const icons = { walk: '🚶', snowmobile: '🛷', forklift: '🚜', car: '🚗', train: '🚂', tuktuk: '🛺', service: '🚚', plane: '✈️' };
+    const names = { walk: 'On Foot', snowmobile: 'Snowmobile', forklift: 'Forklift', car: 'Car', train: 'Train', tuktuk: 'Tuktuk', service: 'Service Van', plane: 'Plane' };
     document.getElementById('vehicleIcon').textContent = icons[gameState.vehicle];
     document.getElementById('vehicleName').textContent = names[gameState.vehicle];
 }
@@ -703,15 +1045,15 @@ function updateCharacterDisplay() {
 // Physics
 const GRAVITY = 0.6;
 const JUMP_FORCE = 12;
-const MOVE_SPEED = { walk: 5, forklift: 7, car: 10, plane: 15 };
+const MOVE_SPEED = { walk: 5, snowmobile: 8, forklift: 7, car: 10, train: 9, tuktuk: 8, service: 9, plane: 15 };
 const GROUND_Y = 100;
 
 function getCharacterWidth() {
-    return { walk: 40, forklift: 100, car: 140, plane: 120 }[gameState.vehicle];
+    return { walk: 40, snowmobile: 100, forklift: 100, car: 140, train: 130, tuktuk: 110, service: 110, plane: 120 }[gameState.vehicle];
 }
 
 function getCharacterHeight() {
-    return { walk: 70, forklift: 80, car: 70, plane: 80 }[gameState.vehicle];
+    return { walk: 70, snowmobile: 60, forklift: 80, car: 70, train: 90, tuktuk: 75, service: 80, plane: 80 }[gameState.vehicle];
 }
 
 function update() {
@@ -733,7 +1075,7 @@ function update() {
 
     let totalWidth = 0;
     levels.forEach(l => totalWidth += l.width);
-    const maxX = (totalWidth * window.innerWidth / 100) - window.innerWidth;
+    const maxX = (totalWidth * window.innerWidth / 100) - window.innerWidth / 2; // Allow scrolling past end
     gameState.worldX = Math.max(0, Math.min(gameState.worldX, maxX));
 
     // Gravity (only if not plane)
@@ -872,10 +1214,12 @@ function checkCurrentLevel() {
         document.getElementById('levelName').textContent = levels[newLevel].name;
         document.getElementById('levelSubtitle').textContent = levels[newLevel].subtitle;
 
-        // Trigger Truck Animation
-        if (newLevel === 3) { // Forvia level
-            const truck = document.querySelector('.parked-truck');
-            if (truck) truck.classList.add('truck-depart');
+        // Trigger Forvia truck departure when entering level 3
+        if (newLevel === 3) {
+            const truck = document.getElementById('forvia-truck');
+            if (truck && !truck.classList.contains('truck-departing')) {
+                truck.classList.add('truck-departing');
+            }
         }
     }
 }
@@ -917,11 +1261,59 @@ document.addEventListener('keyup', (e) => {
     if (e.code === 'ArrowDown' || e.code === 'KeyS') gameState.keys.down = false;
 });
 
-// Mobile
-document.getElementById('btnLeft').addEventListener('touchstart', (e) => { e.preventDefault(); gameState.keys.left = true; });
-document.getElementById('btnLeft').addEventListener('touchend', () => gameState.keys.left = false);
-document.getElementById('btnRight').addEventListener('touchstart', (e) => { e.preventDefault(); gameState.keys.right = true; });
-document.getElementById('btnRight').addEventListener('touchend', () => gameState.keys.right = false);
+// Mouse & Touch Controls
+// Wheel to move
+window.addEventListener('wheel', (e) => {
+    if (!gameState.started) return;
+    if (e.deltaY > 0) {
+        gameState.keys.right = true;
+        gameState.keys.left = false;
+    } else {
+        gameState.keys.left = true;
+        gameState.keys.right = false;
+    }
+    // Stop after a short delay to simulate "step"
+    setTimeout(() => {
+        gameState.keys.left = false;
+        gameState.keys.right = false;
+    }, 100);
+});
+
+// Click/Tap to move
+const handleInputStart = (x) => {
+    if (!gameState.started) return;
+    const halfWidth = window.innerWidth / 2;
+    if (x < halfWidth) {
+        gameState.keys.left = true;
+        gameState.keys.right = false;
+    } else {
+        gameState.keys.right = true;
+        gameState.keys.left = false;
+    }
+};
+
+const handleInputEnd = () => {
+    gameState.keys.left = false;
+    gameState.keys.right = false;
+};
+
+document.addEventListener('mousedown', (e) => handleInputStart(e.clientX));
+document.addEventListener('mouseup', handleInputEnd);
+document.addEventListener('touchstart', (e) => handleInputStart(e.touches[0].clientX));
+document.addEventListener('touchend', handleInputEnd);
+
+// Mobile Buttons (Keep existing but ensure they work)
+const btnLeft = document.getElementById('btnLeft');
+const btnRight = document.getElementById('btnRight');
+
+if (btnLeft) {
+    btnLeft.addEventListener('touchstart', (e) => { e.preventDefault(); gameState.keys.left = true; });
+    btnLeft.addEventListener('touchend', () => gameState.keys.left = false);
+}
+if (btnRight) {
+    btnRight.addEventListener('touchstart', (e) => { e.preventDefault(); gameState.keys.right = true; });
+    btnRight.addEventListener('touchend', () => gameState.keys.right = false);
+}
 document.getElementById('btnJump').addEventListener('touchstart', (e) => { e.preventDefault(); jump(); });
 
 // Sound toggle
