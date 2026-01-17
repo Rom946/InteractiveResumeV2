@@ -1,0 +1,2054 @@
+﻿        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+            background: #1a1a2e;
+        }
+
+        #gameContainer {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        #gameWorld {
+            position: absolute;
+            height: 100%;
+            transition: transform 0.05s linear;
+        }
+
+        .level {
+            position: absolute;
+            height: 100%;
+            width: 300vw;
+        }
+
+        /* Sky gradients for different levels */
+        .level-0 {
+            background: linear-gradient(180deg, #1a1a2e 0%, #3E0097 50%, #ff6b35 100%);
+        }
+
+        .level-1 {
+            background: linear-gradient(180deg, #0a1628 0%, #1a3a5c 50%, #2d5a7b 100%);
+        }
+
+        .level-2 {
+            background: linear-gradient(180deg, #1a1a2e 0%, #2d2d5a 50%, #3E0097 100%);
+        }
+
+        .level-3 {
+            background: linear-gradient(180deg, #1a1a2e 0%, #4a1a6b 50%, #3E0097 100%);
+        }
+
+        .level-4 {
+            background: linear-gradient(180deg, #1a3a1a 0%, #2d5a2d 50%, #3E0097 100%);
+        }
+
+        .level-5 {
+            background: linear-gradient(180deg, #FFD700 0%, #3E0097 50%, #1a1a2e 100%);
+        }
+
+        /* Ground */
+        .ground {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(180deg, #555 0%, #333 20%, #2a2a2a 100%);
+        }
+
+        .ground::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: #FFD700;
+        }
+
+        /* Concrete floor inside warehouses */
+        .concrete-floor {
+            position: absolute;
+            bottom: 100px;
+            height: 30px;
+            background: linear-gradient(180deg, #888 0%, #666 100%);
+            border-top: 3px solid #999;
+        }
+
+        /* Road markings */
+        .road-marking {
+            position: absolute;
+            bottom: 45px;
+            height: 6px;
+            width: 50px;
+            background: #FFD700;
+            border-radius: 2px;
+        }
+
+        /* Character Container */
+        #character {
+            position: fixed;
+            left: 15%;
+            z-index: 100;
+            transition: bottom 0.05s linear;
+        }
+
+        /* Walking Character */
+        .character-walk {
+            width: 40px;
+            height: 70px;
+        }
+
+        .walk-body {
+            position: absolute;
+            bottom: 20px;
+            width: 30px;
+            height: 40px;
+            background: #3E0097;
+            border-radius: 8px 8px 5px 5px;
+            left: 5px;
+        }
+
+        .walk-head {
+            position: absolute;
+            bottom: 55px;
+            left: 7px;
+            width: 26px;
+            height: 26px;
+            background: #ffd5b5;
+            border-radius: 50%;
+        }
+
+        .walk-helmet {
+            position: absolute;
+            bottom: 68px;
+            left: 5px;
+            width: 30px;
+            height: 18px;
+            background: #FFD700;
+            border-radius: 15px 15px 5px 5px;
+        }
+
+        .walk-leg {
+            position: absolute;
+            bottom: 0;
+            width: 12px;
+            height: 25px;
+            background: #2a2a5a;
+            border-radius: 3px;
+        }
+
+        .walk-leg.left {
+            left: 8px;
+        }
+
+        .walk-leg.right {
+            left: 20px;
+        }
+
+        .walk-arm {
+            position: absolute;
+            bottom: 35px;
+            width: 10px;
+            height: 25px;
+            background: #3E0097;
+            border-radius: 5px;
+            transform-origin: top center;
+        }
+
+        .walk-arm.left {
+            left: -2px;
+        }
+
+        .walk-arm.right {
+            left: 32px;
+        }
+
+        /* Forklift */
+        .character-forklift {
+            width: 100px;
+            height: 80px;
+        }
+
+        .forklift-body {
+            position: absolute;
+            bottom: 20px;
+            left: 25px;
+            width: 60px;
+            height: 45px;
+            background: linear-gradient(180deg, #f4c430 0%, #daa520 100%);
+            border-radius: 5px;
+            border: 3px solid #b8860b;
+        }
+
+        .forklift-cabin {
+            position: absolute;
+            bottom: 45px;
+            left: 35px;
+            width: 45px;
+            height: 35px;
+            background: linear-gradient(180deg, #f4c430 0%, #daa520 100%);
+            border: 3px solid #b8860b;
+            border-radius: 5px 15px 5px 5px;
+        }
+
+        .forklift-window {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            width: 32px;
+            height: 20px;
+            background: linear-gradient(180deg, #87ceeb 0%, #5fb3d4 100%);
+            border-radius: 3px 10px 3px 3px;
+        }
+
+        .forklift-operator {
+            position: absolute;
+            bottom: 50px;
+            left: 45px;
+            width: 20px;
+            height: 30px;
+        }
+
+        .operator-head {
+            position: absolute;
+            top: 0;
+            left: 3px;
+            width: 14px;
+            height: 14px;
+            background: #ffd5b5;
+            border-radius: 50%;
+        }
+
+        .operator-body {
+            position: absolute;
+            top: 12px;
+            left: 2px;
+            width: 16px;
+            height: 18px;
+            background: #3E0097;
+            border-radius: 3px;
+        }
+
+        .forklift-mast {
+            position: absolute;
+            bottom: 25px;
+            left: 5px;
+            width: 8px;
+            height: 55px;
+            background: linear-gradient(90deg, #666 0%, #888 50%, #666 100%);
+        }
+
+        .forklift-forks {
+            position: absolute;
+            bottom: 15px;
+            left: -15px;
+            width: 25px;
+            height: 6px;
+            background: #555;
+            border-radius: 2px;
+        }
+
+        .forklift-forks::after {
+            content: '';
+            position: absolute;
+            top: 8px;
+            width: 25px;
+            height: 6px;
+            background: #555;
+            border-radius: 2px;
+        }
+
+        .forklift-wheel {
+            position: absolute;
+            bottom: 5px;
+            width: 22px;
+            height: 22px;
+            background: radial-gradient(circle, #444 60%, #222 100%);
+            border-radius: 50%;
+            border: 3px solid #333;
+        }
+
+        .forklift-wheel::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 8px;
+            height: 8px;
+            background: #666;
+            border-radius: 50%;
+        }
+
+        .forklift-wheel.front {
+            left: 15px;
+        }
+
+        .forklift-wheel.back {
+            left: 65px;
+        }
+
+        /* Car */
+        .character-car {
+            width: 140px;
+            height: 70px;
+        }
+
+        .car-body {
+            position: absolute;
+            bottom: 18px;
+            left: 10px;
+            width: 120px;
+            height: 30px;
+            background: linear-gradient(180deg, #3E0097 0%, #2a0066 100%);
+            border-radius: 10px 20px 5px 5px;
+            border: 2px solid #1a0044;
+        }
+
+        .car-top {
+            position: absolute;
+            bottom: 45px;
+            left: 35px;
+            width: 70px;
+            height: 28px;
+            background: linear-gradient(180deg, #3E0097 0%, #2a0066 100%);
+            border-radius: 15px 15px 0 0;
+            border: 2px solid #1a0044;
+            border-bottom: none;
+        }
+
+        .car-window {
+            position: absolute;
+            bottom: 48px;
+            height: 20px;
+            background: linear-gradient(180deg, #87ceeb 0%, #5fb3d4 100%);
+            border-radius: 8px 8px 0 0;
+        }
+
+        .car-window.front {
+            left: 75px;
+            width: 25px;
+        }
+
+        .car-window.back {
+            left: 40px;
+            width: 25px;
+        }
+
+        .car-driver {
+            position: absolute;
+            bottom: 45px;
+            left: 55px;
+            width: 18px;
+            height: 22px;
+        }
+
+        .driver-head {
+            position: absolute;
+            top: 0;
+            left: 2px;
+            width: 14px;
+            height: 14px;
+            background: #ffd5b5;
+            border-radius: 50%;
+        }
+
+        .driver-body {
+            position: absolute;
+            top: 12px;
+            left: 1px;
+            width: 16px;
+            height: 12px;
+            background: #3E0097;
+            border-radius: 3px;
+        }
+
+        .car-wheel {
+            position: absolute;
+            bottom: 5px;
+            width: 26px;
+            height: 26px;
+            background: radial-gradient(circle, #333 50%, #111 100%);
+            border-radius: 50%;
+            border: 3px solid #222;
+        }
+
+        .car-wheel::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 12px;
+            height: 12px;
+            background: linear-gradient(45deg, #888 25%, #aaa 50%, #888 75%);
+            border-radius: 50%;
+        }
+
+        .car-wheel.front {
+            left: 15px;
+        }
+
+        .car-wheel.back {
+            left: 100px;
+        }
+
+        .car-headlight {
+            position: absolute;
+            bottom: 28px;
+            right: 8px;
+            width: 8px;
+            height: 8px;
+            background: #FFD700;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #FFD700;
+        }
+
+        .car-taillight {
+            position: absolute;
+            bottom: 28px;
+            left: 12px;
+            width: 6px;
+            height: 6px;
+            background: #ff4444;
+            border-radius: 50%;
+        }
+
+        /* Realistic Warehouse */
+        .warehouse {
+            position: absolute;
+            bottom: 100px;
+        }
+
+        .warehouse-structure {
+            position: relative;
+            background: linear-gradient(180deg, #5a6270 0%, #434a54 100%);
+            border: 4px solid #333;
+        }
+
+        .warehouse-roof {
+            position: absolute;
+            top: -25px;
+            left: -5px;
+            width: calc(100% + 10px);
+            height: 30px;
+            background: linear-gradient(180deg, #6a737c 0%, #5a6270 100%);
+            border: 3px solid #333;
+        }
+
+        .warehouse-roof::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 18px;
+            background: linear-gradient(180deg, #7a838c 0%, #6a737c 100%);
+            clip-path: polygon(0% 100%, 50% 0%, 100% 100%);
+        }
+
+        .loading-dock {
+            position: absolute;
+            bottom: 0;
+            width: 70px;
+            height: 90px;
+            background: linear-gradient(180deg, #3a3f47 0%, #2a2f37 100%);
+            border: 3px solid #222;
+        }
+
+        .dock-door {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            right: 5px;
+            bottom: 0;
+            background: repeating-linear-gradient(0deg,
+                    #666 0px,
+                    #666 8px,
+                    #555 8px,
+                    #555 10px);
+            border: 2px solid #444;
+        }
+
+        .dock-door.open {
+            background: linear-gradient(180deg, #1a1a1a 0%, #0a0a0a 100%);
+        }
+
+        .dock-platform {
+            position: absolute;
+            bottom: -15px;
+            left: -10px;
+            width: calc(100% + 20px);
+            height: 15px;
+            background: linear-gradient(180deg, #777 0%, #555 100%);
+            border: 2px solid #444;
+        }
+
+        .warehouse-sign {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 8px 20px;
+            background: linear-gradient(180deg, #3E0097 0%, #2a0066 100%);
+            border: 2px solid #FFD700;
+            color: #FFD700;
+            font-weight: bold;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+
+        /* Shelving/Racking */
+        .racking {
+            position: absolute;
+            bottom: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .rack-level {
+            display: flex;
+            align-items: flex-end;
+            border-bottom: 4px solid #666;
+            padding: 5px;
+            background: rgba(100, 100, 100, 0.3);
+        }
+
+        .rack-post {
+            position: absolute;
+            bottom: 0;
+            width: 8px;
+            background: linear-gradient(90deg, #ff6600 0%, #cc5200 50%, #ff6600 100%);
+        }
+
+        /* Pallet on ground */
+        .ground-pallet {
+            position: absolute;
+            bottom: 100px;
+            height: 15px;
+            background: linear-gradient(180deg, #c9a66b 0%, #a67c52 100%);
+            border: 2px solid #8b5a2b;
+        }
+
+        .ground-pallet::before {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 10%;
+            width: 15%;
+            height: 8px;
+            background: #8b5a2b;
+            box-shadow: 60px 0 0 #8b5a2b, 120px 0 0 #8b5a2b;
+        }
+
+        /* Stacked boxes on pallet */
+        .pallet-stack {
+            position: absolute;
+            bottom: 100px;
+        }
+
+        .pallet-base {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 12px;
+            background: linear-gradient(180deg, #c9a66b 0%, #a67c52 100%);
+            border: 2px solid #8b5a2b;
+        }
+
+        .stacked-box {
+            position: absolute;
+            background: linear-gradient(180deg, #d4a574 0%, #b8956a 100%);
+            border: 2px solid #8b6914;
+        }
+
+        .stacked-box::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 5%;
+            width: 90%;
+            height: 2px;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        /* Factory */
+        .factory {
+            position: absolute;
+            bottom: 100px;
+        }
+
+        .factory-building {
+            position: relative;
+            background: linear-gradient(180deg, #4a5060 0%, #3a404a 100%);
+            border: 4px solid #2a2e36;
+        }
+
+        .factory-section {
+            position: absolute;
+            background: linear-gradient(180deg, #555d6a 0%, #454d5a 100%);
+            border: 3px solid #333;
+        }
+
+        .industrial-window {
+            position: absolute;
+            background: linear-gradient(180deg, #4a90c2 30%, #3a7ab2 100%);
+            border: 3px solid #2a5a82;
+        }
+
+        .industrial-window.lit {
+            background: linear-gradient(180deg, #ffdd88 0%, #ffcc44 100%);
+            box-shadow: 0 0 20px rgba(255, 200, 50, 0.5);
+        }
+
+        .chimney {
+            position: absolute;
+            background: linear-gradient(90deg, #555 0%, #777 30%, #666 70%, #555 100%);
+            border: 2px solid #444;
+        }
+
+        .chimney-top {
+            position: absolute;
+            top: -8px;
+            left: -4px;
+            width: calc(100% + 8px);
+            height: 10px;
+            background: linear-gradient(180deg, #666 0%, #555 100%);
+            border: 2px solid #444;
+        }
+
+        .smoke {
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background: rgba(180, 180, 180, 0.6);
+            border-radius: 50%;
+            animation: smoke 4s infinite ease-out;
+        }
+
+        @keyframes smoke {
+            0% {
+                transform: translateY(0) translateX(0) scale(0.5);
+                opacity: 0.8;
+            }
+
+            50% {
+                transform: translateY(-60px) translateX(20px) scale(1.5);
+                opacity: 0.4;
+            }
+
+            100% {
+                transform: translateY(-120px) translateX(40px) scale(2);
+                opacity: 0;
+            }
+        }
+
+        .factory-door {
+            position: absolute;
+            bottom: 0;
+            background: linear-gradient(180deg, #333 0%, #222 100%);
+            border: 4px solid #FFD700;
+        }
+
+        .factory-door::before {
+            content: '⚠';
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 20px;
+        }
+
+        /* Cold Storage */
+        .cold-storage {
+            position: absolute;
+            bottom: 100px;
+            background: linear-gradient(180deg, #e8f4f8 0%, #c8dce8 100%);
+            border: 4px solid #88a8c8;
+        }
+
+        .cold-storage::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(90deg,
+                    transparent 0px,
+                    transparent 40px,
+                    rgba(136, 168, 200, 0.3) 40px,
+                    rgba(136, 168, 200, 0.3) 42px);
+        }
+
+        .cold-unit-label {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            color: #2a5a8a;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .temp-display {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 5px 10px;
+            background: #1a1a2e;
+            color: #00ff00;
+            font-family: monospace;
+            font-size: 14px;
+            border: 2px solid #333;
+        }
+
+        .icicle {
+            position: absolute;
+            top: 100%;
+            width: 6px;
+            background: linear-gradient(180deg, #d8f0ff 0%, #a8d8f8 100%);
+            clip-path: polygon(50% 100%, 0% 0%, 100% 0%);
+            opacity: 0.8;
+        }
+
+        .frost-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at top, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        /* Animated Workers */
+        .animated-worker {
+            position: absolute;
+            bottom: 100px;
+            width: 30px;
+            height: 55px;
+            animation: workerMove 8s ease-in-out infinite;
+        }
+
+        .animated-worker.reverse {
+            animation: workerMoveReverse 8s ease-in-out infinite;
+        }
+
+        @keyframes workerMove {
+
+            0%,
+            100% {
+                transform: translateX(0) scaleX(1);
+            }
+
+            45% {
+                transform: translateX(150px) scaleX(1);
+            }
+
+            50% {
+                transform: translateX(150px) scaleX(-1);
+            }
+
+            95% {
+                transform: translateX(0) scaleX(-1);
+            }
+        }
+
+        @keyframes workerMoveReverse {
+
+            0%,
+            100% {
+                transform: translateX(0) scaleX(-1);
+            }
+
+            45% {
+                transform: translateX(-150px) scaleX(-1);
+            }
+
+            50% {
+                transform: translateX(-150px) scaleX(1);
+            }
+
+            95% {
+                transform: translateX(0) scaleX(1);
+            }
+        }
+
+        .worker-figure {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .worker-head {
+            position: absolute;
+            top: 0;
+            left: 6px;
+            width: 18px;
+            height: 18px;
+            background: #ffd5b5;
+            border-radius: 50%;
+        }
+
+        .worker-body {
+            position: absolute;
+            top: 18px;
+            left: 4px;
+            width: 22px;
+            height: 35px;
+            background: #3E0097;
+            /* Default blue shirt */
+            border-radius: 4px;
+        }
+
+        .chef-hat {
+            position: absolute;
+            top: -12px;
+            left: -2px;
+            width: 18px;
+            height: 14px;
+            background: white;
+            border-radius: 4px 4px 0 0;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .chef-hat::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 3px;
+            width: 12px;
+            height: 14px;
+            background: white;
+            border-radius: 4px 4px 0 0;
+            transform: translateY(-4px);
+        }
+
+        .worker-helmet {
+            position: absolute;
+            top: -6px;
+            left: 4px;
+            width: 22px;
+            height: 15px;
+            background: #FFD700;
+            border-radius: 12px 12px 4px 4px;
+        }
+
+        .worker-vest {
+            position: absolute;
+            top: 16px;
+            left: 3px;
+            width: 24px;
+            height: 22px;
+            background: #ff6600;
+            border-radius: 4px;
+        }
+
+        .worker-vest::before {
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: 2px;
+            right: 2px;
+            height: 3px;
+            background: #ffff00;
+        }
+
+        .worker-vest::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 2px;
+            right: 2px;
+            height: 3px;
+            background: #ffff00;
+        }
+
+        .worker-pants {
+            position: absolute;
+            bottom: 0;
+            left: 5px;
+            width: 8px;
+            height: 20px;
+            background: #2a3a4a;
+            border-radius: 2px;
+        }
+
+        .worker-pants::after {
+            content: '';
+            position: absolute;
+            left: 12px;
+            width: 8px;
+            height: 20px;
+            background: #2a3a4a;
+            border-radius: 2px;
+        }
+
+        .worker-box {
+            position: absolute;
+            top: 20px;
+            left: 28px;
+            width: 25px;
+            height: 20px;
+            background: linear-gradient(180deg, #c9a66b 0%, #a67c52 100%);
+            border: 2px solid #8b5a2b;
+        }
+
+        /* Forklift with load */
+        .working-forklift {
+            position: absolute;
+            bottom: 100px;
+            width: 90px;
+            height: 70px;
+            animation: forkliftMove 12s ease-in-out infinite;
+        }
+
+        @keyframes forkliftMove {
+
+            0%,
+            100% {
+                transform: translateX(0) scaleX(1);
+            }
+
+            45% {
+                transform: translateX(200px) scaleX(1);
+            }
+
+            50% {
+                transform: translateX(200px) scaleX(-1);
+            }
+
+            95% {
+                transform: translateX(0) scaleX(-1);
+            }
+        }
+
+        .working-forklift-body {
+            position: absolute;
+            bottom: 15px;
+            left: 20px;
+            width: 50px;
+            height: 35px;
+            background: linear-gradient(180deg, #ff8c00 0%, #cc7000 100%);
+            border: 3px solid #995500;
+            border-radius: 3px;
+        }
+
+        .working-forklift-mast {
+            position: absolute;
+            bottom: 18px;
+            left: 5px;
+            width: 6px;
+            height: 45px;
+            background: #666;
+        }
+
+        .working-forklift-forks {
+            position: absolute;
+            bottom: 10px;
+            left: -10px;
+            width: 20px;
+            height: 5px;
+            background: #555;
+        }
+
+        .working-forklift-forks::after {
+            content: '';
+            position: absolute;
+            top: 7px;
+            width: 20px;
+            height: 5px;
+            background: #555;
+        }
+
+        .working-forklift-load {
+            position: absolute;
+            bottom: 22px;
+            left: -8px;
+            width: 25px;
+            height: 30px;
+            background: linear-gradient(180deg, #c9a66b 0%, #a67c52 100%);
+            border: 2px solid #8b5a2b;
+        }
+
+        .working-forklift-wheel {
+            position: absolute;
+            bottom: 3px;
+            width: 18px;
+            height: 18px;
+            background: #333;
+            border-radius: 50%;
+        }
+
+        .working-forklift-wheel.front {
+            left: 10px;
+        }
+
+        .working-forklift-wheel.back {
+            left: 55px;
+        }
+
+        /* Conveyor Belt System */
+        .conveyor-system {
+            position: absolute;
+            bottom: 100px;
+        }
+
+        .conveyor-frame {
+            position: absolute;
+            bottom: 0;
+            height: 35px;
+            background: linear-gradient(180deg, #555 0%, #444 100%);
+            border: 3px solid #333;
+        }
+
+        .conveyor-belt {
+            position: absolute;
+            top: 8px;
+            left: 5px;
+            right: 5px;
+            height: 12px;
+            background: repeating-linear-gradient(90deg,
+                    #222 0px,
+                    #222 15px,
+                    #333 15px,
+                    #333 30px);
+            animation: conveyorMove 2s linear infinite;
+            border-radius: 2px;
+        }
+
+        @keyframes conveyorMove {
+            0% {
+                background-position: 0 0;
+            }
+
+            100% {
+                background-position: 30px 0;
+            }
+        }
+
+        .conveyor-leg {
+            position: absolute;
+            bottom: -30px;
+            width: 8px;
+            height: 30px;
+            background: #444;
+        }
+
+        .conveyor-box {
+            position: absolute;
+            top: -25px;
+            width: 30px;
+            height: 25px;
+            background: linear-gradient(180deg, #c9a66b 0%, #a67c52 100%);
+            border: 2px solid #8b5a2b;
+            animation: boxMove 4s linear infinite;
+        }
+
+        @keyframes boxMove {
+            0% {
+                left: 0;
+            }
+
+            100% {
+                left: calc(100% - 30px);
+            }
+        }
+
+        /* Collectibles */
+        .badge {
+            position: absolute;
+            width: 45px;
+            height: 45px;
+            cursor: pointer;
+            z-index: 70;
+            animation: badgeFloat 2s ease-in-out infinite;
+        }
+
+        .badge:hover {
+            transform: scale(1.2);
+            filter: brightness(1.3);
+        }
+
+        .badge.collected {
+            display: none;
+        }
+
+        @keyframes badgeFloat {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        .badge-icon {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #FFD700 0%, #ffa500 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: #3E0097;
+            border: 3px solid #3E0097;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+        }
+
+        .badge-label {
+            position: absolute;
+            top: 48px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 9px;
+            color: #FFD700;
+            background: rgba(62, 0, 151, 0.9);
+            padding: 2px 5px;
+            border-radius: 3px;
+            white-space: nowrap;
+        }
+
+        /* Info Panels */
+        /* Info Panels - Billboard Style */
+        .info-panel {
+            position: absolute;
+            background: #f0f0f0;
+            color: #333;
+            padding: 20px;
+            border-radius: 2px;
+            max-width: 350px;
+            z-index: 100;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border: 4px solid #444;
+            /* Billboard frame */
+            font-size: 13px;
+
+            /* Slightly reduced font size for fitting */
+        }
+
+        .info-panel::before {
+            content: '';
+            position: absolute;
+            bottom: -280px;
+            /* Extended to reach ground */
+            left: 20%;
+            width: 8px;
+            height: 280px;
+            background: #444;
+            /* Dark grey for poles */
+            z-index: -1;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .info-panel::after {
+            content: '';
+            position: absolute;
+            bottom: -280px;
+            /* Extended to reach ground */
+            right: 20%;
+            width: 8px;
+            height: 280px;
+            background: #444;
+            /* Dark grey for poles */
+            z-index: -1;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .info-panel h2 {
+            margin: 0 0 10px 0;
+            color: #3E0097;
+            font-size: 18px;
+            border-bottom: 2px solid #FFD700;
+            padding-bottom: 5px;
+        }
+
+        .info-panel p {
+            margin: 5px 0;
+            line-height: 1.4;
+        }
+
+        .info-panel ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        .info-panel li {
+            margin-bottom: 5px;
+        }
+
+        .highlight {
+            color: #3E0097;
+            /* Brand Blue instead of red */
+            font-weight: bold;
+        }
+
+        /* Contact/Finale specific override for cleaner look */
+        .contact-billboard {
+            background: #fff;
+            text-align: center;
+        }
+
+        .contact-billboard::before,
+        .contact-billboard::after {
+            background: #333;
+            /* Darker legs for formality */
+        }
+
+        /* Vehicle Zone */
+        .vehicle-zone {
+            position: absolute;
+            bottom: 100px;
+            width: 120px;
+            height: 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .parked-forklift,
+        .parked-car {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .zone-label {
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #FFD700;
+            font-size: 10px;
+            white-space: nowrap;
+            background: rgba(62, 0, 151, 0.8);
+            padding: 3px 8px;
+            border-radius: 3px;
+        }
+
+        /* University */
+        .university {
+            position: absolute;
+            bottom: 100px;
+        }
+
+        .university-building {
+            position: relative;
+            background: linear-gradient(180deg, #f5f0e6 0%, #e5e0d6 100%);
+            border: 4px solid #8a8570;
+        }
+
+        .university-pediment {
+            position: absolute;
+            top: -50px;
+            left: -10px;
+            width: calc(100% + 20px);
+            height: 55px;
+            background: linear-gradient(180deg, #f5f0e6 0%, #e5e0d6 100%);
+            clip-path: polygon(0% 100%, 50% 0%, 100% 100%);
+            border: 3px solid #8a8570;
+        }
+
+        .university-column {
+            position: absolute;
+            bottom: 0;
+            width: 20px;
+            background: linear-gradient(90deg, #e5e0d6 0%, #f5f0e6 30%, #e5e0d6 100%);
+            border: 2px solid #8a8570;
+            border-radius: 3px 3px 0 0;
+        }
+
+        .university-door {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 70px;
+            background: linear-gradient(180deg, #5a4a3a 0%, #3a2a1a 100%);
+            border: 3px solid #2a1a0a;
+            border-radius: 25px 25px 0 0;
+        }
+
+        .university-name {
+            position: absolute;
+            top: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #3E0097;
+            font-weight: bold;
+            font-size: 18px;
+            white-space: nowrap;
+        }
+
+        .university-date {
+            position: absolute;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #666;
+            font-size: 12px;
+        }
+
+        /* Flags */
+        .flag-display {
+            position: absolute;
+            bottom: 100px;
+            height: 100px;
+            /* Essential for top:5px positioning */
+        }
+
+        .vehicle-zone.taken .parked-car,
+        .vehicle-zone.taken .parked-forklift,
+        .vehicle-zone.taken .parked-plane {
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .flag-pole {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 5px;
+            height: 100px;
+            background: linear-gradient(90deg, #888 0%, #aaa 50%, #888 100%);
+        }
+
+        .flag-cloth {
+            position: absolute;
+            top: 5px;
+            left: 7px;
+            width: 50px;
+            height: 35px;
+            animation: flagWave 2s ease-in-out infinite;
+            border-radius: 0 3px 3px 0;
+        }
+
+        @keyframes flagWave {
+
+            0%,
+            100% {
+                transform: skewY(0deg) scaleX(1);
+            }
+
+            25% {
+                transform: skewY(2deg) scaleX(0.95);
+            }
+
+            75% {
+                transform: skewY(-2deg) scaleX(0.98);
+            }
+        }
+
+        .flag-fr {
+            background: linear-gradient(90deg, #0055a4 33%, #fff 33%, #fff 66%, #ef4135 66%);
+        }
+
+        .flag-uk {
+            background: #012169;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .flag-uk::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                linear-gradient(45deg, transparent 40%, rgba(255, 255, 255, 0.7) 40%, rgba(255, 255, 255, 0.7) 60%, transparent 60%),
+                linear-gradient(-45deg, transparent 40%, rgba(255, 255, 255, 0.7) 40%, rgba(255, 255, 255, 0.7) 60%, transparent 60%),
+                linear-gradient(90deg, transparent 40%, rgba(255, 255, 255, 0.7) 40%, rgba(255, 255, 255, 0.7) 60%, transparent 60%),
+                linear-gradient(0deg, transparent 40%, rgba(255, 255, 255, 0.7) 40%, rgba(255, 255, 255, 0.7) 60%, transparent 60%);
+        }
+
+        .flag-uk::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                linear-gradient(90deg, transparent 45%, #C8102E 45%, #C8102E 55%, transparent 55%),
+                linear-gradient(0deg, transparent 45%, #C8102E 45%, #C8102E 55%, transparent 55%);
+        }
+
+        .flag-es {
+            background: linear-gradient(180deg, #c60b1e 25%, #ffc400 25%, #ffc400 75%, #c60b1e 75%);
+        }
+
+        .flag-cn {
+            background: #de2910;
+            position: relative;
+        }
+
+        .flag-cn::before {
+            content: '★';
+            position: absolute;
+            top: 2px;
+            left: 3px;
+            color: #ffde00;
+            font-size: 14px;
+        }
+
+        .flag-cn::after {
+            content: '★';
+            position: absolute;
+            top: 4px;
+            left: 18px;
+            color: #ffde00;
+            font-size: 4px;
+            text-shadow:
+                -2px 5px 0 #ffde00,
+                -2px 10px 0 #ffde00,
+                -5px 14px 0 #ffde00;
+            transform: rotate(15deg);
+        }
+
+        /* Truck Animation */
+        .truck-depart {
+            animation: truckDepart 4s ease-in forwards;
+        }
+
+        @keyframes truckDepart {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(2000px);
+            }
+        }
+
+        /* Hobbies Icons */
+        .hobby-icon {
+            position: absolute;
+            font-size: 40px;
+            animation: bounce 2s infinite ease-in-out;
+            filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        @keyframes steam {
+            0% {
+                transform: translateY(0);
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: translateY(-20px) scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        @keyframes runBackForth {
+            0% {
+                transform: translateX(0) scaleX(1);
+            }
+
+            45% {
+                transform: translateX(50px) scaleX(1);
+            }
+
+            50% {
+                transform: translateX(50px) scaleX(-1);
+            }
+
+            95% {
+                transform: translateX(0) scaleX(-1);
+            }
+
+            100% {
+                transform: translateX(0) scaleX(1);
+            }
+        }
+
+        /* Floating Code for Hobbies */
+        .code-float {
+            position: absolute;
+            color: #00ff00;
+            font-family: monospace;
+            font-size: 10px;
+            opacity: 0.7;
+            animation: codeFloat 3s linear infinite;
+        }
+
+        @keyframes codeFloat {
+            0% {
+                transform: translateY(0);
+                opacity: 0.7;
+            }
+
+            100% {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+        }
+
+        /* Stars */
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+
+            0%,
+            100% {
+                opacity: 0.3;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        /* HUD */
+        #hud {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            z-index: 200;
+            pointer-events: none;
+        }
+
+        .hud-panel {
+            background: rgba(62, 0, 151, 0.9);
+            border: 2px solid #FFD700;
+            border-radius: 10px;
+            padding: 10px 15px;
+            color: white;
+            pointer-events: auto;
+        }
+
+        #levelIndicator h3 {
+            color: #FFD700;
+            margin-bottom: 3px;
+            font-size: 14px;
+        }
+
+        #levelIndicator p {
+            font-size: 11px;
+            opacity: 0.9;
+        }
+
+        #xpBar {
+            width: 180px;
+            height: 18px;
+            background: #1a1a2e;
+            border-radius: 9px;
+            overflow: hidden;
+            border: 2px solid #FFD700;
+        }
+
+        #xpFill {
+            height: 100%;
+            background: linear-gradient(90deg, #FFD700 0%, #ffa500 100%);
+            transition: width 0.5s ease;
+        }
+
+        #xpText {
+            font-size: 11px;
+            margin-top: 4px;
+            text-align: center;
+        }
+
+        #badgeCount {
+            text-align: center;
+        }
+
+        #badgeCount span {
+            font-size: 24px;
+            color: #FFD700;
+            font-weight: bold;
+        }
+
+        #vehicleStatus {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+        }
+
+        #vehicleIcon {
+            font-size: 20px;
+        }
+
+        /* Controls */
+        #controls {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(62, 0, 151, 0.9);
+            border: 2px solid #FFD700;
+            border-radius: 10px;
+            padding: 12px;
+            color: white;
+            font-size: 11px;
+            z-index: 200;
+        }
+
+        #controls h4 {
+            color: #FFD700;
+            margin-bottom: 6px;
+            font-size: 12px;
+        }
+
+        .key {
+            display: inline-block;
+            background: #1a1a2e;
+            border: 1px solid #FFD700;
+            border-radius: 3px;
+            padding: 1px 6px;
+            margin: 1px;
+            font-family: monospace;
+            font-size: 10px;
+        }
+
+        /* Start Screen */
+        #startScreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, #1a1a2e 0%, #3E0097 100%);
+            z-index: 400;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        #startScreen h1 {
+            font-size: 48px;
+            color: #FFD700;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+
+        #startScreen h2 {
+            font-size: 20px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        #startButton {
+            padding: 18px 50px;
+            font-size: 22px;
+            background: linear-gradient(180deg, #FFD700 0%, #ffa500 100%);
+            border: none;
+            border-radius: 50px;
+            color: #3E0097;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        #startButton:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
+        }
+
+        #startScreen .instructions {
+            margin-top: 30px;
+            text-align: center;
+            opacity: 0.8;
+            font-size: 14px;
+        }
+
+        /* Animation classes */
+        .walking .walk-leg.left {
+            animation: walkLeft 0.3s ease-in-out infinite;
+        }
+
+        .walking .walk-leg.right {
+            animation: walkRight 0.3s ease-in-out infinite;
+        }
+
+        .walking .walk-arm.left {
+            animation: armSwingLeft 0.3s ease-in-out infinite;
+        }
+
+        .walking .walk-arm.right {
+            animation: armSwingRight 0.3s ease-in-out infinite;
+        }
+
+        @keyframes walkLeft {
+
+            0%,
+            100% {
+                transform: translateX(-2px);
+            }
+
+            50% {
+                transform: translateX(2px);
+            }
+        }
+
+        @keyframes walkRight {
+
+            0%,
+            100% {
+                transform: translateX(2px);
+            }
+
+            50% {
+                transform: translateX(-2px);
+            }
+        }
+
+        @keyframes armSwingLeft {
+
+            0%,
+            100% {
+                transform: rotate(-12deg);
+            }
+
+            50% {
+                transform: rotate(12deg);
+            }
+        }
+
+        @keyframes armSwingRight {
+
+            0%,
+            100% {
+                transform: rotate(12deg);
+            }
+
+            50% {
+                transform: rotate(-12deg);
+            }
+        }
+
+        .driving .forklift-wheel,
+        .driving .car-wheel {
+            animation: wheelSpin 0.2s linear infinite;
+        }
+
+        @keyframes wheelSpin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Particles */
+        .collect-particle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #FFD700;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 150;
+            animation: collectBurst 0.5s ease-out forwards;
+        }
+
+        @keyframes collectBurst {
+            0% {
+                transform: scale(1) translate(0, 0);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(0) translate(var(--tx), var(--ty));
+                opacity: 0;
+            }
+        }
+
+        /* Mobile Controls */
+        #mobileControls {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 200;
+            gap: 15px;
+        }
+
+        .mobile-btn {
+            width: 55px;
+            height: 55px;
+            background: rgba(62, 0, 151, 0.9);
+            border: 2px solid #FFD700;
+            border-radius: 50%;
+            color: #FFD700;
+            font-size: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        @media (max-width: 768px) {
+            #mobileControls {
+                display: flex;
+            }
+
+            #controls {
+                display: none;
+            }
+
+            .info-panel {
+                bottom: auto !important;
+                top: 80px;
+                left: 50% !important;
+                transform: translateX(-50%);
+                width: 90%;
+                max-width: none;
+                max-height: 40vh;
+                overflow-y: auto;
+                font-size: 11px;
+                /* Slightly smaller base on mobile */
+            }
+
+            #hud {
+                top: 10px;
+            }
+
+            .hud-panel {
+                padding: 5px 10px;
+            }
+
+            h1 {
+                font-size: 32px !important;
+            }
+
+            h2 {
+                font-size: 16px !important;
+            }
+        }
+
+        /* Sound Toggle */
+        #soundToggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 45px;
+            height: 45px;
+            background: rgba(62, 0, 151, 0.9);
+            border: 2px solid #FFD700;
+            border-radius: 50%;
+            color: #FFD700;
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 201;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Truck */
+        .parked-truck {
+            position: absolute;
+            bottom: 100px;
+        }
+
+        .truck-trailer {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            width: 120px;
+            height: 70px;
+            background: linear-gradient(180deg, #f8f8f8 0%, #e0e0e0 100%);
+            border: 3px solid #999;
+        }
+
+        .truck-trailer::before {
+            content: 'FORVIA';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #3E0097;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .truck-cab {
+            position: absolute;
+            bottom: 20px;
+            left: 115px;
+            width: 55px;
+            height: 55px;
+            background: linear-gradient(180deg, #3E0097 0%, #2a0066 100%);
+            border: 3px solid #1a0044;
+            border-radius: 5px 10px 5px 5px;
+        }
+
+        .truck-window {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            right: 8px;
+            height: 25px;
+            background: linear-gradient(180deg, #87ceeb 0%, #5fb3d4 100%);
+            border-radius: 3px 8px 3px 3px;
+        }
+
+        .truck-wheel {
+            position: absolute;
+            bottom: 5px;
+            width: 24px;
+            height: 24px;
+            background: radial-gradient(circle, #444 50%, #222 100%);
+            border-radius: 50%;
+            border: 3px solid #333;
+        }
+
+        /* Ambient Traffic and Sky Elements */
+        .traffic-vehicle {
+            position: absolute;
+            bottom: 20px;
+            z-index: 50;
+            pointer-events: none;
+        }
+
+        .traffic-car {
+            width: 60px;
+            height: 30px;
+            background: linear-gradient(180deg, #ff4444 0%, #cc0000 100%);
+            border-radius: 8px 15px 5px 5px;
+            border: 2px solid #550000;
+        }
+
+        .traffic-car::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            width: 30px;
+            height: 12px;
+            background: linear-gradient(180deg, #87ceeb 0%, #5fb3d4 100%);
+            border-radius: 5px 5px 0 0;
+            border: 2px solid #550000;
+            border-bottom: none;
+        }
+
+        .traffic-car::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 8px;
+            width: 14px;
+            height: 14px;
+            background: #333;
+            border-radius: 50%;
+            box-shadow: 28px 0 0 #333;
+            border: 2px solid #111;
+        }
+
+        .traffic-truck {
+            width: 100px;
+            height: 40px;
+            background: linear-gradient(180deg, #fff 0%, #ccc 100%);
+            border: 2px solid #666;
+            border-radius: 4px;
+        }
+
+        .traffic-truck::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: -25px;
+            width: 25px;
+            height: 32px;
+            background: #3E0097;
+            border-radius: 0 5px 0 0;
+            border: 2px solid #1a0044;
+        }
+
+        .traffic-truck::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 10px;
+            width: 16px;
+            height: 16px;
+            background: #333;
+            border-radius: 50%;
+            box-shadow: 18px 0 0 #333, 85px 0 0 #333;
+            border: 2px solid #111;
+        }
+
+        .plane {
+            position: absolute;
+            top: 15%;
+            width: 30px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 50% 20% 20% 0;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        .plane::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 10px;
+            width: 4px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.6);
+            transform: skewX(30deg);
+        }
+
+        .plane::after {
+            content: '';
+            position: absolute;
+            top: 3px;
+            left: 12px;
+            width: 12px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 0 5px white;
+        }
