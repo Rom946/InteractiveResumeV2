@@ -37,6 +37,33 @@
             align-items: center;
             color: white;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            /* Prevent text wrapping from breaking layout */
+        }
+
+        @media screen and (max-width: 768px) {
+            #contactHeader {
+                height: 45px;
+            }
+
+            .header-content {
+                gap: 12px;
+                font-size: 11px;
+            }
+
+            .header-name {
+                font-size: 13px;
+                padding-right: 12px;
+                white-space: nowrap;
+            }
+
+            .header-item {
+                gap: 4px;
+            }
+
+            .header-link {
+                padding: 3px 8px;
+            }
         }
 
         .header-content {
@@ -62,8 +89,8 @@
             left: 50%;
             transform: translateX(-50%);
             display: none;
-            gap: 12px;
-            padding: 6px 14px;
+            gap: 6px;
+            padding: 4px 12px;
             background: rgba(10, 10, 30, 0.7);
             backdrop-filter: blur(10px);
             border-radius: 0 0 15px 15px;
@@ -74,24 +101,25 @@
             align-items: center;
             backface-visibility: hidden;
             width: fit-content;
-            max-width: 95vw;
+            white-space: nowrap;
+            /* Prevent elements from wrapping inside the HUD box */
         }
 
         #skillShelf {
             display: flex;
-            gap: 12px;
+            gap: 6px;
             align-items: center;
             border-left: 1px solid rgba(255, 255, 255, 0.1);
             border-right: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 0 10px;
+            padding: 0 6px;
         }
 
         .skill-category {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 3px;
-            padding: 0 5px;
+            gap: 1px;
+            padding: 0 4px;
             border-right: 1px solid rgba(255, 255, 255, 0.1);
         }
 
@@ -100,19 +128,19 @@
         }
 
         .category-label {
-            font-size: 8px;
+            font-size: 7px;
             color: #FFD700;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.3px;
             font-weight: bold;
-            margin-bottom: 2px;
+            margin-bottom: 1px;
             opacity: 0.7;
             white-space: nowrap;
         }
 
         .shelf-icons {
             display: flex;
-            gap: 6px;
+            gap: 4px;
         }
 
         .shelf-icon {
@@ -277,7 +305,8 @@
         }
 
         #rotate-warning {
-            display: none;
+            display: none !important;
+            /* Disabled as requested */
             position: fixed;
             top: 0;
             left: 0;
@@ -1461,11 +1490,11 @@
         .info-panel::before {
             content: '';
             position: absolute;
-            bottom: -180px;
-            /* Reaches ground (280 - 180 = 100) */
+            bottom: -500px;
+            /* Over-extend to guarantee it hits the ground */
             left: 20%;
             width: 8px;
-            height: 180px;
+            height: 500px;
             background: #444;
             z-index: -1;
             box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
@@ -1474,11 +1503,10 @@
         .info-panel::after {
             content: '';
             position: absolute;
-            bottom: -180px;
-            /* Reaches ground (280 - 180 = 100) */
+            bottom: -500px;
             right: 20%;
             width: 8px;
-            height: 180px;
+            height: 500px;
             background: #444;
             z-index: -1;
             box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
@@ -1521,9 +1549,8 @@
         .contact-billboard::before,
         .contact-billboard::after {
             background: #333;
-            bottom: -140px;
-            /* Reaches ground (240 - 140 = 100) */
-            height: 140px;
+            bottom: -500px;
+            height: 500px;
         }
 
         /* Vehicle Zone */
@@ -2074,33 +2101,15 @@
         }
 
         @media (max-width: 768px) {
-            #mobileControls {
-                display: flex;
-            }
-
-            #controls {
-                display: none;
-            }
-
             .info-panel {
-                bottom: auto !important;
-                top: 80px;
-                left: 50% !important;
-                transform: translateX(-50%);
                 width: 90%;
-                max-width: none;
-                max-height: 40vh;
-                overflow-y: auto;
+                max-width: 320px;
                 font-size: 11px;
-                /* Slightly smaller base on mobile */
-            }
-
-            #hud {
-                top: 10px;
+                padding: 12px;
             }
 
             .hud-panel {
-                padding: 5px 10px;
+                padding: 3px 6px;
             }
 
             h1 {
@@ -2109,6 +2118,26 @@
 
             h2 {
                 font-size: 16px !important;
+            }
+        }
+
+        @media (max-width: 500px) {
+            #startScreen h1 {
+                font-size: 28px !important;
+            }
+
+            #startScreen h2 {
+                font-size: 14px !important;
+                margin-bottom: 20px;
+            }
+
+            #startButton {
+                padding: 12px 30px;
+                font-size: 16px;
+            }
+
+            .hud-panel p {
+                font-size: 7px;
             }
         }
 
