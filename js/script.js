@@ -75,7 +75,7 @@ const levels = [
     { name: "GSDI", subtitle: "Branch Manager Assistant", width: 1255, bgClass: "level-gsdi" },
     { name: "Wuhan University", subtitle: "Deep Dive on Logistics", width: 1255, bgClass: "level-wuhan" },
     { name: "Orange", subtitle: "Telecommunications Technician", width: 1255, bgClass: "level-orange" },
-    { name: "Education", subtitle: "Academic Journey", width: 1255, bgClass: "level-4" },
+    { name: "Education", subtitle: "Academic Journey", width: 1700, bgClass: "level-4" },
     { name: "Hobbies", subtitle: "Passions & Interests", width: 1255, bgClass: "level-2" },
     { name: "Contact & Finale", subtitle: "Let's Connect!", width: 2000, bgClass: "level-5" }
 ];
@@ -399,7 +399,6 @@ function generateLevelContent(levelIndex) {
                             <div class="smoke" style="top: -25px; left: 10px; animation-delay: 1s;"></div>
                         </div>
                         <div class="warehouse-sign" style="top: 25px; font-size: 18px; padding: 10px 26px; background: linear-gradient(180deg, #3E0097 0%, #2a0066 100%); border: 3px solid #FFD700; box-shadow: 0 4px 12px rgba(255,215,0,0.3);">FORVIA</div>
-                        <div style="position: absolute; top: 55px; left: 50%; transform: translateX(-50%); color: #ddd; font-size: 11px; background: rgba(0,0,0,0.3); padding: 2px 8px; border-radius: 3px;">(FAURECIA)</div>
                         <!-- Improved industrial windows -->
                         <div style="position: absolute; top: 95px; left: 15px; display: grid; grid-template-columns: repeat(3, 65px); grid-gap: 12px;">
                             <div style="width: 65px; height: 42px; background: linear-gradient(180deg, #ffdd88 0%, #ffcc44 100%); border: 3px solid #2a3a4a; box-shadow: 0 0 15px rgba(255,215,0,0.4), inset 0 0 10px rgba(255,255,255,0.3);"></div>
@@ -520,21 +519,39 @@ function generateLevelContent(levelIndex) {
             // Research lab (Wuhan)
             html += `
                 <div style="position: absolute; left: 80px; bottom: 100px;">
-                    <div style="position: relative; width: 220px; height: 170px; background: linear-gradient(180deg, #f0f0f0 0%, #d0d0d0 100%); border-radius: 3px;">
-                        <div class="university-pediment"></div>
-                        <div class="university-name" style="font-size: 10px; color: #3E0097;">WUHAN UNIV. TECH.</div>
-                        <div style="position: absolute; top: 35px; left: 50%; transform: translateX(-50%); color: #3E0097; font-size: 9px;">Research Lab</div>
-                        <!-- Lab equipment silhouettes -->
-                        <div style="position: absolute; bottom: 20px; left: 20px; width: 30px; height: 60px; background: rgba(62,0,151,0.2); border: 2px solid #3E0097; border-radius: 3px;"></div>
-                        <div style="position: absolute; bottom: 20px; left: 60px; width: 25px; height: 50px; background: rgba(62,0,151,0.2); border: 2px solid #3E0097; border-radius: 3px;"></div>
-                        <div style="position: absolute; bottom: 20px; left: 95px; width: 35px; height: 70px; background: rgba(62,0,151,0.2); border: 2px solid #3E0097; border-radius: 3px;"></div>
-                        <!-- Windows (constrained within building) -->
-                        <div style="position: absolute; top: 60px; left: 140px; display: grid; grid-template-rows: repeat(2, 35px); grid-gap: 8px; width: 60px; overflow: hidden;">
-                            <div style="width: 60px; height: 35px; background: rgba(62,0,151,0.1); border: 2px solid #3E0097; box-shadow: inset 0 0 8px rgba(62,0,151,0.2);"></div>
-                            <div style="width: 60px; height: 35px; background: rgba(62,0,151,0.1); border: 2px solid #3E0097; box-shadow: inset 0 0 8px rgba(62,0,151,0.2);"></div>
+                    <!-- Modern Research Lab Building -->
+                    <div style="position: relative; width: 240px; height: 190px; background: linear-gradient(135deg, #eef 0%, #dde 100%); border-radius: 5px 5px 0 0; box-shadow: 10px 10px 30px rgba(0,0,0,0.3); border-right: 10px solid #ccc; border-top: 2px solid white;">
+                        
+                        <!-- Glass Facade Section -->
+                        <div style="position: absolute; top: 10px; left: 10px; width: 140px; height: 170px; background: linear-gradient(135deg, #aaccff 0%, #6699ff 100%); border: 2px solid #5588dd; border-radius: 4px; overflow: hidden; display: grid; grid-template-rows: repeat(5, 1fr); gap: 2px; padding: 2px;">
+                            ${Array(5).fill(`<div style="width: 132px; background: rgba(255,255,255,0.2);"></div>`).join('')}
                         </div>
+
+                        <!-- Side Concrete Section with Logo -->
+                        <div style="position: absolute; right: 0; top: 0; width: 80px; height: 190px; background: #ddd; border-top-right-radius: 5px;">
+                            <div style="margin-top: 15px; text-align: center;">
+                                <div style="font-weight: bold; color: #3E0097; font-size: 14px; line-height: 1.1;">WUHAN</div>
+                                <div style="font-size: 8px; color: #555; font-weight: bold;">UNIV. TECH.</div>
+                                <div style="margin-top: 5px; width: 60px; height: 2px; background: #3E0097; margin-left: auto; margin-right: auto;"></div>
+                            </div>
+
+                             <!-- Molecule Symbol -->
+                             <div style="position: absolute; top: 70px; left: 50%; transform: translateX(-50%); width: 40px; height: 40px;">
+                                <div style="position: absolute; top: 0; left: 15px; width: 10px; height: 10px; background: #E03C31; border-radius: 50%;"></div>
+                                <div style="position: absolute; bottom: 0; left: 0; width: 10px; height: 10px; background: #3E0097; border-radius: 50%;"></div>
+                                <div style="position: absolute; bottom: 0; right: 0; width: 10px; height: 10px; background: #3E0097; border-radius: 50%;"></div>
+                                <div style="position: absolute; top: 5px; left: 19px; width: 2px; height: 30px; background: #888; transform: rotate(20deg);"></div>
+                                <div style="position: absolute; top: 5px; left: 19px; width: 2px; height: 30px; background: #888; transform: rotate(-20deg);"></div>
+                                <div style="position: absolute; bottom: 5px; left: 5px; width: 30px; height: 2px; background: #888;"></div>
+                             </div>
+                             
+                             <div style="position: absolute; bottom: 20px; width: 100%; text-align: center; color: #3E0097; font-size: 9px; font-weight: bold;">RESEARCH LAB</div>
+                        </div>
+
+                        <!-- Roof Detail -->
+                        <div style="position: absolute; top: -10px; left: 20px; width: 200px; height: 10px; background: #3E0097; border-radius: 2px;"></div>
                     </div>
-                        </div>
+                 </div>
                 `;
             // Chinese flag removed
             html += ``;
@@ -611,53 +628,68 @@ function generateLevelContent(levelIndex) {
             break;
 
         case 7: // Education
-            // UTBM
+            // UTBM (Engineering - Modern/Tech)
             html += `
                 <div class="university" style="left: 50px;">
-                    <div class="university-building" style="width: 200px; height: 160px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); border: 4px solid #8a8570;">
-                        <div class="university-pediment"></div>
-                        <div class="university-name" style="font-size: 16px; font-weight: bold;">UTBM</div>
-                        <div class="university-date">2016 - 2020</div>
-                        <!-- Window grid -->
-                        <div style="position: absolute; top: 60px; left: 15px; display: grid; grid-template-columns: repeat(3, 50px); grid-gap: 10px;">
-                            <div style="width: 50px; height: 35px; background: rgba(62,0,151,0.1); border: 2px solid #3E0097; box-shadow: inset 0 0 8px rgba(62,0,151,0.2);"></div>
-                            <div style="width: 50px; height: 35px; background: rgba(62,0,151,0.1); border: 2px solid #3E0097; box-shadow: inset 0 0 8px rgba(62,0,151,0.2);"></div>
-                            <div style="width: 50px; height: 35px; background: rgba(62,0,151,0.1); border: 2px solid #3E0097; box-shadow: inset 0 0 8px rgba(62,0,151,0.2);"></div>
-                            <div style="width: 50px; height: 35px; background: rgba(62,0,151,0.1); border: 2px solid #3E0097; box-shadow: inset 0 0 8px rgba(62,0,151,0.2);"></div>
-                            <div style="width: 50px; height: 35px; background: rgba(62,0,151,0.1); border: 2px solid #3E0097; box-shadow: inset 0 0 8px rgba(62,0,151,0.2);"></div>
-                            <div style="width: 50px; height: 35px; background: rgba(62,0,151,0.1); border: 2px solid #3E0097; box-shadow: inset 0 0 8px rgba(62,0,151,0.2);"></div>
+                    <div class="university-building" style="width: 220px; height: 180px; background: linear-gradient(135deg, #e6e6e6 0%, #dcdcdc 100%); border: none; box-shadow: 0 10px 30px rgba(0,0,0,0.4); border-radius: 5px 5px 0 0; position: relative; overflow: hidden;">
+                         <!-- Modern Glass Facade -->
+                        <div style="position: absolute; top: 10px; left: 10px; right: 10px; bottom: 0; background: linear-gradient(180deg, #87cefa 0%, #4682b4 100%); border-radius: 5px 5px 0 0; border: 2px solid #aaa; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; padding: 2px;">
+                             ${Array(16).fill('<div style="background: rgba(255,255,255,0.2);"></div>').join('')}
                         </div>
+                        <div style="position: absolute; top: -5px; left: 50%; transform: translateX(-50%); background: #333; color: #fff; font-size: 14px; padding: 4px 12px; border-radius: 0 0 5px 5px; font-weight: bold; z-index: 10;">UTBM</div>
+                        <!-- Tech Accents -->
+                        <div style="position: absolute; bottom: 0; left: -10px; width: 240px; height: 10px; background: #555;"></div>
                     </div>
-                        </div>
-                `;
-            // IUT Nice
+                </div>`;
+
+            // MATE (Management - Classical European)
             html += `
-                <div class="university" style="left: 300px;">
-                    <div class="university-building" style="width: 150px; height: 140px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); border: 4px solid #8a8570;">
-                        <div class="university-pediment"></div>
-                        <div class="university-name" style="font-size: 14px; font-weight: bold;">IUT Nice</div>
-                        <div class="university-date">2013 - 2015</div>
-                        <!-- Window grid -->
-                        <div style="position: absolute; top: 55px; left: 10px; display: grid; grid-template-columns: repeat(2, 60px); grid-gap: 10px;">
-                            <div style="width: 60px; height: 30px; background: rgba(62,0,151,0.1); border: 2px solid #3E0097; box-shadow: inset 0 0 8px rgba(62,0,151,0.2);"></div>
-                            <div style="width: 60px; height: 30px; background: rgba(62,0,151,0.1); border: 2px solid #3E0097; box-shadow: inset 0 0 8px rgba(62,0,151,0.2);"></div>
-                            <div style="width: 60px; height: 30px; background: rgba(62,0,151,0.1); border: 2px solid #3E0097; box-shadow: inset 0 0 8px rgba(62,0,151,0.2);"></div>
-                            <div style="width: 60px; height: 30px; background: rgba(62,0,151,0.1); border: 2px solid #3E0097; box-shadow: inset 0 0 8px rgba(62,0,151,0.2);"></div>
-                        </div>
+                <div class="university" style="left: 350px;">
+                     <div class="university-building" style="width: 180px; height: 160px; background: #f4e4bc; border: none; box-shadow: 0 10px 25px rgba(0,0,0,0.3); position: relative;">
+                        <!-- Columns -->
+                        <div style="position: absolute; bottom: 0; left: 10px; width: 20px; height: 120px; background: linear-gradient(90deg, #e0d0a0, #fff, #e0d0a0); border-radius: 2px;"></div>
+                        <div style="position: absolute; bottom: 0; left: 50px; width: 20px; height: 120px; background: linear-gradient(90deg, #e0d0a0, #fff, #e0d0a0); border-radius: 2px;"></div>
+                        <div style="position: absolute; bottom: 0; right: 50px; width: 20px; height: 120px; background: linear-gradient(90deg, #e0d0a0, #fff, #e0d0a0); border-radius: 2px;"></div>
+                        <div style="position: absolute; bottom: 0; right: 10px; width: 20px; height: 120px; background: linear-gradient(90deg, #e0d0a0, #fff, #e0d0a0); border-radius: 2px;"></div>
+                        
+                        <!-- Roof/Pediment -->
+                        <div style="position: absolute; top: 0; left: -10px; width: 200px; height: 40px; background: #8d7b58; clip-path: polygon(50% 0%, 0% 100%, 100% 100%);"></div>
+                        <div style="position: absolute; top: 25px; left: 50%; transform: translateX(-50%); font-weight: bold; color: #5d4b28; font-size: 12px;">MATE</div>
+                        <!-- Base -->
+                        <div style="position: absolute; bottom: 0; width: 100%; height: 5px; background: #8d7b58;"></div>
                     </div>
-                        </div>
-                `;
-            // Flags - Positioned correctly on poles
+                </div>`;
+
+            // CCNU (China - Oriental Style)
             html += `
-                <div class="flag-display" style="left: 500px;">
+                <div class="university" style="left: 600px;">
+                    <div class="university-building" style="width: 180px; height: 150px; background: #b22222; border: none; box-shadow: 0 10px 25px rgba(0,0,0,0.3); position: relative; border-radius: 2px;">
+                        <!-- Curved Roof (Pagoda) -->
+                        <div style="position: absolute; top: -30px; left: -10px; width: 200px; height: 40px; background: #ffd700; border-radius: 50% 50% 0 0; clip-path: polygon(0 100%, 5% 50%, 50% 0, 95% 50%, 100% 100%, 10% 100%, 90% 100%);"></div>
+                        <!-- Second Roof Tier -->
+                        <div style="position: absolute; top: 30px; left: -5px; width: 190px; height: 20px; background: #ffd700; border-radius: 10px; clip-path: polygon(0 100%, 10% 0, 90% 0, 100% 100%);"></div>
+                        
+                        <!-- Door/Gate -->
+                        <div style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 50px; height: 60px; background: #800000; border: 2px solid #ffd700; border-bottom: none; border-radius: 30px 30px 0 0;">
+                            <div style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; color: #ffd700; font-size: 8px;">CCNU</div>
+                        </div>
+                        
+                        <!-- Columns/Detail -->
+                         <div style="position: absolute; bottom: 0; left: 20px; width: 10px; height: 100px; background: #800000; border-left: 2px solid #ffd700;"></div>
+                         <div style="position: absolute; bottom: 0; right: 20px; width: 10px; height: 100px; background: #800000; border-right: 2px solid #ffd700;"></div>
+                    </div>
+                </div>`;
+            // Flags - Positioned to the right of CCNU (starts at 800px)
+            html += `
+                <div class="flag-display" style="left: 800px;">
                             <div class="flag-pole"></div>
                             <div class="flag-cloth flag-fr" style="top:5px; left:2px;"></div>
                         </div>
-                        <div class="flag-display" style="left: 560px;">
+                        <div class="flag-display" style="left: 860px;">
                             <div class="flag-pole"></div>
                             <div class="flag-cloth flag-uk" style="top:5px; left:2px;"></div>
                         </div>
-                         <div class="flag-display" style="left: 620px;">
+                         <div class="flag-display" style="left: 920px;">
                             <div class="flag-pole"></div>
                             <div class="flag-cloth flag-es" style="top:5px; left:2px;"></div>
                         </div>
@@ -834,11 +866,13 @@ function generateInfoPanel(levelIndex) {
                         <li>Customer support for private & business clients.</li>
                     </ul>
                 </div> `,
-        `<div class="info-panel" style="left: 800px; bottom: 280px; width: 450px;">
+        `<div class="info-panel" style="left: 1000px; bottom: 280px; width: 500px;">
                     <h2>Education</h2>
                     <p><strong>M.Sc. Ind. Systems</strong> | UTBM | 2016-2020</p>
-                    <p><strong>M.Sc. Management</strong> | MATE | 2019-20</p>
+                    <p><strong>M.Sc. Management</strong> | MATE (Hungary) | 2019-20</p>
                     <p><strong>Chinese Lang.</strong> | CCNU (China) | 2018-19</p>
+                    <p><strong>Prep. School</strong> | Lycée Jean Moulin | 2015-16</p>
+                    <p><strong>B.Sc. Electrical Eng. & IT</strong> | Univ. Nice Sophia | 2013-15</p>
                     <p style="margin-top: 10px;"><strong>Languages:</strong> English (Fluent), Spanish (Fluent), French (Native), Chinese (Limited)</p>
                 </div> `,
         `<div class="info-panel" style="left: 800px; bottom: 280px;">
@@ -953,11 +987,23 @@ function updateCharacterDisplay() {
 
     switch (gameState.vehicle) {
         case 'walk':
+            let extraClass = '';
+            if (gameState.victory) extraClass = 'victory';
+            else if (gameState.isMoving) extraClass = 'walking';
+            else extraClass = 'idle'; // Explicit idle class
+
             html = `
-                <div class="character-walk ${gameState.isMoving ? 'walking' : ''}">
-                            <div class="walk-helmet"></div>
-                            <div class="walk-head"></div>
-                            <div class="walk-body"></div>
+                <div class="character-walk ${extraClass}">
+                            <div class="walk-cape"></div>
+                            <div class="walk-head">
+                                <div class="walk-eye left"></div>
+                                <div class="walk-eye right"></div>
+                                <div class="walk-mouth"></div>
+                                <div class="walk-ear left"></div>
+                                <div class="walk-ear right"></div>
+                            </div>
+                            <div class="walk-hair"></div>
+                            <div class="walk-body"><div class="walk-logo"></div></div>
                             <div class="walk-arm left"></div>
                             <div class="walk-arm right"></div>
                             <div class="walk-leg left"></div>
@@ -1081,7 +1127,7 @@ function updateCharacterDisplay() {
 // Physics
 const GRAVITY = 0.6;
 const JUMP_FORCE = 12;
-const MOVE_SPEED = { walk: 7, snowmobile: 8, forklift: 10, car: 10, train: 9, tuktuk: 8, service: 9, plane: 15 };
+const MOVE_SPEED = { walk: 10, snowmobile: 8, forklift: 10, car: 10, train: 9, tuktuk: 8, service: 9, plane: 15 };
 const GROUND_Y = 100;
 
 function getCharacterWidth() {
@@ -1126,12 +1172,38 @@ function update() {
     const charLimit = maxScroll + (gameState.viewWidth * 0.85) - getCharacterWidth();
     gameState.worldX = Math.max(0, Math.min(gameState.worldX, charLimit));
 
+    // Victory Check (After 'Thank You' board in Finale)
+    if (gameState.currentLevel === 9) {
+        // 'Thank You' board is at ~100px + 150px (center) in local coords
+        // Let's trigger it right after, say at 450px local
+        const relativeX = gameState.worldX - getLevelStartX(9);
+        const inZone = Math.abs(relativeX - 450) < 50;
+
+        if (inZone) {
+            if (!gameState.victory && !gameState.victoryCooldown) {
+                triggerVictory();
+            }
+        } else {
+            // Reset cooldown when leaving the zone so it can trigger again on return
+            gameState.victoryCooldown = false;
+        }
+    }
+
     // Gravity (only if not plane)
     if (gameState.vehicle === 'plane') {
         gameState.isGrounded = false;
         if (gameState.keys.up) gameState.characterY += 5;
         if (gameState.keys.down) gameState.characterY -= 5;
         gameState.characterY = Math.max(GROUND_Y + 50, Math.min(gameState.characterY, gameState.viewHeight - 100));
+    } else if (gameState.victory) {
+        // Victory physics - little hops
+        if (gameState.characterY <= GROUND_Y) {
+            gameState.velocityY = 8; // Auto hop
+            gameState.isGrounded = false;
+        }
+        gameState.velocityY -= GRAVITY;
+        gameState.characterY += gameState.velocityY;
+        if (gameState.characterY <= GROUND_Y) gameState.characterY = GROUND_Y;
     } else {
         if (!gameState.isGrounded) {
             gameState.velocityY -= GRAVITY;
@@ -1158,7 +1230,18 @@ function update() {
     const character = document.getElementById('character');
     character.style.left = ((gameState.viewWidth * 0.15) + (gameState.worldX - cameraX)) + 'px';
     character.style.bottom = gameState.characterY + 'px';
-    character.style.transform = `scaleX(${gameState.direction})`;
+
+    // Direction handling: 
+    // If Victory: Face camera (scale 1)
+    // If Idle: Face camera (scale 1) -- CSS will handle front look
+    // If Moving: Face direction
+    if (gameState.victory) {
+        character.style.transform = `scaleX(1)`;
+    } else if (!gameState.isMoving) {
+        character.style.transform = `scaleX(1)`;
+    } else {
+        character.style.transform = `scaleX(${gameState.direction})`;
+    }
 
     checkCurrentLevel();
     checkBadgeCollisions();
@@ -1282,6 +1365,11 @@ function checkCurrentLevel() {
             if (truck && !truck.classList.contains('truck-departing')) {
                 truck.classList.add('truck-departing');
             }
+        }
+
+        // Trigger Plane Jump when entering Finale (Level 9)
+        if (newLevel === 9 && gameState.vehicle === 'plane') {
+            triggerPlaneJump();
         }
     }
 }
@@ -1446,14 +1534,7 @@ function handleResize() {
     }
 
     // Adjust Contact Header for very small screens
-    const contactHeader = document.getElementById('contactHeader');
-    if (contactHeader) {
-        if (vw < 500) {
-            contactHeader.style.height = '40px';
-        } else {
-            contactHeader.style.height = '50px';
-        }
-    }
+
 
     // Orientation warning removed as requested
     const warning = document.getElementById('rotate-warning');
@@ -1647,4 +1728,100 @@ function renderSkillShelf() {
         `;
     });
     shelf.innerHTML = html;
+}
+
+function triggerPlaneJump() {
+    console.log("Triggering Plane Jump!");
+
+    // 1. Visual effect: Spawn a plane that flies away
+    // We create a duplicate of the plane to animate it leaving while the character falls/jumps
+    const startY = gameState.characterY;
+
+    // Create dummy plane
+    const dummyPlane = document.createElement('div');
+    dummyPlane.className = 'character-plane';
+    // Add same styling as the plane case in updateCharacterDisplay, but WITHOUT the pilot
+    dummyPlane.innerHTML = `
+        <div class="plane-body" style="position:absolute; bottom:0; width:100px; height:30px; background:#ccc; border-top-right-radius: 10px; border-bottom-right-radius: 5px;"></div>
+        <div class="plane-wing" style="position:absolute; bottom:15px; left:40px; width:40px; height:10px; background:#999; transform:skewX(-20deg);"></div>
+        <div class="plane-tail" style="position:absolute; bottom:20px; left:5px; width:20px; height:25px; background:#ccc; border-radius:5px 0 0 0;"></div>
+    `;
+
+    dummyPlane.style.position = 'fixed';
+    dummyPlane.style.left = '15%'; // Match character's fixed position
+    dummyPlane.style.bottom = startY + 'px';
+    dummyPlane.style.zIndex = '90';
+    dummyPlane.style.transition = 'all 1.5s ease-in';
+    dummyPlane.style.transformOrigin = 'center';
+    dummyPlane.style.width = '120px';
+    dummyPlane.style.height = '60px';
+
+    document.body.appendChild(dummyPlane);
+
+    // Animate fly away
+    // Force reflow
+    dummyPlane.offsetHeight;
+
+    requestAnimationFrame(() => {
+        dummyPlane.style.left = '100%'; // Fly off screen right
+        dummyPlane.style.bottom = (startY + 300) + 'px'; // Fly up
+        dummyPlane.style.transform = 'rotate(-15deg) scale(0.8)'; // Tilt up and shrink
+        dummyPlane.style.opacity = '0';
+    });
+
+    setTimeout(() => dummyPlane.remove(), 2000);
+
+    // 2. Switch State
+    gameState.vehicle = 'walk';
+    updateCharacterDisplay();
+
+    // 3. Physics Impulse (Eject effect)
+    gameState.velocityY = 5; // Small pop up
+    gameState.isGrounded = false; // Enable gravity so he falls
+
+    playSound('jump');
+}
+
+function triggerVictory() {
+    if (gameState.victory) return;
+    gameState.victory = true;
+    gameState.victoryCooldown = true;
+
+    // Play sound sequence (Victory Fanfare)
+    if (gameState.soundEnabled && audioCtx) {
+        // Simple major chord arpeggio
+        const notes = [523.25, 659.25, 783.99, 1046.50]; // C E G C
+        notes.forEach((freq, i) => {
+            setTimeout(() => {
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.frequency.value = freq;
+                gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.5);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.5);
+            }, i * 150);
+        });
+    }
+
+    updateCharacterDisplay();
+
+    // Visuals: Confetti burst using existing particle system
+    const char = document.getElementById('character');
+    if (char) {
+        // Burst multiple times
+        for (let i = 0; i < 5; i++) {
+            setTimeout(() => {
+                createParticles(char);
+            }, i * 200);
+        }
+    }
+
+    // Reset victory state after 2 seconds
+    setTimeout(() => {
+        gameState.victory = false;
+        updateCharacterDisplay();
+    }, 2000);
 }
