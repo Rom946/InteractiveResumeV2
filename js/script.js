@@ -64,7 +64,7 @@ function playSound(type) {
 
 // Level Data
 const levels = [
-    { name: "Introduction", subtitle: "Barcelona, Spain", width: 100, bgClass: "level-0" },
+    { name: "Introduction", subtitle: "Welcome! Let's explore my journey →", width: 100, bgClass: "level-0" },
     { name: "Americold", subtitle: "Supply Chain Systems Specialist", width: 100, bgClass: "level-1" },
     { name: "ID Logistics", subtitle: "Engineering & Process Manager", width: 100, bgClass: "level-2" },
     { name: "Forvia (Faurecia)", subtitle: "Supply Chain & Systems Lead", width: 100, bgClass: "level-3" },
@@ -263,20 +263,20 @@ function generateLevelContent(levelIndex) {
     let html = '';
 
     switch (levelIndex) {
-        case 0: // Introduction - Americold warehouse
+        case 0: // Introduction - Welcome warehouse
             html += `
-                        <div class="warehouse" style="left: 100px;">
-                            <div class="warehouse-structure" style="width: 220px; height: 200px; background: linear-gradient(180deg, #87CEEB 0%, #5F9EA0 100%);">
+                        <div class="warehouse" style="left: 120px;">
+                            <div class="warehouse-structure" style="width: 240px; height: 210px; background: linear-gradient(180deg, #6a7a8a 0%, #4a5a6a 100%); box-shadow: 0 12px 35px rgba(0,0,0,0.4); border: 4px solid #3a4a5a;">
                                 <div class="warehouse-roof"></div>
-                                <div class="warehouse-sign">AMERICOLD</div>
-                                <!-- Window grid -->
-                                <div style="position: absolute; top: 60px; left: 15px; display: grid; grid-template-columns: repeat(3, 50px); grid-gap: 12px;">
-                                    <div style="width: 50px; height: 40px; background: rgba(135,206,250,0.3); border: 2px solid #87CEEB; box-shadow: inset 0 0 10px rgba(255,255,255,0.2);"></div>
-                                    <div style="width: 50px; height: 40px; background: rgba(135,206,250,0.3); border: 2px solid #87CEEB; box-shadow: inset 0 0 10px rgba(255,255,255,0.2);"></div>
-                                    <div style="width: 50px; height: 40px; background: rgba(135,206,250,0.3); border: 2px solid #87CEEB; box-shadow: inset 0 0 10px rgba(255,255,255,0.2);"></div>
-                                    <div style="width: 50px; height: 40px; background: rgba(135,206,250,0.3); border: 2px solid #87CEEB; box-shadow: inset 0 0 10px rgba(255,255,255,0.2);"></div>
-                                    <div style="width: 50px; height: 40px; background: rgba(135,206,250,0.3); border: 2px solid #87CEEB; box-shadow: inset 0 0 10px rgba(255,255,255,0.2);"></div>
-                                    <div style="width: 50px; height: 40px; background: rgba(135,206,250,0.3); border: 2px solid #87CEEB; box-shadow: inset 0 0 10px rgba(255,255,255,0.2);"></div>
+                                <div class="warehouse-sign" style="font-size: 16px; padding: 10px 24px; background: linear-gradient(180deg, #3E0097 0%, #2a0066 100%); border: 3px solid #FFD700; box-shadow: 0 4px 12px rgba(255,215,0,0.3);">SUPPLY CHAIN HQ</div>
+                                <!-- Window grid with modern lighting -->
+                                <div style="position: absolute; top: 70px; left: 20px; display: grid; grid-template-columns: repeat(3, 55px); grid-gap: 15px;">
+                                    <div style="width: 55px; height: 45px; background: linear-gradient(180deg, #ffdd88 0%, #ffcc44 100%); border: 3px solid #3a4a5a; box-shadow: 0 0 15px rgba(255,215,0,0.4), inset 0 0 10px rgba(255,255,255,0.3);"></div>
+                                    <div style="width: 55px; height: 45px; background: linear-gradient(180deg, #ffdd88 0%, #ffcc44 100%); border: 3px solid #3a4a5a; box-shadow: 0 0 15px rgba(255,215,0,0.4), inset 0 0 10px rgba(255,255,255,0.3);"></div>
+                                    <div style="width: 55px; height: 45px; background: linear-gradient(180deg, #4a90c2 30%, #3a7ab2 100%); border: 3px solid #3a4a5a; box-shadow: inset 0 0 8px rgba(255,255,255,0.2);"></div>
+                                    <div style="width: 55px; height: 45px; background: linear-gradient(180deg, #ffdd88 0%, #ffcc44 100%); border: 3px solid #3a4a5a; box-shadow: 0 0 15px rgba(255,215,0,0.4), inset 0 0 10px rgba(255,255,255,0.3);"></div>
+                                    <div style="width: 55px; height: 45px; background: linear-gradient(180deg, #4a90c2 30%, #3a7ab2 100%); border: 3px solid #3a4a5a; box-shadow: inset 0 0 8px rgba(255,255,255,0.2);"></div>
+                                    <div style="width: 55px; height: 45px; background: linear-gradient(180deg, #ffdd88 0%, #ffcc44 100%); border: 3px solid #3a4a5a; box-shadow: 0 0 15px rgba(255,215,0,0.4), inset 0 0 10px rgba(255,255,255,0.3);"></div>
                                 </div>
                             </div>
                         </div>
@@ -304,25 +304,29 @@ function generateLevelContent(levelIndex) {
 
         case 1: // Americold
             html += `
-                        <div class="cold-storage" style="left: 50px; width: 220px; height: 180px;">
+                        <div class="cold-storage" style="left: 80px; width: 250px; height: 200px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); border: 4px solid #88a8c8;">
                             <div class="frost-overlay"></div>
-                            <div class="cold-unit-label">AMERICOLD</div>
-                            <div class="temp-display">-25°C</div>
-                            ${generateIcicles(8)}
-                            <div class="loading-dock" style="left: 30px; bottom: 0;">
+                            <div class="cold-unit-label" style="font-size: 18px; color: #1a4a6a; font-weight: bold;">AMERICOLD</div>
+                            <div class="temp-display" style="font-size: 16px;">-25°C</div>
+                            ${generateIcicles(10)}
+                            <div class="loading-dock" style="left: 35px; bottom: 0;">
                                 <div class="dock-door open"></div>
                                 <div class="dock-platform"></div>
                             </div>
-                            <div class="loading-dock" style="left: 110px; bottom: 0;">
+                            <div class="loading-dock" style="left: 130px; bottom: 0;">
                                 <div class="dock-door open"></div>
                                 <div class="dock-platform"></div>
                             </div>
                         </div>
-                        <div class="cold-storage" style="left: 300px; width: 180px; height: 160px;">
+                        <div class="cold-storage" style="left: 370px; width: 200px; height: 180px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); border: 4px solid #88a8c8;">
                             <div class="frost-overlay"></div>
-                            <div class="cold-unit-label">27 SITES</div>
-                            <div class="temp-display">-18°C</div>
-                            ${generateIcicles(6)}
+                            <div class="cold-unit-label" style="font-size: 16px; color: #1a4a6a; font-weight: bold;">EUROPE</div>
+                            <div class="temp-display" style="font-size: 14px;">-18°C</div>
+                            ${generateIcicles(8)}
+                            <div class="loading-dock" style="left: 65px; bottom: 0;">
+                                <div class="dock-door open"></div>
+                                <div class="dock-platform"></div>
+                            </div>
                         </div>
                     `;
             // Ground pallets
@@ -336,38 +340,39 @@ function generateLevelContent(levelIndex) {
 
         case 2: // ID Logistics
             html += `
-                        <div class="warehouse" style="left: 50px;">
-                            <div class="warehouse-structure" style="width: 200px; height: 200px;">
+                        <div class="warehouse" style="left: 80px;">
+                            <div class="warehouse-structure" style="width: 230px; height: 220px; background: linear-gradient(180deg, #6a7a8a 0%, #4a5a6a 100%); box-shadow: 0 12px 35px rgba(0,0,0,0.4); border: 4px solid #3a4a5a;">
                                 <div class="warehouse-roof"></div>
-                                <div class="warehouse-sign">ID LOGISTICS</div>
-                                <!-- Window grid -->
-                                <div style="position: absolute; top: 60px; left: 10px; display: grid; grid-template-columns: repeat(4, 40px); grid-gap: 10px;">
-                                    <div style="width: 40px; height: 35px; background: rgba(255,255,255,0.1); border: 2px solid #666; box-shadow: inset 0 0 8px rgba(255,255,255,0.1);"></div>
-                                    <div style="width: 40px; height: 35px; background: rgba(255,255,255,0.1); border: 2px solid #666; box-shadow: inset 0 0 8px rgba(255,255,255,0.1);"></div>
-                                    <div style="width: 40px; height: 35px; background: rgba(255,255,255,0.1); border: 2px solid #666; box-shadow: inset 0 0 8px rgba(255,255,255,0.1);"></div>
-                                    <div style="width: 40px; height: 35px; background: rgba(255,255,255,0.1); border: 2px solid #666; box-shadow: inset 0 0 8px rgba(255,255,255,0.1);"></div>
-                                    <div style="width: 40px; height: 35px; background: rgba(255,255,255,0.1); border: 2px solid #666; box-shadow: inset 0 0 8px rgba(255,255,255,0.1);"></div>
-                                    <div style="width: 40px; height: 35px; background: rgba(255,255,255,0.1); border: 2px solid #666; box-shadow: inset 0 0 8px rgba(255,255,255,0.1);"></div>
-                                    <div style="width: 40px; height: 35px; background: rgba(255,255,255,0.1); border: 2px solid #666; box-shadow: inset 0 0 8px rgba(255,255,255,0.1);"></div>
-                                    <div style="width: 40px; height: 35px; background: rgba(255,255,255,0.1); border: 2px solid #666; box-shadow: inset 0 0 8px rgba(255,255,255,0.1);"></div>
+                                <div class="warehouse-sign" style="font-size: 16px; padding: 10px 22px;">ID LOGISTICS</div>
+                                <!-- Window grid with improved lighting -->
+                                <div style="position: absolute; top: 70px; left: 15px; display: grid; grid-template-columns: repeat(4, 45px); grid-gap: 12px;">
+                                    <div style="width: 45px; height: 40px; background: linear-gradient(180deg, #ffdd88 0%, #ffcc44 100%); border: 3px solid #3a4a5a; box-shadow: 0 0 12px rgba(255,215,0,0.4), inset 0 0 8px rgba(255,255,255,0.3);"></div>
+                                    <div style="width: 45px; height: 40px; background: linear-gradient(180deg, #ffdd88 0%, #ffcc44 100%); border: 3px solid #3a4a5a; box-shadow: 0 0 12px rgba(255,215,0,0.4), inset 0 0 8px rgba(255,255,255,0.3);"></div>
+                                    <div style="width: 45px; height: 40px; background: linear-gradient(180deg, #4a90c2 30%, #3a7ab2 100%); border: 3px solid #3a4a5a; box-shadow: inset 0 0 8px rgba(255,255,255,0.2);"></div>
+                                    <div style="width: 45px; height: 40px; background: linear-gradient(180deg, #ffdd88 0%, #ffcc44 100%); border: 3px solid #3a4a5a; box-shadow: 0 0 12px rgba(255,215,0,0.4), inset 0 0 8px rgba(255,255,255,0.3);"></div>
+                                    <div style="width: 45px; height: 40px; background: linear-gradient(180deg, #ffdd88 0%, #ffcc44 100%); border: 3px solid #3a4a5a; box-shadow: 0 0 12px rgba(255,215,0,0.4), inset 0 0 8px rgba(255,255,255,0.3);"></div>
+                                    <div style="width: 45px; height: 40px; background: linear-gradient(180deg, #4a90c2 30%, #3a7ab2 100%); border: 3px solid #3a4a5a; box-shadow: inset 0 0 8px rgba(255,255,255,0.2);"></div>
+                                    <div style="width: 45px; height: 40px; background: linear-gradient(180deg, #ffdd88 0%, #ffcc44 100%); border: 3px solid #3a4a5a; box-shadow: 0 0 12px rgba(255,215,0,0.4), inset 0 0 8px rgba(255,255,255,0.3);"></div>
+                                    <div style="width: 45px; height: 40px; background: linear-gradient(180deg, #4a90c2 30%, #3a7ab2 100%); border: 3px solid #3a4a5a; box-shadow: inset 0 0 8px rgba(255,255,255,0.2);"></div>
                                 </div>
                             </div>
                         </div>
-                        <div class="factory" style="left: 300px;">
-                            <div class="factory-building" style="width: 150px; height: 160px;">
-                                <div class="chimney" style="left: 20px; top: -50px; width: 30px; height: 50px;">
+                        <div class="factory" style="left: 350px;">
+                            <div class="factory-building" style="width: 170px; height: 180px; background: linear-gradient(180deg, #5a6a7a 0%, #3a4a5a 100%); box-shadow: 0 12px 35px rgba(0,0,0,0.4); border: 4px solid #2a3a4a;">
+                                <div class="chimney" style="left: 30px; top: -55px; width: 35px; height: 55px;">
                                     <div class="chimney-top"></div>
-                                    <div class="smoke" style="top: -20px; left: 5px;"></div>
+                                    <div class="smoke" style="top: -22px; left: 6px;"></div>
+                                    <div class="smoke" style="top: -22px; left: 18px; animation-delay: 1.5s;"></div>
                                 </div>
-                                <div class="warehouse-sign" style="top: 20px; font-size: 12px;">TARRAGONA</div>
-                                <!-- Window grid -->
-                                <div style="position: absolute; top: 70px; left: 15px; display: grid; grid-template-columns: repeat(3, 35px); grid-gap: 8px;">
-                                    <div style="width: 35px; height: 30px; background: rgba(255,255,255,0.1); border: 2px solid #666; box-shadow: inset 0 0 8px rgba(255,255,255,0.1);"></div>
-                                    <div style="width: 35px; height: 30px; background: rgba(255,255,255,0.1); border: 2px solid #666; box-shadow: inset 0 0 8px rgba(255,255,255,0.1);"></div>
-                                    <div style="width: 35px; height: 30px; background: rgba(255,255,255,0.1); border: 2px solid #666; box-shadow: inset 0 0 8px rgba(255,255,255,0.1);"></div>
-                                    <div style="width: 35px; height: 30px; background: rgba(255,255,255,0.1); border: 2px solid #666; box-shadow: inset 0 0 8px rgba(255,255,255,0.1);"></div>
-                                    <div style="width: 35px; height: 30px; background: rgba(255,255,255,0.1); border: 2px solid #666; box-shadow: inset 0 0 8px rgba(255,255,255,0.1);"></div>
-                                    <div style="width: 35px; height: 30px; background: rgba(255,255,255,0.1); border: 2px solid #666; box-shadow: inset 0 0 8px rgba(255,255,255,0.1);"></div>
+                                <div class="warehouse-sign" style="top: 25px; font-size: 14px; padding: 8px 18px;">TARRAGONA</div>
+                                <!-- Modern industrial windows -->
+                                <div style="position: absolute; top: 80px; left: 18px; display: grid; grid-template-columns: repeat(3, 42px); grid-gap: 10px;">
+                                    <div style="width: 42px; height: 35px; background: linear-gradient(180deg, #ffdd88 0%, #ffcc44 100%); border: 3px solid #2a3a4a; box-shadow: 0 0 12px rgba(255,215,0,0.4), inset 0 0 8px rgba(255,255,255,0.3);"></div>
+                                    <div style="width: 42px; height: 35px; background: linear-gradient(180deg, #4a90c2 30%, #3a7ab2 100%); border: 3px solid #2a3a4a; box-shadow: inset 0 0 8px rgba(255,255,255,0.2);"></div>
+                                    <div style="width: 42px; height: 35px; background: linear-gradient(180deg, #ffdd88 0%, #ffcc44 100%); border: 3px solid #2a3a4a; box-shadow: 0 0 12px rgba(255,215,0,0.4), inset 0 0 8px rgba(255,255,255,0.3);"></div>
+                                    <div style="width: 42px; height: 35px; background: linear-gradient(180deg, #ffdd88 0%, #ffcc44 100%); border: 3px solid #2a3a4a; box-shadow: 0 0 12px rgba(255,215,0,0.4), inset 0 0 8px rgba(255,255,255,0.3);"></div>
+                                    <div style="width: 42px; height: 35px; background: linear-gradient(180deg, #ffdd88 0%, #ffcc44 100%); border: 3px solid #2a3a4a; box-shadow: 0 0 12px rgba(255,215,0,0.4), inset 0 0 8px rgba(255,255,255,0.3);"></div>
+                                    <div style="width: 42px; height: 35px; background: linear-gradient(180deg, #4a90c2 30%, #3a7ab2 100%); border: 3px solid #2a3a4a; box-shadow: inset 0 0 8px rgba(255,255,255,0.2);"></div>
                                 </div>
                             </div>
                         </div>
@@ -382,43 +387,48 @@ function generateLevelContent(levelIndex) {
             break;
 
         case 3: // Forvia - Automotive
-            // Factory 1
+            // Factory 1 - Large main factory
             html += `
-                        <div class="factory" style="left: 50px;">
-                            <div class="factory-building" style="width: 200px; height: 180px;">
-                                <div class="chimney" style="left: 30px; top: -50px; width: 30px; height: 50px;">
+                        <div class="factory" style="left: 80px;">
+                            <div class="factory-building" style="width: 240px; height: 210px; background: linear-gradient(180deg, #5a6a7a 0%, #3a4a5a 100%); box-shadow: 0 15px 40px rgba(0,0,0,0.5); border: 4px solid #2a3a4a;">
+                                <div class="chimney" style="left: 45px; top: -60px; width: 38px; height: 60px; background: linear-gradient(90deg, #666 0%, #888 30%, #777 70%, #666 100%); border: 3px solid #444;">
                                     <div class="chimney-top"></div>
-                                    <div class="smoke" style="top: -20px; left: 5px;"></div>
+                                    <div class="smoke" style="top: -25px; left: 7px;"></div>
+                                    <div class="smoke" style="top: -25px; left: 20px; animation-delay: 2s;"></div>
                                 </div>
-                                <div class="warehouse-sign" style="top: 20px; font-size: 14px;">FORVIA</div>
-                                <div style="position: absolute; top: 45px; left: 50%; transform: translateX(-50%); color: #ccc; font-size: 10px;">(FAURECIA)</div>
-                                <!-- Window grid -->
-                                <div style="position: absolute; top: 80px; left: 10px; display: grid; grid-template-columns: repeat(3, 55px); grid-gap: 10px;">
-                                    <div style="width: 55px; height: 35px; background: rgba(255,255,255,0.1); border: 2px solid #666; box-shadow: inset 0 0 8px rgba(255,255,255,0.1);"></div>
-                                    <div style="width: 55px; height: 35px; background: rgba(255,255,255,0.1); border: 2px solid #666; box-shadow: inset 0 0 8px rgba(255,255,255,0.1);"></div>
-                                    <div style="width: 55px; height: 35px; background: rgba(255,255,255,0.1); border: 2px solid #666; box-shadow: inset 0 0 8px rgba(255,255,255,0.1);"></div>
-                                    <div style="width: 55px; height: 35px; background: rgba(255,255,255,0.1); border: 2px solid #666; box-shadow: inset 0 0 8px rgba(255,255,255,0.1);"></div>
-                                    <div style="width: 55px; height: 35px; background: rgba(255,255,255,0.1); border: 2px solid #666; box-shadow: inset 0 0 8px rgba(255,255,255,0.1);"></div>
-                                    <div style="width: 55px; height: 35px; background: rgba(255,255,255,0.1); border: 2px solid #666; box-shadow: inset 0 0 8px rgba(255,255,255,0.1);"></div>
+                                <div class="chimney" style="left: 165px; top: -60px; width: 38px; height: 60px; background: linear-gradient(90deg, #666 0%, #888 30%, #777 70%, #666 100%); border: 3px solid #444;">
+                                    <div class="chimney-top"></div>
+                                    <div class="smoke" style="top: -25px; left: 10px; animation-delay: 1s;"></div>
+                                </div>
+                                <div class="warehouse-sign" style="top: 25px; font-size: 18px; padding: 10px 26px; background: linear-gradient(180deg, #3E0097 0%, #2a0066 100%); border: 3px solid #FFD700; box-shadow: 0 4px 12px rgba(255,215,0,0.3);">FORVIA</div>
+                                <div style="position: absolute; top: 55px; left: 50%; transform: translateX(-50%); color: #ddd; font-size: 11px; background: rgba(0,0,0,0.3); padding: 2px 8px; border-radius: 3px;">(FAURECIA)</div>
+                                <!-- Improved industrial windows -->
+                                <div style="position: absolute; top: 95px; left: 15px; display: grid; grid-template-columns: repeat(3, 65px); grid-gap: 12px;">
+                                    <div style="width: 65px; height: 42px; background: linear-gradient(180deg, #ffdd88 0%, #ffcc44 100%); border: 3px solid #2a3a4a; box-shadow: 0 0 15px rgba(255,215,0,0.4), inset 0 0 10px rgba(255,255,255,0.3);"></div>
+                                    <div style="width: 65px; height: 42px; background: linear-gradient(180deg, #ffdd88 0%, #ffcc44 100%); border: 3px solid #2a3a4a; box-shadow: 0 0 15px rgba(255,215,0,0.4), inset 0 0 10px rgba(255,255,255,0.3);"></div>
+                                    <div style="width: 65px; height: 42px; background: linear-gradient(180deg, #4a90c2 30%, #3a7ab2 100%); border: 3px solid #2a3a4a; box-shadow: inset 0 0 8px rgba(255,255,255,0.2);"></div>
+                                    <div style="width: 65px; height: 42px; background: linear-gradient(180deg, #ffdd88 0%, #ffcc44 100%); border: 3px solid #2a3a4a; box-shadow: 0 0 15px rgba(255,215,0,0.4), inset 0 0 10px rgba(255,255,255,0.3);"></div>
+                                    <div style="width: 65px; height: 42px; background: linear-gradient(180deg, #4a90c2 30%, #3a7ab2 100%); border: 3px solid #2a3a4a; box-shadow: inset 0 0 8px rgba(255,255,255,0.2);"></div>
+                                    <div style="width: 65px; height: 42px; background: linear-gradient(180deg, #ffdd88 0%, #ffcc44 100%); border: 3px solid #2a3a4a; box-shadow: 0 0 15px rgba(255,215,0,0.4), inset 0 0 10px rgba(255,255,255,0.3);"></div>
                                 </div>
                             </div>
                         </div>
                     `;
-            // Factory 2
+            // Factory 2 - Secondary plant
             html += `
-                        <div class="factory" style="left: 280px;">
-                            <div class="factory-building" style="width: 150px; height: 150px;">
-                                <div class="chimney" style="left: 60px; top: -40px; width: 25px; height: 40px;">
+                        <div class="factory" style="left: 370px;">
+                            <div class="factory-building" style="width: 180px; height: 170px; background: linear-gradient(180deg, #5a6a7a 0%, #3a4a5a 100%); box-shadow: 0 12px 35px rgba(0,0,0,0.4); border: 4px solid #2a3a4a;">
+                                <div class="chimney" style="left: 75px; top: -48px; width: 32px; height: 48px; background: linear-gradient(90deg, #666 0%, #888 30%, #777 70%, #666 100%); border: 3px solid #444;">
                                     <div class="chimney-top"></div>
-                                    <div class="smoke" style="top: -15px; left: 5px;"></div>
+                                    <div class="smoke" style="top: -18px; left: 6px;"></div>
                                 </div>
-                                <div class="warehouse-sign" style="top: 20px; font-size: 10px;">29 PLANTS</div>
-                                <!-- Window grid -->
-                                <div style="position: absolute; top: 60px; left: 10px; display: grid; grid-template-columns: repeat(2, 60px); grid-gap: 10px;">
-                                    <div style="width: 60px; height: 30px; background: rgba(255,255,255,0.1); border: 2px solid #666; box-shadow: inset 0 0 8px rgba(255,255,255,0.1);"></div>
-                                    <div style="width: 60px; height: 30px; background: rgba(255,255,255,0.1); border: 2px solid #666; box-shadow: inset 0 0 8px rgba(255,255,255,0.1);"></div>
-                                    <div style="width: 60px; height: 30px; background: rgba(255,255,255,0.1); border: 2px solid #666; box-shadow: inset 0 0 8px rgba(255,255,255,0.1);"></div>
-                                    <div style="width: 60px; height: 30px; background: rgba(255,255,255,0.1); border: 2px solid #666; box-shadow: inset 0 0 8px rgba(255,255,255,0.1);"></div>
+                                <div class="warehouse-sign" style="top: 25px; font-size: 14px; padding: 8px 20px;">29 PLANTS</div>
+                                <!-- Modern factory windows -->
+                                <div style="position: absolute; top: 75px; left: 15px; display: grid; grid-template-columns: repeat(2, 70px); grid-gap: 12px;">
+                                    <div style="width: 70px; height: 38px; background: linear-gradient(180deg, #ffdd88 0%, #ffcc44 100%); border: 3px solid #2a3a4a; box-shadow: 0 0 15px rgba(255,215,0,0.4), inset 0 0 10px rgba(255,255,255,0.3);"></div>
+                                    <div style="width: 70px; height: 38px; background: linear-gradient(180deg, #ffdd88 0%, #ffcc44 100%); border: 3px solid #2a3a4a; box-shadow: 0 0 15px rgba(255,215,0,0.4), inset 0 0 10px rgba(255,255,255,0.3);"></div>
+                                    <div style="width: 70px; height: 38px; background: linear-gradient(180deg, #4a90c2 30%, #3a7ab2 100%); border: 3px solid #2a3a4a; box-shadow: inset 0 0 8px rgba(255,255,255,0.2);"></div>
+                                    <div style="width: 70px; height: 38px; background: linear-gradient(180deg, #ffdd88 0%, #ffcc44 100%); border: 3px solid #2a3a4a; box-shadow: 0 0 15px rgba(255,215,0,0.4), inset 0 0 10px rgba(255,255,255,0.3);"></div>
                                 </div>
                             </div>
                         </div>
@@ -731,12 +741,13 @@ function generateInfoPanel(levelIndex) {
     // And pushed slightly right to avoid overlapping buildings
     const panels = [
         `<div class="info-panel" style="left: 260px; bottom: 350px;">
-                    <h2>Roman Baron</h2>
-                    <p><span class="highlight">Global Supply Chain Transformation Leader</span></p>
-                    <p>📍 Barcelona, Spain</p>
-                    <p>📧 rbaronpro@gmail.com</p>
-                    <p>📱 +34 644 00 23 69</p>
-                    <h3>Navigate right to explore →</h3>
+                    <h2>Welcome! 👋</h2>
+                    <p><span class="highlight">I'm Roman Baron</span></p>
+                    <p>Global Supply Chain Transformation Leader</p>
+                    <p>📧 rbaronpro@gmail.com | 📱 +34 644 00 23 69</p>
+                    <br>
+                    <h3>🎮 Use arrow keys to explore my journey →</h3>
+                    <p>Collect badges and discover my career path!</p>
                 </div>`,
         `<div class="info-panel" style="left: 320px; bottom: 350px;">
                     <h2>Americold</h2>
