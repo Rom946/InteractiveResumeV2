@@ -34,11 +34,28 @@
             z-index: 2500;
             display: none;
             justify-content: center;
+            /* Restore centering */
             align-items: center;
             color: white;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
             overflow: hidden;
-            /* Prevent text wrapping from breaking layout */
+            /* No scrollbar */
+        }
+
+        #contactHeader::-webkit-scrollbar {
+            height: 4px;
+            background: transparent;
+        }
+
+        #contactHeader::-webkit-scrollbar-thumb {
+            background: #3E0097;
+            border-radius: 2px;
+        }
+
+        @media screen and (max-width: 900px) {
+            .location-text {
+                display: none;
+            }
         }
 
         @media screen and (max-width: 768px) {
@@ -47,24 +64,60 @@
             }
 
             .header-content {
-                gap: 12px;
+                gap: 10px;
                 font-size: 11px;
+                padding: 0 5px;
+            }
+
+            #contactHeader {
+                height: 45px;
+            }
+
+            .header-content {
+                gap: 8px;
+                font-size: 10px;
+                padding: 0 5px;
             }
 
             .header-name {
-                font-size: 13px;
-                padding-right: 12px;
-                white-space: nowrap;
-            }
-
-            .header-item {
-                gap: 4px;
-            }
-
-            .header-link {
-                padding: 3px 8px;
+                font-size: 11px;
+                padding-right: 8px;
             }
         }
+
+        @media screen and (max-width: 540px) {
+            #contactHeader {
+                height: 40px;
+            }
+
+            .header-content {
+                gap: 4px;
+                /* Dynamically scale font to fit width */
+                font-size: clamp(7px, 2.2vw, 10px);
+                padding: 0 2px;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .header-name {
+                /* Name slightly larger/bold */
+                font-size: clamp(8px, 2.4vw, 11px);
+                padding-right: 5px;
+                border-right: 1px solid #555;
+            }
+
+            /* Ensure NO items are hidden */
+            .location-text,
+            .link-text,
+            .contact-text {
+                display: inline !important;
+            }
+
+            .header-item:nth-child(n) {
+                display: inline-flex !important;
+            }
+        }
+
 
         .header-content {
             display: flex;
@@ -72,6 +125,7 @@
             align-items: center;
             font-size: 14px;
             font-family: 'Outfit', 'Inter', sans-serif;
+            margin: 0 auto;
         }
 
         .header-name {
@@ -348,18 +402,7 @@
             }
         }
 
-        @media screen and (orientation: portrait) {
-            #rotate-warning {
-                display: flex;
-            }
 
-            #gameContainer,
-            #contactHeader,
-            #unifiedHud,
-            #startScreen {
-                display: none !important;
-            }
-        }
 
         #gameWorld {
             position: absolute;
@@ -446,54 +489,323 @@
         }
 
         /* Walking Character */
+        /* Walking Character - Superhero Style */
+        /* BASE STATE (IDLE) - Front Facing */
         .character-walk {
-            width: 40px;
+            width: 50px;
             height: 70px;
+            position: relative;
         }
 
         .walk-body {
             position: absolute;
-            bottom: 20px;
-            width: 30px;
-            height: 40px;
+            bottom: 25px;
+            left: 10px;
+            width: 28px;
+            height: 35px;
             background: #3E0097;
-            border-radius: 8px 8px 5px 5px;
-            left: 5px;
+            border-radius: 6px;
+            z-index: 5;
+            transition: all 0.2s;
+            /* No skew for idle */
+        }
+
+        .walk-logo {
+            position: absolute;
+            top: 8px;
+            left: 7px;
+            width: 14px;
+            height: 14px;
+            background: #FFD700;
+            clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
         }
 
         .walk-head {
             position: absolute;
-            bottom: 55px;
-            left: 7px;
-            width: 26px;
-            height: 26px;
+            bottom: 60px;
+            left: 12px;
+            width: 24px;
+            height: 24px;
             background: #ffd5b5;
+            border-radius: 50%;
+            z-index: 6;
+            transition: all 0.2s;
+            /* No skew for idle */
+        }
+
+        .walk-eye {
+            position: absolute;
+            top: 8px;
+            width: 3px;
+            height: 3px;
+            background: #000;
             border-radius: 50%;
         }
 
-        .walk-helmet {
+        .walk-eye.left {
+            left: 6px;
+        }
+
+        .walk-eye.right {
+            right: 6px;
+        }
+
+        .walk-mouth {
             position: absolute;
-            bottom: 68px;
-            left: 5px;
-            width: 30px;
-            height: 18px;
-            background: #FFD700;
-            border-radius: 15px 15px 5px 5px;
+            bottom: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 8px;
+            height: 3px;
+            border-bottom: 2px solid #a55;
+            border-radius: 0 0 50% 50%;
+        }
+
+        .walk-ear {
+            position: absolute;
+            top: 9px;
+            width: 4px;
+            height: 4px;
+            background: #eebb99;
+            border-radius: 50%;
+        }
+
+        .walk-ear.left {
+            left: -2px;
+        }
+
+        .walk-ear.right {
+            right: -2px;
+        }
+
+        .walk-hair {
+            position: absolute;
+            bottom: 78px;
+            left: 10px;
+            width: 28px;
+            height: 10px;
+            background: #222;
+            border-radius: 10px 10px 0 0;
+            z-index: 7;
+            transition: all 0.2s;
+        }
+
+        .walk-cape {
+            position: absolute;
+            bottom: 30px;
+            left: 8px;
+            /* Centered(ish) behind */
+            width: 32px;
+            height: 45px;
+            background: #e63946;
+            border-radius: 5px;
+            transform-origin: top center;
+            z-index: 1;
+            transition: all 0.2s ease;
+        }
+
+        .walk-arm {
+            position: absolute;
+            bottom: 35px;
+            width: 9px;
+            height: 28px;
+            background: #3E0097;
+            border-radius: 4px;
+            transform-origin: top center;
+            z-index: 5;
+            transition: all 0.2s;
+        }
+
+        .walk-arm.left {
+            left: 0px;
+        }
+
+        .walk-arm.right {
+            right: 0px;
+        }
+
+        .walk-arm::after {
+            width: 9px;
+            height: 9px;
+            background: #ffd5b5;
+            border-radius: 50%;
+            position: absolute;
+            bottom: -5px;
+            content: '';
+            left: 0;
         }
 
         .walk-leg {
             position: absolute;
-            bottom: 0;
-            width: 12px;
-            height: 25px;
-            background: #2a2a5a;
-            border-radius: 3px;
+            width: 10px;
+            height: 30px;
+            background: #1a1a3a;
+            border-radius: 4px;
+            transform-origin: top center;
+            z-index: 4;
+            transition: all 0.2s;
         }
 
         .walk-leg.left {
-            left: 8px;
+            bottom: 0;
+            left: 13px;
         }
 
+        .walk-leg.right {
+            bottom: 0;
+            left: 25px;
+        }
+
+
+        /* RUNNING STATE (SIDE VIEW) */
+        .character-walk.walking .walk-body {
+            transform: skewX(5deg);
+        }
+
+        .character-walk.walking .walk-head {
+            transform: skewX(5deg);
+        }
+
+        .character-walk.walking .walk-hair {
+            transform: skewX(5deg);
+        }
+
+        /* Hide far side features for profile view */
+        .character-walk.walking .walk-eye.left {
+            display: none;
+        }
+
+        .character-walk.walking .walk-ear.left {
+            display: none;
+        }
+
+        .character-walk.walking .walk-eye.right {
+            right: 5px;
+        }
+
+        /* Position for profile */
+        .character-walk.walking .walk-ear.right {
+            right: auto;
+            left: -2px;
+        }
+
+        /* Ear moves to back of head */
+
+        .character-walk.walking .walk-mouth {
+            left: auto;
+            right: 4px;
+            transform: none;
+            width: 6px;
+        }
+
+        .character-walk.walking .walk-cape {
+            left: -5px;
+            transform-origin: top right;
+            animation: capeFlutter 0.4s infinite ease-in-out alternate;
+            transform: rotate(25deg);
+        }
+
+        .character-walk.walking .walk-leg.left {
+            left: 12px;
+            animation: runLegs 0.6s infinite linear;
+        }
+
+        .character-walk.walking .walk-leg.right {
+            left: 20px;
+            z-index: 3;
+            filter: brightness(0.8);
+            animation: runLegs 0.6s infinite linear;
+            animation-delay: 0.3s;
+        }
+
+        .character-walk.walking .walk-arm.left {
+            left: 5px;
+            z-index: 6;
+            animation: runArms 0.6s infinite linear;
+        }
+
+        .character-walk.walking .walk-arm.right {
+            right: auto;
+            left: 30px;
+            z-index: 2;
+            filter: brightness(0.7);
+            animation: runArms 0.6s infinite linear;
+            animation-delay: 0.3s;
+        }
+
+
+        /* VICTORY STATE */
+        .character-walk.victory .walk-arm.left {
+            transform: rotate(-150deg);
+            /* Arms up! */
+            left: 2px;
+        }
+
+        .character-walk.victory .walk-arm.right {
+            transform: rotate(150deg);
+            /* Arms up! */
+            right: 2px;
+        }
+
+        .character-walk.victory .walk-mouth {
+            height: 6px;
+            /* Big open smile */
+            border-radius: 0 0 50% 50%;
+            background: #330000;
+            border: none;
+        }
+
+        .character-walk.victory .walk-eye {
+            height: 2px;
+            width: 6px;
+            border-radius: 2px;
+            top: 8px;
+            /* Happy squint */
+        }
+
+        @keyframes runLegs {
+            0% {
+                transform: rotate(35deg) translateY(-5px);
+            }
+
+            50% {
+                transform: rotate(-45deg) translateY(0);
+            }
+
+            100% {
+                transform: rotate(35deg) translateY(-5px);
+            }
+        }
+
+        @keyframes runArms {
+            0% {
+                transform: rotate(-50deg);
+            }
+
+            50% {
+                transform: rotate(50deg);
+            }
+
+            100% {
+                transform: rotate(-50deg);
+            }
+        }
+
+        @keyframes capeFlutter {
+            0% {
+                transform: rotate(20deg);
+            }
+
+            100% {
+                transform: rotate(35deg);
+            }
+        }
+
+        /* 
+        ERROR FIX: The following styles were incorrectly placed inside @keyframes.
+        They seem to be modified copies of earlier rules. 
+        Commenting out to prevent breaking the character's idle/walking states.
+        
         .walk-leg.right {
             left: 20px;
         }
@@ -515,6 +827,7 @@
         .walk-arm.right {
             left: 32px;
         }
+        */
 
         /* Forklift */
         .character-forklift {
@@ -1490,11 +1803,10 @@
         .info-panel::before {
             content: '';
             position: absolute;
-            bottom: -500px;
-            /* Over-extend to guarantee it hits the ground */
+            bottom: -180px;
             left: 20%;
-            width: 8px;
-            height: 500px;
+            width: 6px;
+            height: 180px;
             background: #444;
             z-index: -1;
             box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
@@ -1503,10 +1815,10 @@
         .info-panel::after {
             content: '';
             position: absolute;
-            bottom: -500px;
+            bottom: -180px;
             right: 20%;
-            width: 8px;
-            height: 500px;
+            width: 6px;
+            height: 180px;
             background: #444;
             z-index: -1;
             box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
@@ -1664,8 +1976,7 @@
         .flag-pole {
             position: absolute;
             bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
+            left: 0;
             width: 5px;
             height: 100px;
             background: linear-gradient(90deg, #888 0%, #aaa 50%, #888 100%);
@@ -1674,11 +1985,13 @@
         .flag-cloth {
             position: absolute;
             top: 5px;
-            left: 7px;
+            left: 5px;
+            /* Start after pole */
             width: 50px;
             height: 35px;
             animation: flagWave 2s ease-in-out infinite;
             border-radius: 0 3px 3px 0;
+            transform-origin: left center;
         }
 
         @keyframes flagWave {
@@ -1712,13 +2025,12 @@
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
+            width: 100%;
+            height: 100%;
+            /* White diagonals (St Andrew) */
             background:
-                linear-gradient(45deg, transparent 40%, rgba(255, 255, 255, 0.7) 40%, rgba(255, 255, 255, 0.7) 60%, transparent 60%),
-                linear-gradient(-45deg, transparent 40%, rgba(255, 255, 255, 0.7) 40%, rgba(255, 255, 255, 0.7) 60%, transparent 60%),
-                linear-gradient(90deg, transparent 40%, rgba(255, 255, 255, 0.7) 40%, rgba(255, 255, 255, 0.7) 60%, transparent 60%),
-                linear-gradient(0deg, transparent 40%, rgba(255, 255, 255, 0.7) 40%, rgba(255, 255, 255, 0.7) 60%, transparent 60%);
+                linear-gradient(45deg, transparent 40%, #fff 40%, #fff 60%, transparent 60%),
+                linear-gradient(-45deg, transparent 40%, #fff 40%, #fff 60%, transparent 60%);
         }
 
         .flag-uk::after {
@@ -1726,11 +2038,19 @@
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
+            width: 100%;
+            height: 100%;
+            /* Layer Order: Red Cross (Top), White Cross, Red Diagonals */
             background:
-                linear-gradient(90deg, transparent 45%, #C8102E 45%, #C8102E 55%, transparent 55%),
-                linear-gradient(0deg, transparent 45%, #C8102E 45%, #C8102E 55%, transparent 55%);
+                /* Red Cross (St George) */
+                linear-gradient(90deg, transparent 42%, #C8102E 42%, #C8102E 58%, transparent 58%),
+                linear-gradient(0deg, transparent 42%, #C8102E 42%, #C8102E 58%, transparent 58%),
+                /* White Cross Borders */
+                linear-gradient(90deg, transparent 35%, #fff 35%, #fff 65%, transparent 65%),
+                linear-gradient(0deg, transparent 35%, #fff 35%, #fff 65%, transparent 65%),
+                /* Red Diagonals (St Patrick) */
+                linear-gradient(45deg, transparent 45%, #C8102E 45%, #C8102E 55%, transparent 55%),
+                linear-gradient(-45deg, transparent 45%, #C8102E 45%, #C8102E 55%, transparent 55%);
         }
 
         .flag-es {
@@ -1841,6 +2161,7 @@
         }
 
         /* Floating Code for Hobbies */
+        /* Floating Code for Hobbies */
         .code-float {
             position: absolute;
             color: #00ff00;
@@ -1861,6 +2182,8 @@
                 opacity: 0;
             }
         }
+
+
 
         /* Stars */
         .star {
