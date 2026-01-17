@@ -33,7 +33,7 @@
         .level {
             position: absolute;
             height: 100%;
-            width: 300vw;
+            width: 200vw;
         }
 
         /* Sky gradients for different levels */
@@ -1378,6 +1378,17 @@
             100% { transform: rotate(360deg); }
         }
 
+        /* Hobbies Animations */
+        @keyframes runAnimation {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(200px); }
+        }
+
+        @keyframes steam {
+            0% { transform: translateY(0) scale(0.8); opacity: 0.8; }
+            100% { transform: translateY(-25px) scale(1.2); opacity: 0; }
+        }
+
         /* Particles */
         .collect-particle {
             position: absolute;
@@ -1625,12 +1636,13 @@
 
         // Level Data
         const levels = [
-            { name: "Introduction", subtitle: "Barcelona, Spain", width: 300, bgClass: "level-0" },
-            { name: "Americold", subtitle: "IT & Logistics Transformation Lead", width: 300, bgClass: "level-1" },
-            { name: "ID Logistics", subtitle: "Engineering & Process Improvement", width: 300, bgClass: "level-2" },
-            { name: "Forvia (Faurecia)", subtitle: "Supply Chain & Systems Lead", width: 300, bgClass: "level-3" },
-            { name: "Education", subtitle: "UTBM & IUT Nice", width: 300, bgClass: "level-4" },
-            { name: "Contact & Finale", subtitle: "Let's Connect!", width: 300, bgClass: "level-5" }
+            { name: "Introduction", subtitle: "Barcelona, Spain", width: 200, bgClass: "level-0" },
+            { name: "Americold", subtitle: "Supply Chain Systems Specialist - Europe", width: 200, bgClass: "level-1" },
+            { name: "ID Logistics", subtitle: "Engineering, Systems & Process Improvement Manager", width: 200, bgClass: "level-2" },
+            { name: "Forvia (Faurecia)", subtitle: "Senior Supply Chain, Logistics & Systems Lead", width: 200, bgClass: "level-3" },
+            { name: "Education", subtitle: "UTBM & IUT Nice", width: 200, bgClass: "level-4" },
+            { name: "Life & Hobbies", subtitle: "Beyond Work", width: 200, bgClass: "level-2" },
+            { name: "Contact & Finale", subtitle: "Let's Connect!", width: 200, bgClass: "level-5" }
         ];
 
         // Badges - positioned at reachable heights
@@ -1660,7 +1672,7 @@
 
         function generateLevelHTML(levelIndex) {
             const level = levels[levelIndex];
-            const levelOffset = levelIndex * 300;
+            const levelOffset = levelIndex * 200;
             
             let html = `<div class="level ${level.bgClass}" style="left: ${levelOffset}vw;">`;
             html += `<div class="ground"></div>`;
@@ -1671,9 +1683,9 @@
             }
             
             // Stars
-            if (levelIndex !== 5) {
+            if (levelIndex !== 6) {
                 for (let i = 0; i < 40; i++) {
-                    html += `<div class="star" style="left: ${Math.random() * 290}vw; top: ${Math.random() * 30 + 5}%; animation-delay: ${Math.random() * 3}s;"></div>`;
+                    html += `<div class="star" style="left: ${Math.random() * 190}vw; top: ${Math.random() * 30 + 5}%; animation-delay: ${Math.random() * 3}s;"></div>`;
                 }
             }
             
@@ -1733,12 +1745,12 @@
             
             switch(levelIndex) {
                 case 0: // Intro - Barcelona
-                    // Main warehouse
+                    // Main warehouse with modern design
                     html += `
                         <div class="warehouse" style="left: 150px;">
-                            <div class="warehouse-structure" style="width: 300px; height: 200px;">
+                            <div class="warehouse-structure" style="width: 320px; height: 220px; background: linear-gradient(180deg, #6a7a8a 0%, #4a5a6a 100%); box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
                                 <div class="warehouse-roof"></div>
-                                <div class="warehouse-sign">BARCELONA HQ</div>
+                                <div class="warehouse-sign" style="font-size: 16px; padding: 10px 24px;">BARCELONA HQ</div>
                                 <div class="loading-dock" style="left: 30px;">
                                     <div class="dock-door open"></div>
                                     <div class="dock-platform"></div>
@@ -1747,174 +1759,144 @@
                                     <div class="dock-door"></div>
                                     <div class="dock-platform"></div>
                                 </div>
-                                <div class="loading-dock" style="left: 210px;">
+                                <div class="loading-dock" style="left: 220px;">
                                     <div class="dock-door open"></div>
                                     <div class="dock-platform"></div>
                                 </div>
                             </div>
                         </div>
                     `;
-                    // Pallet stacks on ground
+                    // Pallet stacks on ground (adjusted positions)
                     html += generatePalletStack(520, 3);
                     html += generatePalletStack(620, 2);
-                    html += generatePalletStack(700, 4);
+                    html += generatePalletStack(720, 4);
                     // Animated workers
                     html += generateAnimatedWorker(550, 0);
-                    html += generateAnimatedWorker(750, 2);
+                    html += generateAnimatedWorker(800, 2);
                     // Working forklift
-                    html += generateWorkingForklift(850, 1);
-                    // Conveyor
-                    html += `
-                        <div class="conveyor-system" style="left: 950px;">
-                            <div class="conveyor-frame" style="width: 200px;">
-                                <div class="conveyor-belt"></div>
-                                <div class="conveyor-box" style="animation-delay: 0s;"></div>
-                                <div class="conveyor-box" style="animation-delay: 2s; left: 80px;"></div>
-                            </div>
-                            <div class="conveyor-leg" style="left: 20px;"></div>
-                            <div class="conveyor-leg" style="left: 170px;"></div>
-                        </div>
-                    `;
+                    html += generateWorkingForklift(920, 1);
                     break;
 
                 case 1: // Americold - Cold Storage
-                    // Cold storage building
+                    // Cold storage building with improved design
                     html += `
-                        <div class="cold-storage" style="left: 100px; width: 280px; height: 180px;">
+                        <div class="cold-storage" style="left: 100px; width: 300px; height: 200px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
                             <div class="frost-overlay"></div>
-                            <div class="cold-unit-label">AMERICOLD</div>
+                            <div class="cold-unit-label" style="font-size: 18px;">AMERICOLD</div>
                             <div class="temp-display">-25°C</div>
-                            ${generateIcicles(12)}
+                            ${generateIcicles(13)}
                             <div class="loading-dock" style="left: 40px; bottom: 0;">
                                 <div class="dock-door open"></div>
                                 <div class="dock-platform"></div>
                             </div>
-                            <div class="loading-dock" style="left: 140px; bottom: 0;">
+                            <div class="loading-dock" style="left: 150px; bottom: 0;">
                                 <div class="dock-door open"></div>
                                 <div class="dock-platform"></div>
                             </div>
                         </div>
-                        <div class="cold-storage" style="left: 450px; width: 220px; height: 160px;">
+                        <div class="cold-storage" style="left: 480px; width: 240px; height: 180px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
                             <div class="frost-overlay"></div>
                             <div class="temp-display">-18°C</div>
-                            ${generateIcicles(9)}
-                            <div class="loading-dock" style="left: 70px; bottom: 0;">
+                            ${generateIcicles(10)}
+                            <div class="loading-dock" style="left: 80px; bottom: 0;">
                                 <div class="dock-door"></div>
                                 <div class="dock-platform"></div>
                             </div>
                         </div>
-                        <div class="cold-storage" style="left: 750px; width: 250px; height: 170px;">
+                        <div class="cold-storage" style="left: 800px; width: 260px; height: 190px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
                             <div class="frost-overlay"></div>
-                            <div class="cold-unit-label">27 SITES</div>
+                            <div class="cold-unit-label">EUROPE</div>
                             <div class="temp-display">-22°C</div>
-                            ${generateIcicles(10)}
+                            ${generateIcicles(11)}
                         </div>
                     `;
-                    // Ground pallets
-                    html += generatePalletStack(1050, 2);
-                    html += generatePalletStack(1130, 3);
                     // Workers
-                    html += generateAnimatedWorker(380, 1);
-                    html += generateAnimatedWorker(680, 3);
-                    // Working forklift
-                    html += generateWorkingForklift(900, 2);
+                    html += generateAnimatedWorker(420, 1);
+                    html += generateAnimatedWorker(750, 3);
                     break;
 
                 case 2: // ID Logistics
-                    // Main warehouse
+                    // Main warehouse with improved design
                     html += `
                         <div class="warehouse" style="left: 120px;">
-                            <div class="warehouse-structure" style="width: 350px; height: 220px;">
+                            <div class="warehouse-structure" style="width: 360px; height: 230px; background: linear-gradient(180deg, #6a7a8a 0%, #4a5a6a 100%); box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
                                 <div class="warehouse-roof"></div>
-                                <div class="warehouse-sign">ID LOGISTICS</div>
+                                <div class="warehouse-sign" style="font-size: 16px; padding: 10px 24px;">ID LOGISTICS</div>
                                 <div class="loading-dock" style="left: 40px;">
                                     <div class="dock-door open"></div>
                                     <div class="dock-platform"></div>
                                 </div>
-                                <div class="loading-dock" style="left: 140px;">
+                                <div class="loading-dock" style="left: 150px;">
                                     <div class="dock-door open"></div>
                                     <div class="dock-platform"></div>
                                 </div>
-                                <div class="loading-dock" style="left: 240px;">
+                                <div class="loading-dock" style="left: 260px;">
                                     <div class="dock-door"></div>
                                     <div class="dock-platform"></div>
                                 </div>
                             </div>
                         </div>
                     `;
-                    // Factory section
+                    // Factory section with modern design
                     html += `
-                        <div class="factory" style="left: 550px;">
-                            <div class="factory-building" style="width: 200px; height: 180px;">
-                                <div class="chimney" style="left: 40px; top: -50px; width: 30px; height: 50px;">
+                        <div class="factory" style="left: 560px;">
+                            <div class="factory-building" style="width: 220px; height: 200px; background: linear-gradient(180deg, #5a6a7a 0%, #3a4a5a 100%); box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+                                <div class="chimney" style="left: 45px; top: -50px; width: 32px; height: 50px;">
                                     <div class="chimney-top"></div>
                                     <div class="smoke" style="top: -20px; left: 5px;"></div>
-                                    <div class="smoke" style="top: -20px; left: 15px; animation-delay: 1.5s;"></div>
+                                    <div class="smoke" style="top: -20px; left: 16px; animation-delay: 1.5s;"></div>
                                 </div>
-                                <div class="warehouse-sign" style="top: 30px;">TARRAGONA</div>
-                                <div class="factory-door" style="left: 70px; width: 60px; height: 80px;"></div>
+                                <div class="warehouse-sign" style="top: 30px; font-size: 14px;">TARRAGONA</div>
+                                <div class="factory-door" style="left: 80px; width: 60px; height: 85px;"></div>
                                 ${generateIndustrialWindows(4, 2, 20, 100)}
                             </div>
                         </div>
                     `;
                     // Pallet stacks
-                    html += generatePalletStack(820, 3);
-                    html += generatePalletStack(900, 2);
-                    // Conveyor
-                    html += `
-                        <div class="conveyor-system" style="left: 980px;">
-                            <div class="conveyor-frame" style="width: 180px;">
-                                <div class="conveyor-belt"></div>
-                                <div class="conveyor-box"></div>
-                            </div>
-                            <div class="conveyor-leg" style="left: 15px;"></div>
-                            <div class="conveyor-leg" style="left: 155px;"></div>
-                        </div>
-                    `;
+                    html += generatePalletStack(840, 3);
+                    html += generatePalletStack(930, 2);
                     // Workers
-                    html += generateAnimatedWorker(500, 0);
-                    html += generateAnimatedWorker(780, 2);
-                    // Working forklift
-                    html += generateWorkingForklift(1100, 0);
+                    html += generateAnimatedWorker(520, 0);
+                    html += generateAnimatedWorker(810, 2);
                     break;
 
                 case 3: // Forvia - Automotive
-                    // Large factory
+                    // Large factory with modern design
                     html += `
                         <div class="factory" style="left: 100px;">
-                            <div class="factory-building" style="width: 320px; height: 240px;">
-                                <div class="chimney" style="left: 50px; top: -60px; width: 35px; height: 60px;">
+                            <div class="factory-building" style="width: 340px; height: 250px; background: linear-gradient(180deg, #5a6a7a 0%, #3a4a5a 100%); box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+                                <div class="chimney" style="left: 55px; top: -60px; width: 36px; height: 60px;">
                                     <div class="chimney-top"></div>
                                     <div class="smoke" style="top: -25px; left: 5px;"></div>
                                     <div class="smoke" style="top: -25px; left: 18px; animation-delay: 2s;"></div>
                                 </div>
-                                <div class="chimney" style="left: 220px; top: -60px; width: 35px; height: 60px;">
+                                <div class="chimney" style="left: 230px; top: -60px; width: 36px; height: 60px;">
                                     <div class="chimney-top"></div>
                                     <div class="smoke" style="top: -25px; left: 8px; animation-delay: 1s;"></div>
                                 </div>
-                                <div class="warehouse-sign" style="top: 25px; font-size: 18px;">FORVIA</div>
-                                <div style="position: absolute; top: 55px; left: 50%; transform: translateX(-50%); color: #ccc; font-size: 11px;">(FAURECIA)</div>
-                                <div class="factory-door" style="left: 130px; width: 70px; height: 90px;"></div>
-                                ${generateIndustrialWindows(5, 3, 25, 90)}
+                                <div class="warehouse-sign" style="top: 25px; font-size: 20px; padding: 10px 28px;">FORVIA</div>
+                                <div style="position: absolute; top: 58px; left: 50%; transform: translateX(-50%); color: #ddd; font-size: 12px;">(FAURECIA)</div>
+                                <div class="factory-door" style="left: 135px; width: 72px; height: 92px;"></div>
+                                ${generateIndustrialWindows(5, 3, 25, 95)}
                             </div>
                         </div>
                     `;
                     // Second factory
                     html += `
-                        <div class="factory" style="left: 500px;">
-                            <div class="factory-building" style="width: 220px; height: 180px;">
-                                <div class="chimney" style="left: 90px; top: -50px; width: 30px; height: 50px;">
+                        <div class="factory" style="left: 520px;">
+                            <div class="factory-building" style="width: 240px; height: 200px; background: linear-gradient(180deg, #5a6a7a 0%, #3a4a5a 100%); box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+                                <div class="chimney" style="left: 100px; top: -50px; width: 32px; height: 50px;">
                                     <div class="chimney-top"></div>
                                     <div class="smoke" style="top: -20px; left: 5px;"></div>
                                 </div>
-                                <div class="warehouse-sign" style="top: 25px;">29 PLANTS</div>
-                                ${generateIndustrialWindows(4, 2, 20, 80)}
+                                <div class="warehouse-sign" style="top: 28px; font-size: 16px;">29 PLANTS</div>
+                                ${generateIndustrialWindows(4, 2, 25, 85)}
                             </div>
                         </div>
                     `;
                     // Truck
                     html += `
-                        <div class="parked-truck" style="left: 800px;">
+                        <div class="parked-truck" style="left: 840px;">
                             <div class="truck-trailer"></div>
                             <div class="truck-cab">
                                 <div class="truck-window"></div>
@@ -1924,86 +1906,105 @@
                             <div class="truck-wheel" style="left: 130px;"></div>
                         </div>
                     `;
-                    // Pallets
-                    html += generatePalletStack(1000, 2);
-                    html += generatePalletStack(1080, 3);
                     // Workers
-                    html += generateAnimatedWorker(450, 1);
-                    html += generateAnimatedWorker(730, 0);
-                    // Forklift
-                    html += generateWorkingForklift(1150, 2);
+                    html += generateAnimatedWorker(470, 1);
+                    html += generateAnimatedWorker(800, 0);
                     break;
 
                 case 4: // Education
                     // UTBM University
                     html += `
                         <div class="university" style="left: 200px;">
-                            <div class="university-building" style="width: 250px; height: 180px;">
+                            <div class="university-building" style="width: 260px; height: 190px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
                                 <div class="university-pediment"></div>
-                                <div class="university-name">UTBM</div>
+                                <div class="university-name" style="font-size: 20px;">UTBM</div>
                                 <div class="university-date">2016 - 2020</div>
-                                <div class="university-column" style="left: 30px; height: 100px; bottom: 0;"></div>
-                                <div class="university-column" style="left: 70px; height: 100px; bottom: 0;"></div>
-                                <div class="university-column" style="left: 160px; height: 100px; bottom: 0;"></div>
-                                <div class="university-column" style="left: 200px; height: 100px; bottom: 0;"></div>
+                                <div class="university-column" style="left: 32px; height: 105px; bottom: 0;"></div>
+                                <div class="university-column" style="left: 75px; height: 105px; bottom: 0;"></div>
+                                <div class="university-column" style="left: 165px; height: 105px; bottom: 0;"></div>
+                                <div class="university-column" style="left: 208px; height: 105px; bottom: 0;"></div>
                                 <div class="university-door"></div>
                             </div>
                         </div>
                     `;
                     // IUT Nice
                     html += `
-                        <div class="university" style="left: 600px;">
-                            <div class="university-building" style="width: 200px; height: 150px;">
+                        <div class="university" style="left: 580px;">
+                            <div class="university-building" style="width: 210px; height: 160px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
                                 <div class="university-pediment"></div>
                                 <div class="university-name">IUT Nice</div>
                                 <div class="university-date">2013 - 2015</div>
-                                <div class="university-column" style="left: 25px; height: 80px; bottom: 0;"></div>
-                                <div class="university-column" style="left: 65px; height: 80px; bottom: 0;"></div>
-                                <div class="university-column" style="left: 115px; height: 80px; bottom: 0;"></div>
-                                <div class="university-column" style="left: 155px; height: 80px; bottom: 0;"></div>
+                                <div class="university-column" style="left: 27px; height: 85px; bottom: 0;"></div>
+                                <div class="university-column" style="left: 68px; height: 85px; bottom: 0;"></div>
+                                <div class="university-column" style="left: 122px; height: 85px; bottom: 0;"></div>
+                                <div class="university-column" style="left: 163px; height: 85px; bottom: 0;"></div>
                                 <div class="university-door"></div>
                             </div>
                         </div>
                     `;
-                    // Flags
+                    break;
+
+                case 5: // Hobbies
+                    // Running track
                     html += `
-                        <div class="flag-display" style="left: 950px;">
-                            <div class="flag-pole"></div>
-                            <div class="flag-cloth flag-fr"></div>
+                        <div style="position: absolute; bottom: 100px; left: 150px; width: 180px; height: 12px; background: #c85a54; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.3);"></div>
+                    `;
+                    // Animated runner
+                    html += `
+                        <div style="position: absolute; bottom: 120px; left: 180px; animation: runAnimation 6s linear infinite;">
+                            <div style="position: absolute; width: 20px; height: 35px; background: #3E0097; border-radius: 5px;"></div>
+                            <div style="position: absolute; width: 14px; height: 14px; background: #ffd5b5; border-radius: 50%; left: 3px; top: -16px;"></div>
                         </div>
-                        <div class="flag-display" style="left: 1030px;">
-                            <div class="flag-pole"></div>
-                            <div class="flag-cloth flag-uk"></div>
+                    `;
+                    // Books stack
+                    html += `
+                        <div style="position: absolute; bottom: 100px; left: 400px;">
+                            <div style="width: 60px; height: 15px; background: linear-gradient(180deg, #8B4513 0%, #654321 100%); border: 2px solid #3E0097; margin-bottom: 5px;"></div>
+                            <div style="width: 55px; height: 15px; background: linear-gradient(180deg, #006400 0%, #004d00 100%); border: 2px solid #3E0097; margin-bottom: 5px;"></div>
+                            <div style="width: 58px; height: 15px; background: linear-gradient(180deg, #8B0000 0%, #660000 100%); border: 2px solid #3E0097;"></div>
                         </div>
-                        <div class="flag-display" style="left: 1110px;">
-                            <div class="flag-pole"></div>
-                            <div class="flag-cloth flag-es"></div>
+                    `;
+                    // Computer/Coding setup
+                    html += `
+                        <div style="position: absolute; bottom: 100px; left: 550px;">
+                            <div style="width: 80px; height: 60px; background: linear-gradient(180deg, #1a1a2e 0%, #0a0a1e 100%); border: 3px solid #3E0097; border-radius: 5px;">
+                                <div style="position: absolute; top: 8px; left: 8px; width: 60px; height: 40px; background: linear-gradient(180deg, #00ff00 0%, #00cc00 100%); opacity: 0.8; font-family: monospace; font-size: 6px; padding: 2px; color: #000; overflow: hidden;">CODE<br/>BUILD<br/>DEPLOY</div>
+                            </div>
+                            <div style="width: 90px; height: 5px; background: #666; margin-top: 2px;"></div>
                         </div>
-                        <div class="flag-display" style="left: 1190px;">
-                            <div class="flag-pole"></div>
-                            <div class="flag-cloth flag-cn"></div>
+                    `;
+                    // Cooking pot
+                    html += `
+                        <div style="position: absolute; bottom: 105px; left: 720px;">
+                            <div style="width: 50px; height: 35px; background: linear-gradient(180deg, #888 0%, #666 100%); border-radius: 5px 5px 25px 25px; border: 3px solid #444; position: relative;">
+                                <div style="position: absolute; top: -8px; left: -8px; width: 15px; height: 8px; background: #666; border-radius: 4px;"></div>
+                                <div style="position: absolute; top: -8px; right: -8px; width: 15px; height: 8px; background: #666; border-radius: 4px;"></div>
+                                <div style="position: absolute; top: -15px; left: 20%; width: 8px; height: 12px; background: rgba(255,255,255,0.6); border-radius: 50%; animation: steam 2s ease-in-out infinite;"></div>
+                            </div>
+                        </div>
+                    `;
+                    // Padel racket
+                    html += `
+                        <div style="position: absolute; bottom: 110px; left: 860px; transform: rotate(-30deg);">
+                            <div style="width: 45px; height: 60px; background: linear-gradient(180deg, #FFD700 0%, #FFA500 100%); border-radius: 25px 25px 5px 5px; border: 3px solid #3E0097;"></div>
+                            <div style="width: 8px; height: 30px; background: linear-gradient(180deg, #8B4513 0%, #654321 100%); margin-left: 18px; border-radius: 4px;"></div>
                         </div>
                     `;
                     break;
 
-                case 5: // Finale
-                    // Celebration building
+                case 6: // Finale
+                    // Celebration building - simplified without overlapping text
                     html += `
                         <div class="warehouse" style="left: 250px;">
-                            <div class="warehouse-structure" style="width: 350px; height: 200px; background: linear-gradient(180deg, #3E0097 0%, #2a0066 100%); border-color: #FFD700;">
-                                <div style="position: absolute; top: 40px; left: 50%; transform: translateX(-50%); color: #FFD700; font-size: 32px; font-weight: bold;">THANK YOU!</div>
-                                <div style="position: absolute; top: 90px; left: 50%; transform: translateX(-50%); color: white; font-size: 18px;">€7M+ Total Impact</div>
-                                <div style="position: absolute; top: 120px; left: 50%; transform: translateX(-50%); color: #FFD700; font-size: 14px;">29+ Sites Transformed</div>
+                            <div class="warehouse-structure" style="width: 400px; height: 240px; background: linear-gradient(180deg, #3E0097 0%, #2a0066 100%); border-color: #FFD700; box-shadow: 0 15px 40px rgba(255,215,0,0.4);">
+                                <div style="position: absolute; top: 60px; left: 50%; transform: translateX(-50%); color: #FFD700; font-size: 42px; font-weight: bold; text-shadow: 0 0 20px rgba(255,215,0,0.6);">THANK YOU!</div>
                             </div>
                         </div>
                     `;
                     // Golden stars
-                    for (let i = 0; i < 30; i++) {
-                        html += `<div class="star" style="left: ${Math.random() * 250 + 20}vw; top: ${Math.random() * 50 + 10}%; width: 4px; height: 4px; background: #FFD700; animation-delay: ${Math.random() * 3}s;"></div>`;
+                    for (let i = 0; i < 40; i++) {
+                        html += `<div class="star" style="left: ${Math.random() * 180 + 10}vw; top: ${Math.random() * 50 + 10}%; width: 4px; height: 4px; background: #FFD700; animation-delay: ${Math.random() * 3}s;"></div>`;
                     }
-                    // Pallet stacks
-                    html += generatePalletStack(700, 2);
-                    html += generatePalletStack(780, 3);
                     break;
             }
             
@@ -2062,16 +2063,27 @@
                     <h3>🌍 Languages</h3>
                     <p>French (Native) | English (C1) | Spanish (C1) | Mandarin (B1)</p>
                 </div>`,
+                `<div class="info-panel" style="left: 50px; bottom: 320px;">
+                    <h2>Life & Hobbies</h2>
+                    <h3>🏃 Sports & Fitness</h3>
+                    <p>Running, Hiking, Padel</p>
+                    <h3>📚 Reading & Learning</h3>
+                    <p>Continuous personal development</p>
+                    <h3>💻 Coding Projects</h3>
+                    <p>Building innovative solutions</p>
+                    <h3>👨‍🍳 Cooking</h3>
+                    <p>Exploring cuisines & recipes</p>
+                </div>`,
                 `<div class="info-panel" style="left: 700px; bottom: 320px;">
                     <h2>Let's Connect!</h2>
                     <p><span class="highlight">€7M+ Total Savings</span></p>
-                    <p><span class="highlight">29+ Sites Transformed</span></p>
-                    <p><span class="highlight">200+ EDI Integrations</span></p>
+                    <p><span class="highlight">60+ Sites Transformed</span></p>
+                    <p><span class="highlight">Railway, Automotive, Warehousing and Retail</span></p>
                     <br>
-                    <p>📧 rbaronpro@gmail.com</p>
-                    <p>📱 +34 644 00 23 69</p>
-                    <p>💼 LinkedIn: roman-baron-7912b2a9</p>
-                    <p>💻 GitHub: Rom946</p>
+                    <p style="font-size: 16px;">📧 rbaronpro@gmail.com</p>
+                    <p style="font-size: 16px;">📱 +34 644 00 23 69</p>
+                    <p style="font-size: 16px;">💼 LinkedIn: roman-baron-7912b2a9</p>
+                    <p style="font-size: 16px;">💻 GitHub: Rom946</p>
                 </div>`
             ];
             return panels[levelIndex] || '';
@@ -2139,7 +2151,7 @@
         function initGameWorld() {
             const gameWorld = document.getElementById('gameWorld');
             gameWorld.innerHTML = '';
-            gameWorld.style.width = (levels.length * 300) + 'vw';
+            gameWorld.style.width = (levels.length * 200) + 'vw';
             levels.forEach((_, i) => gameWorld.innerHTML += generateLevelHTML(i));
             updateCharacterDisplay();
         }
@@ -2231,7 +2243,7 @@
                 moved = true;
             }
             
-            const maxX = (levels.length * 300 * window.innerWidth / 100) - window.innerWidth;
+            const maxX = (levels.length * 200 * window.innerWidth / 100) - window.innerWidth;
             gameState.worldX = Math.max(0, Math.min(gameState.worldX, maxX));
             
             // Gravity
@@ -2270,11 +2282,11 @@
             const charW = getCharacterWidth();
             const charY = gameState.characterY;
             const charH = getCharacterHeight();
-            
+
             badges.forEach((badge, index) => {
                 if (badge.collected) return;
-                
-                const levelOffset = badge.level * 300 * window.innerWidth / 100;
+
+                const levelOffset = badge.level * 200 * window.innerWidth / 100;
                 const badgeX = levelOffset + badge.x;
                 const badgeY = badge.y;
                 
@@ -2324,7 +2336,7 @@
             const charX = window.innerWidth * 0.15 + gameState.worldX;
             
             vehicleZones.forEach(zone => {
-                const levelOffset = zone.level * 300 * window.innerWidth / 100;
+                const levelOffset = zone.level * 200 * window.innerWidth / 100;
                 const zoneX = levelOffset + zone.x;
                 
                 if (Math.abs(charX - zoneX) < 80 && gameState.vehicle !== zone.vehicle) {
@@ -2336,7 +2348,7 @@
         }
 
         function checkCurrentLevel() {
-            const levelWidth = 300 * window.innerWidth / 100;
+            const levelWidth = 200 * window.innerWidth / 100;
             const newLevel = Math.floor((gameState.worldX + window.innerWidth * 0.15) / levelWidth);
             
             if (newLevel !== gameState.currentLevel && newLevel >= 0 && newLevel < levels.length) {
