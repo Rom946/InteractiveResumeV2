@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -37,12 +38,29 @@
         }
 
         /* Sky gradients for different levels */
-        .level-0 { background: linear-gradient(180deg, #1a1a2e 0%, #3E0097 50%, #ff6b35 100%); }
-        .level-1 { background: linear-gradient(180deg, #0a1628 0%, #1a3a5c 50%, #2d5a7b 100%); }
-        .level-2 { background: linear-gradient(180deg, #1a1a2e 0%, #2d2d5a 50%, #3E0097 100%); }
-        .level-3 { background: linear-gradient(180deg, #1a1a2e 0%, #4a1a6b 50%, #3E0097 100%); }
-        .level-4 { background: linear-gradient(180deg, #1a3a1a 0%, #2d5a2d 50%, #3E0097 100%); }
-        .level-5 { background: linear-gradient(180deg, #FFD700 0%, #3E0097 50%, #1a1a2e 100%); }
+        .level-0 {
+            background: linear-gradient(180deg, #1a1a2e 0%, #3E0097 50%, #ff6b35 100%);
+        }
+
+        .level-1 {
+            background: linear-gradient(180deg, #0a1628 0%, #1a3a5c 50%, #2d5a7b 100%);
+        }
+
+        .level-2 {
+            background: linear-gradient(180deg, #1a1a2e 0%, #2d2d5a 50%, #3E0097 100%);
+        }
+
+        .level-3 {
+            background: linear-gradient(180deg, #1a1a2e 0%, #4a1a6b 50%, #3E0097 100%);
+        }
+
+        .level-4 {
+            background: linear-gradient(180deg, #1a3a1a 0%, #2d5a2d 50%, #3E0097 100%);
+        }
+
+        .level-5 {
+            background: linear-gradient(180deg, #FFD700 0%, #3E0097 50%, #1a1a2e 100%);
+        }
 
         /* Ground */
         .ground {
@@ -136,8 +154,13 @@
             border-radius: 3px;
         }
 
-        .walk-leg.left { left: 8px; }
-        .walk-leg.right { left: 20px; }
+        .walk-leg.left {
+            left: 8px;
+        }
+
+        .walk-leg.right {
+            left: 20px;
+        }
 
         .walk-arm {
             position: absolute;
@@ -149,8 +172,13 @@
             transform-origin: top center;
         }
 
-        .walk-arm.left { left: -2px; }
-        .walk-arm.right { left: 32px; }
+        .walk-arm.left {
+            left: -2px;
+        }
+
+        .walk-arm.right {
+            left: 32px;
+        }
 
         /* Forklift */
         .character-forklift {
@@ -269,8 +297,13 @@
             border-radius: 50%;
         }
 
-        .forklift-wheel.front { left: 15px; }
-        .forklift-wheel.back { left: 65px; }
+        .forklift-wheel.front {
+            left: 15px;
+        }
+
+        .forklift-wheel.back {
+            left: 65px;
+        }
 
         /* Car */
         .character-car {
@@ -369,8 +402,13 @@
             border-radius: 50%;
         }
 
-        .car-wheel.front { left: 15px; }
-        .car-wheel.back { left: 100px; }
+        .car-wheel.front {
+            left: 15px;
+        }
+
+        .car-wheel.back {
+            left: 100px;
+        }
 
         .car-headlight {
             position: absolute;
@@ -442,13 +480,11 @@
             left: 5px;
             right: 5px;
             bottom: 0;
-            background: repeating-linear-gradient(
-                0deg,
-                #666 0px,
-                #666 8px,
-                #555 8px,
-                #555 10px
-            );
+            background: repeating-linear-gradient(0deg,
+                    #666 0px,
+                    #666 8px,
+                    #555 8px,
+                    #555 10px);
             border: 2px solid #444;
         }
 
@@ -552,7 +588,7 @@
             left: 5%;
             width: 90%;
             height: 2px;
-            background: rgba(0,0,0,0.2);
+            background: rgba(0, 0, 0, 0.2);
         }
 
         /* Factory */
@@ -610,9 +646,20 @@
         }
 
         @keyframes smoke {
-            0% { transform: translateY(0) translateX(0) scale(0.5); opacity: 0.8; }
-            50% { transform: translateY(-60px) translateX(20px) scale(1.5); opacity: 0.4; }
-            100% { transform: translateY(-120px) translateX(40px) scale(2); opacity: 0; }
+            0% {
+                transform: translateY(0) translateX(0) scale(0.5);
+                opacity: 0.8;
+            }
+
+            50% {
+                transform: translateY(-60px) translateX(20px) scale(1.5);
+                opacity: 0.4;
+            }
+
+            100% {
+                transform: translateY(-120px) translateX(40px) scale(2);
+                opacity: 0;
+            }
         }
 
         .factory-door {
@@ -646,13 +693,11 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: repeating-linear-gradient(
-                90deg,
-                transparent 0px,
-                transparent 40px,
-                rgba(136, 168, 200, 0.3) 40px,
-                rgba(136, 168, 200, 0.3) 42px
-            );
+            background: repeating-linear-gradient(90deg,
+                    transparent 0px,
+                    transparent 40px,
+                    rgba(136, 168, 200, 0.3) 40px,
+                    rgba(136, 168, 200, 0.3) 42px);
         }
 
         .cold-unit-label {
@@ -691,7 +736,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(ellipse at top, rgba(255,255,255,0.1) 0%, transparent 70%);
+            background: radial-gradient(ellipse at top, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
             pointer-events: none;
         }
 
@@ -709,17 +754,43 @@
         }
 
         @keyframes workerMove {
-            0%, 100% { transform: translateX(0) scaleX(1); }
-            45% { transform: translateX(150px) scaleX(1); }
-            50% { transform: translateX(150px) scaleX(-1); }
-            95% { transform: translateX(0) scaleX(-1); }
+
+            0%,
+            100% {
+                transform: translateX(0) scaleX(1);
+            }
+
+            45% {
+                transform: translateX(150px) scaleX(1);
+            }
+
+            50% {
+                transform: translateX(150px) scaleX(-1);
+            }
+
+            95% {
+                transform: translateX(0) scaleX(-1);
+            }
         }
 
         @keyframes workerMoveReverse {
-            0%, 100% { transform: translateX(0) scaleX(-1); }
-            45% { transform: translateX(-150px) scaleX(-1); }
-            50% { transform: translateX(-150px) scaleX(1); }
-            95% { transform: translateX(0) scaleX(1); }
+
+            0%,
+            100% {
+                transform: translateX(0) scaleX(-1);
+            }
+
+            45% {
+                transform: translateX(-150px) scaleX(-1);
+            }
+
+            50% {
+                transform: translateX(-150px) scaleX(1);
+            }
+
+            95% {
+                transform: translateX(0) scaleX(1);
+            }
         }
 
         .worker-figure {
@@ -818,10 +889,23 @@
         }
 
         @keyframes forkliftMove {
-            0%, 100% { transform: translateX(0) scaleX(1); }
-            45% { transform: translateX(200px) scaleX(1); }
-            50% { transform: translateX(200px) scaleX(-1); }
-            95% { transform: translateX(0) scaleX(-1); }
+
+            0%,
+            100% {
+                transform: translateX(0) scaleX(1);
+            }
+
+            45% {
+                transform: translateX(200px) scaleX(1);
+            }
+
+            50% {
+                transform: translateX(200px) scaleX(-1);
+            }
+
+            95% {
+                transform: translateX(0) scaleX(-1);
+            }
         }
 
         .working-forklift-body {
@@ -881,8 +965,13 @@
             border-radius: 50%;
         }
 
-        .working-forklift-wheel.front { left: 10px; }
-        .working-forklift-wheel.back { left: 55px; }
+        .working-forklift-wheel.front {
+            left: 10px;
+        }
+
+        .working-forklift-wheel.back {
+            left: 55px;
+        }
 
         /* Conveyor Belt System */
         .conveyor-system {
@@ -904,20 +993,23 @@
             left: 5px;
             right: 5px;
             height: 12px;
-            background: repeating-linear-gradient(
-                90deg,
-                #222 0px,
-                #222 15px,
-                #333 15px,
-                #333 30px
-            );
+            background: repeating-linear-gradient(90deg,
+                    #222 0px,
+                    #222 15px,
+                    #333 15px,
+                    #333 30px);
             animation: conveyorMove 2s linear infinite;
             border-radius: 2px;
         }
 
         @keyframes conveyorMove {
-            0% { background-position: 0 0; }
-            100% { background-position: 30px 0; }
+            0% {
+                background-position: 0 0;
+            }
+
+            100% {
+                background-position: 30px 0;
+            }
         }
 
         .conveyor-leg {
@@ -939,8 +1031,13 @@
         }
 
         @keyframes boxMove {
-            0% { left: 0; }
-            100% { left: calc(100% - 30px); }
+            0% {
+                left: 0;
+            }
+
+            100% {
+                left: calc(100% - 30px);
+            }
         }
 
         /* Collectibles */
@@ -963,8 +1060,15 @@
         }
 
         @keyframes badgeFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
         }
 
         .badge-icon {
@@ -1048,7 +1152,8 @@
             justify-content: center;
         }
 
-        .parked-forklift, .parked-car {
+        .parked-forklift,
+        .parked-car {
             position: relative;
             width: 100%;
             height: 100%;
@@ -1158,15 +1263,143 @@
         }
 
         @keyframes flagWave {
-            0%, 100% { transform: skewY(0deg) scaleX(1); }
-            25% { transform: skewY(2deg) scaleX(0.95); }
-            75% { transform: skewY(-2deg) scaleX(0.98); }
+
+            0%,
+            100% {
+                transform: skewY(0deg) scaleX(1);
+            }
+
+            25% {
+                transform: skewY(2deg) scaleX(0.95);
+            }
+
+            75% {
+                transform: skewY(-2deg) scaleX(0.98);
+            }
         }
 
-        .flag-fr { background: linear-gradient(90deg, #0055a4 33%, #fff 33%, #fff 66%, #ef4135 66%); }
-        .flag-uk { background: #012169; position: relative; }
-        .flag-es { background: linear-gradient(180deg, #c60b1e 25%, #ffc400 25%, #ffc400 75%, #c60b1e 75%); }
-        .flag-cn { background: #de2910; }
+        .flag-fr {
+            background: linear-gradient(90deg, #0055a4 33%, #fff 33%, #fff 66%, #ef4135 66%);
+        }
+
+        .flag-uk {
+            background: #012169;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .flag-uk::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                linear-gradient(45deg, transparent 40%, rgba(255, 255, 255, 0.7) 40%, rgba(255, 255, 255, 0.7) 60%, transparent 60%),
+                linear-gradient(-45deg, transparent 40%, rgba(255, 255, 255, 0.7) 40%, rgba(255, 255, 255, 0.7) 60%, transparent 60%),
+                linear-gradient(90deg, transparent 40%, rgba(255, 255, 255, 0.7) 40%, rgba(255, 255, 255, 0.7) 60%, transparent 60%),
+                linear-gradient(0deg, transparent 40%, rgba(255, 255, 255, 0.7) 40%, rgba(255, 255, 255, 0.7) 60%, transparent 60%);
+        }
+
+        .flag-uk::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                linear-gradient(90deg, transparent 45%, #C8102E 45%, #C8102E 55%, transparent 55%),
+                linear-gradient(0deg, transparent 45%, #C8102E 45%, #C8102E 55%, transparent 55%);
+        }
+
+        .flag-es {
+            background: linear-gradient(180deg, #c60b1e 25%, #ffc400 25%, #ffc400 75%, #c60b1e 75%);
+        }
+
+        .flag-cn {
+            background: #de2910;
+            position: relative;
+        }
+
+        .flag-cn::before {
+            content: '★';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            color: #ffde00;
+            font-size: 10px;
+        }
+
+        .flag-cn::after {
+            content: '★ ★ ★ ★';
+            position: absolute;
+            top: 5px;
+            left: 12px;
+            color: #ffde00;
+            font-size: 4px;
+            width: 20px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        /* Truck Animation */
+        .truck-depart {
+            animation: truckDepart 4s ease-in forwards;
+        }
+
+        @keyframes truckDepart {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(2000px);
+            }
+        }
+
+        /* Hobbies Icons */
+        .hobby-icon {
+            position: absolute;
+            font-size: 40px;
+            animation: bounce 2s infinite ease-in-out;
+            filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        /* Floating Code for Hobbies */
+        .code-float {
+            position: absolute;
+            color: #00ff00;
+            font-family: monospace;
+            font-size: 10px;
+            opacity: 0.7;
+            animation: codeFloat 3s linear infinite;
+        }
+
+        @keyframes codeFloat {
+            0% {
+                transform: translateY(0);
+                opacity: 0.7;
+            }
+
+            100% {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+        }
 
         /* Stars */
         .star {
@@ -1179,8 +1412,15 @@
         }
 
         @keyframes twinkle {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 1; }
+
+            0%,
+            100% {
+                opacity: 0.3;
+            }
+
+            50% {
+                opacity: 1;
+            }
         }
 
         /* HUD */
@@ -1343,29 +1583,68 @@
         }
 
         /* Animation classes */
-        .walking .walk-leg.left { animation: walkLeft 0.3s ease-in-out infinite; }
-        .walking .walk-leg.right { animation: walkRight 0.3s ease-in-out infinite; }
-        .walking .walk-arm.left { animation: armSwingLeft 0.3s ease-in-out infinite; }
-        .walking .walk-arm.right { animation: armSwingRight 0.3s ease-in-out infinite; }
+        .walking .walk-leg.left {
+            animation: walkLeft 0.3s ease-in-out infinite;
+        }
+
+        .walking .walk-leg.right {
+            animation: walkRight 0.3s ease-in-out infinite;
+        }
+
+        .walking .walk-arm.left {
+            animation: armSwingLeft 0.3s ease-in-out infinite;
+        }
+
+        .walking .walk-arm.right {
+            animation: armSwingRight 0.3s ease-in-out infinite;
+        }
 
         @keyframes walkLeft {
-            0%, 100% { transform: translateX(-2px); }
-            50% { transform: translateX(2px); }
+
+            0%,
+            100% {
+                transform: translateX(-2px);
+            }
+
+            50% {
+                transform: translateX(2px);
+            }
         }
 
         @keyframes walkRight {
-            0%, 100% { transform: translateX(2px); }
-            50% { transform: translateX(-2px); }
+
+            0%,
+            100% {
+                transform: translateX(2px);
+            }
+
+            50% {
+                transform: translateX(-2px);
+            }
         }
 
         @keyframes armSwingLeft {
-            0%, 100% { transform: rotate(-12deg); }
-            50% { transform: rotate(12deg); }
+
+            0%,
+            100% {
+                transform: rotate(-12deg);
+            }
+
+            50% {
+                transform: rotate(12deg);
+            }
         }
 
         @keyframes armSwingRight {
-            0%, 100% { transform: rotate(12deg); }
-            50% { transform: rotate(-12deg); }
+
+            0%,
+            100% {
+                transform: rotate(12deg);
+            }
+
+            50% {
+                transform: rotate(-12deg);
+            }
         }
 
         .driving .forklift-wheel,
@@ -1374,8 +1653,13 @@
         }
 
         @keyframes wheelSpin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
         /* Particles */
@@ -1391,8 +1675,15 @@
         }
 
         @keyframes collectBurst {
-            0% { transform: scale(1) translate(0, 0); opacity: 1; }
-            100% { transform: scale(0) translate(var(--tx), var(--ty)); opacity: 0; }
+            0% {
+                transform: scale(1) translate(0, 0);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(0) translate(var(--tx), var(--ty));
+                opacity: 0;
+            }
         }
 
         /* Mobile Controls */
@@ -1422,8 +1713,42 @@
         }
 
         @media (max-width: 768px) {
-            #mobileControls { display: flex; }
-            #controls { display: none; }
+            #mobileControls {
+                display: flex;
+            }
+
+            #controls {
+                display: none;
+            }
+
+            .info-panel {
+                bottom: auto !important;
+                top: 80px;
+                left: 50% !important;
+                transform: translateX(-50%);
+                width: 90%;
+                max-width: none;
+                max-height: 40vh;
+                overflow-y: auto;
+                font-size: 11px;
+                /* Slightly smaller base on mobile */
+            }
+
+            #hud {
+                top: 10px;
+            }
+
+            .hud-panel {
+                padding: 5px 10px;
+            }
+
+            h1 {
+                font-size: 32px !important;
+            }
+
+            h2 {
+                font-size: 16px !important;
+            }
         }
 
         /* Sound Toggle */
@@ -1504,6 +1829,7 @@
         }
     </style>
 </head>
+
 <body>
     <div id="startScreen">
         <h1>ROMAN BARON</h1>
@@ -1518,44 +1844,44 @@
     <div id="gameContainer">
         <div id="gameWorld"></div>
         <div id="character"></div>
-        
+
         <div id="hud">
             <div class="hud-panel" id="levelIndicator">
                 <h3 id="levelName">Introduction</h3>
                 <p id="levelSubtitle">Barcelona, Spain</p>
             </div>
-            
+
             <div class="hud-panel" id="progressPanel">
                 <div id="xpBar">
                     <div id="xpFill" style="width: 0%"></div>
                 </div>
                 <p id="xpText">0 / 2250 XP</p>
             </div>
-            
+
             <div class="hud-panel" id="badgeCount">
                 <p>Badges</p>
                 <span id="badgeNum">0</span>/15
             </div>
-            
+
             <div class="hud-panel" id="vehicleStatus">
                 <span id="vehicleIcon">🚶</span>
                 <span id="vehicleName">On Foot</span>
             </div>
         </div>
-        
+
         <div id="controls">
             <h4>Controls</h4>
             <p><span class="key">←</span> <span class="key">→</span> Move</p>
             <p><span class="key">SPACE</span> Jump</p>
         </div>
-        
+
         <div id="mobileControls">
             <div class="mobile-btn" id="btnLeft">←</div>
             <div class="mobile-btn" id="btnJump">↑</div>
             <div class="mobile-btn" id="btnRight">→</div>
         </div>
     </div>
-    
+
     <button id="soundToggle">🔊</button>
 
     <script>
@@ -1587,13 +1913,13 @@
 
         function playSound(type) {
             if (!gameState.soundEnabled || !audioCtx) return;
-            
+
             const oscillator = audioCtx.createOscillator();
             const gainNode = audioCtx.createGain();
             oscillator.connect(gainNode);
             gainNode.connect(audioCtx.destination);
-            
-            switch(type) {
+
+            switch (type) {
                 case 'jump':
                     oscillator.frequency.setValueAtTime(300, audioCtx.currentTime);
                     oscillator.frequency.exponentialRampToValueAtTime(500, audioCtx.currentTime + 0.1);
@@ -1625,64 +1951,72 @@
 
         // Level Data
         const levels = [
-            { name: "Introduction", subtitle: "Barcelona, Spain", width: 300, bgClass: "level-0" },
-            { name: "Americold", subtitle: "IT & Logistics Transformation Lead", width: 300, bgClass: "level-1" },
-            { name: "ID Logistics", subtitle: "Engineering & Process Improvement", width: 300, bgClass: "level-2" },
-            { name: "Forvia (Faurecia)", subtitle: "Supply Chain & Systems Lead", width: 300, bgClass: "level-3" },
-            { name: "Education", subtitle: "UTBM & IUT Nice", width: 300, bgClass: "level-4" },
-            { name: "Contact & Finale", subtitle: "Let's Connect!", width: 300, bgClass: "level-5" }
+            { name: "Introduction", subtitle: "Barcelona, Spain", width: 140, bgClass: "level-0" },
+            { name: "Americold", subtitle: "Supply Chain Systems Specialist", width: 140, bgClass: "level-1" },
+            { name: "ID Logistics", subtitle: "Engineering & Process Manager", width: 140, bgClass: "level-2" },
+            { name: "Forvia (Faurecia)", subtitle: "Supply Chain & Systems Lead", width: 140, bgClass: "level-3" },
+            { name: "Education", subtitle: "UTBM & IUT Nice", width: 140, bgClass: "level-4" },
+            { name: "Hobbies", subtitle: "Personal Interests", width: 140, bgClass: "level-2" },
+            { name: "Contact & Finale", subtitle: "Let's Connect!", width: 140, bgClass: "level-5" }
         ];
 
         // Badges - positioned at reachable heights
         const badges = [
-            { level: 0, x: 500, y: 140, icon: "📊", label: "Power BI" },
-            { level: 0, x: 900, y: 140, icon: "🐍", label: "Python" },
-            { level: 1, x: 400, y: 140, icon: "📦", label: "WMS" },
-            { level: 1, x: 750, y: 140, icon: "🔗", label: "EDI" },
-            { level: 1, x: 1100, y: 140, icon: "❄️", label: "Cold Chain" },
-            { level: 2, x: 450, y: 140, icon: "📈", label: "Analytics" },
-            { level: 2, x: 800, y: 140, icon: "⚙️", label: "Process Design" },
-            { level: 2, x: 1150, y: 140, icon: "💰", label: "€3M Savings" },
-            { level: 3, x: 400, y: 140, icon: "🏭", label: "29 Plants" },
-            { level: 3, x: 750, y: 140, icon: "🔧", label: "SAP" },
-            { level: 3, x: 1100, y: 140, icon: "🚗", label: "Automotive" },
-            { level: 4, x: 500, y: 140, icon: "🎓", label: "M.Sc." },
-            { level: 4, x: 900, y: 140, icon: "⚡", label: "B.Sc." },
-            { level: 5, x: 500, y: 140, icon: "🌍", label: "€7M+ Impact" },
-            { level: 5, x: 900, y: 140, icon: "🏆", label: "Leader" }
+            { level: 0, x: 250, y: 140, icon: "📊", label: "Power BI" },
+            { level: 0, x: 450, y: 140, icon: "🐍", label: "Python" },
+            { level: 1, x: 200, y: 140, icon: "📦", label: "WMS" },
+            { level: 1, x: 350, y: 140, icon: "🔗", label: "EDI" },
+            { level: 1, x: 500, y: 140, icon: "❄️", label: "Cold Chain" },
+            { level: 2, x: 200, y: 140, icon: "📈", label: "Analytics" },
+            { level: 2, x: 350, y: 140, icon: "⚙️", label: "Process" },
+            { level: 2, x: 500, y: 140, icon: "💰", label: "Savings" },
+            { level: 3, x: 200, y: 140, icon: "🏭", label: "29 Plants" },
+            { level: 3, x: 350, y: 140, icon: "🔧", label: "SAP" },
+            { level: 3, x: 500, y: 140, icon: "🚗", label: "Automotive" },
+            { level: 4, x: 250, y: 140, icon: "🎓", label: "M.Sc." },
+            { level: 4, x: 450, y: 140, icon: "⚡", label: "B.Sc." },
+            { level: 5, x: 200, y: 140, icon: "🏃", label: "Sports" },
+            { level: 5, x: 350, y: 140, icon: "📚", label: "Reading" },
+            { level: 5, x: 500, y: 140, icon: "💻", label: "Coding" },
+            { level: 5, x: 650, y: 140, icon: "�", label: "Cooking" },
+            { level: 6, x: 250, y: 140, icon: "�🌍", label: "Impact" },
+            { level: 6, x: 450, y: 140, icon: "🏆", label: "Leader" }
         ];
 
         // Vehicle zones
         const vehicleZones = [
-            { level: 0, x: 1200, vehicle: 'forklift' },
-            { level: 3, x: 1300, vehicle: 'car' }
+            { level: 0, x: 600, vehicle: 'forklift' },
+            { level: 3, x: 650, vehicle: 'car' }
         ];
 
         function generateLevelHTML(levelIndex) {
             const level = levels[levelIndex];
-            const levelOffset = levelIndex * 300;
-            
-            let html = `<div class="level ${level.bgClass}" style="left: ${levelOffset}vw;">`;
+            // Calculate offset based on previous levels
+            let levelOffset = 0;
+            for (let i = 0; i < levelIndex; i++) levelOffset += levels[i].width;
+
+            let html = `<div class="level ${level.bgClass}" style="left: ${levelOffset}vw; width: ${level.width}vw;">`;
             html += `<div class="ground"></div>`;
-            
+
             // Road markings
-            for (let i = 0; i < 40; i++) {
+            const markCount = Math.floor(level.width * window.innerWidth / 100 / 100) + 5;
+            for (let i = 0; i < 30; i++) {
                 html += `<div class="road-marking" style="left: ${i * 100 + 30}px;"></div>`;
             }
-            
+
             // Stars
-            if (levelIndex !== 5) {
-                for (let i = 0; i < 40; i++) {
-                    html += `<div class="star" style="left: ${Math.random() * 290}vw; top: ${Math.random() * 30 + 5}%; animation-delay: ${Math.random() * 3}s;"></div>`;
+            if (levelIndex !== 6) { // Final level index is now 6
+                for (let i = 0; i < 20; i++) {
+                    html += `<div class="star" style="left: ${Math.random() * (level.width - 10)}vw; top: ${Math.random() * 30 + 5}%; animation-delay: ${Math.random() * 3}s;"></div>`;
                 }
             }
-            
+
             // Level content
             html += generateLevelContent(levelIndex);
-            
+
             // Info panel
             html += generateInfoPanel(levelIndex);
-            
+
             // Badges
             badges.filter(b => b.level === levelIndex).forEach(b => {
                 const globalIndex = badges.indexOf(b);
@@ -1693,7 +2027,7 @@
                     </div>
                 `;
             });
-            
+
             // Vehicle zones
             vehicleZones.filter(v => v.level === levelIndex).forEach(v => {
                 if (v.vehicle === 'forklift') {
@@ -1723,198 +2057,155 @@
                     `;
                 }
             });
-            
+
             html += `</div>`;
             return html;
         }
 
         function generateLevelContent(levelIndex) {
             let html = '';
-            
-            switch(levelIndex) {
+
+            switch (levelIndex) {
                 case 0: // Intro - Barcelona
                     // Main warehouse
                     html += `
-                        <div class="warehouse" style="left: 150px;">
-                            <div class="warehouse-structure" style="width: 300px; height: 200px;">
+                        <div class="warehouse" style="left: 50px;">
+                            <div class="warehouse-structure" style="width: 200px; height: 180px;">
                                 <div class="warehouse-roof"></div>
                                 <div class="warehouse-sign">BARCELONA HQ</div>
-                                <div class="loading-dock" style="left: 30px;">
+                                <div class="loading-dock" style="left: 20px;">
                                     <div class="dock-door open"></div>
                                     <div class="dock-platform"></div>
                                 </div>
-                                <div class="loading-dock" style="left: 120px;">
-                                    <div class="dock-door"></div>
-                                    <div class="dock-platform"></div>
-                                </div>
-                                <div class="loading-dock" style="left: 210px;">
+                                <div class="loading-dock" style="left: 110px;">
                                     <div class="dock-door open"></div>
                                     <div class="dock-platform"></div>
                                 </div>
-                            </div>
-                        </div>
-                    `;
-                    // Pallet stacks on ground
-                    html += generatePalletStack(520, 3);
-                    html += generatePalletStack(620, 2);
-                    html += generatePalletStack(700, 4);
-                    // Animated workers
-                    html += generateAnimatedWorker(550, 0);
-                    html += generateAnimatedWorker(750, 2);
-                    // Working forklift
-                    html += generateWorkingForklift(850, 1);
-                    // Conveyor
-                    html += `
-                        <div class="conveyor-system" style="left: 950px;">
-                            <div class="conveyor-frame" style="width: 200px;">
-                                <div class="conveyor-belt"></div>
-                                <div class="conveyor-box" style="animation-delay: 0s;"></div>
-                                <div class="conveyor-box" style="animation-delay: 2s; left: 80px;"></div>
-                            </div>
-                            <div class="conveyor-leg" style="left: 20px;"></div>
-                            <div class="conveyor-leg" style="left: 170px;"></div>
-                        </div>
-                    `;
-                    break;
-
-                case 1: // Americold - Cold Storage
-                    // Cold storage building
-                    html += `
-                        <div class="cold-storage" style="left: 100px; width: 280px; height: 180px;">
-                            <div class="frost-overlay"></div>
-                            <div class="cold-unit-label">AMERICOLD</div>
-                            <div class="temp-display">-25°C</div>
-                            ${generateIcicles(12)}
-                            <div class="loading-dock" style="left: 40px; bottom: 0;">
-                                <div class="dock-door open"></div>
-                                <div class="dock-platform"></div>
-                            </div>
-                            <div class="loading-dock" style="left: 140px; bottom: 0;">
-                                <div class="dock-door open"></div>
-                                <div class="dock-platform"></div>
-                            </div>
-                        </div>
-                        <div class="cold-storage" style="left: 450px; width: 220px; height: 160px;">
-                            <div class="frost-overlay"></div>
-                            <div class="temp-display">-18°C</div>
-                            ${generateIcicles(9)}
-                            <div class="loading-dock" style="left: 70px; bottom: 0;">
-                                <div class="dock-door"></div>
-                                <div class="dock-platform"></div>
-                            </div>
-                        </div>
-                        <div class="cold-storage" style="left: 750px; width: 250px; height: 170px;">
-                            <div class="frost-overlay"></div>
-                            <div class="cold-unit-label">27 SITES</div>
-                            <div class="temp-display">-22°C</div>
-                            ${generateIcicles(10)}
-                        </div>
-                    `;
-                    // Ground pallets
-                    html += generatePalletStack(1050, 2);
-                    html += generatePalletStack(1130, 3);
-                    // Workers
-                    html += generateAnimatedWorker(380, 1);
-                    html += generateAnimatedWorker(680, 3);
-                    // Working forklift
-                    html += generateWorkingForklift(900, 2);
-                    break;
-
-                case 2: // ID Logistics
-                    // Main warehouse
-                    html += `
-                        <div class="warehouse" style="left: 120px;">
-                            <div class="warehouse-structure" style="width: 350px; height: 220px;">
-                                <div class="warehouse-roof"></div>
-                                <div class="warehouse-sign">ID LOGISTICS</div>
-                                <div class="loading-dock" style="left: 40px;">
-                                    <div class="dock-door open"></div>
-                                    <div class="dock-platform"></div>
-                                </div>
-                                <div class="loading-dock" style="left: 140px;">
-                                    <div class="dock-door open"></div>
-                                    <div class="dock-platform"></div>
-                                </div>
-                                <div class="loading-dock" style="left: 240px;">
-                                    <div class="dock-door"></div>
-                                    <div class="dock-platform"></div>
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                    // Factory section
-                    html += `
-                        <div class="factory" style="left: 550px;">
-                            <div class="factory-building" style="width: 200px; height: 180px;">
-                                <div class="chimney" style="left: 40px; top: -50px; width: 30px; height: 50px;">
-                                    <div class="chimney-top"></div>
-                                    <div class="smoke" style="top: -20px; left: 5px;"></div>
-                                    <div class="smoke" style="top: -20px; left: 15px; animation-delay: 1.5s;"></div>
-                                </div>
-                                <div class="warehouse-sign" style="top: 30px;">TARRAGONA</div>
-                                <div class="factory-door" style="left: 70px; width: 60px; height: 80px;"></div>
-                                ${generateIndustrialWindows(4, 2, 20, 100)}
                             </div>
                         </div>
                     `;
                     // Pallet stacks
-                    html += generatePalletStack(820, 3);
-                    html += generatePalletStack(900, 2);
+                    html += generatePalletStack(280, 3);
+                    html += generatePalletStack(360, 2);
+                    // Animated workers
+                    html += generateAnimatedWorker(300, 0);
+                    html += generateAnimatedWorker(400, 2);
+                    // Working forklift
+                    html += generateWorkingForklift(500, 1);
                     // Conveyor
                     html += `
-                        <div class="conveyor-system" style="left: 980px;">
-                            <div class="conveyor-frame" style="width: 180px;">
+                        <div class="conveyor-system" style="left: 550px;">
+                            <div class="conveyor-frame" style="width: 150px;">
                                 <div class="conveyor-belt"></div>
-                                <div class="conveyor-box"></div>
+                                <div class="conveyor-box" style="animation-delay: 0s;"></div>
                             </div>
-                            <div class="conveyor-leg" style="left: 15px;"></div>
-                            <div class="conveyor-leg" style="left: 155px;"></div>
+                            <div class="conveyor-leg" style="left: 20px;"></div>
+                            <div class="conveyor-leg" style="left: 120px;"></div>
                         </div>
                     `;
-                    // Workers
-                    html += generateAnimatedWorker(500, 0);
-                    html += generateAnimatedWorker(780, 2);
-                    // Working forklift
-                    html += generateWorkingForklift(1100, 0);
                     break;
 
-                case 3: // Forvia - Automotive
-                    // Large factory
+                case 1: // Americold
                     html += `
-                        <div class="factory" style="left: 100px;">
-                            <div class="factory-building" style="width: 320px; height: 240px;">
-                                <div class="chimney" style="left: 50px; top: -60px; width: 35px; height: 60px;">
-                                    <div class="chimney-top"></div>
-                                    <div class="smoke" style="top: -25px; left: 5px;"></div>
-                                    <div class="smoke" style="top: -25px; left: 18px; animation-delay: 2s;"></div>
-                                </div>
-                                <div class="chimney" style="left: 220px; top: -60px; width: 35px; height: 60px;">
-                                    <div class="chimney-top"></div>
-                                    <div class="smoke" style="top: -25px; left: 8px; animation-delay: 1s;"></div>
-                                </div>
-                                <div class="warehouse-sign" style="top: 25px; font-size: 18px;">FORVIA</div>
-                                <div style="position: absolute; top: 55px; left: 50%; transform: translateX(-50%); color: #ccc; font-size: 11px;">(FAURECIA)</div>
-                                <div class="factory-door" style="left: 130px; width: 70px; height: 90px;"></div>
-                                ${generateIndustrialWindows(5, 3, 25, 90)}
+                        <div class="cold-storage" style="left: 50px; width: 220px; height: 180px;">
+                            <div class="frost-overlay"></div>
+                            <div class="cold-unit-label">AMERICOLD</div>
+                            <div class="temp-display">-25°C</div>
+                            ${generateIcicles(8)}
+                            <div class="loading-dock" style="left: 30px; bottom: 0;">
+                                <div class="dock-door open"></div>
+                                <div class="dock-platform"></div>
+                            </div>
+                            <div class="loading-dock" style="left: 110px; bottom: 0;">
+                                <div class="dock-door open"></div>
+                                <div class="dock-platform"></div>
                             </div>
                         </div>
+                        <div class="cold-storage" style="left: 300px; width: 180px; height: 160px;">
+                            <div class="frost-overlay"></div>
+                            <div class="cold-unit-label">27 SITES</div>
+                            <div class="temp-display">-18°C</div>
+                            ${generateIcicles(6)}
+                        </div>
                     `;
-                    // Second factory
+                    // Ground pallets
+                    html += generatePalletStack(500, 2);
+                    // Workers
+                    html += generateAnimatedWorker(280, 1);
+                    html += generateAnimatedWorker(450, 3);
+                    // Working forklift
+                    html += generateWorkingForklift(600, 2);
+                    break;
+
+                case 2: // ID Logistics
                     html += `
-                        <div class="factory" style="left: 500px;">
-                            <div class="factory-building" style="width: 220px; height: 180px;">
-                                <div class="chimney" style="left: 90px; top: -50px; width: 30px; height: 50px;">
+                        <div class="warehouse" style="left: 50px;">
+                            <div class="warehouse-structure" style="width: 200px; height: 200px;">
+                                <div class="warehouse-roof"></div>
+                                <div class="warehouse-sign">ID LOGISTICS</div>
+                                <div class="loading-dock" style="left: 30px;">
+                                    <div class="dock-door open"></div>
+                                    <div class="dock-platform"></div>
+                                </div>
+                                <div class="loading-dock" style="left: 110px;">
+                                    <div class="dock-door open"></div>
+                                    <div class="dock-platform"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="factory" style="left: 300px;">
+                            <div class="factory-building" style="width: 150px; height: 160px;">
+                                <div class="chimney" style="left: 20px; top: -50px; width: 30px; height: 50px;">
                                     <div class="chimney-top"></div>
                                     <div class="smoke" style="top: -20px; left: 5px;"></div>
                                 </div>
-                                <div class="warehouse-sign" style="top: 25px;">29 PLANTS</div>
-                                ${generateIndustrialWindows(4, 2, 20, 80)}
+                                <div class="warehouse-sign" style="top: 20px; font-size: 12px;">TARRAGONA</div>
+                                <div class="factory-door" style="left: 45px; width: 60px; height: 80px;"></div>
+                                ${generateIndustrialWindows(3, 2, 10, 80)}
+                            </div>
+                        </div>
+                    `;
+                    // Pallet stacks
+                    html += generatePalletStack(500, 3);
+                    // Workers
+                    html += generateAnimatedWorker(260, 0);
+                    html += generateAnimatedWorker(470, 2);
+                    // Forklift
+                    html += generateWorkingForklift(550, 0);
+                    break;
+
+                case 3: // Forvia - Automotive
+                    // Factory 1
+                    html += `
+                        <div class="factory" style="left: 50px;">
+                            <div class="factory-building" style="width: 200px; height: 180px;">
+                                <div class="chimney" style="left: 30px; top: -50px; width: 30px; height: 50px;">
+                                    <div class="chimney-top"></div>
+                                    <div class="smoke" style="top: -20px; left: 5px;"></div>
+                                </div>
+                                <div class="warehouse-sign" style="top: 20px; font-size: 14px;">FORVIA</div>
+                                <div style="position: absolute; top: 45px; left: 50%; transform: translateX(-50%); color: #ccc; font-size: 10px;">(FAURECIA)</div>
+                                <div class="factory-door" style="left: 70px; width: 60px; height: 80px;"></div>
+                                ${generateIndustrialWindows(3, 2, 10, 80)}
+                            </div>
+                        </div>
+                    `;
+                    // Factory 2
+                    html += `
+                        <div class="factory" style="left: 280px;">
+                            <div class="factory-building" style="width: 150px; height: 150px;">
+                                <div class="chimney" style="left: 60px; top: -40px; width: 25px; height: 40px;">
+                                    <div class="chimney-top"></div>
+                                    <div class="smoke" style="top: -15px; left: 5px;"></div>
+                                </div>
+                                <div class="warehouse-sign" style="top: 20px; font-size: 10px;">29 PLANTS</div>
+                                ${generateIndustrialWindows(2, 2, 10, 60)}
                             </div>
                         </div>
                     `;
                     // Truck
                     html += `
-                        <div class="parked-truck" style="left: 800px;">
+                        <div class="parked-truck" style="left: 450px;">
                             <div class="truck-trailer"></div>
                             <div class="truck-cab">
                                 <div class="truck-window"></div>
@@ -1925,94 +2216,109 @@
                         </div>
                     `;
                     // Pallets
-                    html += generatePalletStack(1000, 2);
-                    html += generatePalletStack(1080, 3);
+                    html += generatePalletStack(600, 2);
                     // Workers
-                    html += generateAnimatedWorker(450, 1);
-                    html += generateAnimatedWorker(730, 0);
+                    html += generateAnimatedWorker(260, 1);
+                    html += generateAnimatedWorker(400, 0);
                     // Forklift
-                    html += generateWorkingForklift(1150, 2);
+                    html += generateWorkingForklift(700, 2);
                     break;
 
                 case 4: // Education
-                    // UTBM University
+                    // UTBM
                     html += `
-                        <div class="university" style="left: 200px;">
-                            <div class="university-building" style="width: 250px; height: 180px;">
+                        <div class="university" style="left: 50px;">
+                            <div class="university-building" style="width: 200px; height: 160px;">
                                 <div class="university-pediment"></div>
                                 <div class="university-name">UTBM</div>
                                 <div class="university-date">2016 - 2020</div>
-                                <div class="university-column" style="left: 30px; height: 100px; bottom: 0;"></div>
-                                <div class="university-column" style="left: 70px; height: 100px; bottom: 0;"></div>
-                                <div class="university-column" style="left: 160px; height: 100px; bottom: 0;"></div>
-                                <div class="university-column" style="left: 200px; height: 100px; bottom: 0;"></div>
+                                <div class="university-column" style="left: 20px; height: 80px; bottom: 0;"></div>
+                                <div class="university-column" style="left: 50px; height: 80px; bottom: 0;"></div>
+                                <div class="university-column" style="left: 130px; height: 80px; bottom: 0;"></div>
+                                <div class="university-column" style="left: 160px; height: 80px; bottom: 0;"></div>
                                 <div class="university-door"></div>
                             </div>
                         </div>
                     `;
                     // IUT Nice
                     html += `
-                        <div class="university" style="left: 600px;">
-                            <div class="university-building" style="width: 200px; height: 150px;">
+                        <div class="university" style="left: 300px;">
+                            <div class="university-building" style="width: 150px; height: 140px;">
                                 <div class="university-pediment"></div>
                                 <div class="university-name">IUT Nice</div>
                                 <div class="university-date">2013 - 2015</div>
-                                <div class="university-column" style="left: 25px; height: 80px; bottom: 0;"></div>
-                                <div class="university-column" style="left: 65px; height: 80px; bottom: 0;"></div>
-                                <div class="university-column" style="left: 115px; height: 80px; bottom: 0;"></div>
-                                <div class="university-column" style="left: 155px; height: 80px; bottom: 0;"></div>
-                                <div class="university-door"></div>
+                                <div class="university-column" style="left: 15px; height: 70px; bottom: 0;"></div>
+                                <div class="university-column" style="left: 115px; height: 70px; bottom: 0;"></div>
+                                <div class="university-door" style="width: 40px;"></div>
                             </div>
                         </div>
                     `;
                     // Flags
                     html += `
-                        <div class="flag-display" style="left: 950px;">
+                        <div class="flag-display" style="left: 500px;">
                             <div class="flag-pole"></div>
                             <div class="flag-cloth flag-fr"></div>
                         </div>
-                        <div class="flag-display" style="left: 1030px;">
+                        <div class="flag-display" style="left: 560px;">
                             <div class="flag-pole"></div>
                             <div class="flag-cloth flag-uk"></div>
                         </div>
-                        <div class="flag-display" style="left: 1110px;">
+                        <div class="flag-display" style="left: 620px;">
                             <div class="flag-pole"></div>
                             <div class="flag-cloth flag-es"></div>
                         </div>
-                        <div class="flag-display" style="left: 1190px;">
+                        <div class="flag-display" style="left: 680px;">
                             <div class="flag-pole"></div>
                             <div class="flag-cloth flag-cn"></div>
                         </div>
                     `;
                     break;
 
-                case 5: // Finale
+                case 5: // Hobbies
+                    html += `
+                        <div class="hobby-icon" style="left: 100px; top: 30%;">🏃</div>
+                        <div style="position: absolute; left: 80px; bottom: 100px; color: #FFD700; font-size: 12px; background: rgba(0,0,0,0.7); padding: 2px 5px; border-radius: 3px;">Running & Hiking</div>
+                        
+                        <div class="hobby-icon" style="left: 250px; top: 40%; animation-delay: 0.5s;">📚</div>
+                        <div style="position: absolute; left: 240px; bottom: 100px; color: #FFD700; font-size: 12px; background: rgba(0,0,0,0.7); padding: 2px 5px; border-radius: 3px;">Reading</div>
+                        
+                        <div class="hobby-icon" style="left: 400px; top: 35%; animation-delay: 1s;">💻</div>
+                        <div class="code-float" style="left: 410px; top: 30%;">print("Hello")</div>
+                        <div class="code-float" style="left: 370px; top: 45%; animation-delay: 1.5s;">&lt;/&gt;</div>
+                        <div style="position: absolute; left: 390px; bottom: 100px; color: #FFD700; font-size: 12px; background: rgba(0,0,0,0.7); padding: 2px 5px; border-radius: 3px;">Coding</div>
+                        
+                        <div class="hobby-icon" style="left: 550px; top: 30%; animation-delay: 1.5s;">🍳</div>
+                        <div style="position: absolute; left: 540px; bottom: 100px; color: #FFD700; font-size: 12px; background: rgba(0,0,0,0.7); padding: 2px 5px; border-radius: 3px;">Cooking</div>
+                        
+                        ${generatePalletStack(650, 2)}
+                    `;
+                    break;
+
+                case 6: // Finale
                     // Celebration building
                     html += `
-                        <div class="warehouse" style="left: 250px;">
-                            <div class="warehouse-structure" style="width: 350px; height: 200px; background: linear-gradient(180deg, #3E0097 0%, #2a0066 100%); border-color: #FFD700;">
-                                <div style="position: absolute; top: 40px; left: 50%; transform: translateX(-50%); color: #FFD700; font-size: 32px; font-weight: bold;">THANK YOU!</div>
-                                <div style="position: absolute; top: 90px; left: 50%; transform: translateX(-50%); color: white; font-size: 18px;">€7M+ Total Impact</div>
-                                <div style="position: absolute; top: 120px; left: 50%; transform: translateX(-50%); color: #FFD700; font-size: 14px;">29+ Sites Transformed</div>
+                        <div class="warehouse" style="left: 100px;">
+                            <div class="warehouse-structure" style="width: 300px; height: 200px; background: linear-gradient(180deg, #3E0097 0%, #2a0066 100%); border-color: #FFD700;">
+                                <div style="position: absolute; top: 60px; left: 50%; transform: translateX(-50%); color: #FFD700; font-size: 32px; font-weight: bold;">THANK YOU!</div>
                             </div>
                         </div>
                     `;
                     // Golden stars
                     for (let i = 0; i < 30; i++) {
-                        html += `<div class="star" style="left: ${Math.random() * 250 + 20}vw; top: ${Math.random() * 50 + 10}%; width: 4px; height: 4px; background: #FFD700; animation-delay: ${Math.random() * 3}s;"></div>`;
+                        html += `<div class="star" style="left: ${Math.random() * 130 + 10}vw; top: ${Math.random() * 50 + 10}%; width: 4px; height: 4px; background: #FFD700; animation-delay: ${Math.random() * 3}s;"></div>`;
                     }
                     // Pallet stacks
-                    html += generatePalletStack(700, 2);
-                    html += generatePalletStack(780, 3);
+                    html += generatePalletStack(450, 2);
+                    html += generatePalletStack(530, 3);
                     break;
             }
-            
+
             return html;
         }
 
         function generateInfoPanel(levelIndex) {
             const panels = [
-                `<div class="info-panel" style="left: 50px; bottom: 340px;">
+                `<div class="info-panel" style="left: 30px; bottom: 300px;">
                     <h2>Roman Baron</h2>
                     <p><span class="highlight">Global Supply Chain Transformation Leader</span></p>
                     <p>📍 Barcelona, Spain</p>
@@ -2020,58 +2326,66 @@
                     <p>📱 +34 644 00 23 69</p>
                     <h3>Navigate right to explore →</h3>
                 </div>`,
-                `<div class="info-panel" style="left: 50px; bottom: 320px;">
+                `<div class="info-panel" style="left: 30px; bottom: 280px; max-width: 400px;">
                     <h2>Americold</h2>
-                    <p><span class="highlight">IT & Logistics Transformation Lead</span></p>
+                    <p><span class="highlight">Supply Chain Systems Specialist - Europe</span></p>
                     <p>Apr 2025 - Present | Barcelona</p>
                     <ul>
-                        <li>Multi-site transformations: <span class="highlight">27 European sites</span></li>
-                        <li>WMS solutions deployment</li>
-                        <li>End-to-end EDI flows</li>
-                        <li>Operational dashboards & KPIs</li>
+                        <li><span class="highlight">WMS Conversions:</span> Rollout & optimization of SC systems across Europe. Discover workshops & process mapping.</li>
+                        <li><span class="highlight">Customer Onboarding:</span> Coordinate new customer integration across multiple functions.</li>
+                        <li><span class="highlight">EDI Integration:</span> Support connectivity and data accuracy.</li>
+                        <li>Bridge between Operations & IT to ensure value delivery.</li>
                     </ul>
                 </div>`,
-                `<div class="info-panel" style="left: 50px; bottom: 320px;">
+                `<div class="info-panel" style="left: 30px; bottom: 280px; max-width: 400px;">
                     <h2>ID Logistics</h2>
-                    <p><span class="highlight">Engineering & Process Manager</span></p>
+                    <p><span class="highlight">Engineering, Systems & Process Improvement Manager</span></p>
                     <p>May 2023 - Apr 2025 | Tarragona</p>
                     <ul>
-                        <li>Built multidisciplinary team</li>
-                        <li>Created planning department</li>
-                        <li>Bonded warehouse transition</li>
-                        <li><span class="highlight">€3M total savings</span></li>
+                        <li><span class="highlight">Team Leadership:</span> Managed 8 engineers/analysts. Built planning dept.</li>
+                        <li><span class="highlight">Digitalization:</span> Interactive data models, WMS (Manhattan) integration with Kafka/Snowflake.</li>
+                        <li><span class="highlight">Optimization:</span> Restructured ops, closed warehouse, implemented SIM.</li>
+                        <li><span class="highlight">Impact:</span> Cost-reduction plans, WCS contracting, Business Development.</li>
                     </ul>
                 </div>`,
-                `<div class="info-panel" style="left: 50px; bottom: 320px;">
+                `<div class="info-panel" style="left: 30px; bottom: 280px; max-width: 400px;">
                     <h2>Forvia (Faurecia)</h2>
-                    <p><span class="highlight">Supply Chain & Systems Lead</span></p>
+                    <p><span class="highlight">Supply Chain & Systems Lead - Europe</span></p>
                     <p>Jan 2021 - May 2023 | Prague/Valencia</p>
                     <ul>
-                        <li><span class="highlight">29 European plants</span> transformed</li>
-                        <li><span class="highlight">€2M annual savings</span></li>
-                        <li>200+ EDI supplier integrations</li>
-                        <li>Industry 4.0 Champion</li>
+                        <li><span class="highlight">29 Plants:</span> Oversaw European SC activities & KPIs.</li>
+                        <li><span class="highlight">Digitalization:</span> EDI with 200+ suppliers, SAP PP/MM Key User.</li>
+                        <li><span class="highlight">Optimization:</span> Stock management adjustments, consignment agreements.</li>
+                        <li><span class="highlight">Industry 4.0:</span> Selected as Champion to lead strategic digital projects.</li>
                     </ul>
                 </div>`,
-                `<div class="info-panel" style="left: 50px; bottom: 320px;">
-                    <h2>Education & Languages</h2>
+                `<div class="info-panel" style="left: 30px; bottom: 280px;">
+                    <h2>Education & Certifications</h2>
                     <h3>🎓 M.Sc. Industrial Systems</h3>
                     <p>UTBM | 2016-2020</p>
                     <h3>⚡ B.Sc. Electrical Engineering</h3>
                     <p>IUT Nice | 2013-2015</p>
-                    <h3>🌍 Languages</h3>
-                    <p>French (Native) | English (C1) | Spanish (C1) | Mandarin (B1)</p>
-                </div>`,
-                `<div class="info-panel" style="left: 700px; bottom: 320px;">
-                    <h2>Let's Connect!</h2>
-                    <p><span class="highlight">€7M+ Total Savings</span></p>
-                    <p><span class="highlight">29+ Sites Transformed</span></p>
-                    <p><span class="highlight">200+ EDI Integrations</span></p>
                     <br>
-                    <p>📧 rbaronpro@gmail.com</p>
-                    <p>📱 +34 644 00 23 69</p>
-                    <p>💼 LinkedIn: roman-baron-7912b2a9</p>
-                    <p>💻 GitHub: Rom946</p>
+                    <p><strong>Awards:</strong> Innovation Crunch Time UTBM 2017</p>
+                    <p><strong>Languages:</strong> English, French, Spanish (Native/Bilingual), Chinese (Limited)</p>
+                </div>`,
+                `<div class="info-panel" style="left: 30px; bottom: 280px;">
+                    <h2>Hobbies & Interests</h2>
+                    <p>🏃 <strong>Sports:</strong> Running, Hiking, Padel</p>
+                    <p>📚 <strong>Reading:</strong> Continuous learning</p>
+                    <p>💻 <strong>Coding:</strong> Python, Web Dev</p>
+                    <p>🍳 <strong>Cooking:</strong> Culinary arts</p>
+                </div>`,
+                `<div class="info-panel" style="left: 50%; transform: translateX(-50%); bottom: 280px; text-align: center; width: 350px;">
+                    <h2 style="font-size: 28px; margin-bottom: 20px;">Let's Connect!</h2>
+                    <p style="font-size: 18px; margin-bottom: 5px;"><span class="highlight">€7M+ Total Savings</span></p>
+                    <p style="font-size: 18px; margin-bottom: 5px;"><span class="highlight">60+ Sites Transformed</span></p>
+                    <p style="font-size: 14px; color: white;">Railway, Automotive, Warehousing and Retail</p>
+                    <br>
+                    <p style="font-size: 16px;">📧 <a href="mailto:rbaronpro@gmail.com" style="color:#FFD700">rbaronpro@gmail.com</a></p>
+                    <p style="font-size: 16px;">📱 +34 644 00 23 69</p>
+                    <p style="font-size: 16px;">💼 <a href="https://www.linkedin.com/in/roman-baron-7912b2a9" target="_blank" style="color:#FFD700">LinkedIn</a></p>
+                    <p style="font-size: 16px;">💻 <a href="https://github.com/Rom946" target="_blank" style="color:#FFD700">GitHub: Rom946</a></p>
                 </div>`
             ];
             return panels[levelIndex] || '';
@@ -2136,10 +2450,22 @@
             return html;
         }
 
+        function getLevelStartX(levelIndex) {
+            let offset = 0;
+            for (let i = 0; i < levelIndex; i++) {
+                offset += levels[i].width;
+            }
+            return offset * window.innerWidth / 100;
+        }
+
         function initGameWorld() {
             const gameWorld = document.getElementById('gameWorld');
             gameWorld.innerHTML = '';
-            gameWorld.style.width = (levels.length * 300) + 'vw';
+
+            let totalWidth = 0;
+            levels.forEach(l => totalWidth += l.width);
+
+            gameWorld.style.width = totalWidth + 'vw';
             levels.forEach((_, i) => gameWorld.innerHTML += generateLevelHTML(i));
             updateCharacterDisplay();
         }
@@ -2147,8 +2473,8 @@
         function updateCharacterDisplay() {
             const character = document.getElementById('character');
             let html = '';
-            
-            switch(gameState.vehicle) {
+
+            switch (gameState.vehicle) {
                 case 'walk':
                     html = `
                         <div class="character-walk ${gameState.isMoving ? 'walking' : ''}">
@@ -2191,9 +2517,9 @@
                     `;
                     break;
             }
-            
+
             character.innerHTML = html;
-            
+
             const icons = { walk: '🚶', forklift: '🚜', car: '🚗' };
             const names = { walk: 'On Foot', forklift: 'Forklift', car: 'Car' };
             document.getElementById('vehicleIcon').textContent = icons[gameState.vehicle];
@@ -2216,10 +2542,10 @@
 
         function update() {
             if (!gameState.started) return;
-            
+
             const speed = MOVE_SPEED[gameState.vehicle];
             let moved = false;
-            
+
             if (gameState.keys.left) {
                 gameState.worldX -= speed;
                 gameState.direction = -1;
@@ -2230,16 +2556,18 @@
                 gameState.direction = 1;
                 moved = true;
             }
-            
-            const maxX = (levels.length * 300 * window.innerWidth / 100) - window.innerWidth;
+
+            let totalWidth = 0;
+            levels.forEach(l => totalWidth += l.width);
+            const maxX = (totalWidth * window.innerWidth / 100) - window.innerWidth;
             gameState.worldX = Math.max(0, Math.min(gameState.worldX, maxX));
-            
+
             // Gravity
             if (!gameState.isGrounded) {
                 gameState.velocityY -= GRAVITY;
                 gameState.characterY += gameState.velocityY;
             }
-            
+
             // Ground
             if (gameState.characterY <= GROUND_Y) {
                 gameState.characterY = GROUND_Y;
@@ -2247,21 +2575,21 @@
                 gameState.isGrounded = true;
                 gameState.isJumping = false;
             }
-            
+
             if (moved !== gameState.isMoving) {
                 gameState.isMoving = moved;
                 updateCharacterDisplay();
             }
-            
+
             document.getElementById('gameWorld').style.transform = `translateX(${-gameState.worldX}px)`;
             const character = document.getElementById('character');
             character.style.bottom = gameState.characterY + 'px';
             character.style.transform = `scaleX(${gameState.direction})`;
-            
+
             checkCurrentLevel();
             checkBadgeCollisions();
             checkVehicleZones();
-            
+
             requestAnimationFrame(update);
         }
 
@@ -2270,14 +2598,13 @@
             const charW = getCharacterWidth();
             const charY = gameState.characterY;
             const charH = getCharacterHeight();
-            
+
             badges.forEach((badge, index) => {
                 if (badge.collected) return;
-                
-                const levelOffset = badge.level * 300 * window.innerWidth / 100;
-                const badgeX = levelOffset + badge.x;
+
+                const badgeX = getLevelStartX(badge.level) + badge.x;
                 const badgeY = badge.y;
-                
+
                 if (charX + charW > badgeX && charX < badgeX + 45 &&
                     charY + charH > badgeY && charY < badgeY + 45) {
                     collectBadge(index);
@@ -2288,21 +2615,21 @@
         function collectBadge(index) {
             const badge = badges[index];
             if (badge.collected) return;
-            
+
             badge.collected = true;
             gameState.collectedBadges.push(index);
             gameState.xp += 150;
-            
+
             const badgeEl = document.getElementById(`badge-${index}`);
             if (badgeEl) {
                 createParticles(badgeEl);
                 badgeEl.classList.add('collected');
             }
-            
+
             document.getElementById('badgeNum').textContent = gameState.collectedBadges.length;
             document.getElementById('xpFill').style.width = (gameState.xp / gameState.maxXP * 100) + '%';
             document.getElementById('xpText').textContent = `${gameState.xp} / ${gameState.maxXP} XP`;
-            
+
             playSound('collect');
         }
 
@@ -2322,11 +2649,10 @@
 
         function checkVehicleZones() {
             const charX = window.innerWidth * 0.15 + gameState.worldX;
-            
+
             vehicleZones.forEach(zone => {
-                const levelOffset = zone.level * 300 * window.innerWidth / 100;
-                const zoneX = levelOffset + zone.x;
-                
+                const zoneX = getLevelStartX(zone.level) + zone.x;
+
                 if (Math.abs(charX - zoneX) < 80 && gameState.vehicle !== zone.vehicle) {
                     gameState.vehicle = zone.vehicle;
                     updateCharacterDisplay();
@@ -2336,13 +2662,29 @@
         }
 
         function checkCurrentLevel() {
-            const levelWidth = 300 * window.innerWidth / 100;
-            const newLevel = Math.floor((gameState.worldX + window.innerWidth * 0.15) / levelWidth);
-            
-            if (newLevel !== gameState.currentLevel && newLevel >= 0 && newLevel < levels.length) {
+            const charX = gameState.worldX + window.innerWidth * 0.15;
+            let currentX = 0;
+            let newLevel = 0;
+
+            for (let i = 0; i < levels.length; i++) {
+                const levelPixelWidth = levels[i].width * window.innerWidth / 100;
+                if (charX >= currentX && charX < currentX + levelPixelWidth) {
+                    newLevel = i;
+                    break;
+                }
+                currentX += levelPixelWidth;
+            }
+
+            if (newLevel !== gameState.currentLevel) {
                 gameState.currentLevel = newLevel;
                 document.getElementById('levelName').textContent = levels[newLevel].name;
                 document.getElementById('levelSubtitle').textContent = levels[newLevel].subtitle;
+
+                // Trigger Truck Animation
+                if (newLevel === 3) { // Forvia level
+                    const truck = document.querySelector('.parked-truck');
+                    if (truck) truck.classList.add('truck-depart');
+                }
             }
         }
 
@@ -2394,4 +2736,5 @@
         });
     </script>
 </body>
+
 </html>
