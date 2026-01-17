@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <div id="startScreen">
+    <div id="startScreen" style="transition: opacity 0.5s ease;">
         <h1>ROMAN BARON</h1>
         <h2>Global Supply Chain Transformation Leader</h2>
         <button id="startButton">START JOURNEY</button>
@@ -19,33 +19,48 @@
         </div>
     </div>
 
+    <div id="contactHeader">
+        <div class="header-content">
+            <span class="header-name">ROMAN BARON</span>
+            <span class="header-item">📧 rbaronpro@gmail.com</span>
+            <span class="header-item">📱 +34 644 00 23 69</span>
+            <span class="header-item">📍 Barcelona, Spain</span>
+            <a href="https://www.linkedin.com/in/roman-baron-7912b2a9/" target="_blank" class="header-link">🔗
+                LinkedIn</a>
+        </div>
+    </div>
+
+    <div id="unifiedHud">
+        <div id="levelIndicator" class="hud-panel shelf-panel">
+            <h3 id="levelName">Introduction</h3>
+            <p id="levelSubtitle">Barcelona, Spain</p>
+        </div>
+
+        <div id="progressPanel" class="hud-panel shelf-panel">
+            <div id="xpBar">
+                <div id="xpFill" style="width: 0%"></div>
+            </div>
+            <p id="xpText">0 / 2850 XP</p>
+        </div>
+
+        <div id="skillShelf"></div>
+
+        <div id="badgeCount" class="hud-panel shelf-panel">
+            <p>Badges</p>
+            <span id="badgeNum">0</span>/19
+        </div>
+
+        <div id="vehicleStatus" class="hud-panel shelf-panel">
+            <span id="vehicleIcon">🚶</span>
+            <p id="vehicleName">On Foot</p>
+        </div>
+    </div>
+
     <div id="gameContainer">
         <div id="gameWorld"></div>
         <div id="character"></div>
 
-        <div id="hud">
-            <div class="hud-panel" id="levelIndicator">
-                <h3 id="levelName">Introduction</h3>
-                <p id="levelSubtitle">Barcelona, Spain</p>
-            </div>
 
-            <div class="hud-panel" id="progressPanel">
-                <div id="xpBar">
-                    <div id="xpFill" style="width: 0%"></div>
-                </div>
-                <p id="xpText">0 / 2850 XP</p>
-            </div>
-
-            <div class="hud-panel" id="badgeCount">
-                <p>Badges</p>
-                <span id="badgeNum">0</span>/19
-            </div>
-
-            <div class="hud-panel" id="vehicleStatus">
-                <span id="vehicleIcon">🚶</span>
-                <span id="vehicleName">On Foot</span>
-            </div>
-        </div>
 
         <div id="controls">
             <h4>Controls</h4>
