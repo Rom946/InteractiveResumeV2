@@ -1081,7 +1081,7 @@ function updateCharacterDisplay() {
 // Physics
 const GRAVITY = 0.6;
 const JUMP_FORCE = 12;
-const MOVE_SPEED = { walk: 5, snowmobile: 8, forklift: 7, car: 10, train: 9, tuktuk: 8, service: 9, plane: 15 };
+const MOVE_SPEED = { walk: 7, snowmobile: 8, forklift: 10, car: 10, train: 9, tuktuk: 8, service: 9, plane: 15 };
 const GROUND_Y = 100;
 
 function getCharacterWidth() {
@@ -1371,19 +1371,7 @@ document.addEventListener('mouseup', handleInputEnd);
 document.addEventListener('touchstart', (e) => handleInputStart(e.touches[0].clientX));
 document.addEventListener('touchend', handleInputEnd);
 
-// Mobile Buttons (Keep existing but ensure they work)
-const btnLeft = document.getElementById('btnLeft');
-const btnRight = document.getElementById('btnRight');
 
-if (btnLeft) {
-    btnLeft.addEventListener('touchstart', (e) => { e.preventDefault(); gameState.keys.left = true; });
-    btnLeft.addEventListener('touchend', () => gameState.keys.left = false);
-}
-if (btnRight) {
-    btnRight.addEventListener('touchstart', (e) => { e.preventDefault(); gameState.keys.right = true; });
-    btnRight.addEventListener('touchend', () => gameState.keys.right = false);
-}
-document.getElementById('btnJump').addEventListener('touchstart', (e) => { e.preventDefault(); jump(); });
 
 // Sound toggle
 document.getElementById('soundToggle').addEventListener('click', () => {
@@ -1411,7 +1399,6 @@ document.getElementById('startButton').addEventListener('click', () => {
 function handleResize() {
     const container = document.getElementById('gameContainer');
     const hud = document.getElementById('unifiedHud');
-    const controls = document.getElementById('controls');
 
     // Core metrics
     const vh = window.innerHeight;
@@ -1441,26 +1428,38 @@ function handleResize() {
         container.style.left = '0';
     }
 
+    let hudScale = 1;
     if (hud) {
-        // Hud stays centered at the top
-        const hudScale = Math.max(scale, 0.6);
+        // HUD scaling must respect the available physical width (vw)
+        // Base design width for the collective HUD panels is ~1000px
+        const baseHudWidth = 1050;
+        const fitScale = (vw * 0.96) / baseHudWidth; // Use 96% of width for margin
+
+        hudScale = Math.min(fitScale, 1.2);
+        hudScale = Math.max(hudScale, 0.35); // Allow smaller floor for very thin mobile screens
+
         hud.style.transform = `translateX(-50%) scale(${hudScale})`;
-        hud.style.top = (vw < 1024) ? '55px' : '65px';
+
+        // Ensure HUD is below the Contact Header (which is 40px on tiny, 50px otherwise)
+        const headerH = (vw < 500) ? 40 : 50;
+        hud.style.top = (headerH - 2) + 'px'; // -2 to overlap the border for a seamless look
     }
 
-    if (controls) {
-        controls.style.display = (vw < 1024 || vh < 500) ? 'none' : 'block';
+    // Adjust Contact Header for very small screens
+    const contactHeader = document.getElementById('contactHeader');
+    if (contactHeader) {
+        if (vw < 500) {
+            contactHeader.style.height = '40px';
+        } else {
+            contactHeader.style.height = '50px';
+        }
     }
 
-    // Orientation warning
+    // Orientation warning removed as requested
     const warning = document.getElementById('rotate-warning');
-    if (vh > vw && vw < 600) {
-        if (warning) warning.style.display = 'flex';
-    } else {
-        if (warning) warning.style.display = 'none';
-    }
+    if (warning) warning.style.display = 'none';
 
-    console.log(`[RESIZE] Full-Screen Scale: ${scale.toFixed(2)}, LogicalWidth: ${Math.round(gameState.viewWidth)}`);
+    console.log(`[RESIZE] Scale: ${scale.toFixed(2)}, HUDScale: ${hudScale.toFixed(2)}, LogicalWidth: ${Math.round(gameState.viewWidth)}`);
 }
 
 window.addEventListener('resize', handleResize);
