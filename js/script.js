@@ -1422,47 +1422,66 @@ document.addEventListener('keyup', (e) => {
 });
 
 // Mouse & Touch Controls
-// Wheel to move
+// Wheel to move (Scroll up/down for vertical plane movement or Jump)
 window.addEventListener('wheel', (e) => {
     if (!gameState.started) return;
-    if (e.deltaY > 0) {
-        gameState.keys.right = true;
-        gameState.keys.left = false;
+
+    // Plane vertical control via scroll
+    if (gameState.vehicle === 'plane') {
+        if (e.deltaY < 0) { // Scroll Up
+            gameState.keys.up = true;
+            gameState.keys.down = false;
+        } else { // Scroll Down
+            gameState.keys.down = true;
+            gameState.keys.up = false;
+        }
+        // Stop after moderate delay
+        clearTimeout(window.planeScrollTimer);
+        window.planeScrollTimer = setTimeout(() => {
+            gameState.keys.up = false;
+            gameState.keys.down = false;
+        }, 150);
     } else {
-        gameState.keys.left = true;
-        gameState.keys.right = false;
+        // Jump on scroll up
+        if (e.deltaY < 0) {
+            jump();
+        }
+
+        // Traditional horizontal wheel movement (optional, let's keep it but slightly improved)
+        if (e.deltaY > 0) {
+            gameState.keys.right = true;
+            gameState.keys.left = false;
+        } else {
+            gameState.keys.left = true;
+            gameState.keys.right = false;
+        }
+        setTimeout(() => {
+            gameState.keys.left = false;
+            gameState.keys.right = false;
+        }, 100);
     }
-    // Stop after a short delay to simulate "step"
-    setTimeout(() => {
-        gameState.keys.left = false;
-        gameState.keys.right = false;
-    }, 100);
 });
 
-// Jump Button Logic
-const jumpBtn = document.getElementById('jumpButton');
-if (jumpBtn) {
-    jumpBtn.addEventListener('touchstart', (e) => {
-        e.preventDefault(); // Prevent ghost clicks
-        console.log("Jump button tapped"); // Debug
-        if (gameState.started) jump();
-    });
-    jumpBtn.addEventListener('mousedown', (e) => {
-        if (gameState.started) jump();
-    });
-}
+// Mobile Scroll/Swipe Controls
+let touchStartY = 0;
+let touchStartX = 0;
 
-// Mobile Hold-to-Move Logic
+// Mobile Swipe/Hold Logic
+const handleTouchStart = (e) => {
+    if (!gameState.started) return;
+    const touch = e.touches[0];
+    touchStartY = touch.clientY;
+    touchStartX = touch.clientX;
+    handleTouchMove(e);
+};
+
 const handleTouchMove = (e) => {
     if (!gameState.started) return;
-
-    // Prevent default to stop scrolling while playing (optional, but good for game feel)
-    // Only prevent if touching game world? 
-    // e.preventDefault(); 
 
     const touch = e.touches[0];
     const centerX = window.innerWidth / 2;
 
+    // 1. Horizontal Movement (Hold)
     if (touch.clientX < centerX) {
         gameState.keys.left = true;
         gameState.keys.right = false;
@@ -1470,15 +1489,43 @@ const handleTouchMove = (e) => {
         gameState.keys.left = false;
         gameState.keys.right = true;
     }
+
+    // 2. Vertical Movement (Swipe/Scroll)
+    const deltaY = touch.clientY - touchStartY;
+
+    if (gameState.vehicle === 'plane') {
+        // Plane vertical control
+        if (deltaY < -15) { // Swipe Up
+            gameState.keys.up = true;
+            gameState.keys.down = false;
+        } else if (deltaY > 15) { // Swipe Down
+            gameState.keys.down = true;
+            gameState.keys.up = false;
+        } else {
+            gameState.keys.up = false;
+            gameState.keys.down = false;
+        }
+        // Prevent default browser scroll while flying
+        if (Math.abs(deltaY) > 10) e.preventDefault();
+    } else {
+        // Jump detection (Swipe Up)
+        if (deltaY < -40) {
+            jump();
+            // Reset start Y to avoid redundant jumps in same gesture
+            touchStartY = touch.clientY;
+        }
+    }
 };
 
 const handleTouchEnd = () => {
     gameState.keys.left = false;
     gameState.keys.right = false;
+    gameState.keys.up = false;
+    gameState.keys.down = false;
 };
 
-// Add listeners to window or game container
-window.addEventListener('touchstart', handleTouchMove, { passive: false });
+// Add listeners to window
+window.addEventListener('touchstart', handleTouchStart, { passive: false });
 window.addEventListener('touchmove', handleTouchMove, { passive: false });
 window.addEventListener('touchend', handleTouchEnd);
 
