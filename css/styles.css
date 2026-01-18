@@ -87,39 +87,58 @@
 
         @media screen and (max-width: 540px) {
             #contactHeader {
-                height: 40px;
-                padding: 0;
+                height: 32px !important;
+                padding: 0 !important;
+                width: 100vw !important;
+                left: 0 !important;
+                display: flex !important;
+                justify-content: center !important;
+                overflow: hidden !important;
             }
 
             .header-content {
-                gap: 5px;
-                padding: 0 5px;
-                width: 100%;
-                justify-content: center;
-                flex-wrap: nowrap;
-                /* Force one line */
-                overflow: hidden;
+                gap: 2px !important;
+                padding: 0 4px !important;
+                width: 100% !important;
+                justify-content: space-evenly !important;
+                flex-wrap: nowrap !important;
+                font-size: 2.2vw !important;
+                font-family: "Arial Narrow", Arial, sans-serif !important;
+                letter-spacing: -0.7px !important;
             }
 
-            /* Aggressively scale font to fit everything on one line */
-            .header-content {
-                font-size: clamp(6px, 1.7vw, 10px);
+            .header-icon {
+                display: none !important;
             }
 
             .header-name {
-                font-size: clamp(7px, 1.9vw, 11px);
-                padding-right: 5px;
-                border-right: 1px solid #555;
+                font-size: 2.4vw !important;
+                padding-right: 2px !important;
+                border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
+                font-weight: 800 !important;
+                color: #FFD700 !important;
+                margin: 0 !important;
+                flex-shrink: 0 !important;
             }
 
             .header-item,
             .header-link {
-                display: inline-flex;
-                align-items: center;
-                white-space: nowrap;
+                display: inline-flex !important;
+                align-items: center !important;
+                white-space: nowrap !important;
+                padding: 0 !important;
+                background: none !important;
+                border: none !important;
+                color: #fff !important;
+                flex-shrink: 1 !important;
+                min-width: 0 !important;
+                gap: 0 !important;
             }
 
-            /* Ensure visibility without wrapping */
+            .header-link {
+                color: #64B5F6 !important;
+            }
+
             .location-text,
             .link-text,
             .contact-text {
@@ -2761,37 +2780,7 @@
             display: none;
         }
 
-        /* Jump Button (Hidden by default) */
-        /* Jump Button (Hidden by default) */
-        #jumpButton {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: rgba(255, 215, 0, 0.9);
-            /* Gold */
-            border: 3px solid #3E0097;
-            color: #3E0097;
-            font-weight: bold;
-            font-size: 14px;
-            /* Slightly smaller text */
-            z-index: 2000;
-            display: none;
-            /* Hidden on desktop */
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            cursor: pointer;
-            text-transform: uppercase;
-            touch-action: manipulation;
-            /* Prevent zoom */
-            transition: transform 0.1s;
-        }
 
-        #jumpButton:active {
-            transform: scale(0.95);
-            background: #fff;
-        }
 
         @media screen and (max-width: 768px) {
 
@@ -2809,12 +2798,7 @@
                 display: block;
             }
 
-            /* Show Jump Button */
-            #jumpButton {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
+
         }
 
         /* Climbing Workers - Level 6 */
