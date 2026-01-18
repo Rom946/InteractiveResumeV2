@@ -88,33 +88,42 @@
         @media screen and (max-width: 540px) {
             #contactHeader {
                 height: 40px;
+                padding: 0;
             }
 
             .header-content {
-                gap: 4px;
-                /* Dynamically scale font to fit width */
-                font-size: clamp(7px, 2.2vw, 10px);
-                padding: 0 2px;
+                gap: 5px;
+                padding: 0 5px;
                 width: 100%;
                 justify-content: center;
+                flex-wrap: nowrap;
+                /* Force one line */
+                overflow: hidden;
+            }
+
+            /* Aggressively scale font to fit everything on one line */
+            .header-content {
+                font-size: clamp(6px, 1.7vw, 10px);
             }
 
             .header-name {
-                /* Name slightly larger/bold */
-                font-size: clamp(8px, 2.4vw, 11px);
+                font-size: clamp(7px, 1.9vw, 11px);
                 padding-right: 5px;
                 border-right: 1px solid #555;
             }
 
-            /* Ensure NO items are hidden */
+            .header-item,
+            .header-link {
+                display: inline-flex;
+                align-items: center;
+                white-space: nowrap;
+            }
+
+            /* Ensure visibility without wrapping */
             .location-text,
             .link-text,
             .contact-text {
                 display: inline !important;
-            }
-
-            .header-item:nth-child(n) {
-                display: inline-flex !important;
             }
         }
 
@@ -2745,4 +2754,149 @@
             transform: translateY(-50px) scale(1.5);
             pointer-events: none;
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Instructions Toggling */
+        .mobile-instructions {
+            display: none;
+        }
+
+        /* Jump Button (Hidden by default) */
+        /* Jump Button (Hidden by default) */
+        #jumpButton {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(255, 215, 0, 0.9);
+            /* Gold */
+            border: 3px solid #3E0097;
+            color: #3E0097;
+            font-weight: bold;
+            font-size: 14px;
+            /* Slightly smaller text */
+            z-index: 2000;
+            display: none;
+            /* Hidden on desktop */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            text-transform: uppercase;
+            touch-action: manipulation;
+            /* Prevent zoom */
+            transition: transform 0.1s;
+        }
+
+        #jumpButton:active {
+            transform: scale(0.95);
+            background: #fff;
+        }
+
+        @media screen and (max-width: 768px) {
+
+            /* Hide Desktop Controls Overlay */
+            #controls {
+                display: none;
+            }
+
+            /* Toggle Instructions */
+            .desktop-instructions {
+                display: none;
+            }
+
+            .mobile-instructions {
+                display: block;
+            }
+
+            /* Show Jump Button */
+            #jumpButton {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+
+        /* Climbing Workers - Level 6 */
+        .climbing-worker {
+            position: absolute;
+            bottom: 0;
+            width: 20px;
+            height: 35px;
+            z-index: 55;
+            pointer-events: none;
+        }
+
+        .climbing-worker .worker-head {
+            position: absolute;
+            top: 0;
+            left: 4px;
+            width: 12px;
+            height: 12px;
+            background: #ffccaa;
+            border-radius: 50%;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .climbing-worker .worker-body {
+            position: absolute;
+            top: 11px;
+            left: 2px;
+            width: 16px;
+            height: 20px;
+            background: #FF6600;
+            /* High-vis orange */
+            border-radius: 2px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Animation Triggers */
+        .tower-worker {
+            left: 40px;
+            /* Center on antenna pole */
+        }
+
+        .tower-worker.climb-active {
+            animation: towerClimb 4s ease-in-out forwards, workerFixing 1.5s ease-in-out infinite 4s;
+        }
+
+        .pole-worker {
+            left: 9px;
+            /* Center on wooden pole */
+        }
+
+        .pole-worker.climb-active {
+            animation: poleClimb 3s ease-in-out forwards, workerFixing 1.2s ease-in-out infinite 3s;
+        }
+
+        @keyframes towerClimb {
+            from {
+                bottom: 0;
+            }
+
+            to {
+                bottom: 200px;
+            }
+        }
+
+        @keyframes poleClimb {
+            from {
+                bottom: 0;
+            }
+
+            to {
+                bottom: 150px;
+            }
+        }
+
+        @keyframes workerFixing {
+
+            0%,
+            100% {
+                transform: translateX(0) rotate(0);
+            }
+
+            50% {
+                transform: translateX(3px) rotate(5deg);
+            }
         }
