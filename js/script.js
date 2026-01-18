@@ -579,9 +579,11 @@ function generateLevelContent(levelIndex) {
                             <div style="position: absolute; bottom: 170px; left: 30px; width: 40px; height: 3px; background: #666;"></div>
                             <div style="position: absolute; bottom: 140px; left: 25px; width: 50px; height: 3px; background: #666;"></div>
                             <div style="position: absolute; bottom: 250px; left: 42px; width: 16px; height: 20px; background: #E03C31; border-radius: 2px;"></div>
-                            <!--Worker on pole-->
-                            <div style="position: absolute; bottom: 180px; left: 60px; width: 12px; height: 12px; background: #ffccaa; border-radius: 50%;"></div>
-                            <div style="position: absolute; bottom: 165px; left: 58px; width: 16px; height: 20px; background: #FF6600; border-radius: 2px;"></div>
+                            <!--Worker on tower-->
+                            <div id="worker-tower" class="climbing-worker tower-worker">
+                                <div class="worker-head"></div>
+                                <div class="worker-body"></div>
+                            </div>
                         </div>
                 `;
             // Phone pole with worker (elevated)
@@ -592,8 +594,10 @@ function generateLevelContent(levelIndex) {
                             <!--Landline phone-->
                             <div style="position: absolute; bottom: 145px; left: 0; width: 12px; height: 15px; background: #333; border-radius: 2px;"></div>
                             <!--Worker on pole-->
-                            <div style="position: absolute; bottom: 160px; left: 30px; width: 12px; height: 12px; background: #ffccaa; border-radius: 50%;"></div>
-                            <div style="position: absolute; bottom: 145px; left: 28px; width: 16px; height: 20px; background: #FF6600; border-radius: 2px;"></div>
+                            <div id="worker-pole" class="climbing-worker pole-worker">
+                                <div class="worker-head"></div>
+                                <div class="worker-body"></div>
+                            </div>
                         </div>
                 `;
             // Orange building (grounded)
@@ -1371,6 +1375,12 @@ function checkCurrentLevel() {
         if (newLevel === 9 && gameState.vehicle === 'plane') {
             triggerPlaneJump();
         }
+
+        // Trigger Orange level worker animation
+        if (newLevel === 6) {
+            document.getElementById('worker-tower')?.classList.add('climb-active');
+            document.getElementById('worker-pole')?.classList.add('climb-active');
+        }
     }
 }
 
@@ -1429,35 +1439,87 @@ window.addEventListener('wheel', (e) => {
     }, 100);
 });
 
-// Click/Tap to move
-const handleInputStart = (x) => {
+// Jump Button Logic
+const jumpBtn = document.getElementById('jumpButton');
+if (jumpBtn) {
+    jumpBtn.addEventListener('touchstart', (e) => {
+        e.preventDefault(); // Prevent ghost clicks
+        console.log("Jump button tapped"); // Debug
+        if (gameState.started) jump();
+    });
+    jumpBtn.addEventListener('mousedown', (e) => {
+        if (gameState.started) jump();
+    });
+}
+
+// Mobile Hold-to-Move Logic
+const handleTouchMove = (e) => {
     if (!gameState.started) return;
-    const vw = window.innerWidth;
-    const vh = window.innerHeight;
-    const scale = gameState.scale;
 
-    // Convert physical screen X to logical X
-    const rect = document.getElementById('gameContainer').getBoundingClientRect();
-    const logicalX = (x - rect.left) / scale;
+    // Prevent default to stop scrolling while playing (optional, but good for game feel)
+    // Only prevent if touching game world? 
+    // e.preventDefault(); 
 
-    if (logicalX < gameState.viewWidth / 2) {
+    const touch = e.touches[0];
+    const centerX = window.innerWidth / 2;
+
+    if (touch.clientX < centerX) {
         gameState.keys.left = true;
         gameState.keys.right = false;
     } else {
-        gameState.keys.right = true;
         gameState.keys.left = false;
+        gameState.keys.right = true;
     }
 };
+
+const handleTouchEnd = () => {
+    gameState.keys.left = false;
+    gameState.keys.right = false;
+};
+
+// Add listeners to window or game container
+window.addEventListener('touchstart', handleTouchMove, { passive: false });
+window.addEventListener('touchmove', handleTouchMove, { passive: false });
+window.addEventListener('touchend', handleTouchEnd);
+
+// Keep click for desktop if needed, or remove. 
+// Old 'handleInputStart' logic replaced by direct touch handling above.
+// For mouse clicks on desktop, maybe keep nothing or assume they use keys?
+// Or map mouse hold to move?
+// Let's implement mouse hold = move too for consistency.
+let isMouseDown = false;
+window.addEventListener('mousedown', (e) => {
+    if (e.target.id === 'jumpButton' || e.target.id === 'startButton' || e.target.closest('#contactHeader')) return;
+    isMouseDown = true;
+    handleMouseMove(e);
+});
+window.addEventListener('mousemove', (e) => {
+    if (!isMouseDown || !gameState.started) return;
+    handleMouseMove(e);
+});
+window.addEventListener('mouseup', () => {
+    isMouseDown = false;
+    handleTouchEnd();
+});
+
+function handleMouseMove(e) {
+    if (!gameState.started) return;
+    const centerX = window.innerWidth / 2;
+    if (e.clientX < centerX) {
+        gameState.keys.left = true;
+        gameState.keys.right = false;
+    } else {
+        gameState.keys.left = false;
+        gameState.keys.right = true;
+    }
+}
 
 const handleInputEnd = () => {
     gameState.keys.left = false;
     gameState.keys.right = false;
 };
 
-document.addEventListener('mousedown', (e) => handleInputStart(e.clientX));
-document.addEventListener('mouseup', handleInputEnd);
-document.addEventListener('touchstart', (e) => handleInputStart(e.touches[0].clientX));
-document.addEventListener('touchend', handleInputEnd);
+// Old input listeners removed - now using handleTouchMove/handleMouseMove defined above
 
 
 
