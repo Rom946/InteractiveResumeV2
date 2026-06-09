@@ -363,75 +363,221 @@ ul {
     color: var(--text-muted);
 }
 
-/* ============ Projects ============ */
-.project {
+/* ============ Projects — interactive stacked cards ============ */
+.projects-stack {
     display: grid;
-    grid-template-columns: 200px 1fr;
-    gap: 40px;
-    padding: 48px 0;
-    border-top: 1px solid var(--border);
+    gap: 48px;
 }
 
-.project:last-of-type {
-    border-bottom: 1px solid var(--border);
+.project-card {
+    position: sticky;
+    top: 104px;
+    transform: scale(calc(1 - 0.06 * var(--stack, 0)));
+    transform-origin: center top;
+    filter: brightness(calc(1 - 0.35 * var(--stack, 0)));
+    will-change: transform, filter;
 }
 
-.project-meta {
+.project-card-inner {
+    position: relative;
+    padding: 40px 44px;
+    border-radius: 20px;
+    background: linear-gradient(160deg, var(--surface) 0%, #121d33 100%);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    transform: perspective(1100px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+    transition: transform 0.18s ease-out, border-color 0.3s ease;
+}
+
+.project-card-inner:hover {
+    border-color: rgba(232, 163, 61, 0.30);
+}
+
+/* Cursor-tracking spotlight */
+.project-card-inner::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(620px circle at var(--mx, 50%) var(--my, 0%),
+            rgba(232, 163, 61, 0.09), transparent 45%);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+}
+
+.project-card-inner:hover::before {
+    opacity: 1;
+}
+
+/* Ambient corner glow */
+.project-card-inner::after {
+    content: "";
+    position: absolute;
+    top: -120px;
+    right: -120px;
+    width: 320px;
+    height: 320px;
+    background: radial-gradient(circle, rgba(232, 163, 61, 0.07), transparent 65%);
+    pointer-events: none;
+}
+
+.project-head {
     display: flex;
-    flex-direction: column;
-    gap: 12px;
+    gap: 28px;
     align-items: flex-start;
+    margin-bottom: 30px;
 }
 
 .project-number {
     font-family: var(--font-display);
-    font-size: 2.6rem;
+    font-size: 3.4rem;
     font-weight: 600;
-    color: var(--accent);
     line-height: 1;
+    background: linear-gradient(180deg, var(--accent), rgba(232, 163, 61, 0.25));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.project-head-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
 }
 
 .project-industry {
-    font-size: 0.78rem;
+    font-size: 0.74rem;
     font-weight: 600;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: var(--text-muted);
+    color: var(--accent);
     padding: 6px 12px;
-    border: 1px solid var(--border);
+    border: 1px solid rgba(232, 163, 61, 0.35);
     border-radius: 999px;
+    background: var(--accent-soft);
 }
 
-.project-body h3 {
+.project-head h3 {
     font-size: clamp(1.3rem, 2.5vw, 1.7rem);
-    margin-bottom: 8px;
 }
 
 .project-context {
     font-size: 0.9rem;
     color: var(--text-muted);
     font-style: italic;
-    margin-bottom: 28px;
 }
 
-.project-blocks {
+/* Tabs */
+.project-tabs {
+    position: relative;
+    display: inline-flex;
+    gap: 4px;
+    padding: 5px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.25);
+    margin-bottom: 22px;
+}
+
+.tab-btn {
+    position: relative;
+    z-index: 1;
+    border: none;
+    background: none;
+    color: var(--text-muted);
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 9px 20px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: color 0.25s ease;
+}
+
+.tab-btn.active {
+    color: #14100a;
+}
+
+.tab-btn:not(.active):hover {
+    color: var(--text);
+}
+
+.tab-indicator {
+    position: absolute;
+    top: 5px;
+    bottom: 5px;
+    left: 0;
+    width: 0;
+    border-radius: 999px;
+    background: var(--accent);
+    transition: transform 0.35s cubic-bezier(0.65, 0, 0.35, 1), width 0.35s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.tab-panels {
+    position: relative;
+    overflow: hidden;
+    transition: height 0.35s cubic-bezier(0.65, 0, 0.35, 1);
+    margin-bottom: 30px;
+}
+
+.tab-panel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+    pointer-events: none;
+}
+
+.tab-panel.active {
+    position: relative;
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+}
+
+.tab-panel p {
+    font-size: 0.98rem;
+    color: var(--text-muted);
+    max-width: 720px;
+}
+
+/* Metrics */
+.project-metrics {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+    gap: 14px;
     margin-bottom: 28px;
 }
 
-.project-block h4 {
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 8px;
+.metric {
+    padding: 18px 20px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.025);
+    transition: border-color 0.3s ease, transform 0.3s ease;
 }
 
-.project-block p {
-    font-size: 0.92rem;
+.metric:hover {
+    border-color: rgba(232, 163, 61, 0.35);
+    transform: translateY(-3px);
+}
+
+.metric-value {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.45rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 4px;
+    white-space: nowrap;
+}
+
+.metric-label {
+    font-size: 0.8rem;
     color: var(--text-muted);
 }
 
@@ -448,6 +594,24 @@ ul {
     background: var(--accent-soft);
     color: var(--accent);
     border-radius: 999px;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.project-tags li:hover {
+    transform: translateY(-2px) scale(1.04);
+    background: rgba(232, 163, 61, 0.22);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .project-card {
+        position: static;
+        transform: none;
+        filter: none;
+    }
+
+    .project-card-inner {
+        transform: none;
+    }
 }
 
 /* ============ Engagement ============ */
@@ -594,17 +758,31 @@ ul {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .project {
-        grid-template-columns: 1fr;
-        gap: 24px;
+    .project-card-inner {
+        padding: 28px 24px;
     }
 
-    .project-meta {
-        flex-direction: row;
-        align-items: center;
+    .project-head {
+        flex-direction: column;
+        gap: 14px;
     }
 
-    .project-blocks {
+    .project-number {
+        font-size: 2.6rem;
+    }
+
+    .project-tabs {
+        display: flex;
+        width: 100%;
+    }
+
+    .tab-btn {
+        flex: 1;
+        padding: 9px 8px;
+        font-size: 0.8rem;
+    }
+
+    .project-metrics {
         grid-template-columns: 1fr;
     }
 
