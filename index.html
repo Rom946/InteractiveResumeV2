@@ -4,88 +4,347 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roman Baron - Interactive Resume</title>
+    <title>Roman Baron — Supply Chain &amp; IT Consulting</title>
+    <meta name="description"
+        content="Independent consultant in supply chain operations and IT project management. ERP/WMS implementations, EDI integration, data strategy and crisis management across Europe.">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
-    <div id="startScreen" style="transition: opacity 0.5s ease;">
-        <h1>ROMAN BARON</h1>
-        <h2>Global Supply Chain Transformation Leader</h2>
-        <button id="startButton">START JOURNEY</button>
-        <div class="instructions">
-            <p class="desktop-instructions">Use <strong>← →</strong> arrow keys to move | <strong>SPACE</strong> to jump
-            </p>
-            <p class="mobile-instructions">Hold <strong>Left / Right</strong> side to move | Swipe <strong>Up</strong>
-                to jump / fly</p>
-            <p>Collect skill badges and explore my career!</p>
-        </div>
-    </div>
 
+    <header class="site-header" id="top">
+        <nav class="nav container" aria-label="Main navigation">
+            <a href="#top" class="brand">
+                <span class="brand-mark">RB</span>
+                <span class="brand-name">Roman Baron<small>Supply Chain &amp; IT Consulting</small></span>
+            </a>
+            <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#engagement">Engagement</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact" class="nav-cta">Get in touch</a></li>
+            </ul>
+        </nav>
+    </header>
 
+    <main>
 
-    <div id="contactHeader">
-        <div class="header-content">
-            <span class="header-name">ROMAN BARON</span>
-            <span class="header-item"><span class="header-icon">📧</span><span
-                    class="contact-text">rbaronpro@gmail.com</span></span>
-            <span class="header-item"><span class="header-icon">📱</span><span
-                    class="contact-text">+34644002369</span></span>
-            <span class="header-item"><span class="header-icon">📍</span><span
-                    class="location-text">Barcelona</span></span>
-            <a href="https://www.linkedin.com/in/roman-baron-7912b2a9/" target="_blank" class="header-link"><span
-                    class="header-icon">🔗</span><span class="link-text">LinkedIn</span></a>
-        </div>
-    </div>
-
-    <div id="unifiedHud">
-        <div id="levelIndicator" class="hud-panel shelf-panel">
-            <h3 id="levelName">Introduction</h3>
-            <p id="levelSubtitle">Barcelona, Spain</p>
-        </div>
-
-        <div id="progressPanel" class="hud-panel shelf-panel">
-            <div id="xpBar">
-                <div id="xpFill" style="width: 0%"></div>
+        <!-- ============ HERO ============ -->
+        <section class="hero">
+            <div class="container hero-inner">
+                <p class="hero-kicker reveal">Independent Consultant · Barcelona · Available across Europe</p>
+                <h1 class="reveal">Between the pallet<br>and <span class="accent">the ERP.</span></h1>
+                <p class="hero-lead reveal">
+                    I help logistics and manufacturing companies deliver IT projects that actually work
+                    on the warehouse floor — ERP &amp; WMS implementations, EDI integrations, data strategy,
+                    and operational firefighting when things go wrong.
+                </p>
+                <div class="hero-actions reveal">
+                    <a href="#projects" class="btn btn-primary">See selected projects</a>
+                    <a href="#contact" class="btn btn-ghost">Start a conversation</a>
+                </div>
             </div>
-            <p id="xpText">0 / 2850 XP</p>
+            <div class="container stats reveal">
+                <div class="stat">
+                    <span class="stat-value" data-count="8" data-suffix="+">0</span>
+                    <span class="stat-label">Years in supply chain &amp; IT</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value" data-count="60" data-suffix="+">0</span>
+                    <span class="stat-label">Warehouse sites across Europe</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value" data-count="6">0</span>
+                    <span class="stat-label">Industries served</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">FR·EN·ES</span>
+                    <span class="stat-label">Working languages</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ SERVICES ============ -->
+        <section class="section" id="services">
+            <div class="container">
+                <p class="section-kicker reveal">Service lines</p>
+                <h2 class="section-title reveal">From scoping to go-live —<br>and beyond stabilization.</h2>
+                <div class="services-grid">
+                    <article class="service-card reveal">
+                        <span class="service-icon">⚙️</span>
+                        <h3>IT Project Management</h3>
+                        <p>Full lifecycle management of ERP/WMS implementations, system migrations, process
+                            automation and EDI/API integration projects — from scoping through go-live and
+                            stabilization.</p>
+                    </article>
+                    <article class="service-card reveal">
+                        <span class="service-icon">📋</span>
+                        <h3>Business Analysis</h3>
+                        <p>Requirements gathering, functional specifications, process mapping, EDI message flow
+                            design (EDIFACT, X12, ANSI) and UAT coordination. Translating operational needs into
+                            technical specs.</p>
+                    </article>
+                    <article class="service-card reveal">
+                        <span class="service-icon">🤝</span>
+                        <h3>Customer Onboarding (3PL)</h3>
+                        <p>End-to-end integration of new clients in Business Central / WMS environments for complex
+                            retail, automotive or FMCG customers: configuration, EDI setup, process design and
+                            go-live management.</p>
+                    </article>
+                    <article class="service-card reveal">
+                        <span class="service-icon">📈</span>
+                        <h3>Continuous Improvement</h3>
+                        <p>Lean methodology, Kaizen events, process reengineering, warehouse layout optimization,
+                            KPI design and tracking, cost reduction programs and workforce optimization.</p>
+                    </article>
+                    <article class="service-card reveal">
+                        <span class="service-icon">🗄️</span>
+                        <h3>Data Strategy &amp; BI</h3>
+                        <p>Data model design, migration strategy, Power BI implementation, workflow automation with
+                            Power Automate, and system integration architecture. Strategic tool selection and
+                            rollout.</p>
+                    </article>
+                    <article class="service-card reveal">
+                        <span class="service-icon">🤖</span>
+                        <h3>AI Integration</h3>
+                        <p>Integrating AI-powered tools into logistics operations for reporting, forecasting and
+                            process optimization. Advisory and hands-on implementation of enterprise AI strategy.</p>
+                    </article>
+                    <article class="service-card reveal">
+                        <span class="service-icon">🚨</span>
+                        <h3>Crisis Management</h3>
+                        <p>Supply chain disruption management, regulatory compliance recovery, reorganization, and
+                            unstructured go-live firefighting and stabilization.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ PROJECTS ============ -->
+        <section class="section section-alt" id="projects">
+            <div class="container">
+                <p class="section-kicker reveal">Selected projects</p>
+                <h2 class="section-title reveal">Three engagements,<br>three different problems.</h2>
+
+                <!-- Project 1 -->
+                <article class="project reveal">
+                    <div class="project-meta">
+                        <span class="project-number">01</span>
+                        <span class="project-industry">3PL / Contract Logistics</span>
+                    </div>
+                    <div class="project-body">
+                        <h3>From zero data infrastructure to near real-time warehouse visibility</h3>
+                        <p class="project-context">European contract logistics provider — data strategy engagement</p>
+                        <div class="project-blocks">
+                            <div class="project-block">
+                                <h4>Challenge</h4>
+                                <p>No data infrastructure at all: reporting was manual, fragmented across sites, and
+                                    the operational data lived inside customer-owned WMS systems the company couldn't
+                                    even access.</p>
+                            </div>
+                            <div class="project-block">
+                                <h4>Approach</h4>
+                                <p>Negotiated direct access to customer Manhattan WMS databases, designed the data
+                                    model and a streaming architecture on Snowflake and Kafka Confluent, and built
+                                    interim automation so operations had usable numbers from week one.</p>
+                            </div>
+                            <div class="project-block">
+                                <h4>Outcome</h4>
+                                <p>Near real-time visibility across warehouse operations, a KPI framework adopted by
+                                    site management, and fully automated extraction workflows replacing manual
+                                    reporting.</p>
+                            </div>
+                        </div>
+                        <ul class="project-tags">
+                            <li>Snowflake</li>
+                            <li>Kafka Confluent</li>
+                            <li>Manhattan WMS</li>
+                            <li>Power BI</li>
+                            <li>Power Automate</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <!-- Project 2 -->
+                <article class="project reveal">
+                    <div class="project-meta">
+                        <span class="project-number">02</span>
+                        <span class="project-industry">Retail · Automotive · FMCG</span>
+                    </div>
+                    <div class="project-body">
+                        <h3>Complex customer onboarding on Business Central &amp; 3PL Dynamics</h3>
+                        <p class="project-context">Multi-site 3PL onboarding portfolio — IT project management</p>
+                        <div class="project-blocks">
+                            <div class="project-block">
+                                <h4>Challenge</h4>
+                                <p>Demanding retail, automotive and FMCG customers each arriving with their own EDI
+                                    standards, labeling requirements and SLAs — to be integrated into a shared
+                                    Business Central / WMS environment without disrupting live operations.</p>
+                            </div>
+                            <div class="project-block">
+                                <h4>Approach</h4>
+                                <p>Owned the full onboarding lifecycle: system configuration, EDI message flow design
+                                    (EDIFACT, X12), process design with warehouse teams, UAT coordination, team
+                                    preparation and go-live management.</p>
+                            </div>
+                            <div class="project-block">
+                                <h4>Outcome</h4>
+                                <p>Five to ten complex onboarding projects delivered across multiple European sites,
+                                    with stabilized EDI flows and warehouse teams ready on day one.</p>
+                            </div>
+                        </div>
+                        <ul class="project-tags">
+                            <li>Dynamics 365 Business Central</li>
+                            <li>Boltrics 3PL Dynamics</li>
+                            <li>EDIFACT / X12</li>
+                            <li>UAT</li>
+                            <li>Go-live management</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <!-- Project 3 -->
+                <article class="project reveal">
+                    <div class="project-meta">
+                        <span class="project-number">03</span>
+                        <span class="project-industry">Automotive Tier-1</span>
+                    </div>
+                    <div class="project-body">
+                        <h3>Crisis response and data-driven operations in automotive manufacturing</h3>
+                        <p class="project-context">Tier-1 automotive supplier — crisis management &amp; reporting automation</p>
+                        <div class="project-blocks">
+                            <div class="project-block">
+                                <h4>Challenge</h4>
+                                <p>The Suez Canal disruption put inbound material flows at risk of stopping production
+                                    lines — while day-to-day decisions still relied on slow, manual reporting.</p>
+                            </div>
+                            <div class="project-block">
+                                <h4>Approach</h4>
+                                <p>Coordinated material planners to secure premium freight on critical parts, then
+                                    attacked the root problem: built automated Power BI dashboards and KPI frameworks
+                                    to replace manual reporting across operations.</p>
+                            </div>
+                            <div class="project-block">
+                                <h4>Outcome</h4>
+                                <p>No production line stoppages during the disruption, and a lasting shift to
+                                    data-driven decision making once the crisis passed.</p>
+                            </div>
+                        </div>
+                        <ul class="project-tags">
+                            <li>Crisis management</li>
+                            <li>Material planning</li>
+                            <li>Power BI</li>
+                            <li>KPI design</li>
+                            <li>Supplier coordination</li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- ============ ENGAGEMENT ============ -->
+        <section class="section" id="engagement">
+            <div class="container">
+                <p class="section-kicker reveal">Working model</p>
+                <h2 class="section-title reveal">Flexible formats,<br>clear scope.</h2>
+                <div class="engagement-grid">
+                    <div class="engagement-card reveal">
+                        <span class="engagement-duration">2–4 weeks</span>
+                        <h3>Short-term advisory</h3>
+                        <p>Assessments, audits, readiness evaluations, gap analysis.</p>
+                    </div>
+                    <div class="engagement-card reveal">
+                        <span class="engagement-duration">2–6 months</span>
+                        <h3>Project-based</h3>
+                        <p>IT implementations, customer onboarding, system migrations.</p>
+                    </div>
+                    <div class="engagement-card reveal">
+                        <span class="engagement-duration">3–12 months</span>
+                        <h3>Interim management</h3>
+                        <p>Operations leadership, IT project management, team building.</p>
+                    </div>
+                    <div class="engagement-card reveal">
+                        <span class="engagement-duration">Open-ended</span>
+                        <h3>Ongoing retainer</h3>
+                        <p>Continuous improvement, advisory, support across multiple projects.</p>
+                    </div>
+                </div>
+                <p class="engagement-note reveal">On-site, remote or hybrid · part-time or full-time ·
+                    immediately available for new engagements.</p>
+            </div>
+        </section>
+
+        <!-- ============ ABOUT ============ -->
+        <section class="section section-alt" id="about">
+            <div class="container about-grid">
+                <div class="about-text reveal">
+                    <p class="section-kicker">About</p>
+                    <h2 class="section-title">A rare profile that understands both sides.</h2>
+                    <p>I'm a supply chain operations leader and IT project manager with 8+ years across 3PL,
+                        automotive, retail, cold chain and manufacturing logistics — from shopfloor team leadership
+                        to European-level coordination across 60+ warehouse sites, having lived in six countries.</p>
+                    <p>I combine deep operational expertise with hands-on IT systems knowledge in Dynamics 365
+                        Business Central, EDI integrations and data strategy. That mix is what lets me bridge the
+                        gap between warehouse operations and digital transformation.</p>
+                </div>
+                <div class="about-facts reveal">
+                    <div class="fact">
+                        <h4>Systems</h4>
+                        <p>Dynamics 365 BC / NAV, SAP, Boltrics 3PL Dynamics, Manhattan WMS, Power BI, Power
+                            Automate, Snowflake, Kafka Confluent</p>
+                    </div>
+                    <div class="fact">
+                        <h4>EDI</h4>
+                        <p>EDIFACT, X12, ANSI — message mapping, flow design, provider coordination</p>
+                    </div>
+                    <div class="fact">
+                        <h4>Certification</h4>
+                        <p>MB-800: Dynamics 365 Business Central Functional Consultant (in preparation, Q2 2026)</p>
+                    </div>
+                    <div class="fact">
+                        <h4>Languages</h4>
+                        <p>French (native), English (fluent), Spanish (fluent)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ CONTACT ============ -->
+        <section class="section contact" id="contact">
+            <div class="container contact-inner reveal">
+                <p class="section-kicker">Contact</p>
+                <h2 class="section-title">Have a project that needs<br>both the pallet and the ERP?</h2>
+                <p class="contact-lead">Immediately available for new engagements across Europe — on-site, remote
+                    or hybrid.</p>
+                <div class="contact-actions">
+                    <a href="mailto:rbaronpro@gmail.com" class="btn btn-primary">rbaronpro@gmail.com</a>
+                    <a href="tel:+34644002369" class="btn btn-ghost">+34 644 00 23 69</a>
+                    <a href="https://linkedin.com/in/roman-baron" target="_blank" rel="noopener"
+                        class="btn btn-ghost">LinkedIn</a>
+                </div>
+                <p class="contact-location">Based in Barcelona, Spain · FR / EN / ES</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <span>© <span id="year"></span> Roman Baron — Independent Consultant</span>
+            <a href="#top">Back to top ↑</a>
         </div>
+    </footer>
 
-        <div id="skillShelf"></div>
-
-        <div id="badgeCount" class="hud-panel shelf-panel">
-            <p>Badges</p>
-            <span id="badgeNum">0</span>/19
-        </div>
-
-        <div id="vehicleStatus" class="hud-panel shelf-panel">
-            <span id="vehicleIcon">🚶</span>
-            <p id="vehicleName">On Foot</p>
-        </div>
-    </div>
-
-    <div id="gameContainer">
-        <div id="gameWorld"></div>
-        <div id="character"></div>
-
-
-
-        <div id="controls">
-            <h4>Controls</h4>
-            <p><span class="key">←</span> <span class="key">→</span> Move</p>
-            <p><span class="key">SPACE</span> Jump</p>
-        </div>
-
-
-    </div>
-
-    <button id="soundToggle">🔊</button>
-
-    <div id="rotate-warning">
-        <div class="rotate-icon">📱</div>
-        <p>Please Rotate Your Device</p>
-        <p class="sub-text">For the best experience, view in Landscape mode.</p>
-    </div>
     <script src="js/script.js"></script>
 </body>
 
