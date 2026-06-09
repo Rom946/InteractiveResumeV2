@@ -136,119 +136,184 @@
                 <p class="section-kicker reveal">Selected projects</p>
                 <h2 class="section-title reveal">Three engagements,<br>three different problems.</h2>
 
-                <!-- Project 1 -->
-                <article class="project reveal">
-                    <div class="project-meta">
-                        <span class="project-number">01</span>
-                        <span class="project-industry">3PL / Contract Logistics</span>
-                    </div>
-                    <div class="project-body">
-                        <h3>From zero data infrastructure to near real-time warehouse visibility</h3>
-                        <p class="project-context">European contract logistics provider — data strategy engagement</p>
-                        <div class="project-blocks">
-                            <div class="project-block">
-                                <h4>Challenge</h4>
-                                <p>No data infrastructure at all: reporting was manual, fragmented across sites, and
-                                    the operational data lived inside customer-owned WMS systems the company couldn't
-                                    even access.</p>
-                            </div>
-                            <div class="project-block">
-                                <h4>Approach</h4>
-                                <p>Negotiated direct access to customer Manhattan WMS databases, designed the data
-                                    model and a streaming architecture on Snowflake and Kafka Confluent, and built
-                                    interim automation so operations had usable numbers from week one.</p>
-                            </div>
-                            <div class="project-block">
-                                <h4>Outcome</h4>
-                                <p>Near real-time visibility across warehouse operations, a KPI framework adopted by
-                                    site management, and fully automated extraction workflows replacing manual
-                                    reporting.</p>
-                            </div>
-                        </div>
-                        <ul class="project-tags">
-                            <li>Snowflake</li>
-                            <li>Kafka Confluent</li>
-                            <li>Manhattan WMS</li>
-                            <li>Power BI</li>
-                            <li>Power Automate</li>
-                        </ul>
-                    </div>
-                </article>
+                <div class="projects-stack">
 
-                <!-- Project 2 -->
-                <article class="project reveal">
-                    <div class="project-meta">
-                        <span class="project-number">02</span>
-                        <span class="project-industry">Retail · Automotive · FMCG</span>
-                    </div>
-                    <div class="project-body">
-                        <h3>Complex customer onboarding on Business Central &amp; 3PL Dynamics</h3>
-                        <p class="project-context">Multi-site 3PL onboarding portfolio — IT project management</p>
-                        <div class="project-blocks">
-                            <div class="project-block">
-                                <h4>Challenge</h4>
-                                <p>Demanding retail, automotive and FMCG customers each arriving with their own EDI
-                                    standards, labeling requirements and SLAs — to be integrated into a shared
-                                    Business Central / WMS environment without disrupting live operations.</p>
+                    <!-- Project 1 -->
+                    <article class="project-card reveal">
+                        <div class="project-card-inner">
+                            <header class="project-head">
+                                <span class="project-number" aria-hidden="true">01</span>
+                                <div class="project-head-text">
+                                    <span class="project-industry">3PL / Contract Logistics</span>
+                                    <h3>From zero data infrastructure to near real-time warehouse visibility</h3>
+                                    <p class="project-context">European contract logistics provider — data strategy
+                                        engagement</p>
+                                </div>
+                            </header>
+                            <div class="project-tabs" role="tablist" aria-label="Project 1 details">
+                                <button role="tab" class="tab-btn active" aria-selected="true">Challenge</button>
+                                <button role="tab" class="tab-btn" aria-selected="false">Approach</button>
+                                <button role="tab" class="tab-btn" aria-selected="false">Outcome</button>
+                                <span class="tab-indicator" aria-hidden="true"></span>
                             </div>
-                            <div class="project-block">
-                                <h4>Approach</h4>
-                                <p>Owned the full onboarding lifecycle: system configuration, EDI message flow design
-                                    (EDIFACT, X12), process design with warehouse teams, UAT coordination, team
-                                    preparation and go-live management.</p>
+                            <div class="tab-panels">
+                                <div class="tab-panel active" role="tabpanel">
+                                    <p>No data infrastructure at all: reporting was manual, fragmented across sites,
+                                        and the operational data lived inside customer-owned WMS systems the company
+                                        couldn't even access.</p>
+                                </div>
+                                <div class="tab-panel" role="tabpanel">
+                                    <p>Negotiated direct access to customer Manhattan WMS databases, designed the data
+                                        model and a streaming architecture on Snowflake and Kafka Confluent, and built
+                                        interim automation so operations had usable numbers from week one.</p>
+                                </div>
+                                <div class="tab-panel" role="tabpanel">
+                                    <p>Near real-time visibility across warehouse operations, a KPI framework adopted
+                                        by site management, and fully automated extraction workflows replacing manual
+                                        reporting.</p>
+                                </div>
                             </div>
-                            <div class="project-block">
-                                <h4>Outcome</h4>
-                                <p>Five to ten complex onboarding projects delivered across multiple European sites,
-                                    with stabilized EDI flows and warehouse teams ready on day one.</p>
+                            <div class="project-metrics">
+                                <div class="metric">
+                                    <span class="metric-value">0 → 1</span>
+                                    <span class="metric-label">Data platform, built from nothing</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric-value">~Real-time</span>
+                                    <span class="metric-label">Warehouse visibility</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric-value"><span data-count="100" data-suffix="%">0%</span></span>
+                                    <span class="metric-label">Extraction workflows automated</span>
+                                </div>
                             </div>
+                            <ul class="project-tags">
+                                <li>Snowflake</li>
+                                <li>Kafka Confluent</li>
+                                <li>Manhattan WMS</li>
+                                <li>Power BI</li>
+                                <li>Power Automate</li>
+                            </ul>
                         </div>
-                        <ul class="project-tags">
-                            <li>Dynamics 365 Business Central</li>
-                            <li>Boltrics 3PL Dynamics</li>
-                            <li>EDIFACT / X12</li>
-                            <li>UAT</li>
-                            <li>Go-live management</li>
-                        </ul>
-                    </div>
-                </article>
+                    </article>
 
-                <!-- Project 3 -->
-                <article class="project reveal">
-                    <div class="project-meta">
-                        <span class="project-number">03</span>
-                        <span class="project-industry">Automotive Tier-1</span>
-                    </div>
-                    <div class="project-body">
-                        <h3>Crisis response and data-driven operations in automotive manufacturing</h3>
-                        <p class="project-context">Tier-1 automotive supplier — crisis management &amp; reporting automation</p>
-                        <div class="project-blocks">
-                            <div class="project-block">
-                                <h4>Challenge</h4>
-                                <p>The Suez Canal disruption put inbound material flows at risk of stopping production
-                                    lines — while day-to-day decisions still relied on slow, manual reporting.</p>
+                    <!-- Project 2 -->
+                    <article class="project-card reveal">
+                        <div class="project-card-inner">
+                            <header class="project-head">
+                                <span class="project-number" aria-hidden="true">02</span>
+                                <div class="project-head-text">
+                                    <span class="project-industry">Retail · Automotive · FMCG</span>
+                                    <h3>Complex customer onboarding on Business Central &amp; 3PL Dynamics</h3>
+                                    <p class="project-context">Multi-site 3PL onboarding portfolio — IT project
+                                        management</p>
+                                </div>
+                            </header>
+                            <div class="project-tabs" role="tablist" aria-label="Project 2 details">
+                                <button role="tab" class="tab-btn active" aria-selected="true">Challenge</button>
+                                <button role="tab" class="tab-btn" aria-selected="false">Approach</button>
+                                <button role="tab" class="tab-btn" aria-selected="false">Outcome</button>
+                                <span class="tab-indicator" aria-hidden="true"></span>
                             </div>
-                            <div class="project-block">
-                                <h4>Approach</h4>
-                                <p>Coordinated material planners to secure premium freight on critical parts, then
-                                    attacked the root problem: built automated Power BI dashboards and KPI frameworks
-                                    to replace manual reporting across operations.</p>
+                            <div class="tab-panels">
+                                <div class="tab-panel active" role="tabpanel">
+                                    <p>Demanding retail, automotive and FMCG customers each arriving with their own
+                                        EDI standards, labeling requirements and SLAs — to be integrated into a shared
+                                        Business Central / WMS environment without disrupting live operations.</p>
+                                </div>
+                                <div class="tab-panel" role="tabpanel">
+                                    <p>Owned the full onboarding lifecycle: system configuration, EDI message flow
+                                        design (EDIFACT, X12), process design with warehouse teams, UAT coordination,
+                                        team preparation and go-live management.</p>
+                                </div>
+                                <div class="tab-panel" role="tabpanel">
+                                    <p>Five to ten complex onboarding projects delivered across multiple European
+                                        sites, with stabilized EDI flows and warehouse teams ready on day one.</p>
+                                </div>
                             </div>
-                            <div class="project-block">
-                                <h4>Outcome</h4>
-                                <p>No production line stoppages during the disruption, and a lasting shift to
-                                    data-driven decision making once the crisis passed.</p>
+                            <div class="project-metrics">
+                                <div class="metric">
+                                    <span class="metric-value"><span data-count="10" data-prefix="5–">5–10</span></span>
+                                    <span class="metric-label">Complex onboardings delivered</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric-value">EDIFACT + X12</span>
+                                    <span class="metric-label">EDI flows designed end-to-end</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric-value">Day 1</span>
+                                    <span class="metric-label">Warehouse teams ready at go-live</span>
+                                </div>
                             </div>
+                            <ul class="project-tags">
+                                <li>Dynamics 365 Business Central</li>
+                                <li>Boltrics 3PL Dynamics</li>
+                                <li>EDIFACT / X12</li>
+                                <li>UAT</li>
+                                <li>Go-live management</li>
+                            </ul>
                         </div>
-                        <ul class="project-tags">
-                            <li>Crisis management</li>
-                            <li>Material planning</li>
-                            <li>Power BI</li>
-                            <li>KPI design</li>
-                            <li>Supplier coordination</li>
-                        </ul>
-                    </div>
-                </article>
+                    </article>
+
+                    <!-- Project 3 -->
+                    <article class="project-card reveal">
+                        <div class="project-card-inner">
+                            <header class="project-head">
+                                <span class="project-number" aria-hidden="true">03</span>
+                                <div class="project-head-text">
+                                    <span class="project-industry">Automotive Tier-1</span>
+                                    <h3>Crisis response and data-driven operations in automotive manufacturing</h3>
+                                    <p class="project-context">Tier-1 automotive supplier — crisis management &amp;
+                                        reporting automation</p>
+                                </div>
+                            </header>
+                            <div class="project-tabs" role="tablist" aria-label="Project 3 details">
+                                <button role="tab" class="tab-btn active" aria-selected="true">Challenge</button>
+                                <button role="tab" class="tab-btn" aria-selected="false">Approach</button>
+                                <button role="tab" class="tab-btn" aria-selected="false">Outcome</button>
+                                <span class="tab-indicator" aria-hidden="true"></span>
+                            </div>
+                            <div class="tab-panels">
+                                <div class="tab-panel active" role="tabpanel">
+                                    <p>The Suez Canal disruption put inbound material flows at risk of stopping
+                                        production lines — while day-to-day decisions still relied on slow, manual
+                                        reporting.</p>
+                                </div>
+                                <div class="tab-panel" role="tabpanel">
+                                    <p>Coordinated material planners to secure premium freight on critical parts, then
+                                        attacked the root problem: built automated Power BI dashboards and KPI
+                                        frameworks to replace manual reporting across operations.</p>
+                                </div>
+                                <div class="tab-panel" role="tabpanel">
+                                    <p>No production line stoppages during the disruption, and a lasting shift to
+                                        data-driven decision making once the crisis passed.</p>
+                                </div>
+                            </div>
+                            <div class="project-metrics">
+                                <div class="metric">
+                                    <span class="metric-value">0</span>
+                                    <span class="metric-label">Production line stoppages</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric-value">Premium freight</span>
+                                    <span class="metric-label">Secured on critical parts</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric-value">Manual → Auto</span>
+                                    <span class="metric-label">Power BI reporting across operations</span>
+                                </div>
+                            </div>
+                            <ul class="project-tags">
+                                <li>Crisis management</li>
+                                <li>Material planning</li>
+                                <li>Power BI</li>
+                                <li>KPI design</li>
+                                <li>Supplier coordination</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                </div>
             </div>
         </section>
 
